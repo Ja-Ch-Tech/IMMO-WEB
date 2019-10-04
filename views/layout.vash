@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Title -->
+    <title>@model.title</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="./img/core-img/favicon.png">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+  <div id="preloader">
+      <div class="loader"></div>
+  </div>
+  <!-- **** Header Area Start **** -->
+  <header class="header-area">
+      <!-- Top Header Area Start -->
+      <div class="top-header-area">
+          <div class="container-fluid h-100">
+              <div class="row h-100 align-items-center">
+                  <div class="col-4">
+                      <div class="top-header-content">
+                          <a href="#"><i class="now-ui-icons ui-1_email-85"></i> <span>ja'Ch@technology.com</span></a>
+                          <a href="#"><i class="fa fa-phone"></i> <span>+24389999999</span></a>
+                      </div>
+                  </div>
+                  <div class="col-6">
+                      <div class="top-header-content">
+                          <!-- Top Social Area -->
+                          <div class="top-social-area ml-auto">
+                              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                          </div>
+                      </div>
+                  </div>
+                  <div style="border-left:2px solid #93c900;" class="col-2">
+                      <div class="top-header-content">
+                          <a style="color:#93c900;font-size:17px;" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- Top Header Area End -->
+
+      <!-- Main Header Start -->
+      <div class="main-header-area animated">
+          <div class="classy-nav-container breakpoint-off">
+              <div class="container">
+                  <!-- Classy Menu -->
+                  <nav class="classy-navbar justify-content-between" id="rehomesNav">
+
+                      <!-- Logo -->
+                      <a class="nav-brand" href="/"><img src="/images/core-img/logo.png" alt=""></a>
+
+                      <!-- Navbar Toggler -->
+                      <div class="classy-navbar-toggler">
+                          <span class="navbarToggler"><span></span><span></span><span></span></span>
+                      </div>
+
+                      <!-- Menu -->
+                      <div class="classy-menu">
+                          <!-- Menu Close Button -->
+                          <div class="classycloseIcon">
+                              <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                          </div>
+                          <!-- Nav Start -->
+                          <div class="classynav">
+                              <ul id="nav">
+                                  <li style="text-transform: unset;" class="active"><a href="/">Accueil</a></li>
+                                  <li><a href="/biens/location">Biens en location</a>
+                                      
+                                  </li>
+                                  <li><a href="/biens/vente">Biens en vente</a></li>
+                                  <li><a href="/contact">Contact</a></li>
+                              </ul>
+
+                              <!-- Contact btn -->
+                              <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
+                                  <a href="#">Publiez votre bien </a>
+                              </div>
+                          </div>
+                          <!-- Nav End -->
+                      </div>
+                  </nav>
+              </div>
+          </div>
+      </div>
+  </header>
+  <!-- **** Header Area End **** -->
+  @html.block('content')
+  <!-- **** Footer Area Start **** -->
+  <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0">
+      <!-- Main Footer Area -->
+      <div class="main-footer-area">
+          <div class="container">
+              <div class="row justify-content-between">
+
+                  <!-- Footer Widget Area -->
+                  <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="single-footer-widget mb-80">
+                          <!-- Footer Logo -->
+                          <a href="#" class="footer-logo"><img src="/images/core-img/logo-2.png" alt=""></a>
+
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                          <!-- Social Info -->
+                          <div class="social-info">
+                              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                              <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Footer Widget Area -->
+                  <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="single-footer-widget mb-80">
+                          <!-- Widget Title -->
+                          <h5 class="widget-title">Pour plus d'informations</h5>
+
+                          <!-- Contact Area -->
+                          <div class="footer-contact">
+                              <p>Téléphone: <span>+243899641137</span></p>
+                              <p>Email: <span>immo.info@gmail.com</span></p>
+                              <p>Addresse: <span>Iris Watson, Box 283 8562 Fusce Rd, NY</span></p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Footer Widget Area -->
+                  <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="single-footer-widget mb-80">
+                          <!-- Widget Title -->
+                          <h5 class="widget-title">Propriétés par commune</h5>
+
+                          <!-- Footer Nav -->
+                          <ul class="footer-nav d-flex flex-wrap">
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Lingwala</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Nsele</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Kintambo</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Makomeno</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Bandalungwa</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Kinshasa</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Gombe</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Ngaliema</a></li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <!-- Footer Widget Area -->
+                  <div class="col-12 col-sm-6 col-lg-3">
+                      <div class="single-footer-widget mb-80">
+                          <!-- Widget Title -->
+                          <h5 class="widget-title">Newsletter</h5>
+
+                          <p>Abonnez-vous à nos newsletters et restez informé des dernières nouvelles.</p>
+                          <!-- Newsletter Form -->
+                          <form action="index.html" class="nl-form">
+                              <input type="email" name="nl-email" class="form-control" placeholder="Entrez votre email...">
+                              <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <!-- Copywrite Area -->
+      <div class="copywrite-content">
+          <div class="container">
+              <div class="row align-items-center">
+                  <!-- Copywrite Text -->
+                  <div class="col-12 col-sm-6">
+                      <div class="copywrite-text">
+                          <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="#" target="_blank">Ja'Ch Tech</a>
+                          <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                      </div>
+                  </div>
+
+                  <!-- Footer Menu -->
+                  <div class="col-12 col-sm-6">
+                      <div class="footer-menu">
+                          <ul class="nav">
+                              <li><a href="#">Accueil</a></li>
+                              <li><a href="#">Biens en location</a></li>
+                              <li><a href="#">Biens en vente</a></li>
+                              <li><a href="#">Contact</a></li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+  <!-- **** Footer Area End **** -->
+  <script src="/javascripts/jquery.min.js"></script>
+  <script src="/javascripts/popper.min.js"></script>
+  <script src="/javascripts/bootstrap.min.js"></script>
+  <script src="/javascripts/rehomes.bundle.js"></script>
+  <script src="/javascripts/default-assets/active.js"></script>
+</body>
+</html>
