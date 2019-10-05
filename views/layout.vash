@@ -15,13 +15,139 @@
     <link rel="icon" href="./img/core-img/favicon.png">
 
     <!-- Stylesheet -->
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="/vendors/wizard-form/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+
 </head>
 <body>
   <div id="preloader">
       <div class="loader"></div>
   </div>
   <!-- **** Header Area Start **** -->
+  <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+          <div class="modal-content text-center modal-register">
+              <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-item nav-link active title-small-light" id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login"
+                    aria-selected="true">Connexion</a>
+                  <a class="nav-item nav-link title-small-light" id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register"
+                    aria-selected="false">Inscription</a>
+
+                </div>
+              </nav>
+              <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">
+                      <div style="padding:10%;" class="rehomes-contact-form wow fadeInUp" data-wow-delay="200ms">
+                      <!-- Form -->
+                        <form class="support-form" action="#" method="post">
+                          <div class="row">
+                              <div class="col-12">
+                                  <input type="text" name="message-name" class="form-control mb-20" placeholder="Nom utilisateur">
+                              </div>
+                              <div class="col-12">
+                                  <input type="password" name="message-email" class="form-control mb-20" placeholder="Mot de passe">
+                              </div>
+                              <div class="col-12">
+                                  <button type="submit" class="btn rehomes-btn">Se connecter</button>
+                              </div>
+                          </div>
+                        </form>
+                      </div>
+
+                  </div>
+                  <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                      <div class="wrapper">
+                        <form action="" id="wizard">
+                            <!-- SECTION 1 -->
+                            <h2></h2>
+                            <section>
+                                <div class="inner">
+                                  <div class="form-content" >
+                                    <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">1.Profile</h2>
+                                    <div class="form-row row">
+                                      <div class="col-md-6">
+                                        <div class="form-holder">
+                                          <input type="text" placeholder="Pseudonyme" class="form-control">
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-holder">
+                                          <input type="email" placeholder="Adresse email" class="form-control">
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                    <div class="form-row row">
+                                      <div class="col-md-12">
+                                        <div class="form-holder">
+                                          <input type="text" placeholder="Mot de passe" class="form-control">
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-row">
+                                      <div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
+                                        <div class="checkbox-tick">
+                                          <label class="acheteur">
+                                            <input type="radio" name="type" value="acheteur" checked> Je veux louer ou acheter un bien<br>
+                                            <span class="checkmark"></span>
+                                          </label>
+                                          <label class="vendeur">
+                                            <input type="radio" name="type" value="vendeur"> Je veux faire louer ou vendre bien<br>
+                                            <span class="checkmark"></span>
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </section>
+
+                            <!-- SECTION 2 -->
+                            <h2></h2>
+                            <section>
+                                <div class="inner">
+                                    <div class="form-content" >
+                                      <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">2.Détails personnel</h2>
+                                      <div class="form-row row">
+                                        <div class="col-md-6">
+                                          <div class="form-holder">
+                                            <input type="text" placeholder="Prénom (*)" class="form-control">
+                                          </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                          <div class="form-holder">
+                                            <input type="text" placeholder="Nom (*)" class="form-control">
+                                          </div>
+                                        </div>
+                                        
+                                      </div>
+                                      <div class="form-row row">
+                                        <div class="col-md-12">
+                                          <div class="form-holder">
+                                            <input type="text" placeholder="Téléphone (ex. +24399XXXXXXX)" class="form-control">
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- <div class="form-row row">
+                                        <div class="col-md-12">
+                                          <div class="form-holder">
+                                            <input type="text" placeholder="Adresse de domicile" class="form-control">
+                                          </div>
+                                        </div>
+                                      </div> -->
+                                    </div>
+                                </div>
+                            </section>
+                        </form>
+                    </div>
+                  </div>
+              </div>
+             
+          </div>
+      </div>
+  </div>
   <header class="header-area">
       <!-- Top Header Area Start -->
       <div class="top-header-area">
@@ -46,7 +172,7 @@
                   </div>
                   <div style="border-left:2px solid #93c900;" class="col-2">
                       <div class="top-header-content">
-                          <a style="color:#93c900;font-size:17px;" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
+                          <a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
                       </div>
                   </div>
               </div>
@@ -88,7 +214,7 @@
 
                               <!-- Contact btn -->
                               <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
-                                  <a href="#">Publiez votre bien </a>
+                                  <a href="#" data-toggle="modal" data-target="#modalSession" title="Publiez un bien immobilier">Publiez votre bien </a>
                               </div>
                           </div>
                           <!-- Nav End -->
@@ -101,6 +227,7 @@
   <!-- **** Header Area End **** -->
   @html.block('content')
   <!-- **** Footer Area Start **** -->
+  
   <footer class="footer-area bg-img bg-overlay-2 section-padding-100-0">
       <!-- Main Footer Area -->
       <div class="main-footer-area">
@@ -211,5 +338,8 @@
   <script src="/javascripts/bootstrap.min.js"></script>
   <script src="/javascripts/rehomes.bundle.js"></script>
   <script src="/javascripts/default-assets/active.js"></script>
+  <script src="/vendors/wizard-form/js/jquery.steps.js"></script>
+  <script src="/vendors/wizard-form/js/main.js"></script>
+  
 </body>
 </html>
