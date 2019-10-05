@@ -1676,6 +1676,7 @@ input:invalid {
 .single-property-area .property-desc-area .property-title-seller .property-title h4 {
 	font-size: 20px;
 	margin-bottom: 3px;
+    font-family: "Poppins", sans-serif !important;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1699,23 +1700,24 @@ input:invalid {
 .single-property-area .property-desc-area .property-title-seller .property-title p {
 	color: #afb4bf;
 	margin-bottom: 0;
+    font-size: 14px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.single-property-area .property-desc-area .property-title-seller .property-title p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.single-property-area .property-desc-area .property-title-seller .property-title p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
 @media only screen and (max-width: 767px) {
 	.single-property-area .property-desc-area .property-title-seller .property-title p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
@@ -1727,29 +1729,32 @@ input:invalid {
 .single-property-area .property-desc-area .property-title-seller .property-seller p {
 	margin-bottom: 6px;
 	color: #afb4bf;
+    font-size: 14px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.single-property-area .property-desc-area .property-title-seller .property-seller p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.single-property-area .property-desc-area .property-title-seller .property-seller p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
 @media only screen and (max-width: 767px) {
 	.single-property-area .property-desc-area .property-title-seller .property-seller p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
 .single-property-area .property-desc-area .property-title-seller .property-seller h6 {
 	font-weight: 400;
 	margin-bottom: 0;
+    font-family: "Poppins", sans-serif;
+    text-transform: capitalize;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -1782,23 +1787,24 @@ input:invalid {
 	width: 50%;
 	margin-bottom: 10px;
 	color: #afb4bf;
+    font-size: 14px;
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.single-property-area .property-desc-area .property-info-area p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.single-property-area .property-desc-area .property-info-area p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
 @media only screen and (max-width: 767px) {
 	.single-property-area .property-desc-area .property-info-area p {
-		font-size: 14px;
+		font-size: 12px;
 	}
 }
 
@@ -1808,6 +1814,7 @@ input:invalid {
 
 .single-property-area .property-desc-area .property-info-area p span {
 	color: #2a303b;
+    font-family: "Poppins", sans-serif;
 }
 
 .single-property-area .property-price {

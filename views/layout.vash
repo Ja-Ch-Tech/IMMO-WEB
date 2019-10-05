@@ -211,5 +211,9 @@
   <script src="/javascripts/bootstrap.min.js"></script>
   <script src="/javascripts/rehomes.bundle.js"></script>
   <script src="/javascripts/default-assets/active.js"></script>
+
+  <!-- Connecting API-->
+  <script src="/javascripts/api/immobilier.js"></script>
+  
 </body>
 </html>
