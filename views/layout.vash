@@ -340,6 +340,9 @@
   <script src="/javascripts/default-assets/active.js"></script>
   <script src="/vendors/wizard-form/js/jquery.steps.js"></script>
   <script src="/vendors/wizard-form/js/main.js"></script>
+
+  <!-- Connecting API-->
+  <script src="/javascripts/api/immobilier.js"></script>
   
 </body>
 </html>
