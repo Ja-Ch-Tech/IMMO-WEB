@@ -18,6 +18,7 @@
     <!-- MATERIAL DESIGN ICONIC FONT -->
 		<link rel="stylesheet" href="/vendors/wizard-form/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet"> 
 
 </head>
 <body>
@@ -41,13 +42,13 @@
                   <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">
                       <div style="padding:10%;" class="rehomes-contact-form wow fadeInUp" data-wow-delay="200ms">
                       <!-- Form -->
-                        <form class="support-form" action="#" method="post">
+                        <form class="support-form" method="post" id="loginForm">
                           <div class="row">
                               <div class="col-12">
-                                  <input type="text" name="message-name" class="form-control mb-20" placeholder="Nom utilisateur">
+                                  <input type="text" name="username" class="form-control mb-20" placeholder="Nom utilisateur">
                               </div>
                               <div class="col-12">
-                                  <input type="password" name="message-email" class="form-control mb-20" placeholder="Mot de passe">
+                                  <input type="password" name="password" class="form-control mb-20" placeholder="Mot de passe">
                               </div>
                               <div class="col-12">
                                   <button type="submit" class="btn rehomes-btn">Se connecter</button>
@@ -343,6 +344,7 @@
 
   <!-- Connecting API-->
   <script src="/javascripts/api/immobilier.js"></script>
+  <script src="/javascripts/api/users.js"></script>
   
 </body>
 </html>
