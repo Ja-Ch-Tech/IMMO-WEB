@@ -69,12 +69,12 @@
                                     <div class="form-row row">
                                       <div class="col-md-6">
                                         <div class="form-holder">
-                                          <input type="text" placeholder="Pseudonyme" class="form-control">
+                                          <input type="text" id="pseudonyme" placeholder="Pseudonyme" class="form-control user-input">
                                         </div>
                                       </div>
                                       <div class="col-md-6">
                                         <div class="form-holder">
-                                          <input type="email" placeholder="Adresse email" class="form-control">
+                                          <input type="email" id="email" placeholder="Adresse email" class="form-control user-input">
                                         </div>
                                       </div>
                                       
@@ -82,7 +82,7 @@
                                     <div class="form-row row">
                                       <div class="col-md-12">
                                         <div class="form-holder">
-                                          <input type="text" placeholder="Mot de passe" class="form-control">
+                                          <input type="text" id="password" placeholder="Mot de passe" class="form-control user-input">
                                         </div>
                                       </div>
                                     </div>
@@ -90,11 +90,11 @@
                                       <div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
                                         <div class="checkbox-tick">
                                           <label class="acheteur">
-                                            <input type="radio" name="type" value="acheteur" checked> Je veux louer ou acheter un bien<br>
+                                            <input class="user-input" type="radio" name="type" id="client" value="acheteur" checked> Je veux louer ou acheter un bien<br>
                                             <span class="checkmark"></span>
                                           </label>
                                           <label class="vendeur">
-                                            <input type="radio" name="type" value="vendeur"> Je veux faire louer ou vendre bien<br>
+                                            <input type="radio" class="user-input" name="type" id="proprietaire" value="vendeur"> Je veux faire louer ou vendre un bien<br>
                                             <span class="checkmark"></span>
                                           </label>
                                         </div>
@@ -113,12 +113,12 @@
                                       <div class="form-row row">
                                         <div class="col-md-6">
                                           <div class="form-holder">
-                                            <input type="text" placeholder="Prénom (*)" class="form-control">
+                                            <input type="text" id="prenom" placeholder="Prénom (*)" class="form-control user-input">
                                           </div>
                                         </div>
                                         <div class="col-md-6">
                                           <div class="form-holder">
-                                            <input type="text" placeholder="Nom (*)" class="form-control">
+                                            <input type="text" id="nom" placeholder="Nom (*)" class="form-control user-input">
                                           </div>
                                         </div>
                                         
@@ -126,7 +126,7 @@
                                       <div class="form-row row">
                                         <div class="col-md-12">
                                           <div class="form-holder">
-                                            <input type="text" placeholder="Téléphone (ex. +24399XXXXXXX)" class="form-control">
+                                            <input type="text" id="telephone" placeholder="Téléphone (ex. +24399XXXXXXX)" class="form-control user-input">
                                           </div>
                                         </div>
                                       </div>
@@ -140,6 +140,11 @@
                                     </div>
                                 </div>
                             </section>
+                            <div class="btns">
+                                <button id="next">Suivant</button>
+                                <button id="prev">Precedent</button>
+                                <button id="finish">Terminer</button>
+                            </div>
                         </form>
                     </div>
                   </div>
@@ -343,6 +348,7 @@
 
   <!-- Connecting API-->
   <script src="/javascripts/api/immobilier.js"></script>
+  <script src="/javascripts/api/inscription.js"></script>
   
 </body>
 </html>

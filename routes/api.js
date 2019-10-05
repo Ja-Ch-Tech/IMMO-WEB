@@ -34,4 +34,6 @@ router.get('/new', (req, res) => {
          })
 })
 
+//Permet de faire la creation d'un compte
+
 module.exports = router;
