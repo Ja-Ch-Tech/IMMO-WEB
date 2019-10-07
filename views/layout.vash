@@ -18,11 +18,15 @@
     <!-- MATERIAL DESIGN ICONIC FONT -->
 		<link rel="stylesheet" href="/vendors/wizard-form/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet"> 
 
 </head>
 <body>
   <div id="preloader">
       <div class="loader"></div>
+  </div>
+  <!-- GESTION MESSAGE ERREUR -->
+  <div class="animated slideOutUp message" style="" id="message">
   </div>
   <!-- **** Header Area Start **** -->
   <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -41,13 +45,13 @@
                   <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">
                       <div style="padding:10%;" class="rehomes-contact-form wow fadeInUp" data-wow-delay="200ms">
                       <!-- Form -->
-                        <form class="support-form" action="#" method="post">
+                        <form class="support-form" method="post" id="loginForm">
                           <div class="row">
                               <div class="col-12">
-                                  <input type="text" name="message-name" class="form-control mb-20" placeholder="Nom utilisateur">
+                                  <input type="text" name="username" class="form-control mb-20" placeholder="Nom utilisateur">
                               </div>
                               <div class="col-12">
-                                  <input type="password" name="message-email" class="form-control mb-20" placeholder="Mot de passe">
+                                  <input type="password" name="password" class="form-control mb-20" placeholder="Mot de passe">
                               </div>
                               <div class="col-12">
                                   <button type="submit" class="btn rehomes-btn">Se connecter</button>
@@ -59,66 +63,24 @@
                   </div>
                   <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
                       <div class="wrapper">
-                        <form action="" id="wizard">
+                        <form autocomplete="off" action="" id="wizard">
                             <!-- SECTION 1 -->
                             <h2></h2>
                             <section>
                                 <div class="inner">
-                                  <div class="form-content" >
-                                    <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">1.Profile</h2>
-                                    <div class="form-row row">
-                                      <div class="col-md-6">
-                                        <div class="form-holder">
-                                          <input type="text" id="pseudonyme" placeholder="Pseudonyme" class="form-control user-input">
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-holder">
-                                          <input type="email" id="email" placeholder="Adresse email" class="form-control user-input">
-                                        </div>
-                                      </div>
-                                      
-                                    </div>
-                                    <div class="form-row row">
-                                      <div class="col-md-12">
-                                        <div class="form-holder">
-                                          <input type="text" id="password" placeholder="Mot de passe" class="form-control user-input">
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-row">
-                                      <div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
-                                        <div class="checkbox-tick">
-                                          <label class="acheteur">
-                                            <input class="user-input" type="radio" name="type" id="client" value="acheteur" checked> Je veux louer ou acheter un bien<br>
-                                            <span class="checkmark"></span>
-                                          </label>
-                                          <label class="vendeur">
-                                            <input type="radio" class="user-input" name="type" id="proprietaire" value="vendeur"> Je veux faire louer ou vendre un bien<br>
-                                            <span class="checkmark"></span>
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                            </section>
-
-                            <!-- SECTION 2 -->
-                            <h2></h2>
-                            <section>
-                                <div class="inner">
                                     <div class="form-content" >
-                                      <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">2.Détails personnel</h2>
+                                      <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">1.Détails personnel</h2>
                                       <div class="form-row row">
                                         <div class="col-md-6">
                                           <div class="form-holder">
                                             <input type="text" id="prenom" placeholder="Prénom (*)" class="form-control user-input">
+                                            <span id="prenomError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                         <div class="col-md-6">
                                           <div class="form-holder">
                                             <input type="text" id="nom" placeholder="Nom (*)" class="form-control user-input">
+                                            <span id="nomError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                         
@@ -127,24 +89,67 @@
                                         <div class="col-md-12">
                                           <div class="form-holder">
                                             <input type="text" id="telephone" placeholder="Téléphone (ex. +24399XXXXXXX)" class="form-control user-input">
+                                            <span id="phoneError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                       </div>
-                                      <!-- <div class="form-row row">
+                                      <div class="form-row row">
                                         <div class="col-md-12">
-                                          <div class="form-holder">
-                                            <input type="text" placeholder="Adresse de domicile" class="form-control">
-                                          </div>
+                                            <button class="btn pull-right" id="next">Suivant</button>
                                         </div>
-                                      </div> -->
+                                      </div>
                                     </div>
                                 </div>
                             </section>
-                            <div class="btns">
-                                <button id="next">Suivant</button>
-                                <button id="prev">Precedent</button>
-                                <button id="finish">Terminer</button>
-                            </div>
+                            <!-- SECTION 2 -->
+                            <h2></h2>
+                            <section>
+                                <div class="inner">
+                                  <div class="form-content" >
+                                    <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">2.Profile</h2>
+                                    <div class="form-row row">
+                                      <div class="col-md-6">
+                                        <div class="form-holder">
+                                          <input type="text" id="pseudonyme" placeholder="Pseudonyme" class="form-control user-input">
+                                          <span id="usernameError" class="inputError pull-left"></span>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-holder">
+                                          <input type="email" id="email" placeholder="Adresse email" class="form-control user-input">
+                                          <span id="emailError" class="inputError pull-left"></span>
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                    <div class="form-row row">
+                                      <div class="col-md-12">
+                                        <div class="form-holder">
+                                          <input type="text" id="password" placeholder="Mot de passe" class="form-control user-input">
+                                          <span id="passwordError" class="inputError pull-left"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-row row">
+                                      <div class="col-md-12">
+                                          <div class="form-holder">
+                                            <select name="types" id="types" class="form-control">
+                                            </select>
+                                          </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-row row">
+                                      <div class="col-md-12">
+                                        <button style="margin-left: 10px;" class="btn pull-right" id="finish">Terminer</button>
+                                        <button class="btn pull-right" id="prev">Precedent</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </section>
+
+                            <!-- SECTION 2 -->
+
                         </form>
                     </div>
                   </div>
@@ -349,6 +354,8 @@
   <!-- Connecting API-->
   <script src="/javascripts/api/immobilier.js"></script>
   <script src="/javascripts/api/inscription.js"></script>
+  <script src="/javascripts/api/users.js"></script>
+  <script src="/javascripts/api/type_user.js"></script>
   
 </body>
 </html>

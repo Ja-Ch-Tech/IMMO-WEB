@@ -4239,7 +4239,7 @@ input:invalid {
 /*Code ajout*/
  /* Cette classe permet de personnalisé le modal d'inscription*/
 .modal-register{
-	padding:50px 0px;
+	padding:10px 0px;
 }
 
 /*Modifie les labels*/
@@ -4303,6 +4303,58 @@ input:invalid {
 }
 
 .nav-sidebar > .active > a{
+	color: #fff;
+}
+
+.message{
+	z-index: 999999999;
+	position: absolute;
+	width: 30%;
+	padding: 7px;
+	font-family: calibri;
+	font-size: 16px;
+}
+
+.message.error{
+	border:2px solid #ff0000;
+	color: #fff;
+	background-color: #ff6347;
+}
+
+.inputError{
+	font-size: 15px;
+	font-family: calibri;
+	color: #ff6347;
+}
+.icon_error{
+	position: absolute;
+	right: 0;
+	padding: 10px;
+}
+.user-input{
+	margin-bottom: 5px;
+}
+
+.btns{
+	padding: 15px 30px;
+}
+
+.btns .btn{
+	padding: 10px 30px;
+}
+
+.btn#next{
+	background-color: #9acd32;
+	color: #fff;
+}
+
+.btn#prev{
+	background-color: #dcdcdc;
+	color: #333;
+}
+
+.btn#finish{
+	background-color: #849963;
 	color: #fff;
 }
 
