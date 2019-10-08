@@ -43,7 +43,7 @@
                       <div style="padding:10%;" class="rehomes-contact-form wow fadeInUp" data-wow-delay="200ms">
                       <!-- Form -->
                         <form class="support-form" method="post" id="loginForm">
-                          <div class="row">
+                          <div class="row col-8 mx-auto">
                               <div class="col-12">
                                   <input type="text" name="username" class="form-control mb-20" placeholder="Nom utilisateur">
                               </div>
