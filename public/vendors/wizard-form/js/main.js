@@ -5,11 +5,7 @@ $(function(){
         transitionEffect: "fade",
         enableAllSteps: true,
         transitionEffectSpeed: 500,
-        labels: {
-            finish: "Terminé",
-            next: "Suivant",
-            previous: "Precedent"
-        }
+        
     });
     $('.wizard > .steps li a').click(function(){
     	$(this).parent().addClass('checked');

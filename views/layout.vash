@@ -25,6 +25,9 @@
   <div id="preloader">
       <div class="loader"></div>
   </div>
+  <!-- GESTION MESSAGE ERREUR -->
+  <div class="animated slideOutUp message" style="" id="message">
+  </div>
   <!-- **** Header Area Start **** -->
   <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
@@ -60,66 +63,24 @@
                   </div>
                   <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
                       <div class="wrapper">
-                        <form action="" id="wizard">
+                        <form autocomplete="off" action="" id="wizard">
                             <!-- SECTION 1 -->
                             <h2></h2>
                             <section>
                                 <div class="inner">
-                                  <div class="form-content" >
-                                    <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">1.Profile</h2>
-                                    <div class="form-row row">
-                                      <div class="col-md-6">
-                                        <div class="form-holder">
-                                          <input type="text" placeholder="Pseudonyme" class="form-control">
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-holder">
-                                          <input type="email" placeholder="Adresse email" class="form-control">
-                                        </div>
-                                      </div>
-                                      
-                                    </div>
-                                    <div class="form-row row">
-                                      <div class="col-md-12">
-                                        <div class="form-holder">
-                                          <input type="text" placeholder="Mot de passe" class="form-control">
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-row">
-                                      <div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
-                                        <div class="checkbox-tick">
-                                          <label class="acheteur">
-                                            <input type="radio" name="type" value="acheteur" checked> Je veux louer ou acheter un bien<br>
-                                            <span class="checkmark"></span>
-                                          </label>
-                                          <label class="vendeur">
-                                            <input type="radio" name="type" value="vendeur"> Je veux faire louer ou vendre bien<br>
-                                            <span class="checkmark"></span>
-                                          </label>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                            </section>
-
-                            <!-- SECTION 2 -->
-                            <h2></h2>
-                            <section>
-                                <div class="inner">
                                     <div class="form-content" >
-                                      <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">2.Détails personnel</h2>
+                                      <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">1.Détails personnel</h2>
                                       <div class="form-row row">
                                         <div class="col-md-6">
                                           <div class="form-holder">
-                                            <input type="text" placeholder="Prénom (*)" class="form-control">
+                                            <input type="text" id="prenom" placeholder="Prénom (*)" class="form-control user-input">
+                                            <span id="prenomError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                         <div class="col-md-6">
                                           <div class="form-holder">
-                                            <input type="text" placeholder="Nom (*)" class="form-control">
+                                            <input type="text" id="nom" placeholder="Nom (*)" class="form-control user-input">
+                                            <span id="nomError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                         
@@ -127,20 +88,68 @@
                                       <div class="form-row row">
                                         <div class="col-md-12">
                                           <div class="form-holder">
-                                            <input type="text" placeholder="Téléphone (ex. +24399XXXXXXX)" class="form-control">
+                                            <input type="text" id="telephone" placeholder="Téléphone (ex. +24399XXXXXXX)" class="form-control user-input">
+                                            <span id="phoneError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                       </div>
-                                      <!-- <div class="form-row row">
+                                      <div class="form-row row">
                                         <div class="col-md-12">
-                                          <div class="form-holder">
-                                            <input type="text" placeholder="Adresse de domicile" class="form-control">
-                                          </div>
+                                            <button class="btn pull-right" id="next">Suivant</button>
                                         </div>
-                                      </div> -->
+                                      </div>
                                     </div>
                                 </div>
                             </section>
+                            <!-- SECTION 2 -->
+                            <h2></h2>
+                            <section>
+                                <div class="inner">
+                                  <div class="form-content" >
+                                    <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">2.Profile</h2>
+                                    <div class="form-row row">
+                                      <div class="col-md-6">
+                                        <div class="form-holder">
+                                          <input type="text" id="pseudonyme" placeholder="Pseudonyme" class="form-control user-input">
+                                          <span id="usernameError" class="inputError pull-left"></span>
+                                        </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                        <div class="form-holder">
+                                          <input type="email" id="email" placeholder="Adresse email" class="form-control user-input">
+                                          <span id="emailError" class="inputError pull-left"></span>
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                    <div class="form-row row">
+                                      <div class="col-md-12">
+                                        <div class="form-holder">
+                                          <input type="text" id="password" placeholder="Mot de passe" class="form-control user-input">
+                                          <span id="passwordError" class="inputError pull-left"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-row row">
+                                      <div class="col-md-12">
+                                          <div class="form-holder">
+                                            <select name="types" id="types" class="form-control">
+                                            </select>
+                                          </div>
+                                      </div>
+                                    </div>
+                                    <div class="form-row row">
+                                      <div class="col-md-12">
+                                        <button style="margin-left: 10px;" class="btn pull-right" id="finish">Terminer</button>
+                                        <button class="btn pull-right" id="prev">Precedent</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </section>
+
+                            <!-- SECTION 2 -->
+
                         </form>
                     </div>
                   </div>
@@ -206,11 +215,20 @@
                           <div class="classynav">
                               <ul id="nav">
                                   <li style="text-transform: unset;" class="active"><a href="/">Accueil</a></li>
-                                  <li><a href="/biens/location">Biens en location</a>
+                                  <li><a href="/immo/12/liste">Biens en location</a>
                                       
                                   </li>
-                                  <li><a href="/biens/vente">Biens en vente</a></li>
-                                  <li><a href="/contact">Contact</a></li>
+                                  <li><a href="/immo/12/liste">Biens en vente</a></li>
+                                  <li><a href="#">Type de biens</a>
+                                      <ul class="dropdown">
+                                          <li class="active"><a href="/immo/type/12/liste">Villas (5)</a></li>
+                                          <li><a href="/immo/type/12/liste">Terrains (5)</a></li>
+                                          <li><a href="/immo/type/12/liste">Studios (1)</a></li>
+                                          <li><a href="/immo/type/12/liste">Fermes (10)</a></li>
+                                          <li><a href="/immo/type/12/liste">Bureaux (100)</a></li>
+                                      </ul>
+                                  </li>
+                                  <li><a href="/apropos">A propos</a></li>
                               </ul>
 
                               <!-- Contact btn -->
@@ -271,18 +289,16 @@
                   <div class="col-12 col-sm-6 col-lg-3">
                       <div class="single-footer-widget mb-80">
                           <!-- Widget Title -->
-                          <h5 class="widget-title">Propriétés par commune</h5>
+                          <h5 class="widget-title">Trouver par <span>type de biens</span></h5>
 
                           <!-- Footer Nav -->
                           <ul class="footer-nav d-flex flex-wrap">
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Lingwala</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Nsele</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Kintambo</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Makomeno</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Bandalungwa</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Kinshasa</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Gombe</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Ngaliema</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Maison (15)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Studios (5)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Bureaux (7)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Terrains (5)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Salle de fete (1)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Fermes (0)</a></li>
                           </ul>
                       </div>
                   </div>
@@ -322,10 +338,10 @@
                   <div class="col-12 col-sm-6">
                       <div class="footer-menu">
                           <ul class="nav">
-                              <li><a href="#">Accueil</a></li>
-                              <li><a href="#">Biens en location</a></li>
-                              <li><a href="#">Biens en vente</a></li>
-                              <li><a href="#">Contact</a></li>
+                              <li><a href="/">Accueil</a></li>
+                              <li><a href="/immo/12/liste">Biens en location</a></li>
+                              <li><a href="/immo/12/liste">Biens en vente</a></li>
+                              <li><a href="/apropos">A propos</a></li>
                           </ul>
                       </div>
                   </div>
@@ -344,7 +360,9 @@
 
   <!-- Connecting API-->
   <script src="/javascripts/api/immobilier.js"></script>
+  <script src="/javascripts/api/inscription.js"></script>
   <script src="/javascripts/api/users.js"></script>
+  <script src="/javascripts/api/type_user.js"></script>
   
 </body>
 </html>

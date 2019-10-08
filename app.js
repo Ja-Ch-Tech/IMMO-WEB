@@ -11,6 +11,8 @@ var indexRouter = require('./routes/index');
 /*ROUTE POINTANT VERS LE PROFILE DU USER*/
 var profileRouter = require('./routes/profile');
 var apiRouter = require('./routes/api');
+var immoRouter = require('./routes/immo');
+var aproposRouter = require('./routes/apropos');
 
 var app = express();
 
@@ -34,6 +36,8 @@ app.use('/', indexRouter);
 /*UTILISATION DE LA ROUTE DU PROFILE*/
 app.use('/profile', profileRouter);
 app.use('/api', apiRouter);
+app.use('/immo', immoRouter);
+app.use('/apropos', aproposRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

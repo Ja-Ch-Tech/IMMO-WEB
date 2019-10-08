@@ -230,6 +230,7 @@ textarea.form-control {
 
 .actions {
   position: absolute;
+  display: none;
   /*bottom: 55px;*/
   right: 51px; }
   .actions ul {
