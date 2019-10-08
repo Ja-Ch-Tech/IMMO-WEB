@@ -215,11 +215,20 @@
                           <div class="classynav">
                               <ul id="nav">
                                   <li style="text-transform: unset;" class="active"><a href="/">Accueil</a></li>
-                                  <li><a href="/biens/location">Biens en location</a>
+                                  <li><a href="/immo/12/liste">Biens en location</a>
                                       
                                   </li>
-                                  <li><a href="/biens/vente">Biens en vente</a></li>
-                                  <li><a href="/contact">Contact</a></li>
+                                  <li><a href="/immo/12/liste">Biens en vente</a></li>
+                                  <li><a href="#">Type de biens</a>
+                                      <ul class="dropdown">
+                                          <li class="active"><a href="/immo/type/12/liste">Villas (5)</a></li>
+                                          <li><a href="/immo/type/12/liste">Terrains (5)</a></li>
+                                          <li><a href="/immo/type/12/liste">Studios (1)</a></li>
+                                          <li><a href="/immo/type/12/liste">Fermes (10)</a></li>
+                                          <li><a href="/immo/type/12/liste">Bureaux (100)</a></li>
+                                      </ul>
+                                  </li>
+                                  <li><a href="/apropos">A propos</a></li>
                               </ul>
 
                               <!-- Contact btn -->
@@ -280,18 +289,16 @@
                   <div class="col-12 col-sm-6 col-lg-3">
                       <div class="single-footer-widget mb-80">
                           <!-- Widget Title -->
-                          <h5 class="widget-title">Propriétés par commune</h5>
+                          <h5 class="widget-title">Trouver par <span>type de biens</span></h5>
 
                           <!-- Footer Nav -->
                           <ul class="footer-nav d-flex flex-wrap">
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Lingwala</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Nsele</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Kintambo</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Makomeno</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Bandalungwa</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Kinshasa</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Gombe</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Ngaliema</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Maison (15)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Studios (5)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Bureaux (7)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Terrains (5)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Salle de fete (1)</a></li>
+                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Fermes (0)</a></li>
                           </ul>
                       </div>
                   </div>
@@ -331,10 +338,10 @@
                   <div class="col-12 col-sm-6">
                       <div class="footer-menu">
                           <ul class="nav">
-                              <li><a href="#">Accueil</a></li>
-                              <li><a href="#">Biens en location</a></li>
-                              <li><a href="#">Biens en vente</a></li>
-                              <li><a href="#">Contact</a></li>
+                              <li><a href="/">Accueil</a></li>
+                              <li><a href="/immo/12/liste">Biens en location</a></li>
+                              <li><a href="/immo/12/liste">Biens en vente</a></li>
+                              <li><a href="/apropos">A propos</a></li>
                           </ul>
                       </div>
                   </div>
