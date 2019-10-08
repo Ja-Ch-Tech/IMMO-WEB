@@ -11,14 +11,18 @@
             <ul class="nav nav-sidebar">
               <li class="active"><a href="#">Profil</a></li>
               <li><a href="#">Photo</a></li>
-              <li><a href="#">Compte</a></li>
+              <li><a href="#">Securité</a></li>
               <li><a href="#">Mes biens</a></li>
               <li><a href="#">Publier un bien</a></li>
+              <li><a href="#">Notifications</a></li>
+              <li><a href="#">Deconnexion</a></li>
             </ul>
           </div>
           <div class="col-md-10 content">
               <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
-              @html.block("contenu_profil")
+              @html.block('blocuser', function(model){
+                
+              })
           </div>
         </div>
       </div>

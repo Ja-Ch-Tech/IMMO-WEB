@@ -2,8 +2,8 @@
     @html.append('blocuser', function(model){
       <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
         <div class="header text-center">
-            <h3 style="border:none;">Profil public</h3>
-            <p style="margin-bottom: 0px;">Ajoutez des informations vous concernant</p>
+            <h3 style="border:none;">Ajouter un bien</h3>
+            <p style="margin-bottom: 0px;">publier votre bien immobilier et c'est gratuit</p>
         </div>
         <div class="body">
             <!-- Leave A Reply -->
@@ -15,25 +15,31 @@
                         <div class="col-md-12 mb-15">
                             <h2 style="font-family: calibri;color: #92c800">Informations de base</h2>
                         </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="username">Pseudonyme</label>
-                            <input type="text" name="username" class="form-control mb-20" placeholder="Pseudonyme" id="username">
+                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                            <label class="label-custom" for="titre">Titre</label>
+                            <input type="text" name="titre" class="form-control mb-20" placeholder="Saisissez le titre de la publication" id="titre">
+                        </div>
+                        <div class="col-12 col-md-8 col-lg-8">
+                            <label class="label-custom" for="type">Type d'immobilier</label>
+                            <select name="type" id="type" class="form-control">
+                                <option value="Terrain">Terrain</option>
+                                <option value="Salle de fete">Salle de fete</option>
+                                <option value="Maison">Maison</option>
+                                <option value="Studio">Studio</option>
+                                <option value="Bureaux">Bureaux</option>
+                                <option value="Villas">Villas</option>
+                            </select>
                         </div>
                         <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="name">Nom</label>
-                            <input type="text" name="name" class="form-control mb-20" placeholder="Nom" id="name">
+                            <label class="label-custom" for="mode">Mode</label>
+                            <select name="mode" id="mode" class="form-control">
+                                <option value="vente">Vente</option>
+                                <option value="location">Location</option>
+                            </select>
                         </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="prenom">Prénom</label>
-                            <input type="text" name="prenom" class="form-control mb-20" placeholder="Prenom" id="prenom">
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="phone">Téléphone</label>
-                            <input type="text" name="phone" class="form-control mb-20" placeholder="Numéro de Téléphone" id="phone">
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="email">Adresse email</label>
-                            <input type="email" name="email" class="form-control mb-20" placeholder="Adresse email" id="email">
+                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                            <label class="label-custom" for="loyeur_mensuel">Loyer mensuel (en dollards)</label>
+                            <input type="number" name="loyeur_mensuel" class="form-control mb-20" placeholder="Loyer mensuel" id="loyeur_mensuel">
                         </div>
                         <div class="col-md-12 mb-15">
                             <h2 style="font-family: calibri;color: #92c800">Localisation</h2>
@@ -67,6 +73,10 @@
                             <label class="label-custom" for="reference">Ajoutez une reference</label>
                             <input type="text" name="reference" class="form-control mb-20" placeholder="reference" id="reference">
                         </div>
+
+                        <div class="col-md-12 mb-15">
+                            <h2 style="font-family: calibri;color: #92c800">Images</h2>
+                        </div>
                         
                     </div>
                 </form>
@@ -75,7 +85,7 @@
         <div class="footer">
             <div class="col-12">
               <center>
-                <button type="submit" class="btn rehomes-btn">Sauvegarder</button>
+                <button type="submit" class="btn rehomes-btn">Terminer</button>
               </center>
             </div>
         </div>

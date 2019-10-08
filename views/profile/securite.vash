@@ -1,0 +1,46 @@
+@html.extend('profile/profile_layout', function(model){
+    @html.append('blocuser', function(model){
+      <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
+       <div class="header text-center">
+            <h3 style="border:none;">COMPTE</h3>
+            <p style="margin-bottom: 0px;">Configurez votre compte, en modification votre mot de passe</p>
+        </div>
+        <div class="body">
+            <!-- Leave A Reply -->
+            <div class="rehomes-contact-form mb-10 wow fadeInUp" data-wow-delay="200ms">
+                <!-- Form -->
+                <form autocomplete="off" class="support-form" action="#" method="post">
+
+                    <div class="row">
+						<div class="col-md-2"></div>
+                        <div class="col-sm-12 col-lg-8 col-md-8 mb-10">
+                            <label class="label-custom" for="currentPassword">Mot de passe</label>
+                            <input type="text" name="currentPassword" class="form-control mb-20" placeholder="Saississez votre mot de passe actuel" id="currentPassword">
+                        </div>
+                    </div>
+                    <div class="row">
+						<div class="col-md-2"></div>
+                        <div class="col-sm-12 col-lg-8 col-md-8 mb-10">
+                            <input type="text" name="newPassword" class="form-control mb-20" placeholder="Saississez votre nouveau mot de passe" id="newPassword">
+                        </div>
+                    </div>
+                    <div class="row">
+						<div class="col-md-2"></div>
+                        <div class="col-sm-12 col-lg-8 col-md-8 mb-10">
+                            <input type="text" name="confirmPassword" class="form-control mb-20" placeholder="Retapez votre nouveau mot de passe" id="confirmPassword">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="col-12">
+              <center>
+                <button type="submit" class="btn rehomes-btn">Sauvegarder</button>
+              </center>
+            </div>
+        </div>
+        
+        
+    });
+})

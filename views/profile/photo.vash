@@ -1,0 +1,9 @@
+@html.extend('profile/profile_layout', function(model){
+    @html.append('blocuser', function(model){
+      <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
+        <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam, ad placeat voluptatibus enim, possimus vero quam et iusto quasi aliquam pariatur, recusandae blanditiis omnis magni culpa laudantium modi, sapiente.
+        </div>
+        
+    });
+})
