@@ -22,10 +22,14 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet"> 
 
+    <script type='text/javascript'
+        src='https://platform-api.sharethis.com/js/sharethis.js#property=5d9fb51ed50e4800128b7e37&product=sticky-share-buttons'
+        async='async'></script>
+
 </head>
 
 <body>
-    <div class="sharethis-inline-share-buttons"></div>
+    <div class="sharethis-sticky-share-buttons"></div>
   <div id="preloader">
       <div class="loader"></div>
   </div>
@@ -365,9 +369,6 @@
   <script src="/javascripts/api/type_user.js"></script>
   <script src="/javascripts/api/type_immobilier.js"></script>
   
-  <!-- ShareThis -->
-<script type='text/javascript'
-    src='https://platform-api.sharethis.com/js/sharethis.js#property=5d9faefd59b23b0012b2b43d&product=sticky-share-buttons'
-    async='async'></script>
+
 </body>
 </html>
