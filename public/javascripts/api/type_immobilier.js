@@ -21,7 +21,8 @@ function setTypeImmoOnNavbar() {
                 if (data.getObjet.length > 0) {
                     
                     data.getObjet.map(item => {
-                        var content = `<li><a href="/immo/type/${item._id}/liste">${item.intitule} (5)</a></li>`;
+                        console.log(item)
+                        var content = `<li><a href="/immo/type/${item._id}/liste">${item.intitule} (${item.nbre})</a></li>`;
                         var contentForFooter = `<li><a href="/immo/type/${item._id}/liste"><i class="fa fa-map-marker"></i> ${item.intitule}</a></li>`;
 
                         dropTypeImmo.append(content);
