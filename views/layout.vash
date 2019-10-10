@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    
     <meta charset="UTF-8">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +12,9 @@
 
     <!-- Favicon -->
     <link rel="icon" href="./img/core-img/favicon.png">
+    
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/modal.css' />
 
     <!-- Stylesheet -->
     <!-- MATERIAL DESIGN ICONIC FONT -->
@@ -21,12 +23,16 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet"> 
 
 </head>
+
 <body>
   <div id="preloader">
       <div class="loader"></div>
   </div>
+  <div class="modalFoContactUs d-none" id="modalForContactUs">
+     
+  </div>
   <!-- GESTION MESSAGE ERREUR -->
-  <div class="animated slideOutUp message" style="" id="message">
+  <div class="animated slideOutUp message" id="message">
   </div>
   <!-- **** Header Area Start **** -->
   <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -220,12 +226,8 @@
                                   </li>
                                   <li><a href="/immo/12/liste">Biens en vente</a></li>
                                   <li><a href="#">Type de biens</a>
-                                      <ul class="dropdown">
-                                          <li class="active"><a href="/immo/type/12/liste">Villas (5)</a></li>
-                                          <li><a href="/immo/type/12/liste">Terrains (5)</a></li>
-                                          <li><a href="/immo/type/12/liste">Studios (1)</a></li>
-                                          <li><a href="/immo/type/12/liste">Fermes (10)</a></li>
-                                          <li><a href="/immo/type/12/liste">Bureaux (100)</a></li>
+                                      <ul class="dropdown" id="dropTypeImmo">
+                                          
                                       </ul>
                                   </li>
                                   <li><a href="/apropos">A propos</a></li>
@@ -292,13 +294,8 @@
                           <h5 class="widget-title">Trouver par <span>type de biens</span></h5>
 
                           <!-- Footer Nav -->
-                          <ul class="footer-nav d-flex flex-wrap">
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Maison (15)</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Studios (5)</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Bureaux (7)</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Terrains (5)</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Salle de fete (1)</a></li>
-                              <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> Fermes (0)</a></li>
+                          <ul class="footer-nav d-flex flex-wrap" id="footerTypeImmo">
+                              
                           </ul>
                       </div>
                   </div>
@@ -359,10 +356,12 @@
   <script src="/vendors/wizard-form/js/main.js"></script>
 
   <!-- Connecting API-->
+  <script src="/javascripts/api/init.js"></script>
   <script src="/javascripts/api/immobilier.js"></script>
   <script src="/javascripts/api/inscription.js"></script>
   <script src="/javascripts/api/users.js"></script>
   <script src="/javascripts/api/type_user.js"></script>
+  <script src="/javascripts/api/type_immobilier.js"></script>
   
 </body>
 </html>
