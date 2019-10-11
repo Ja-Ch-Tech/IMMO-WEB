@@ -215,10 +215,10 @@
                           <div class="classynav">
                               <ul id="nav">
                                   <li style="text-transform: unset;" class="active"><a href="/">Accueil</a></li>
-                                  <li><a href="/immo/12/liste">Biens en location</a>
+                                  <li><a href="/immo/location/5d97b53823163a26885c52b3/liste">Biens en location</a>
                                       
                                   </li>
-                                  <li><a href="/immo/12/liste">Biens en vente</a></li>
+                                  <li><a href="/immo/vente/5d98108cd13191bb1216ad1b/liste">Biens en vente</a></li>
                                   <li><a href="#">Type de biens</a>
                                       <ul class="dropdown">
                                           <li class="active"><a href="/immo/type/12/liste">Villas (5)</a></li>
@@ -357,6 +357,7 @@
   <script src="/javascripts/default-assets/active.js"></script>
   <script src="/vendors/wizard-form/js/jquery.steps.js"></script>
   <script src="/vendors/wizard-form/js/main.js"></script>
+  <script src="/javascripts/mainFunctions.js"></script>
 
   <!-- Connecting API-->
   <script src="/javascripts/api/immobilier.js"></script>

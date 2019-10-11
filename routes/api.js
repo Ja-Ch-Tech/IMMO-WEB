@@ -141,6 +141,19 @@ router.get('/type_user', (req, res) => {
             res.status(500);
             res.send(err)
         }) 
-})
+});
+
+//Recupere les immo par mode
+router.get('/immo_by_mode/:id_immo', (req, res) => {
+    axios.get(`${API}/immobilier/getAllByMode/${req.params.id_immo}`)
+        .then(response => {
+            res.status(200);
+            res.send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+    }) 
+});
 
 module.exports = router;

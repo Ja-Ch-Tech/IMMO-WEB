@@ -15,10 +15,10 @@
                         <div class="col-md-12 mb-15">
                             <h2 style="font-family: calibri;color: #92c800">Informations de base</h2>
                         </div>
-                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                        <!-- <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
                             <label class="label-custom" for="titre">Titre</label>
                             <input type="text" name="titre" class="form-control mb-20" placeholder="Saisissez le titre de la publication" id="titre">
-                        </div>
+                        </div> -->
                         <div class="col-12 col-md-8 col-lg-8">
                             <label class="label-custom" for="type">Type d'immobilier</label>
                             <select name="type" id="type" class="form-control">
@@ -32,17 +32,25 @@
                         </div>
                         <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
                             <label class="label-custom" for="mode">Mode</label>
-                            <select name="mode" id="mode" class="form-control">
+                            <select onchange="manageMode($(this))" name="mode" id="mode" class="form-control">
                                 <option value="vente">Vente</option>
-                                <option value="location">Location</option>
+                                <option selected="" value="location">Location</option>
                             </select>
                         </div>
-                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                        <div id="locationPrice" class="col-sm-12 col-lg-12 col-md-12 mb-10">
                             <label class="label-custom" for="loyeur_mensuel">Loyer mensuel (en dollards)</label>
                             <input type="number" name="loyeur_mensuel" class="form-control mb-20" placeholder="Loyer mensuel" id="loyeur_mensuel">
                         </div>
+                        <div style="display: none;" id="ventePrice" class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                            <label class="label-custom" for="loyeur_mensuel">Prix de vente (en dollards)</label>
+                            <input type="number" name="loyeur_mensuel" class="form-control mb-20" placeholder="Prix de l'immobilier" id="loyeur_mensuel">
+                        </div>
+                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                            <label class="label-custom" for="description">Ajoutez une description</label>
+                            <textarea name="description" class="form-control mb-30" placeholder="Description de l'immobilier"></textarea>
+                        </div>
                         <div class="col-md-12 mb-15">
-                            <h2 style="font-family: calibri;color: #92c800">Localisation</h2>
+                            <h2 style="font-family: calibri;color: #92c800">Localisation ou adresse de l'immo</h2>
                         </div>
                         <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
                             <label class="label-custom" for="ville">Ville</label>
@@ -75,7 +83,36 @@
                         </div>
 
                         <div class="col-md-12 mb-15">
-                            <h2 style="font-family: calibri;color: #92c800">Images</h2>
+                            <h2 style="font-family: calibri;color: #92c800">Apercus</h2>
+                            <p>
+                                Votre immmobilier doit avoir une image principale au minimum, donc tachez de nous envoyer une tres belle image mettant en valeur votre immobilier pour attirer de la clientele. vous avez la possibilité d'ajouter au maximum <span style="color: #92c800;font-weight: bold;">5 images</span>
+                            </p>
+                        </div>
+                        <div class="col-md-12 mb-15">
+                            <div style="border:1px solid #dcdcdc;min-height: 250px;padding: 20px;">
+                                <div class="mb-15" style="background-color: #f2f3f5;height: auto;border:1px solid #dcdcdc">
+                                    <center>
+                                        <img class="mt-80" src="/images/icons/icons8-upload-100.png" alt="">
+                                        <p>Selectionnez des images pour votre immobilier, pas plus de 9Mo <br><i>la premiere image que vous allez selectionner est considerée comme image principale</i></p>
+                                    </center>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p style="margin-bottom: 0;">Ajoutez une image</p>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select name="nature" id="nature" class="form-control">
+                                            <option value="principale">Image principale</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="imageImmo">
+                                            <a class="btn rehomes-btn btn-2">Selectionnez l'image</a>
+                                        </label>
+                                        <input type="file" id="imageImmo" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                     </div>

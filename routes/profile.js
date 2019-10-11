@@ -20,15 +20,15 @@ router.get('/:user_id/securite', function (req, res, next) {
 	})
 })
 
-/* EXECUTE LA PAGE RENVOYANT LES BIENS D'UN BAYEUR OU VENDEUR */
-router.get('/:user_id/biens', function (req, res, next) {
-	res.render('profile/biens', {
-		title : 'Vos biens'
+/* EXECUTE LA PAGE RENVOYANT LES BIENS ou PUBLICATIONS D'UN BAYEUR OU VENDEUR */
+router.get('/:user_id/publications', function (req, res, next) {
+	res.render('profile/publications', {
+		title : 'Vos publications'
 	})
 })
 
 /* EXECUTE LA PAGE RENVOYANT LE FORMULAIRE D'AJOUR D'UN BIEN */
-router.get('/:user_id/biens/ajouter', function (req, res, next) {
+router.get('/:user_id/publications/ajouter', function (req, res, next) {
 	res.render('profile/ajoutBien', {
 		title : 'Publiez un bien'
 	})

@@ -1,9 +1,43 @@
 @html.extend('profile/profile_layout', function(model){
     @html.append('blocuser', function(model){
-      <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
-        <div>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum quibusdam, ad placeat voluptatibus enim, possimus vero quam et iusto quasi aliquam pariatur, recusandae blanditiis omnis magni culpa laudantium modi, sapiente.
+      	<div class="header text-center">
+            <h3 style="border:none;">Photo de profil</h3>
+            <p style="margin-bottom: 0px;">Ajoutez une photo sympa de vous pour votre profil</p>
         </div>
-        
+        <div class="body">
+            <!-- Leave A Reply -->
+            <div class="rehomes-contact-form mb-10 wow fadeInUp" data-wow-delay="200ms">
+                <!-- Form -->
+                <form autocomplete="off" class="support-form" action="#" method="post">
+
+                    <div class="row">
+                    	<div class="col-12 col-md-12">
+                    		<div style="border:1px solid #dcdcdc;min-height: 200px;padding: 20px;">
+                                <div class="mb-15" style="background-color: #f2f3f5;min-height: 250px;border:1px solid #dcdcdc">
+                                    <center>
+                                        <img class="img-thumbnail img-update-profile mt-50" src="/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg" alt="">
+                                    </center>
+                                </div>
+                                <div class="img-update-btn">
+                                	<center>
+                                		<label for="imageProfile">
+                                			<a style="color: #fff;" class="btn"><i class="fa fa-pencil"></i>&nbsp;Mettre à jour votre photo de profile</a>
+                                		</label>
+                                		<input style="display: none;" type="file" id="imageProfile">
+                                	</center>
+                                </div>
+                            </div>
+                    	</div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="col-12">
+              <center>
+                <button type="submit" class="btn rehomes-btn">Sauvegarder</button>
+              </center>
+            </div>
+        </div>
     });
 })

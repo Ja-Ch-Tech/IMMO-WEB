@@ -1,0 +1,23 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) {
+    <!-- **** Sale area Start **** -->
+    <hr>
+    <section class="rehome-house-sale-area pt-50">
+        <div class="container">
+            <div class="row">
+              <div class="col-12">
+                  <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
+                      <h2>Biens en vente</h2>
+                      <p>These are the best deals and deals. All in New York City and nearby area</p>
+
+                  </div>
+              </div>
+            </div>
+            <div id="immoVente" class="row">
+              
+            </div>
+        </div>
+    </section>
+    <!-- **** Sale Area End **** -->
+  })
+})
