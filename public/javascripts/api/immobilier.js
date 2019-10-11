@@ -1,4 +1,4 @@
-var typeProp, newImmo;
+var typeProp, newImmo, details;
 
 $(document).ready(function () {
     initImmo();
@@ -11,6 +11,7 @@ function initImmo() {
         getStatType();
         getNewImmobilier();
     }
+<<<<<<< HEAD
     if (/vente/i.test(window.location.pathname.split("/")[2]) && /immo/i.test(window.location.pathname.split("/")[1]) && /liste/i.test(window.location.pathname.split("/")[4])) {
 
         var mode_id = window.location.pathname.split("/")[3];
@@ -20,6 +21,12 @@ function initImmo() {
 
         var mode_id = window.location.pathname.split("/")[3];
         getImmoByMooe(mode_id, "immoLocation");
+=======
+
+    if (/details|detail/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
+        details = $("#detailThis");
+        getDetailsImmobilier(window.location.pathname.split("/")[window.location.pathname.split("/").length - 2])
+>>>>>>> ba97c3bc0ed2608b821ee09adfa3804bcca4a32d
     }
 }
 
@@ -61,7 +68,7 @@ function getStatType() {
                     })
                 }
             }
-            
+
         }
     });
 }
@@ -105,19 +112,19 @@ function getNewImmobilier() {
                     });
                     data.getObjet.map(element => {
                         console.log(element);
-                        
+
                         var rentOrSale = () => {
                             if (/location/i.test(element.mode)) {
                                 return `<p class="badge-rent">A louer</p>`
                             } else {
-                                return `<p class="badge-sale">A vendre</p>`                                
+                                return `<p class="badge-sale">A vendre</p>`
                             }
                         },
                             contentBody = `<div class="col-12 col-md-6 col-lg-4">
                   <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
                       <!-- Property Thumb -->
                       <div class="property-thumb">
-                          <img src="/images/bg-img/1.jpg" alt="">
+                          <a href="/immo/${element._id}/details"><img src="/images/bg-img/1.jpg" alt=""></a>
                       </div>
 
                       <!-- Property Description -->
@@ -127,7 +134,7 @@ function getNewImmobilier() {
                               <!-- Title -->
                               <div class="property-title">
                                   <h4 class="text-uppercase">${element.type}</h4>
-                                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " +element.adresse.numero}, ${element.adresse.commune}</p>
+                                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}</p>
                               </div>
                               <!-- Seller -->
                               <div class="property-seller">
@@ -159,6 +166,7 @@ function getNewImmobilier() {
     });
 }
 
+<<<<<<< HEAD
 //Recupere les immo par mode
 function getImmoByMooe(mode_id, bloc_id) {
     $.ajax({
@@ -235,4 +243,145 @@ function getImmoByMooe(mode_id, bloc_id) {
           console.log(err);
         }
     });
+=======
+function getDetailsImmobilier(id) {
+    //alert(id)
+    getUserId((isMatch, result) => {
+        $.ajax({
+            type: 'GET',
+            url: `/api/details/${id}`,
+            dataType: "json",
+            beforeSend: function () {
+
+            },
+            success: function (datas) {
+                if (datas.getEtat) {
+                    console.log(datas.getObjet);
+                    var obj = datas.getObjet;
+                    interestOrNot = () => {
+
+                        if (isMatch) {
+                            return `<div class="mt-3">
+                                        <a class="btn rehomes-btn mt-10" href="#" onclick="viewContact('${obj.id_owner}')">Je veux le contacter</a>
+                                    </div>`
+                        } else {
+                            return `<div class="mt-3">
+                                        <a class="btn rehomes-btn mt-10" href="#">Je veux le contacter</a>
+                                    </div>`
+                        }
+                    },
+                        content = `<div class="properties-slide">
+                
+                                <div id="property-thumb-silde" class="carousel slide wow fadeInUp" data-wow-delay="200ms" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#property-thumb-silde" data-slide-to="0" class="active" style="background-image: url(/images/bg-img/64.jpg);"></li>
+                                        <li data-target="#property-thumb-silde" data-slide-to="1" style="background-image: url(/images/bg-img/65.jpg);"></li>
+                                        <li data-target="#property-thumb-silde" data-slide-to="2" style="background-image: url(/images/bg-img/66.jpg);"></li>
+                                        <li data-target="#property-thumb-silde" data-slide-to="3" style="background-image: url(/images/bg-img/67.jpg);"></li>
+                                    </ol>
+
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="/images/bg-img/64.jpg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/images/bg-img/65.jpg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/images/bg-img/66.jpg" class="d-block w-100" alt="...">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="/images/bg-img/67.jpg" class="d-block w-100" alt="...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Properties Content Area -->
+                            <div class="properties-content-area wow fadeInUp" data-wow-delay="200ms">
+                                <div class="properties-content-info">
+                                    <h2>${obj.type} à ${obj.adresse.commune}</h2>
+                                    <div class="properties-location">
+                                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
+                                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.type}</p>
+                                    </div>
+                                    <h4 class="properties-rate">$${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ month` : ``}</span></h4>
+                                    <p>${obj.description}</p>
+                                    <!-- Properties Info -->
+                                    <div class="properties-info">
+                                        ${obj.surface ? `<p>Superficie: <span>${obj.surface}m<sup>2</sup></span></p>` : ""}
+                                        ${obj.nbrePiece ? `<p>Pièce: <span>${obj.nbrePiece}</span></p>` : ""}
+                                        ${obj.nbreChambre ? `<p>Chambre: <span>${obj.nbreChambre}</span></p>` : ""}
+                                        ${obj.nbreDouche ? `<p>Douche: <span>${obj.nbreDouche}</span></p>` : ""}
+                                    </div>
+                                    
+                                    ${interestOrNot()}
+                                </div>
+                            </div>`;
+
+                    details.append(content);
+                }
+            }
+        })
+    })
+}
+
+function viewContact(id) {
+    getUserId((isMatch, result) => {
+        $.ajax({
+            type: 'POST',
+            url: "/api/interessant",
+            dataType: "json",
+            data: {
+                "id_user": result,
+                "id_owner": id
+            },
+            success: function (data) {
+
+                var modal = document.getElementById("modalForContactUs"),
+                    obj = data.getObjet;
+
+                var allContacts = () => {
+                    if (obj.contacts.length > 0) {
+                        obj.contacts.map(item => {
+                            return `${item.telephone ? `<font>N°Téléphone : <span>${item.telephone}</span></font>` : ""}
+                                            ${item.email ? `<font>Adresse e-mail : <span>${item.email}</span></font>` : ""}`;
+                        })
+                    } else {
+                        return "";
+                    }
+                },
+                    content = ` <div class="cardThis">
+                                    <font class="closeModal" onclick="closeModal()"><i class="fa fa-times-circle"></i></font>
+                                    <div class="avatar-owner">
+                                        <img src="/images/bg-img/house-3664320_1920.jpg" alt="Image owner">
+                                    </div>
+                                    <div class="info-owner">
+                                    <h4 class="noms">${obj.prenom + " " + obj.nom}</h4>
+                                    <p class="adresse"><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
+
+                                    <div class="autresContacts">
+                                        ${allContacts()}
+                                    </div>
+
+                                    <div class="footerContact">
+                                        <p>Powered by&nbsp;<span>Ja'Ch Technologies</span></p>
+                                    </div>
+                                    </div>
+                                </div>`;
+
+                modal.innerHTML = content;
+                modal.classList.remove("d-none");
+
+            }
+        });
+    })
+}
+
+function closeModal() {
+    var modal = document.getElementById("modalForContactUs");
+    
+    modal.classList.add("d-none");
+    
+>>>>>>> ba97c3bc0ed2608b821ee09adfa3804bcca4a32d
 }
