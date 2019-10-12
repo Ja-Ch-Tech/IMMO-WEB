@@ -140,35 +140,35 @@ router.get('/type_user', (req, res) => {
         .catch(err => {
             res.status(500);
             res.send(err)
-<<<<<<< HEAD
         }) 
 });
 
 //Recupere les immo par mode
 router.get('/immo_by_mode/:id_immo', (req, res) => {
     axios.get(`${API}/immobilier/getAllByMode/${req.params.id_immo}`)
-=======
-        })
-})
-
-//Permet la récupération de détails d'un immobilier
-router.get('/details/:id', (req, res) => {
-    axios.get(`${API}/immobilier/getDetails/${req.params.id}`)
->>>>>>> ba97c3bc0ed2608b821ee09adfa3804bcca4a32d
         .then(response => {
             res.status(200);
             res.send(response.data)
         })
         .catch(err => {
             res.status(500);
-<<<<<<< HEAD
             res.send(err)
-    }) 
-});
-=======
-            res.send(err);
         })
-})
+});
+
+//Permet la récupération de détails d'un immobilier
+router.get('/details/:id', (req, res) => {
+    axios.get(`${API}/immobilier/getDetails/${req.params.id}`)
+        .then(response => {
+            res.status(200);
+            res.send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        }) 
+});
+     
 
 //Permet la récupération de détails d'un immobilier
 router.get('/userid', (req, res) => {
@@ -221,6 +221,18 @@ router.get('/getTypeImmo', (req, res) => {
              res.send(err)
          })
 })
->>>>>>> ba97c3bc0ed2608b821ee09adfa3804bcca4a32d
+
+//Permettant de recueperer les immo par type
+router.get('/getAllForType/:id_immo', (req, res) => {
+    axios.get(`${API}/immobilier/getAllForType/${req.params.id_immo}`)
+        .then(response => {
+            res.status(200);
+            res.send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+});
 
 module.exports = router;
