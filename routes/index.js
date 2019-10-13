@@ -3,11 +3,10 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  var StateClient = req.session.id ? true : false;
   res.render('index', { 
   	title: 'Bienvenue sur notre site',
-  	stateClient: req.session.id ? true : false,
-  	username : req.session.username ? req.session.username : null,
-  	type_user : req.session.type ? req.session.type : null
+  	stateClient: StateClient
   });
 })
 

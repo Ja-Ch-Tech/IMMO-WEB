@@ -184,18 +184,29 @@
                   <div class="col-6">
                       <div class="top-header-content">
                           <!-- Top Social Area -->
-                          <div class="top-social-area ml-auto">
-                              <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                              <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                              <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                            
-                          </div>
+                          @{
+                            if(model.StateClient == true){
+                                <div id="navAdditionalForUser" class="top-social-area ml-auto">
+                                    
+                                </div>
+                            }
+                           }
+                          
                       </div>
                   </div>
-                  <div style="border-left:2px solid #93c900;" class="col-2">
+                  <div class="col-2">
                       <div class="top-header-content">
-                          <a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
+                         @{
+                            if(model.StateClient == false){
+                                <a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
+                            }else if(model.StateClient == true){
+                                <div id="navUser">
+                                    
+                                </div>
+                            }else{
+                                <a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
+                            }
+                         }
                       </div>
                   </div>
               </div>
@@ -226,12 +237,12 @@
                           </div>
                           <!-- Nav Start -->
                           <div class="classynav">
-                              <ul id="nav">
+                              <ul>
                                   <li style="text-transform: unset;" class="active"><a href="/">Accueil</a></li>
-                                  <li><a href="/immo/location/5d97b53823163a26885c52b3/liste">Biens en location</a>
-                                      
-                                  </li>
-                                  <li><a href="/immo/vente/5d98108cd13191bb1216ad1b/liste">Biens en vente</a></li>
+                              </ul>
+                              <ul id="navMode">
+                              </ul>
+                              <ul id="nav">
                                   <li><a href="#">Type de biens</a>
                                       <ul class="dropdown" id="dropTypeImmo">
                                           
@@ -370,6 +381,7 @@
   <script src="/javascripts/api/users.js"></script>
   <script src="/javascripts/api/type_user.js"></script>
   <script src="/javascripts/api/type_immobilier.js"></script>
+  <script src="/javascripts/api/mode_immobilier.js"></script>
   
 
 </body>

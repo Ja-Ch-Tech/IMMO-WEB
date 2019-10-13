@@ -235,4 +235,30 @@ router.get('/getAllForType/:id_immo', (req, res) => {
         })
 });
 
+//Permet de recuperer tous les modes
+router.get('/getAllMode', (req, res) => {
+    axios.get(`${API}/mode/getAll`)
+        .then(response => {
+            res.status(200);
+            res.send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+});
+
+//Permet de recuperer les informations d'un user
+router.get('/infoForAnyUser/:user_id', (req, res) => {
+    axios.get(`${API}/users/infoForAnyUser/${req.params.user_id}`)
+        .then(response => {
+            res.status(200);
+            res.send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+});
+
 module.exports = router;
