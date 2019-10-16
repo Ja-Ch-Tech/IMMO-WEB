@@ -12,6 +12,7 @@ function initUsers() {
             if (/profile/i.test(window.location.pathname.split("/")[1]) && /photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
                 upload();
                 updateAvatar(user_id);
+                getAvatar(user_id);
             }
         }
     })
@@ -100,7 +101,7 @@ function upload() {
 
             //On exécute la requête ajax
             $.ajax({
-                url: 'https://immo-jach-api.herokuapp.com/upload_image/users/clients',
+                url: 'http://localhost:3333/upload_image/users/clients',
                 type: 'POST',
                 data: formData,
                 processData: false, // tell jQuery not to process the data
@@ -202,7 +203,7 @@ function updateAvatar(user_id) {
 
         $.ajax({
             type: 'POST',
-            url: "https://immo-jach-api.herokuapp.com/users/setImage",
+            url: "http://localhost:3333/users/setImage",
             dataType: "json",
             data: {
                 id_user: user_id,
@@ -212,9 +213,21 @@ function updateAvatar(user_id) {
             },
             success: function (data) {
 
-                window.location.href = "/profile/" + user_id;
+                window.location.href = "/profile/" + user_id + "/photo";
             }
         })
 
+    })
+}
+
+function getAvatar(user_id) {
+
+    $.ajax({
+        type: 'GET',
+        url: `api/infoForAnyUser/${user_id}`,
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+        }
     })
 }
