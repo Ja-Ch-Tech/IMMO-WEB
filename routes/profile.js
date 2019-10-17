@@ -40,4 +40,6 @@ router.get('/:user_id/publications/ajouter', function (req, res, next) {
 	    StateClient: req.session.id ? true : false
 	})
 })
+
+
 module.exports = router;

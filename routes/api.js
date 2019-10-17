@@ -108,7 +108,6 @@ router.post('/register', (req, res) => {
                 if (datas.data.getEtat) {
                     req.session.id = datas.data.getObjet._id;
                     req.session.type = datas.data.getObjet.type;
-                    req.session.username = datas.data.getObjet.login.username;
 
                     res.status(200);
                     res.send(datas.data);

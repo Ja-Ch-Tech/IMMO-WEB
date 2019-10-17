@@ -9,8 +9,6 @@ function getUserId(callback) {
         url: "/api/userid",
         dataType: "json",
         success: function (data) {
-            console.log(data);
-            
             if (data) {
                 callback(true, data.id_client)
             } else {
