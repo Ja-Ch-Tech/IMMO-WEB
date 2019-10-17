@@ -199,12 +199,10 @@
                          @{
                             if(model.StateClient == false){
                                 <a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
-                            }else if(model.StateClient == true){
+                            }else{
                                 <div id="navUser">
                                     
                                 </div>
-                            }else{
-                                <a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
                             }
                          }
                       </div>
