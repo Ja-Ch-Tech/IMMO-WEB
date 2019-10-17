@@ -105,7 +105,7 @@ function upload() {
         //On vérifie la sortie
         if (true) {
 
-            //On exécute la requête ajax
+            
             $.ajax({
                 url: getHostAPI() + '/upload_image/users/clients',
                 type: 'POST',
