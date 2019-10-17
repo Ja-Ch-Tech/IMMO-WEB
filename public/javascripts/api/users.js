@@ -235,7 +235,7 @@ function getAvatar(user_id) {
         success: function (data) {
         
                 var image = () => {
-                    return data.getObjet.image.lien ? getHostAPI() + data.getObjet.image.lien : "/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg"; 
+                    return data.getObjet.image ? getHostAPI() + data.getObjet.image.lien : "/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg"; 
                     };
                     
                 if (/profile/i.test(window.location.pathname.split("/")[1])) {
