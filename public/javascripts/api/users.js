@@ -6,14 +6,18 @@ $(document).ready(function () {
 function initUsers() {
     login();
     getUserId(function (flag, user_id) {
-        if (flag) {
+        if (user_id) {
             userNavInfo(user_id);
 
             if (/profile/i.test(window.location.pathname.split("/")[1]) && /photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
                 upload();
                 updateAvatar(user_id);
             }
+        }else{
+            var content = `<a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>`;
+            $("#navUser").html(content);
         }
+
     })
 }
 

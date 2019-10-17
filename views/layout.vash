@@ -184,27 +184,14 @@
                   <div class="col-6">
                       <div class="top-header-content">
                           <!-- Top Social Area -->
-                          @{
-                            if(model.StateClient == true){
-                                <div id="navAdditionalForUser" class="top-social-area ml-auto">
-                                    
-                                </div>
-                            }
-                           }
-                          
+                              <div id="navAdditionalForUser" class="top-social-area ml-auto">
+                                  
+                              </div>
                       </div>
                   </div>
                   <div class="col-2">
-                      <div class="top-header-content">
-                         @{
-                            if(model.StateClient == false){
-                                <a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>
-                            }else{
-                                <div id="navUser">
-                                    
-                                </div>
-                            }
-                         }
+                      <div id="navUser" class="top-header-content">
+                            
                       </div>
                   </div>
               </div>
@@ -361,6 +348,11 @@
               </div>
           </div>
       </div>
+     <!--  <div style="position: fixed;bottom: 0;left: 0;">
+        <div class="header" style="padding: 20% 30%;background-color: ">
+           Recherche
+        </div>
+      </div> -->
   </footer>
   <!-- **** Footer Area End **** -->
   <script src="/javascripts/jquery.min.js"></script>
