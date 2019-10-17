@@ -224,10 +224,34 @@ function getAvatar(user_id) {
 
     $.ajax({
         type: 'GET',
-        url: `api/infoForAnyUser/${user_id}`,
+        url: `/api/infoForAnyUser/${user_id}`,
         dataType: "json",
         success: function (data) {
             console.log(data);
+            ``
+            if (data.getObjet.image.lien) {
+                var image = () => {
+                    return data.getObjet.image.lien ? "http://localhost:3333" + data.getObjet.image.lien : "/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg"; 
+                    };
+                    
+                if (/profile/i.test(window.location.pathname.split("/")[1])) {
+                    var content = `<img class="img-thumbnail" src="${image()}" alt="">
+                                    <p style="font-weight: bold;font-size: 18px;color: #333;margin:9px 0px;">${data.getObjet.login.username}</p>`;
+
+                    $("#thisInfo").html(content);
+                    
+                    if (/photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
+                        var contentAvatar = `<img class="img-thumbnail img-update-profile mt-50" src="${image()}" id="imgPrev" alt="">`;
+
+                        $("#imageVisual").html(contentAvatar); 
+                    }
+                }
+                    
+            } else {
+                content = `<img class="img-thumbnail img-update-profile mt-50" src="/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg" id="imgPrev" alt="">`;
+
+                $("#imageVisual").html(content); 
+            }
         }
     })
 }

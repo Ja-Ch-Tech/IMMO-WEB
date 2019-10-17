@@ -4,9 +4,8 @@
       <div class="container mt-50 mb-50">
         <div class="row profile">
           <div class="col-sm-12 col-md-2 col-lg-2 sidebar">
-            <center>
-                <img class="img-thumbnail" src="/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg" alt="">
-                <p style="font-weight: bold;font-size: 18px;color: #333;margin:9px 0px;">Josuembuyu41</p>
+            <center id="thisInfo">
+                
             </center>
             <ul class="nav nav-sidebar">
               <li class="active"><a href="/profile/5d9af235b406a51778f1f6fb/informations">Profil</a></li>
