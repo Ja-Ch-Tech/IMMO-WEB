@@ -233,9 +233,7 @@ function getAvatar(user_id) {
         url: `/api/infoForAnyUser/${user_id}`,
         dataType: "json",
         success: function (data) {
-            console.log(data);
-            ``
-            if (data.getObjet.image.lien) {
+        
                 var image = () => {
                     return data.getObjet.image.lien ? getHostAPI() + data.getObjet.image.lien : "/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg"; 
                     };
@@ -364,11 +362,7 @@ function getAvatar(user_id) {
                     }
                 }
                     
-            } else {
-                content = `<img class="img-thumbnail img-update-profile mt-50" src="/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg" id="imgPrev" alt="">`;
-
-                $("#imageVisual").html(content); 
-            }
+            
         }
     })
 }
