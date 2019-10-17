@@ -107,7 +107,7 @@ function upload() {
 
             //On exécute la requête ajax
             $.ajax({
-                url: getHostAPI() + 'upload_image/users/clients',
+                url: getHostAPI() + '/upload_image/users/clients',
                 type: 'POST',
                 data: formData,
                 processData: false, // tell jQuery not to process the data
