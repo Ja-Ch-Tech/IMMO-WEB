@@ -1,3 +1,4 @@
+var dataAvatar;
 $(document).ready(function () {
     initUsers();
 })
@@ -7,6 +8,11 @@ function initUsers() {
     getUserId(function (flag, user_id) {
         if (flag) {
             userNavInfo(user_id);
+
+            if (/profile/i.test(window.location.pathname.split("/")[1]) && /photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
+                upload();
+                updateAvatar(user_id);
+            }
         }
     })
 }
@@ -58,4 +64,157 @@ function userNavInfo(user_id) {
     });
 }
 
+/*Fonction dédiée à l'upload de l'image*/
+function upload() {
+    //On recupère cette balise
+    var input = document.getElementById("imageProfile");
 
+
+    //On lui attache un listen à son événement "onchange"
+    //Afin d'écouter un eventuel changement de valeur qui interviendrai
+    //si l'utilisateur valider la selection du fichier
+    input.addEventListener('change', function () {
+
+        console.log(input);
+
+        //LES VARIABLES
+        var formData = new FormData(), //L'objet formDATA qui sera soumit comme data dans AJAX
+            file, //Le fichier
+            reader, //Le lecteur de fichier qui servira à donner l'apperçu du fichier uploadé
+            sortie = false; //L'objet de sortie
+
+
+        //On vérifie si l'input file contient au moins un fichier
+        if (input.files.length > 0) {
+
+            file = input.files[0]; //On recupère le fichier contenu dans l'objet 'files' de l'input
+            sortie = true; //On passe à true la condition de vérification
+        }
+
+        //Puis on ajoute le fichier à l'objet formData
+        //Ce dernier aura comme key "files" et comme value "le fichier"
+        formData.append('files_document', file, file.name);
+
+        //On vérifie la sortie
+        if (true) {
+
+            //On exécute la requête ajax
+            $.ajax({
+                url: 'https://immo-jach-api.herokuapp.com/upload_image/users/clients',
+                type: 'POST',
+                data: formData,
+                processData: false, // tell jQuery not to process the data
+                contentType: false, // tell jQuery not to set contentType
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                success: function (data) {
+
+                    //document.getElementById("containerProgress").setAttribute("style", "display: none");
+
+                    Avatar(data);
+                    if (!!file.type.match(/image.*/)) { //Ici on vérifie le type du fichier uploaded
+
+                        if (window.FileReader) {
+                            reader = new FileReader();
+                            reader.onloadend = function (e) {
+                                showUploadedImg(e.target.result, file);
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    } else {
+
+                        if (window.FileReader) {
+                            reader = new FileReader();
+                            reader.onloadend = function (e) {
+
+
+                            };
+                            reader.readAsDataURL(file);
+                        }
+                    }
+                },
+                xhr: function () {
+
+                    //$(".progress").show();
+                    // create an XMLHttpRequest
+                    var xhr = new XMLHttpRequest();
+
+                    // listen to the 'progress' event
+                    xhr.upload.addEventListener('progress', function (evt) {
+
+                        if (evt.lengthComputable) {
+                            // calculate the percentage of upload completed
+                            var percentComplete = evt.loaded / evt.total;
+                            percentComplete = parseInt(percentComplete * 100);
+
+                            // update the Bootstrap progress bar with the new percentage
+                            //$('#containerProgress .textProgress').text(percentComplete + ' %');
+                            //document.getElementById("progress").setAttribute("style", "width: " + percentComplete + "%");
+
+                            // once the upload reaches 100%, set the progress bar text to done
+                            /*if (percentComplete === 100) {
+
+                                setTimeout(function () {
+                                    $("#containerProgress #progress").hide();
+                                }, 4000)
+                            }*/
+
+                        }
+
+                    }, false);
+
+                    return xhr;
+                }
+            });
+        }
+
+        input.value = "";
+    })
+
+
+}
+
+/*Pour l'affichage de l'image dans sa place*/
+function showUploadedImg(source, file) {
+
+    var imageSelect = document.getElementById("imgPrev");
+
+    imageSelect.src = source;
+    imageSelect.classList.add("img-responsive");
+    imageSelect.setAttribute("style", "height : 9rem; width : 9rem;");
+}
+
+/*Récupère les données de l'upload de cet image*/
+function Avatar(data) {
+
+    dataAvatar = data.getObjet[0];
+}
+
+/*Cette fonction permet de finaliser l'upload avec les infos editées*/
+function updateAvatar(user_id) {
+
+    var submit = document.getElementById("submitAvatar");
+
+    submit.addEventListener("click", (e) => {
+        e.preventDefault();
+
+        $.ajax({
+            type: 'POST',
+            url: "https://immo-jach-api.herokuapp.com/users/setImage",
+            dataType: "json",
+            data: {
+                id_user: user_id,
+                path: dataAvatar.path,
+                name: dataAvatar.name,
+                size: dataAvatar.size
+            },
+            success: function (data) {
+
+                window.location.href = "/profile/" + user_id;
+            }
+        })
+
+    })
+}
