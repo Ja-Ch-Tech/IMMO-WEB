@@ -180,6 +180,13 @@ router.get('/userid', (req, res) => {
     res.send(obj)
 })
 
+/* Permet de recuperer le type d'un user */
+router.get('/SessionType', (req, res) => {
+    
+    res.status(200);
+    res.send("Mbuyu")
+})
+
 //Permet d'assigner notre admission à une maison
 router.post('/interessant', (req, res) => {
     var data = {

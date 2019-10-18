@@ -15,7 +15,6 @@ function setModeImmoOnNavbar() {
         url: "/api/getAllMode",
         dataType: "json",
         success: function (data) {
-            console.log(data);
             if (data.getEtat) {
                 if (data.getObjet.length > 0) {
                     data.getObjet.map(mode => {

@@ -9,12 +9,9 @@ function initUsers() {
          if (user_id) {
             userNavInfo(user_id);
 
-            if (/profile/i.test(window.location.pathname.split("/")[1])) {
-                getAvatar(user_id);
-                if (/photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
-                    upload();
-                    updateAvatar(user_id);
-                }                
+            if (/profile/i.test(window.location.pathname.split("/")[1]) && /photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
+                upload();
+                updateAvatar(user_id);
             }
         }else{
             var content = `<a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>`;
@@ -105,9 +102,9 @@ function upload() {
         //On vérifie la sortie
         if (true) {
 
-            
+            //On exécute la requête ajax
             $.ajax({
-                url: getHostAPI() + '/upload_image/users/clients',
+                url: 'https://immo-jach-api.herokuapp.com/upload_image/users/clients',
                 type: 'POST',
                 data: formData,
                 processData: false, // tell jQuery not to process the data
@@ -209,7 +206,7 @@ function updateAvatar(user_id) {
 
         $.ajax({
             type: 'POST',
-            url: getHostAPI() + "/users/setImage",
+            url: "https://immo-jach-api.herokuapp.com/users/setImage",
             dataType: "json",
             data: {
                 id_user: user_id,
@@ -219,182 +216,9 @@ function updateAvatar(user_id) {
             },
             success: function (data) {
 
-                window.location.href = "/profile/" + user_id + "/photo";
+                window.location.href = "/profile/" + user_id;
             }
         })
 
-    })
-}
-
-function getAvatar(user_id) {
-
-    $.ajax({
-        type: 'GET',
-        url: `/api/infoForAnyUser/${user_id}`,
-        dataType: "json",
-        success: function (data) {
-        
-                var image = () => {
-                    return data.getObjet.image ? getHostAPI() + data.getObjet.image.lien : "/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg"; 
-                    };
-                    
-                if (/profile/i.test(window.location.pathname.split("/")[1])) {
-                    var content = `<img class="img-thumbnail" src="${image()}" alt="">
-                                    <p style="font-weight: bold;font-size: 18px;color: #333;margin:9px 0px; font-family: 'Poppins', sans-serif; text-transform: uppercase">${data.getObjet.login.username}</p>`;
-
-                    $("#thisInfo").html(content);
-
-                    if (/photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
-                        var contentAvatar = `<img class="img-thumbnail img-update-profile mt-50" src="${image()}" id="imgPrev" alt="">`;
-
-                        $("#imageVisual").html(contentAvatar); 
-                    }
-
-                    if (/informations/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
-                        var obj = data.getObjet;
-                        var formulaire = `
-
-                    <div class="row">
-                        <div class="col-md-12 mb-15">
-                            <h2 style="font-family: calibri;color: #92c800">Informations de base</h2>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="username">Pseudonyme</label>
-                            <input type="text" name="username" value="${obj.login.username}" class="form-control mb-20" placeholder="Pseudonyme" id="username">
-                            
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="pseudoError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i> Le pseudo ne doit pas rester vide
-                            </span> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="name">Nom</label>
-                            <input type="text" name="nom" class="form-control mb-20" value="${obj.nom}" placeholder="Nom" id="name">
-
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="nomError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i> 
-                            </span> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="prenom">Prénom</label>
-                            <input type="text" name="prenom" class="form-control mb-20" placeholder="Prenom" value="${obj.prenom}" id="prenom">
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="prenomError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i> 
-                            </span> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="phone">Téléphone</label>
-                            <input type="text" name="telephone" class="form-control mb-20" placeholder="Numéro de Téléphone" value="${obj.contacts.length > 0 ? obj.contacts[obj.contacts.length - 1].telephone : ""}" id="phone">
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="phoneError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i> Le pseudo ne doit pas rester vide
-                            </span> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="email">Adresse email</label>
-                            <input type="email" name="email" class="form-control mb-20" placeholder="Adresse email" value="${obj.contacts.length > 0 ? obj.contacts[obj.contacts.length - 1].email : ""}" id="email">
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="emailError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i>
-                            </span> -->
-                        </div>
-                        <div class="col-md-12 mb-15">
-                            <h2 style="font-family: calibri;color: #92c800">Localisation</h2>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="ville">Ville</label>
-                            <select name="ville" id="ville" class="form-control mb-20">
-                                <option value="kinshasa">Kinshasa</option>
-                                <option value="lubumbashi">lubumbashi</option>
-                                <option value="Matadi">Matadi</option>
-                                <option value="Goma">Goma</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="commune">Commune</label>
-                            <input type="text" name="commune" class="form-control mb-20" placeholder="Commune" id="commune" value="${obj.adresse.commune ? obj.adresse.commune : ""}">
-                        </div>
-                        <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="communeError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i>
-                            </span> -->
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="quartier">Quartier</label>
-                            <input type="text" name="quartier" class="form-control mb-20" placeholder="quartier" id="quartier" value="${obj.adresse.quartier ? obj.adresse.quartier : ""}">
-                        </div>
-                        <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="quartierError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i>
-                            </span> -->
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="avenue">Avenue</label>
-                            <input type="text" name="avenue" class="form-control mb-20" placeholder="Avenue" id="avenue" value="${obj.adresse.avenue ? obj.adresse.avenue : ""}">
-                        </div>
-                        <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="avenueError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i>
-                            </span> -->
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="numero_parcelle">Numéro parcelle</label>
-                            <input type="number" name="numero" class="form-control mb-20" placeholder="numero parcelle" id="numero_parcelle" value="${obj.adresse.numero ? obj.adresse.numero : ""}">
-                        </div>
-                        
-                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
-                            <label class="label-custom" for="reference">Ajoutez une reference</label>
-                            <input type="text" name="reference" value="${obj.adresse.reference ? obj.adresse.reference : ""}" class="form-control mb-20" placeholder="reference" id="reference">
-                        </div>
-                        
-                    </div>
-                `;
-
-                        $("#formInformation").html(formulaire);
-                        updateInformation(user_id);
-                    }
-                }
-                    
-            
-        }
-    })
-}
-
-function updateInformation(userId) {
-    document.getElementById("updateInformation").addEventListener("submit", (e) => {
-        e.preventDefault();
-        console.log(e.target.elements);
-        var objData = {};
-
-        var sortieInput = 0;
-
-        for (let index = 0; index < e.target.elements.length; index++) {
-            sortieInput++;
-            if (/input/i.test(e.target.elements[index].localName)) {
-                objData[e.target.elements[index].name] = e.target.elements[index].value
-            }
-
-            if (sortieInput == e.target.elements.length) {
-                $.ajax({
-                    type: 'POST',
-                    url: "/api/upProfile/" + userId,
-                    dataType: "json",
-                    data: objData,
-                    success: function (data) {
-
-                        console.log(data);
-                        
-                    }
-                })
-            }
-        }
-        
     })
 }

@@ -16,12 +16,10 @@ function setTypeImmoOnNavbar() {
         url: "/api/getTypeImmo",
         dataType: "json",
         success: function (data) {
-            console.log(data);           
             if (data.getEtat) {
                 if (data.getObjet.length > 0) {
                     
                     data.getObjet.map(item => {
-                        console.log(item)
                         var content = `<li><a href="/immo/type/${item._id}/liste">${item.intitule} (${item.nbre})</a></li>`;
                         var contentForFooter = `<li><a href="/immo/type/${item._id}/liste"><i class="fa fa-map-marker"></i> ${item.intitule}</a></li>`;
 

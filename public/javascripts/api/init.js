@@ -21,3 +21,12 @@ function getUserId(callback) {
         }
     });
 }
+
+/**
+ * Fonction permettant de récupérer le type de l'utilisateur en session
+ * @param {Function} callback La fonction de retour
+ */
+ function getTypeUser() {
+    console.log("mbuyu")
+ }
+ 
