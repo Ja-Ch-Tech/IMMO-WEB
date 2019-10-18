@@ -27,3 +27,20 @@ function setModeImmoOnNavbar() {
         }
     });
 }
+
+/* Recupere les modes */
+function getAllMode(callback) {
+    $.ajax({
+        type: 'GET',
+        url: "/api/getAllMode",
+        dataType: "json",
+        success: function (data) {
+            if (data.getEtat) {
+                if (data.getObjet.length > 0) {
+                    callback(data.getObjet);
+                }
+            }
+            
+        }
+    });
+}

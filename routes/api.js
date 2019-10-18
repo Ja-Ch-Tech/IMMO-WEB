@@ -182,9 +182,13 @@ router.get('/userid', (req, res) => {
 
 /* Permet de recuperer le type d'un user */
 router.get('/SessionType', (req, res) => {
-    
+    let type = req.session.type ? req.session.type : null,
+        obj = {
+            "type_user": type
+        };
+
     res.status(200);
-    res.send("Mbuyu")
+    res.send(obj)
 })
 
 //Permet d'assigner notre admission à une maison
@@ -318,6 +322,45 @@ router.post('/upProfile/:user_id', (req, res) => {
             res.status(500);
             res.send(err)
         })
+})
+
+//Publication d'un immo
+router.post('/addImmob', (req, res) => {
+    var datas = {
+        "commune" : req.body.commune,
+        "avenue" : req.body.avenue,
+        "numero" : req.body.numero,
+        "reference" : req.body.reference,
+        "id_user" : req.session.id,
+        "id_mode_immo" : req.body.id_mode_immo,
+        "id_type_immo" : req.body.id_type_immo,
+        "nbrePiece" : req.body.nbrePiece,
+        "nbreChambre" : req.body.nbreChambre,
+        "nbreDouche" : req.body.nbreDouche,
+        "prix" : req.body.prix,
+        "surface" : req.body.surface,
+        "description" : req.body.description 
+    }
+
+    if ((datas.id_user && datas.id_user.trim(" ")) &&
+        (datas.id_mode_immo && datas.id_mode_immo.trim(" ")) &&
+        (datas.id_type_immo && datas.id_type_immo.trim(" ")) &&
+        (datas.prix && datas.prix.trim(" ")) && 
+        (datas.description && datas.description.trim(" ")))
+    {
+        axios.post(`${API}/immobilier/publish`, datas)
+             .then(responseImmob => {
+                 res.status(200);
+                 res.send({ getEtat: true, getObjet: responseImmob.data.getObjet, getMessage: "Votre immobilier à été ajouter, attendez l'approbation de l'administrateur pour que votre bien soit visible, thank" })
+             })
+             .catch(err => {
+                 res.status(500);
+                 res.send(err);
+             })
+    }else{
+       res.status(200);
+       res.send({ getEtat: false, getMessage: "Veuillez remplir tous les champs obligatoires" }) 
+    }
 })
 
 module.exports = router;

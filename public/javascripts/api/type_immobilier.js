@@ -32,3 +32,18 @@ function setTypeImmoOnNavbar() {
         }
     });
 }
+
+function getTypeImmo(callback) {
+    $.ajax({
+        type: 'GET',
+        url: "/api/getTypeImmo",
+        dataType: "json",
+        success: function (data) {
+            if (data.getEtat) {
+                if (data.getObjet.length > 0) {
+                    callback(data.getObjet);
+                }
+            }
+        }
+    });
+}

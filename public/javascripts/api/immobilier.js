@@ -476,3 +476,39 @@ function getImmoByType(type_id) {
         }
     });
 }
+
+/* Permet d'ajouter un immo */
+
+function addImmo(e, user_id) {
+    var inputs = e.target.elements,
+        objData = {},
+        sortieInput = 0;
+    for (let index = 0; index < inputs.length; index++) {
+        sortieInput++;
+        if (/input/i.test(e.target.elements[index].localName)) {
+            objData[inputs[index].name] = inputs[index].value;
+        }
+
+        if (/textarea/i.test(e.target.elements[index].localName)) {
+            objData[inputs[index].name] = inputs[index].value;
+        }
+
+        if (/select/i.test(e.target.elements[index].localName)) {
+            objData[inputs[index].name] = inputs[index].options[inputs[index].selectedIndex].value;
+        }
+
+        if (sortieInput == inputs.length) {
+            $.ajax({
+                type: 'POST',
+                url: "/api/addImmob",
+                dataType: "json",
+                data: objData,
+                success: function (data) {
+
+                    alert(data.getMessage);
+                    
+                }
+            });
+        }
+    }
+}
