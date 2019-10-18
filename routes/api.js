@@ -139,7 +139,7 @@ router.get('/type_user', (req, res) => {
         .catch(err => {
             res.status(500);
             res.send(err)
-        }) 
+        })
 });
 
 //Recupere les immo par mode
@@ -165,9 +165,9 @@ router.get('/details/:id', (req, res) => {
         .catch(err => {
             res.status(500);
             res.send(err)
-        }) 
+        })
 });
-     
+
 
 //Permet la récupération de détails d'un immobilier
 router.get('/userid', (req, res) => {
@@ -192,7 +192,7 @@ router.post('/interessant', (req, res) => {
 
             axios.get(`${API}/users/infoOwner/${data.id_owner}`)
                 .then(owner => {
-                   
+
                     res.status(200);
                     res.send(owner.data)
                 })
@@ -211,14 +211,14 @@ router.post('/interessant', (req, res) => {
 //Permettant la récupération des tous les types
 router.get('/getTypeImmo', (req, res) => {
     axios.get(`${API}/type/getAll`)
-         .then(response => {
-             res.status(200);
-             res.send(response.data)
-         })
-         .catch(err => {
-             res.status(500);
-             res.send(err)
-         })
+        .then(response => {
+            res.status(200);
+            res.send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
 })
 
 //Permettant de recueperer les immo par type
@@ -259,5 +259,58 @@ router.get('/infoForAnyUser/:user_id', (req, res) => {
             res.send(err)
         })
 });
+
+router.post('/upProfile/:user_id', (req, res) => {
+
+    var dataAdresse = {
+        "commune": req.body.commune,
+        "avenue": req.body.avenue,
+        "numero": req.body.numero,
+        "ref": req.body.reference,
+        "quartier": req.body.quartier
+    }
+    axios.post(`${API}/users/setAdress/${req.params.user_id}`, dataAdresse)
+        .then(response => {
+
+            var dataContact = {
+                "id": req.params.user_id,
+                "telephone": req.body.telephone,
+                "email": req.body.email
+            }
+
+            axios.post(`${API}/users/setContact`, dataContact)
+                 .then(responseContact => {
+                     var dataProfil = {
+                         "id": req.params.user_id,
+                         "nom": req.body.nom,
+                         "prenom": req.body.prenom,
+                         "username": req.body.username,
+                     }
+                     if ((dataProfil.username && dataProfil.username.trim(" ")) && (dataProfil.nom && dataProfil.nom.trim(" ")) && (dataProfil.prenom && dataProfil.prenom.trim(" "))) {
+                         axios.post(`${API}/users/upProfil`, dataProfil)
+                             .then(responseProfil => {
+                                 res.status(200);
+                                 res.send({ getEtat: true, getObjet: responseProfil.data.getObjet })
+                             })
+                             .catch(err => {
+                                 res.status(500);
+                                 res.send(err);
+                             })
+                     } else {
+                         res.status(200);
+                         res.send({ getEtat: true, getMessage: "La mise à jour de l'adresse a eu lieu mais pas du profil" })
+                     }
+                 })
+                 .catch(err => {
+                     res.status(500);
+                     res.send({getEtat: true, getMessage: "Adresse défini mais, il y a blocage sur le contact"})
+                 })
+
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+})
 
 module.exports = router;

@@ -1,127 +1,29 @@
 @html.extend('profile/profile_layout', function(model){
-    @html.append('blocuser', function(model){
-      <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
-        <div class="header text-center">
-            <h3 style="border:none;">Profil public</h3>
-            <p style="margin-bottom: 0px;">Ajoutez des informations vous concernant</p>
-        </div>
-        <div class="body">
-            <!-- Leave A Reply -->
-            <div class="rehomes-contact-form mb-10 wow fadeInUp" data-wow-delay="200ms">
-                <!-- Form -->
-                <form autocomplete="off" class="support-form" action="#" method="post">
+@html.append('blocuser', function(model){
+<!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
+<div class="header text-center">
+    <h3 style="border:none;">Profil public</h3>
+    <p style="margin-bottom: 0px;">Ajoutez des informations vous concernant</p>
+</div>
+<form autocomplete="off" class="support-form" method="post" id="updateInformation">
+    <div class="body">
+        <!-- Leave A Reply -->
+        <div class="rehomes-contact-form mb-10 wow fadeInUp" data-wow-delay="200ms" id="formInformation">
 
-                    <div class="row">
-                        <div class="col-md-12 mb-15">
-                            <h2 style="font-family: calibri;color: #92c800">Informations de base</h2>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="username">Pseudonyme</label>
-                            <input type="text" name="username" class="form-control mb-20" placeholder="Pseudonyme" id="username">
-                            
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="pseudoError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i> Le pseudo ne doit pas rester vide
-                            </span> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="name">Nom</label>
-                            <input type="text" name="name" class="form-control mb-20" placeholder="Nom" id="name">
-
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="nomError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i> 
-                            </span> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="prenom">Prénom</label>
-                            <input type="text" name="prenom" class="form-control mb-20" placeholder="Prenom" id="prenom">
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="prenomError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i> 
-                            </span> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="phone">Téléphone</label>
-                            <input type="text" name="phone" class="form-control mb-20" placeholder="Numéro de Téléphone" id="phone">
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="phoneError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i> Le pseudo ne doit pas rester vide
-                            </span> -->
-                        </div>
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="email">Adresse email</label>
-                            <input type="email" name="email" class="form-control mb-20" placeholder="Adresse email" id="email">
-                            <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="emailError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i>
-                            </span> -->
-                        </div>
-                        <div class="col-md-12 mb-15">
-                            <h2 style="font-family: calibri;color: #92c800">Localisation</h2>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="ville">Ville</label>
-                            <select name="ville" id="ville" class="form-control mb-20">
-                                <option value="kinshasa">Kinshasa</option>
-                                <option value="lubumbashi">lubumbashi</option>
-                                <option value="Matadi">Matadi</option>
-                                <option value="Goma">Goma</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="commune">Commune</label>
-                            <input type="text" name="commune" class="form-control mb-20" placeholder="Commune" id="commune">
-                        </div>
-                        <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="communeError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i>
-                            </span> -->
-                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                            <label class="label-custom" for="quartier">Quartier</label>
-                            <input type="text" name="quartier" class="form-control mb-20" placeholder="quartier" id="quartier">
-                        </div>
-                        <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="quartierError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i>
-                            </span> -->
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="avenue">Avenue</label>
-                            <input type="text" name="avenue" class="form-control mb-20" placeholder="Avenue" id="avenue">
-                        </div>
-                        <!--
-                            DANS CE SPAN QUE SERA AFFICHER LES ERREURS 
-                            <span id="avenueError" class="inputError pull-left">
-                                <i class="now-ui-icons travel_info"></i>
-                            </span> -->
-                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                            <label class="label-custom" for="numero_parcelle">Numéro parcelle</label>
-                            <input type="number" name="numero_parcelle" class="form-control mb-20" placeholder="numero parcelle" id="numero_parcelle">
-                        </div>
-                        
-                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
-                            <label class="label-custom" for="reference">Ajoutez une reference</label>
-                            <input type="text" name="reference" class="form-control mb-20" placeholder="reference" id="reference">
-                        </div>
-                        
-                    </div>
-                </form>
+            <div id="formInformation">
+                <!-- Dynamic Form -->
             </div>
+
         </div>
-        <div class="footer">
-            <div class="col-12">
-              <center>
+    </div>
+    <div class="footer">
+        <div class="col-12">
+            <center>
                 <button type="submit" class="btn rehomes-btn">Sauvegarder</button>
-              </center>
-            </div>
+            </center>
         </div>
-        
-    });
+    </div>
+</form>
+
+});
 })

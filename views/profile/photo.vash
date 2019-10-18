@@ -14,8 +14,8 @@
                     	<div class="col-12 col-md-12">
                     		<div style="border:1px solid #dcdcdc;min-height: 200px;padding: 20px;">
                                 <div class="mb-15" style="background-color: #f2f3f5;min-height: 250px;border:1px solid #dcdcd;">
-                                    <center>
-                                        <img class="img-thumbnail img-update-profile mt-50" src="/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg" id="imgPrev" alt="">
+                                    <center id="imageVisual">
+                                        
                                     </center>
                                 </div>
                                 <div class="img-update-btn">

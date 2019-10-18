@@ -1,3 +1,7 @@
+function getHostAPI() {
+    //return "http://localhost:3333";
+    return "https://immo-jach-api.herokuapp.com";
+}
 /**
  * Fonction permettant de récupérer l'identifiant de l'utilisateur en session
  * @param {Function} callback La fonction de retour
