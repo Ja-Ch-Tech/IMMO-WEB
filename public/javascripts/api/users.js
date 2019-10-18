@@ -6,7 +6,7 @@ $(document).ready(function () {
 function initUsers() {
     login();
     getUserId(function (flag, user_id) {
-        if (user_id) {
+         if (user_id) {
             userNavInfo(user_id);
 
             if (/profile/i.test(window.location.pathname.split("/")[1]) && /photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
