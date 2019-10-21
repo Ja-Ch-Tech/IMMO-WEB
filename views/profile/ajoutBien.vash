@@ -96,6 +96,10 @@
                                         <center>
                                             <img class="mt-80" src="/images/icons/icons8-upload-100.png" alt="">
                                             <p>Selectionnez des images pour votre immobilier, pas plus de 9Mo <br><i>la premiere image que vous allez selectionner est considerée comme image principale</i></p>
+
+                                            <div id="minusImage">
+                                                
+                                            </div>
                                         </center>
                                     </div>
                                     <div class="row">
@@ -103,9 +107,7 @@
                                             <p style="margin-bottom: 0;">Ajoutez une image</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <select name="nature" id="nature" class="form-control">
-                                                <option value="principale">Image principale</option>
-                                            </select>
+                                            <input type="text" name="nameImage" class="form-control mb-20" placeholder="Image principale" id="nameImage">
                                         </div>
                                         <div class="col-md-5">
                                             <label for="imageImmo">

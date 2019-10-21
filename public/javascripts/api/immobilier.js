@@ -1,4 +1,4 @@
-var typeProp, newImmo, details;
+var typeProp, newImmo, details, images = [], dataAvatarImmo;
 
 $(document).ready(function () {
     initImmo();
@@ -172,10 +172,10 @@ function getNewImmobilier() {
 function getImmoByMode(mode_id, bloc_id) {
     $.ajax({
         type: 'GET',
-        url: '/api/immo_by_mode/'+ mode_id,
+        url: '/api/immo_by_mode/' + mode_id,
         dataType: "json",
-        beforeSend : function () {
-            
+        beforeSend: function () {
+
         },
         success: function (data) {
             if (data.getEtat) {
@@ -186,9 +186,9 @@ function getImmoByMode(mode_id, bloc_id) {
                             if (/location/i.test(element.mode)) {
                                 return `<p class="badge-rent">A louer</p>`
                             } else {
-                                return `<p class="badge-sale">A vendre</p>`                                
+                                return `<p class="badge-sale">A vendre</p>`
                             }
-                          },
+                        },
                             contentImmo = `<div class="col-12 col-md-6 col-lg-4">
                                               <a href="/immo/${element._id}/details">
                                                 <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
@@ -204,7 +204,7 @@ function getImmoByMode(mode_id, bloc_id) {
                                                             <!-- Title -->
                                                             <div class="property-title">
                                                                 <h4 class="text-uppercase">${element.type}</h4>
-                                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " +element.adresse.numero}, ${element.adresse.commune}</p>
+                                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}</p>
                                                             </div>
                                                             <!-- Seller -->
                                                             <div class="property-seller">
@@ -229,19 +229,19 @@ function getImmoByMode(mode_id, bloc_id) {
                                                 </div>
                                               </a>
                                             </div>`;
-                          $("#" + bloc_id).append(contentImmo);
+                        $("#" + bloc_id).append(contentImmo);
                     })
 
-                }else{
+                } else {
 
 
                 }
-            }else{
+            } else {
 
             }
         },
         error: function (err) {
-          console.log(err);
+            console.log(err);
         }
     });
 }
@@ -381,9 +381,9 @@ function viewContact(id) {
 
 function closeModal() {
     var modal = document.getElementById("modalForContactUs");
-    
+
     modal.classList.add("d-none");
-    
+
 }
 
 /**
@@ -414,12 +414,12 @@ function getImmoByType(type_id) {
 
                     data.getObjet.immobiliers.map(element => {
                         var rentOrSale = () => {
-                                if (/location/i.test(element.mode)) {
-                                    return `<p class="badge-rent">A louer</p>`
-                                } else {
-                                    return `<p class="badge-sale">A vendre</p>`
-                                }
-                            },
+                            if (/location/i.test(element.mode)) {
+                                return `<p class="badge-rent">A louer</p>`
+                            } else {
+                                return `<p class="badge-sale">A vendre</p>`
+                            }
+                        },
                             contentImmo = `<div class="col-12 col-md-6 col-lg-4">
                                               <a href="/immo/${element._id}/details">
                                                 <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
@@ -435,7 +435,7 @@ function getImmoByType(type_id) {
                                                             <!-- Title -->
                                                             <div class="property-title">
                                                                 <h4 class="text-uppercase">${data.getObjet.categorie}</h4>
-                                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " +element.adresse.numero}, ${element.adresse.commune}</p>
+                                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}</p>
                                                             </div>
                                                             <!-- Seller -->
                                                             <div class="property-seller">
@@ -505,10 +505,184 @@ function addImmo(e, user_id) {
                 data: objData,
                 success: function (data) {
 
-                    alert(data.getMessage);
-                    
+                    if (data.getEtat) {
+                        $.ajax({
+                            type: 'POST',
+                            url: `${getHostAPI()}/immobilier/setImages`,
+                            dataType: "json",
+                            data: {
+                                "id_immo": data.getObjet._id,
+                                "images": localStorage.getItem("images")
+                            },
+                            success: function (data) {
+                                
+                                if (data.getEtat) {
+                                    localStorage.removeItem("images")
+                                }
+
+                            }
+                        });
+                    }
+
                 }
             });
         }
     }
+}
+
+function setImage() {
+    //On recupère cette balise
+    var input = document.getElementById("imageImmo");
+
+
+    //On lui attache un listen à son événement "onchange"
+    //Afin d'écouter un eventuel changement de valeur qui interviendrai
+    //si l'utilisateur valider la selection du fichier
+    input.addEventListener('change', function () {
+
+        //LES VARIABLES
+        var formData = new FormData(), //L'objet formDATA qui sera soumit comme data dans AJAX
+            file, //Le fichier
+            reader, //Le lecteur de fichier qui servira à donner l'apperçu du fichier uploadé
+            sortie = false; //L'objet de sortie
+
+
+        //On vérifie si l'input file contient au moins un fichier
+        if (input.files.length > 0) {
+
+            file = input.files[0]; //On recupère le fichier contenu dans l'objet 'files' de l'input
+            sortie = true; //On passe à true la condition de vérification
+        }
+
+        //Puis on ajoute le fichier à l'objet formData
+        //Ce dernier aura comme key "files" et comme value "le fichier"
+        formData.append('files_document', file, file.name);
+
+        //On vérifie la sortie
+        if (true) {
+
+            var nameImage = document.getElementById("nameImage");
+
+            if (nameImage && nameImage.value.trim(" ")) {
+                $.ajax({
+                    url: getHostAPI() + '/upload_image/immobiliers/' + nameImage.value.trim(" "),
+                    type: 'POST',
+                    data: formData,
+                    processData: false, // tell jQuery not to process the data
+                    contentType: false, // tell jQuery not to set contentType
+                    beforeSend: function () {
+                    },
+                    complete: function () {
+                    },
+                    success: function (data) {
+
+                        //document.getElementById("containerProgress").setAttribute("style", "display: none");
+
+                        AvatarImmo(data);
+                        if (!!file.type.match(/image.*/)) { //Ici on vérifie le type du fichier uploaded
+
+                            if (window.FileReader) {
+                                reader = new FileReader();
+                                reader.onloadend = function (e) {
+                                    showUploadedImgImmo(e.target.result, nameImage.value);
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: `${getHostAPI()}/media/create`,
+                                        data: {
+                                            name: data.getObjet[0].name,
+                                            path: data.getObjet[0].path,
+                                            size: data.getObjet[0].size,
+                                        },
+                                        dataType: "json",
+                                        success: function (data) {
+
+                                            var images = JSON.parse(localStorage.getItem("images"));
+
+                                            if (images) {
+
+                                                images.push({
+                                                    "lien_images": data.getObjet._id,
+                                                    "name": nameImage.value
+                                                })
+
+                                                localStorage.setItem("images", JSON.stringify(images));
+                                            } else {
+
+                                                var images = [];
+                                                images.push({
+                                                    "lien_images": data.getObjet._id,
+                                                    "name": nameImage.value
+                                                })
+
+                                                localStorage.setItem("images", JSON.stringify(images))
+                                            }
+
+                                            nameImage.value = "";
+                                            nameImage.focus();
+
+                                        }
+                                    });
+                                };
+                                reader.readAsDataURL(file);
+                            }
+                        } else {
+
+                            if (window.FileReader) {
+                                reader = new FileReader();
+                                reader.onloadend = function (e) {
+
+                                };
+                                reader.readAsDataURL(file);
+                            }
+                        }
+                    },
+                    xhr: function () {
+
+                        //$(".progress").show();
+                        // create an XMLHttpRequest
+                        var xhr = new XMLHttpRequest();
+
+                        // listen to the 'progress' event
+                        xhr.upload.addEventListener('progress', function (evt) {
+
+                            if (evt.lengthComputable) {
+                                // calculate the percentage of upload completed
+                                var percentComplete = evt.loaded / evt.total;
+                                percentComplete = parseInt(percentComplete * 100);
+
+                            }
+
+                        }, false);
+
+                        return xhr;
+                    }
+                });
+            } else {
+                nameImage.focus();
+            }
+
+        }
+
+        input.value = "";
+    })
+
+}
+
+/*Récupère les données de l'upload de cet image*/
+function AvatarImmo(data) {
+
+    dataAvatarImmo = data.getObjet[0];
+}
+
+/*Pour l'affichage de l'image dans sa place*/
+function showUploadedImgImmo(source, title) {
+    var div = document.getElementById("minusImage");
+
+    var img = document.createElement("img");
+
+    img.src = source;
+    img.title = title;
+    img.setAttribute("style", "height: 3rem; width: 3rem");
+
+    div.append(img);
 }

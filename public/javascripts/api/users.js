@@ -31,6 +31,8 @@ function initUsers() {
                         e.preventDefault();
                         addImmo(e, user_id);
                     })
+
+                    setImage();
                 }
                 
             }
