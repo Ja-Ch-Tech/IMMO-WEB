@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-md-12 mb-15">
                                 <div style="border:1px solid #dcdcdc;min-height: 250px;padding: 20px;">
-                                    <div class="mb-15" style="background-color: #f2f3f5;height: auto;border:1px solid #dcdcdc">
+                                    <div class="mb-15" style="background-color: #f2f3f5;height: auto;border:1px solid #dcdcdc; position: relative; overflow: hidden;">
                                         <center>
                                             <img class="mt-80" src="/images/icons/icons8-upload-100.png" alt="">
                                             <p>Selectionnez des images pour votre immobilier, pas plus de 9Mo <br><i>la premiere image que vous allez selectionner est considerée comme image principale</i></p>
@@ -102,15 +102,15 @@
                                             </div>
                                         </center>
                                     </div>
-                                    <div class="row">
+                                    <div class="row" id="formImage">
                                         <div class="col-md-12">
                                             <p style="margin-bottom: 0;">Ajoutez une image</p>
                                         </div>
                                         <div class="col-md-7">
-                                            <input type="text" name="nameImage" class="form-control mb-20" placeholder="Image principale" id="nameImage">
+                                            <input type="text" name="nameImage" class="form-control mb-20" placeholder="Qu'est-ce que vous ajouter ?" id="nameImage">
                                         </div>
                                         <div class="col-md-5">
-                                            <label for="imageImmo">
+                                            <label id="selection">
                                                 <a class="btn rehomes-btn btn-2">Selectionnez l'image</a>
                                             </label>
                                             <input type="file" id="imageImmo" style="display: none;">

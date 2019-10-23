@@ -515,9 +515,10 @@ function addImmo(e, user_id) {
                                 "images": localStorage.getItem("images")
                             },
                             success: function (data) {
-                                
+
                                 if (data.getEtat) {
-                                    localStorage.removeItem("images")
+                                    localStorage.removeItem("images");
+                                    window.location.pathname = `/profile/${user_id}/publications`;
                                 }
 
                             }
@@ -531,139 +532,146 @@ function addImmo(e, user_id) {
 }
 
 function setImage() {
-    //On recupère cette balise
-    var input = document.getElementById("imageImmo");
+    
+    document.getElementById("selection").addEventListener("click", () => {
+        var nameImage = document.getElementById("nameImage");
+
+        if (nameImage && nameImage.value.trim(" ")) {
+            //On recupère cette balise
+            var input = document.getElementById("imageImmo");
+
+            input.click();
+
+            //On lui attache un listen à son événement "onchange"
+            //Afin d'écouter un eventuel changement de valeur qui interviendrai
+            //si l'utilisateur valider la selection du fichier
+            input.addEventListener('change', function () {
+
+                //LES VARIABLES
+                var formData = new FormData(), //L'objet formDATA qui sera soumit comme data dans AJAX
+                    file, //Le fichier
+                    reader, //Le lecteur de fichier qui servira à donner l'apperçu du fichier uploadé
+                    sortie = false; //L'objet de sortie
 
 
-    //On lui attache un listen à son événement "onchange"
-    //Afin d'écouter un eventuel changement de valeur qui interviendrai
-    //si l'utilisateur valider la selection du fichier
-    input.addEventListener('change', function () {
+                //On vérifie si l'input file contient au moins un fichier
+                if (input.files.length > 0) {
 
-        //LES VARIABLES
-        var formData = new FormData(), //L'objet formDATA qui sera soumit comme data dans AJAX
-            file, //Le fichier
-            reader, //Le lecteur de fichier qui servira à donner l'apperçu du fichier uploadé
-            sortie = false; //L'objet de sortie
+                    file = input.files[0]; //On recupère le fichier contenu dans l'objet 'files' de l'input
+                    sortie = true; //On passe à true la condition de vérification
+                }
 
+                //Puis on ajoute le fichier à l'objet formData
+                //Ce dernier aura comme key "files" et comme value "le fichier"
+                formData.append('files_document', file, file.name);
 
-        //On vérifie si l'input file contient au moins un fichier
-        if (input.files.length > 0) {
+                //On vérifie la sortie
+                if (true) {
 
-            file = input.files[0]; //On recupère le fichier contenu dans l'objet 'files' de l'input
-            sortie = true; //On passe à true la condition de vérification
-        }
+                    $.ajax({
+                        url: getHostAPI() + '/upload_image/immobiliers/' + nameImage.value.trim(" "),
+                        type: 'POST',
+                        data: formData,
+                        processData: false, // tell jQuery not to process the data
+                        contentType: false, // tell jQuery not to set contentType
+                        beforeSend: function () {
+                        },
+                        complete: function () {
+                        },
+                        success: function (data) {
 
-        //Puis on ajoute le fichier à l'objet formData
-        //Ce dernier aura comme key "files" et comme value "le fichier"
-        formData.append('files_document', file, file.name);
+                            //document.getElementById("containerProgress").setAttribute("style", "display: none");
 
-        //On vérifie la sortie
-        if (true) {
+                            AvatarImmo(data);
+                            if (!!file.type.match(/image.*/)) { //Ici on vérifie le type du fichier uploaded
 
-            var nameImage = document.getElementById("nameImage");
+                                if (window.FileReader) {
+                                    reader = new FileReader();
+                                    reader.onloadend = function (e) {
+                                        showUploadedImgImmo(e.target.result, nameImage.value);
+                                        $.ajax({
+                                            type: 'POST',
+                                            url: `${getHostAPI()}/media/create`,
+                                            data: {
+                                                name: data.getObjet[0].name,
+                                                path: data.getObjet[0].path,
+                                                size: data.getObjet[0].size,
+                                            },
+                                            dataType: "json",
+                                            success: function (data) {
 
-            if (nameImage && nameImage.value.trim(" ")) {
-                $.ajax({
-                    url: getHostAPI() + '/upload_image/immobiliers/' + nameImage.value.trim(" "),
-                    type: 'POST',
-                    data: formData,
-                    processData: false, // tell jQuery not to process the data
-                    contentType: false, // tell jQuery not to set contentType
-                    beforeSend: function () {
-                    },
-                    complete: function () {
-                    },
-                    success: function (data) {
+                                                var images = JSON.parse(localStorage.getItem("images"));
 
-                        //document.getElementById("containerProgress").setAttribute("style", "display: none");
+                                                if (images) {
 
-                        AvatarImmo(data);
-                        if (!!file.type.match(/image.*/)) { //Ici on vérifie le type du fichier uploaded
+                                                    images.push({
+                                                        "lien_images": data.getObjet._id,
+                                                        "name": nameImage.value
+                                                    })
 
-                            if (window.FileReader) {
-                                reader = new FileReader();
-                                reader.onloadend = function (e) {
-                                    showUploadedImgImmo(e.target.result, nameImage.value);
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: `${getHostAPI()}/media/create`,
-                                        data: {
-                                            name: data.getObjet[0].name,
-                                            path: data.getObjet[0].path,
-                                            size: data.getObjet[0].size,
-                                        },
-                                        dataType: "json",
-                                        success: function (data) {
+                                                    localStorage.setItem("images", JSON.stringify(images));
+                                                } else {
 
-                                            var images = JSON.parse(localStorage.getItem("images"));
+                                                    var images = [];
+                                                    images.push({
+                                                        "lien_images": data.getObjet._id,
+                                                        "name": nameImage.value
+                                                    })
 
-                                            if (images) {
+                                                    localStorage.setItem("images", JSON.stringify(images))
+                                                }
 
-                                                images.push({
-                                                    "lien_images": data.getObjet._id,
-                                                    "name": nameImage.value
-                                                })
+                                                nameImage.value = "";
+                                                nameImage.focus();
 
-                                                localStorage.setItem("images", JSON.stringify(images));
-                                            } else {
-
-                                                var images = [];
-                                                images.push({
-                                                    "lien_images": data.getObjet._id,
-                                                    "name": nameImage.value
-                                                })
-
-                                                localStorage.setItem("images", JSON.stringify(images))
                                             }
+                                        });
+                                    };
+                                    reader.readAsDataURL(file);
+                                }
+                            } else {
 
-                                            nameImage.value = "";
-                                            nameImage.focus();
+                                if (window.FileReader) {
+                                    reader = new FileReader();
+                                    reader.onloadend = function (e) {
 
-                                        }
-                                    });
-                                };
-                                reader.readAsDataURL(file);
+                                    };
+                                    reader.readAsDataURL(file);
+                                }
                             }
-                        } else {
+                        },
+                        xhr: function () {
 
-                            if (window.FileReader) {
-                                reader = new FileReader();
-                                reader.onloadend = function (e) {
+                            //$(".progress").show();
+                            // create an XMLHttpRequest
+                            var xhr = new XMLHttpRequest();
 
-                                };
-                                reader.readAsDataURL(file);
-                            }
+                            // listen to the 'progress' event
+                            xhr.upload.addEventListener('progress', function (evt) {
+
+                                if (evt.lengthComputable) {
+                                    // calculate the percentage of upload completed
+                                    var percentComplete = evt.loaded / evt.total;
+                                    percentComplete = parseInt(percentComplete * 100);
+
+                                }
+
+                            }, false);
+
+                            return xhr;
                         }
-                    },
-                    xhr: function () {
+                    });
 
-                        //$(".progress").show();
-                        // create an XMLHttpRequest
-                        var xhr = new XMLHttpRequest();
 
-                        // listen to the 'progress' event
-                        xhr.upload.addEventListener('progress', function (evt) {
+                }
 
-                            if (evt.lengthComputable) {
-                                // calculate the percentage of upload completed
-                                var percentComplete = evt.loaded / evt.total;
-                                percentComplete = parseInt(percentComplete * 100);
-
-                            }
-
-                        }, false);
-
-                        return xhr;
-                    }
-                });
-            } else {
-                nameImage.focus();
-            }
-
+                input.value = "";
+            })
+        } else {
+            nameImage.focus();
+            nameImage.setAttribute("placeholder", "Ecrivez d'abord un titre descriptif...")
         }
 
-        input.value = "";
     })
 
 }
@@ -678,11 +686,13 @@ function AvatarImmo(data) {
 function showUploadedImgImmo(source, title) {
     var div = document.getElementById("minusImage");
 
+    div.classList.add("contentHere");
+
     var img = document.createElement("img");
 
     img.src = source;
     img.title = title;
-    img.setAttribute("style", "height: 3rem; width: 3rem");
+    img.className = "animated fadeInRight";
 
     div.append(img);
 }
