@@ -8,15 +8,7 @@
                 
             </center>
             <ul id="sideBar" class="nav nav-sidebar">
-              <li class="active"><a href="/profile/5d9af235b406a51778f1f6fb/informations">Profil</a></li>
-              <li><a href="/profile/5d9af235b406a51778f1f6fb/photo">Photo</a></li>
-              <li><a href="/profile/5d9af235b406a51778f1f6fb/securite">Securité</a></li>
-
-              <li><a href="/profile/5d9af235b406a51778f1f6fb/publications">Publications</a></li>
-
-              <li><a href="/profile/5d9af235b406a51778f1f6fb/publications/ajouter">Publier un bien</a></li>
-              <li><a href="/profile/5d9af235b406a51778f1f6fb/biens/notifications">Notifications</a></li>
-              <li><a href="/logout">Deconnexion</a></li>
+             
             </ul>
           </div>
           <div class="col-md-10 content">

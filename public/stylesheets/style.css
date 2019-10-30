@@ -4986,4 +4986,132 @@ Created using IcoMoon - icomoon.io
 	font-size:17px;
 }
 
+.resultatSearch{
+	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.12);
+	margin-bottom: 20px;
+}
+.resultatSearch img{
+	width: 100%;	
+}
+
+.resultatSearch p{
+
+}
+
+.resultatSearch h4{
+	font-size: 20px;
+	margin-bottom: 3px;
+    font-family: "Poppins", sans-serif !important;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	..resultatSearch h4 {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	..resultatSearch h4 {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.resultatSearch h4 h4 {
+		font-size: 14px;
+	}
+}
+
+.resultatSearch p {
+	color: #afb4bf;
+	margin-bottom: 0;
+    font-size: 14px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.resultatSearch p {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.resultatSearch p {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.resultatSearch p {
+		font-size: 12px;
+	}
+}
+
+.resultatSearch p i {
+	font-size: 16px;
+	color: #92c800;
+}
+
+.resultatSearch p.seller {
+	margin-bottom: 6px;
+	color: #afb4bf;
+    font-size: 14px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.resultatSearch p.seller {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.resultatSearch p.seller{
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.resultatSearch p.seller {
+		font-size: 12px;
+	}
+}
+
+.resultatSearch .property-info-area {
+	padding-top: 10px;
+}
+
+.resultatSearch .property-info-area p {
+	
+	margin-bottom: 3px;
+	color: #afb4bf;
+    font-size: 14px;
+    margin-right: 5%;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+	.resultatSearch .property-info-area p {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+	.resultatSearch .property-info-area p {
+		font-size: 12px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.resultatSearch .property-info-area p {
+		font-size: 12px;
+	}
+}
+
+.resultatSearch .property-info-area p:nth-child(even) {
+	text-align: right;
+}
+
+.resultatSearch .property-info-area p span {
+	color: #2a303b;
+    font-family: "Poppins", sans-serif;
+}
+
 /*# sourceMappingURL=style.css.map */

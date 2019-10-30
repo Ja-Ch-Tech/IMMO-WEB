@@ -11,6 +11,8 @@ function initUsers() {
 
             if (/profile/i.test(window.location.pathname.split("/")[1])) {
                 getAvatar(user_id);
+                //Dynamisation de la sidebar
+                dynamicSideBar(user_id);
                 if (/photo/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
                     upload();
                     updateAvatar(user_id);
@@ -36,14 +38,56 @@ function initUsers() {
                 }
                 
             }
+
+            //Verifie si le user est proprietaire
+            infoOwner(user_id, function (data) {
+                //Si proprietaire
+                if (data.getEtat) {
+                    $("#addImmoBtn").html(`<a href="/profile/${user_id}/publications/ajouter" title="Publiez un bien immobilier">Publiez votre bien </a>`)
+                }else{
+                    $("#addImmoBtn").html(`<a href="#" title="Publiez un bien immobilier">Publiez votre bien </a>`)
+
+                }
+            })
+           
         }else{
             var content = `<a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>`;
             $("#navUser").html(content);
+            //Si le user n pas connecté
+            $("#addImmoBtn").html(`<a href="#" data-toggle="modal" data-target="#modalSession" title="Publiez un bien immobilier">Publiez votre bien </a>`)
         }
 
     })
 }
+/**
+ * Dyanmise la sidebar du user connecté
+ * @param {user_id} user_id, l'identifiant 
+ */
+function dynamicSideBar(user_id) {
 
+    var active = function (href) {
+            if (href == window.location.pathname) {
+                return 'active';
+            }else{
+                return '';
+            }
+        },
+        infoOwnerNav = function(user_id) {
+            infoOwner(user_id, function (infos) {
+                if (infos.getEtat) {
+                    var li = `<li class="${active("/profile/" + user_id + "/publications")}"><a href="/profile/${user_id}/publications">Publications</a></li><li class="${active("/profile/" + user_id + "/publications/ajouter")}"><a href="/profile/${user_id}/publications/ajouter">Publier un bien</a></li>`;
+                    $("#sideBar").append(li);
+                }
+            })
+        },
+        ul = ` <li class="${active("/profile/" + user_id + "/informations")}"><a href="/profile/${user_id}/informations">Profil</a></li>
+              <li class="${active("/profile/" + user_id + "/photo")}" ><a href="/profile/${user_id}/photo">Photo</a></li>
+              <li class="${active("/profile/" + user_id + "/securite")}"><a href="/profile/${user_id}/securite">Securité</a></li>
+              <li id="mark" class="${active("/profile/" + user_id + "/biens/notifications")}"><a href="/profile/${user_id}/biens/notifications">Notifications</a></li>
+              <li class="${active("/profile/" + user_id + "/biens/contact")}"><a href="/profile/${user_id}/biens/contact">Contacts</a></li>`;
+        $("#sideBar").html(ul);
+        infoOwnerNav(user_id)
+}
 function login() {
     document.getElementById("loginForm").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -263,7 +307,9 @@ function getAvatar(user_id) {
                     
                 if (/profile/i.test(window.location.pathname.split("/")[1])) {
                     var content = `<img class="img-thumbnail" src="${image()}" alt="">
-                                    <p style="font-weight: bold;font-size: 18px;color: #333;margin:9px 0px; font-family: 'Poppins', sans-serif; text-transform: uppercase">${data.getObjet.login.username}</p>`;
+                                    <p style="font-weight: bold;font-size: 18px;color: #333;margin:9px 0px; font-family: 'Poppins', sans-serif; text-transform: uppercase">${data.getObjet.login.username}</p>
+                                    <a href="/logout"><i class="zmdi zmdi-power"></i>&nbsp;Deconnexion</a><hr>
+                                    `;
 
                     $("#thisInfo").html(content);
 

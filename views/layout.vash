@@ -138,7 +138,7 @@
                                     <div class="form-row row">
                                       <div class="col-md-12">
                                         <div class="form-holder">
-                                          <input type="text" id="password" placeholder="Mot de passe" class="form-control user-input">
+                                          <input type="password" id="password" placeholder="Mot de passe" class="form-control user-input">
                                           <span id="passwordError" class="inputError pull-left"></span>
                                         </div>
                                       </div>
@@ -238,8 +238,7 @@
                               </ul>
 
                               <!-- Contact btn -->
-                              <div class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
-                                  <a href="#" data-toggle="modal" data-target="#modalSession" title="Publiez un bien immobilier">Publiez votre bien </a>
+                              <div id="addImmoBtn" class="contact-btn mt-3 mt-lg-0 ml-3 ml-lg-5">
                               </div>
                           </div>
                           <!-- Nav End -->
