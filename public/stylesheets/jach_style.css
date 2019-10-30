@@ -5,7 +5,7 @@ div#minusImage.contentHere{
     left: 0;
     right: 0;
     min-height: 100%;
-    z-index: 990;
+    z-index: 9;
     background: rgba(0, 0, 0, .5);
     display: flex; 
     overflow: hidden;
@@ -36,4 +36,20 @@ div#minusImage.contentHere img{
 
 div#minusImage.contentHere img:last-of-type{
     margin-right: 0;
+}
+
+div.progressImmo{
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    z-index: 999 !important;
+    overflow: hidden;
+}
+
+div.progressImmo div#juiceForProgress{
+    background: var(--greenWebSite);
+    height: 100%;
+    width: 0%;
+    z-index: 999 !important;
+    border-radius: 0 8px 8px 0;
 }

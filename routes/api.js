@@ -195,7 +195,8 @@ router.get('/SessionType', (req, res) => {
 router.post('/interessant', (req, res) => {
     var data = {
         "id_user": req.body.id_user,
-        "id_owner": req.body.id_owner
+        "id_owner": req.body.id_owner,
+        "id_immo": req.boody.id_immo
     };
 
     axios.post(`${API}/extra/interest`, data)

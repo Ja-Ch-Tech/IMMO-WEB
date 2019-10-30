@@ -101,6 +101,9 @@
                                                 
                                             </div>
                                         </center>
+                                        <div class="progressImmo">
+                                            <div id="juiceForProgress"></div>
+                                        </div>
                                     </div>
                                     <div class="row" id="formImage">
                                         <div class="col-md-12">

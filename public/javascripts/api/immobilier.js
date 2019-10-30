@@ -126,7 +126,7 @@ function getNewImmobilier() {
                   <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
                       <!-- Property Thumb -->
                       <div class="property-thumb">
-                          <a href="/immo/${element._id}/details"><img src="/images/bg-img/1.jpg" alt=""></a>
+                          <a href="/immo/${element._id}/details"><img src="${element.detailsImages[0].srcFormat}" alt=""></a>
                       </div>
 
                       <!-- Property Description -->
@@ -263,7 +263,7 @@ function getDetailsImmobilier(id) {
 
                         if (isMatch) {
                             return `<div class="mt-3">
-                                        <a class="btn rehomes-btn mt-10" href="#" onclick="viewContact('${obj.id_owner}')">Je veux le contacter</a>
+                                        <a class="btn rehomes-btn mt-10" href="#" onclick="viewContact('${obj.id_owner}', '${id}')">Je veux le contacter</a>
                                     </div>`
                         } else {
                             return `<div class="mt-3">
@@ -271,29 +271,27 @@ function getDetailsImmobilier(id) {
                                     </div>`
                         }
                     },
+                    setImagesForSlides = () => {
+                        obj.detailsImages.map((value, item) => {
+                            var contentForFisrtDiv = `<li data-target="#property-thumb-silde" data-slide-to="${item}" style="background-image: url(${value.srcFormat});"></li>`;
+
+                            var contentForSecondDiv = `<div class="carousel-item active">
+                                            <img src="${value.srcFormat}" class="d-block w-100" alt="...">
+                                        </div>`;
+
+                            $("#allImagesList").append(contentForFisrtDiv);
+                            $("#allSecondList").append(contentForSecondDiv);
+                        })
+                    },
                         content = `<div class="properties-slide">
                 
                                 <div id="property-thumb-silde" class="carousel slide wow fadeInUp" data-wow-delay="200ms" data-ride="carousel">
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#property-thumb-silde" data-slide-to="0" class="active" style="background-image: url(/images/bg-img/64.jpg);"></li>
-                                        <li data-target="#property-thumb-silde" data-slide-to="1" style="background-image: url(/images/bg-img/65.jpg);"></li>
-                                        <li data-target="#property-thumb-silde" data-slide-to="2" style="background-image: url(/images/bg-img/66.jpg);"></li>
-                                        <li data-target="#property-thumb-silde" data-slide-to="3" style="background-image: url(/images/bg-img/67.jpg);"></li>
+                                    <ol class="carousel-indicators" id="allImagesList">
+                                        
                                     </ol>
 
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="/images/bg-img/64.jpg" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="/images/bg-img/65.jpg" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="/images/bg-img/66.jpg" class="d-block w-100" alt="...">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="/images/bg-img/67.jpg" class="d-block w-100" alt="...">
-                                        </div>
+                                    <div class="carousel-inner" id="allSecondList">
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -321,13 +319,14 @@ function getDetailsImmobilier(id) {
                             </div>`;
 
                     details.append(content);
+                    setImagesForSlides();
                 }
             }
         })
     })
 }
 
-function viewContact(id) {
+function viewContact(id, immo) {
     getUserId((isMatch, result) => {
         $.ajax({
             type: 'POST',
@@ -335,7 +334,8 @@ function viewContact(id) {
             dataType: "json",
             data: {
                 "id_user": result,
-                "id_owner": id
+                "id_owner": id,
+                "id_immo": immo
             },
             success: function (data) {
 
@@ -643,6 +643,7 @@ function setImage() {
                         xhr: function () {
 
                             //$(".progress").show();
+                            var progressBar = document.getElementById("juiceForProgress");
                             // create an XMLHttpRequest
                             var xhr = new XMLHttpRequest();
 
@@ -654,9 +655,19 @@ function setImage() {
                                     var percentComplete = evt.loaded / evt.total;
                                     percentComplete = parseInt(percentComplete * 100);
 
+                                    console.log(percentComplete);
+
+                                    progressBar.setAttribute("style", `width: ${percentComplete}%`)
+
                                 }
 
                             }, false);
+
+                            xhr.upload.addEventListener("loadend", (evt) => {
+                                setTimeout(() => {
+                                    progressBar.setAttribute("style", `width: 0%`)
+                                }, 500);
+                            })
 
                             return xhr;
                         }
