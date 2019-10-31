@@ -344,11 +344,12 @@
                   <!-- Footer Menu -->
                   <div class="col-12 col-sm-6">
                       <div class="footer-menu">
-                          <ul class="nav">
+                          <ul class="nav d-flex">
                               <li><a href="/">Accueil</a></li>
-                              <li><a href="/immo/12/liste">Biens en location</a></li>
-                              <li><a href="/immo/12/liste">Biens en vente</a></li>
-                              <li><a href="/apropos">A propos</a></li>
+                              <div style="display: inline;" class="d-flex" id="modeInFooter">
+                                <!-- Dynamic Content -->
+                              </div>
+                              <li style="margin-left: 20px;"><a href="/apropos">A propos</a></li>
                           </ul>
                       </div>
                   </div>
