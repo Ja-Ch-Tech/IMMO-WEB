@@ -9,6 +9,7 @@
             Ayez le bon reflex !
           </h1>
           <p class="text-center">Trouvez ici la maison de vos rêves! Grand choix de maisons et appartements à vendre, de maisons et appartements à louer, de Terrains et villa dans toutes les villes: Kinshasa, Brazzaville, Lubumbashi, etc.</p>
+         
           <!--<img stle="height: 100px;" src="/images/bg-img/house-3664320_1920.jpg" />
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17107.2892861271!2d-74.01626372475907!3d40.714272545051664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbd!4v1551762805743" allowfullscreen></iframe> -->
       </div>
@@ -18,54 +19,32 @@
   <div class="rehomes-search-form-area wow fadeInUp" data-wow-delay="200ms">
       <div class="container">
           <div class="rehomes-search-form">
-              <form action="#" method="post">
+              <form id="postSearch" action="#" method="post">
                   <div class="row">
                       <div class="col-12 col-lg-10">
                           <div class="row">
-                              <div class="col-12 col-md-6 col-lg-3">
-                                  <select name="location" id="location" class="form-control">
-                                      <option value="location">Location</option>
-                                      <option value="armenia">Vente</option>
+                              <div class="col-12 col-md-6 col-lg-4">
+                                  <select name="mode" id="modeSearch" class="form-control">
                                   </select>
-                              </div>
-                              <div class="col-12 col-md-6 col-lg-3">
-                                  <select name="types" id="types" class="form-control">
-                                      <option>Type de biens</option>
-                                      <option value="commercial">Villa</option>
-                                      <option value="office">Type</option>
-                                      <option value="villa">Studio</option>
-                                      <option value="apartment">Duplex</option>
-                                      <option value="condominium">Bureau</option>
-                                  </select>
-                              </div>
-                              <div class="col-12 col-md-6 col-lg-3">
-                                  <select name="city" id="city" class="form-control">
-                                      <option value="01">Ville</option>
-                                      <option value="02">Kinshasa</option>
-                                      <option value="03">Lubumbashi</option>
-                                      <option value="04">Likasi</option>
-                                  </select>
-                              </div>
-                              <div class="col-12 col-md-6 col-lg-3">
-                                  <select name="all" id="all" class="form-control">
-                                      <option value="01">Communes</option>
-                                      <option value="02">Gombe</option>
-                                      <option value="03">Kintambo</option>
-                                      <option value="04">Lingwala</option>
-                                      <option value="05">Kinshasa</option>
-                                  </select>
-                              </div>
-                              <div class="col-12 col-md-6 col-lg-2">
-                                  <input type="number" name="message-name" class="form-control mb-20" placeholder="Nb.pieces">
-                              </div>
-                              <div class="col-12 col-md-6 col-lg-3">
-                                  <input type="number" name="message-name" class="form-control mb-20" placeholder="Prix minimum (USD)">
-                              </div>
-                              <div class="col-12 col-md-6 col-lg-3">
-                                  <input type="number" name="message-name" class="form-control mb-20" placeholder="Prix maximum (USD)">
                               </div>
                               <div class="col-12 col-md-6 col-lg-4">
-                                  <input type="number" name="message-name" class="form-control mb-20" placeholder="Nb.salle de bain Min.">
+                                  <select name="type" id="typesSearch" class="form-control">
+                                  </select>
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-4">
+                                  <input type="text" name="commune" class="form-control mb-20" placeholder="Commune">
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-3">
+                                  <input type="number" name="nbrePiece" class="form-control mb-20" placeholder="Nombre de pieces">
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-3">
+                                  <input type="number" name="montantMin" class="form-control mb-20" placeholder="Prix minimum (USD)">
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-3">
+                                  <input type="number" name="montantMax" class="form-control mb-20" placeholder="Prix maximum (USD)">
+                              </div>
+                              <div class="col-12 col-md-6 col-lg-3">
+                                  <input type="number" name="nbreChambre" class="form-control mb-20" placeholder="Nb.chambre à coucher">
                               </div>
                           </div>
                       </div>
@@ -81,16 +60,19 @@
   <!-- **** Categories By Property Area Start **** -->
   <section class="rehomes-categories-property-area section-padding-100-70">
       <div class="container" id="typeProperties">
+          <div style="display: none;" class="loader09"></div>
           <!-- Dynamic Content-->
       </div>
   </section>
   <!-- **** Categories By Property Area End **** -->
   <!-- **** Sale area Start **** -->
   <section class="rehome-house-sale-area section-padding-100-60">
-      <div class="container" id="newImmo">
+      <div class="container pt-50" id="newImmo">
+          <div style="display: none;" class="loader09"></div>
           <!--  Dynamic content -->
       </div>
   </section>
-  <!-- **** Sale Area End **** -->
+   
+  
   })
 })

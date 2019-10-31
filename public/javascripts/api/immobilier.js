@@ -1,7 +1,26 @@
-var typeProp, newImmo, details, images = [], dataAvatarImmo;
+var typeProp, newImmo, details, images = [], dataAvatarImmo,errorServer, noFound;
 
 $(document).ready(function () {
     initImmo();
+    errorServer = `
+    <div class="MainGraphic">
+        <svg class="Cog" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.18 19.07c-1.678-2.908-.668-6.634 2.256-8.328L28.29 5.295c-.897.527-1.942.83-3.057.83-3.36 0-6.085-2.743-6.085-6.126h-6.29c.01 1.043-.25 2.102-.81 3.07-1.68 2.907-5.41 3.896-8.34 2.21L.566 10.727c.905.515 1.69 1.268 2.246 2.234 1.677 2.904.673 6.624-2.24 8.32l3.145 5.447c.895-.522 1.935-.82 3.044-.82 3.35 0 6.066 2.725 6.083 6.092h6.29c-.004-1.035.258-2.08.81-3.04 1.676-2.902 5.4-3.893 8.325-2.218l3.145-5.447c-.9-.515-1.678-1.266-2.232-2.226zM16 22.48c-3.578 0-6.48-2.902-6.48-6.48S12.423 9.52 16 9.52c3.578 0 6.48 2.902 6.48 6.48s-2.902 6.48-6.48 6.48z"/></svg>
+    </div>
+
+      </svg>
+     <h1 class="MainTitle">
+          An error has occurred
+        </h1>
+      <p class="Main Description">
+        Server is currently under high load - please hit 'reload' on your browser in a minute to try again
+      </p>`;
+      noFound = `<div id="notfound">
+        <div class="notfound">
+            <h2>AUCUN IMMOBILIER POUR LE MOMENT</h2>
+            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+24389999999</b> pour plus de details</p>
+            <a href="javascript:history.back()">Retour en arriere</a>
+        </div>
+    </div>`;
 })
 
 function initImmo() {
@@ -10,6 +29,21 @@ function initImmo() {
         newImmo = $("#newImmo");
         getStatType();
         getNewImmobilier();
+
+        // Recherche, remplissage des inputs
+        getTypeImmo(function (data) {
+            dynamiqueInput(data, "typesSearch");
+        })
+
+        //Rempli le select mode
+        getAllMode(function (data) {
+            dynamiqueInput(data, "modeSearch");
+        })
+
+        //A la soumission du formulaire d'accueil
+        storageKeys("postSearch", function (data) {
+            window.location.href = "/immo/recherche";
+        });
     }
     if (/vente/i.test(window.location.pathname.split("/")[2]) && /immo/i.test(window.location.pathname.split("/")[1]) && /liste/i.test(window.location.pathname.split("/")[4])) {
 
@@ -30,6 +64,216 @@ function initImmo() {
         var type_id = window.location.pathname.split("/")[3];
         getImmoByType(type_id)
     }
+
+    if (/immo/i.test(window.location.pathname.split("/")[1]) && /recherche/i.test(window.location.pathname.split("/")[2])) {
+        searchImmo();
+        //Gere le select mode
+        manageModeSearch();
+        //Gere le select type
+        manageTypeSearch();
+        //Gere les autres inputs text
+        inputSearch();
+
+        //Lorsqu'on soumet le formulaire se trouvant sur la page de recherche
+        storageKeys("postOnSearchPage", function (data) {
+            searchImmo();
+        })
+    }
+
+}
+// Lance la recherche des immobiliers
+function searchImmo() {
+    var datas = {
+        "mode" : sessionStorage.getItem('mode'),
+        "type" : sessionStorage.getItem('type'),
+        "commune" : sessionStorage.getItem('commune'),
+        "nbrePiece" : sessionStorage.getItem('nbrePiece'),
+        "montantMin" : sessionStorage.getItem('montantMin'),
+        "montantMax" : sessionStorage.getItem('montantMax'),
+        "nbreChambre" : sessionStorage.getItem('nbreChambre')
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: "/api/searchImmo",
+        dataType: "json",
+        data: datas,
+        beforeSend : function () {
+            //Loader de la recherche
+            $("#searchContent").html('<div class="loader08"></div>');
+        },
+        success : function (data) {
+            $("#searchContent").html('');
+            if (data.getEtat) {
+                var sortieImmo = 0,
+                    textSearch = function () {
+                        if (data.getObjet.immobiliers.length == 0) {
+                            return `<span style="color: #2a303b">Aucun</span> immobilier trouvé pour votre recherche`;
+                        }else if (data.getObjet.immobiliers.length == 1) {
+                             return `<span style="color: #2a303b">un</span> immobilier trouvé pour votre recherche`;
+                        }else if (data.getObjet.immobiliers.length > 1) {
+                            return `<span style="color: #2a303b">${data.getObjet.immobiliers.length}</span> immobilier trouvé pour votre recherche`;
+                        }else{
+                            `Une erreur est survenue, veuillez reessayer avec des bonnes données`;
+                        }
+                    }
+                    content = `<div class="col-12 col-md-12 col-lg-12">
+                                    <h4 style="font-family: 'Poppins', sans-serif !important;margin-bottom:20px;">${textSearch()}</h4>
+                                </div>
+                                <div id="searchImmoContent" class="col-12 col-md-12 col-lg-12">
+                                    
+                                </div>`;
+                $("#searchContent").html(content);
+
+                //Ajout des immobilier
+                data.getObjet.immobiliers.map(immobilier => {
+                       sortieImmo++;
+                        var rentOrSale = () => {
+                            if (/location/i.test(immobilier.mode)) {
+                                return `A louer ${immobilier.prix} USD/mois`
+                            } else {
+                                return `A vendre ${immobilier.prix} USD`
+                            }
+                        },
+                        description = () => {
+                            var description = immobilier.description;
+                            if (description.length >= 200) {
+                                description = description.substr(0, 200) + "...";
+                            }
+                            return description;
+                        }
+                        immobilierContent = `<a href="/immo/${immobilier._id}/details">
+                        <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
+                            <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
+                                <img style="height: 100%" src="/images/bg-img/2.jpg" alt="">
+                            </div>
+                            <div style="padding: 10px;" class="col-md-8">
+                                <div class="pull-right property-seller">
+                                    <p>Proprietaire:</p>
+                                    <h6>${immobilier.prenomOwner}&nbsp;${immobilier.nomOwner}</h6>
+                                </div>
+                                <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
+                                <h4>${rentOrSale()}</h4>
+                                <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                <p style="font-size: 13px;margin-bottom: 16px;">
+                                    ${description()}
+                                </p>
+                                <hr style="margin-bottom: 0px;">
+                                <div class="property-info-area d-flex flex-wrap">
+                                      ${immobilier.surface ? `<p>Superficie: <span>${immobilier.surface}m<sup>2</sup></span></p>` : ""}
+                                      ${immobilier.nbrePiece ? `<p>Pièce: <span>${immobilier.nbrePiece}</span></p>` : ""}
+                                      ${immobilier.nbreChambre ? `<p>Chambre: <span>${immobilier.nbreChambre}</span></p>` : ""}
+                                      ${immobilier.nbreDouche ? `<p>Douche: <span>${immobilier.nbreDouche}</span></p>` : ""}
+                                </div>
+                            </div>
+
+                        </div></a>`;
+                    if (sortieImmo == data.getObjet.immobiliers.length) {
+                        $("#searchImmoContent").append(immobilierContent);
+                    }
+                })
+            }else{
+                $("#searchContent").html(`<div id="notfound">
+                        <div class="notfound">
+                            <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
+                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+24389999999</b> pour plus de details</p>
+                            <a href="javascript:history.back()">Retour en arriere</a>
+                        </div>
+                    </div>`);
+            }
+            
+        },error : function (err) {
+            $("#searchContent").html('');
+            $("#searchContent")[0].append(errorServer);
+        }
+    });
+
+}
+// Met en session les clef de recherche
+function storageKeys(id, callback) {
+    $("#" + id).on('submit', function (e) {
+        e.preventDefault();
+
+        var inputs = e.target.elements,
+            objData = {},
+            sortieInput = 0;
+        
+        for (var index = 0; index < inputs.length; index++) {
+            sortieInput++;
+            if (/input/i.test(e.target.elements[index].localName)) {
+                sessionStorage.setItem(inputs[index].name, inputs[index].value);
+            }
+
+            if (/textarea/i.test(e.target.elements[index].localName)) {
+                sessionStorage.setItem(inputs[index].name, inputs[index].value);
+            }
+
+            if (/select/i.test(e.target.elements[index].localName)) {
+                sessionStorage.setItem(inputs[index].name, inputs[index].options[inputs[index].selectedIndex].value);
+            }
+
+            if (sortieInput == inputs.length) {
+                
+                
+                callback(true);
+              
+            }
+        }
+    })
+}
+
+//Gere le select mode
+function manageModeSearch() {
+    var modeBlock = $("#modeSearch").next();
+    getAllMode(function (data) {
+        
+        data.map(mode => {
+            var option = `<option value="${mode._id}">${mode.intitule}</option>`,
+                contentModeLi = `<li class="option" data-value="${mode._id}">${mode.intitule}</li>`;
+            if (sessionStorage.getItem('mode') == mode._id) {
+                option = `<option selected value="${mode._id}">${mode.intitule}</option>`;
+                modeBlock[0].getElementsByClassName('current')[0].innerHTML = mode.intitule;
+            }else{
+                modeBlock[0].getElementsByClassName('current')[0].innerHTML = data[0].intitule;
+            }
+
+            modeBlock[0].getElementsByClassName('list')[0].innerHTML += contentModeLi;
+            $("#modeSearch").append(option);
+           
+        })
+    })
+}
+
+//Gere le select type
+function manageTypeSearch() {
+    var typeBlock = $("#typeSearch").next();
+    getTypeImmo(function (data) {
+        
+        data.map(type => {
+            var option = `<option value="${type._id}">${type.intitule}</option>`,
+                contenttypeLi = `<li class="option" data-value="${type._id}">${type.intitule}</li>`;
+            if (sessionStorage.getItem('type') == type._id) {
+                option = `<option selected value="${type._id}">${type.intitule}</option>`;
+                typeBlock[0].getElementsByClassName('current')[0].innerHTML = type.intitule;
+            }else{
+                typeBlock[0].getElementsByClassName('current')[0].innerHTML = data[0].intitule;
+            }
+
+            typeBlock[0].getElementsByClassName('list')[0].innerHTML += contenttypeLi;
+            $("#typeSearch").append(option);
+           
+        })
+    })
+    
+}
+//Gere les inputs de recherche
+function inputSearch() {
+    //Met les value se trouvant en session dans les inputs
+    $("#communeSearch").val(sessionStorage.getItem('commune'));
+    $("#nbrePieceSearch").val(sessionStorage.getItem('nbrePiece'));
+    $("#montantMinSearch").val(sessionStorage.getItem('montantMin'));
+    $("#montantMaxSearch").val(sessionStorage.getItem('montantMax'));
+    $("#nbreChambre").val(sessionStorage.getItem('nbreChambre'));
 }
 
 function getStatType() {
@@ -37,8 +281,12 @@ function getStatType() {
         type: 'GET',
         url: '/api/statType',
         dataType: "json",
+        beforeSend : function () {
+            typeProp[0].getElementsByClassName('loader09')[0].style.display = "block";
+        },
         success: function (data) {
             if (data.getEtat) {
+                typeProp[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (data.getObjet.length > 0) {
                     var contentHead = `<div class="row" id="elementProp">
                                     <div class="col-12">
@@ -52,6 +300,7 @@ function getStatType() {
                     typeProp.append(contentHead);
 
                     data.getObjet.map(prop => {
+
                         var contentBody = `<div class="col-12 col-md-3">
                                             <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp" data-wow-delay="200ms">
                                                 <div class="property-thumb">
@@ -71,6 +320,9 @@ function getStatType() {
                 }
             }
 
+        },error: function (err) {
+            typeProp[0].getElementsByClassName('loader09')[0].style.display = "none";
+            typeProp.append(errorServer);
         }
     });
 }
@@ -84,8 +336,12 @@ function getNewImmobilier() {
         type: 'GET',
         url: '/api/new',
         dataType: "json",
+        beforeSend : function () {
+            newImmo[0].getElementsByClassName('loader09')[0].style.display = "block";
+        },
         success: function (data) {
             if (data.getEtat) {
+                newImmo[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (data.getObjet.length > 0) {
                     var contentHeadAndFooter = `<div class="row">
                                     <div class="col-12">
@@ -164,20 +420,24 @@ function getNewImmobilier() {
                     })
                 }
             }
+        },error : function (err) {
+            newImmo[0].getElementsByClassName('loader09')[0].style.display = "none";
         }
     });
 }
 
 //Recupere les immo par mode
 function getImmoByMode(mode_id, bloc_id) {
+    var bloc = $("#" + bloc_id);
     $.ajax({
         type: 'GET',
         url: '/api/immo_by_mode/' + mode_id,
         dataType: "json",
         beforeSend: function () {
-
+            bloc[0].getElementsByClassName('loader09')[0].style.display = "block";
         },
         success: function (data) {
+            bloc[0].getElementsByClassName('loader09')[0].style.display = "none";
             if (data.getEtat) {
                 if (data.getObjet.length > 0) {
 
@@ -237,11 +497,12 @@ function getImmoByMode(mode_id, bloc_id) {
 
                 }
             } else {
-
+                bloc.append(noFound);
             }
         },
         error: function (err) {
-            console.log(err);
+            bloc[0].getElementsByClassName('loader09')[0].style.display = "none";
+            bloc.append(errorServer);
         }
     });
 }
@@ -253,12 +514,13 @@ function getDetailsImmobilier(id) {
             url: `/api/details/${id}`,
             dataType: "json",
             beforeSend: function () {
-
+                details[0].getElementsByClassName('loader09')[0].style.display = "block";
             },
             success: function (datas) {
+                details[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (datas.getEtat) {
                     console.log(datas.getObjet);
-                    var obj = datas.getObjet;
+                    var obj = datas.getObjet,
                     interestOrNot = () => {
 
                         if (isMatch) {
@@ -321,6 +583,9 @@ function getDetailsImmobilier(id) {
                     details.append(content);
                     setImagesForSlides();
                 }
+            },error : function (err) {
+                details[0].getElementsByClassName('loader09')[0].style.display = "none";
+                details.append(errorServer);
             }
         })
     })
@@ -338,7 +603,7 @@ function viewContact(id, immo) {
                 "id_immo": immo
             },
             success: function (data) {
-
+                console.log(data)
                 var modal = document.getElementById("modalForContactUs"),
                     obj = data.getObjet;
 
@@ -395,9 +660,10 @@ function getImmoByType(type_id) {
         url: '/api/getAllForType/' + type_id,
         dataType: "json",
         beforeSend: function () {
-
+            $("#immoParTypeBloc")[0].getElementsByClassName('loader09')[0].style.display = "block";
         },
         success: function (data) {
+            $("#immoParTypeBloc")[0].getElementsByClassName('loader09')[0].style.display = "none";
             if (data.getEtat) {
                 var immoParTypeContent = `<div class="row">
                         <div class="col-12">
@@ -468,11 +734,12 @@ function getImmoByType(type_id) {
 
                 }
             } else {
-
+                $("#immoParTypeBloc").append(noFound);
             }
         },
         error: function (err) {
-            console.log(err);
+            $("#immoParTypeBloc")[0].getElementsByClassName('loader09')[0].style.display = "none";
+            $("#immoParTypeBloc").append(errorServer);
         }
     });
 }

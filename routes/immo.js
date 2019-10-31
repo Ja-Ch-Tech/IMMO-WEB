@@ -36,4 +36,11 @@ router.get('/type/:type_id/liste', function (req, res, next) {
 	});
 });
 
+// RECHERCHE DES IMMOBILIER
+router.get('/recherche', function (req, res, next) {
+	res.render('recherche', {
+		title : 'Recherche'
+	})
+})
+
 module.exports = router;

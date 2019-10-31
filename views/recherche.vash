@@ -1,0 +1,52 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) {
+      
+   <hr>
+    <section class="rehome-house-sale-area pt-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="property-search-form-area mb-80 wow fadeInUp" data-wow-delay="200ms">
+                            <form id="postOnSearchPage" action="#" method="post">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <select name="mode" id="modeSearch" class="form-control">
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <select name="type" id="typeSearch" class="form-control">
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="text" id="communeSearch" name="commune" class="form-control mb-20" placeholder="Commune">
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="text" id="nbrePieceSearch" name="nbrePiece" class="form-control mb-20" placeholder="Nb.pieces">
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="number" id="montantMinSearch" name="montantMin" class="form-control mb-20" placeholder="Prix minimum (USD)">
+
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="number" id="montantMaxSearch" name="montantMax" class="form-control mb-20" placeholder="Prix maximum (USD)">
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="number" id="nbreChambreSearch" name="nbreChambre" class="form-control mb-20" placeholder="Nb.chambre à coucher">
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn rehomes-btn mt-15 w-100">Lancer la recherche</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                </div>
+                <div id="searchContent" class="col-md-9">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+  })
+})

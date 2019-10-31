@@ -364,4 +364,40 @@ router.post('/addImmob', (req, res) => {
     }
 })
 
+//Recherche d'un immo
+router.post('/searchImmo', (req, res) => {
+    var datas = {
+        "mode" : req.body.mode,
+        "type" : req.body.type,
+        "commune" : req.body.commune,
+        "nbrePiece" : parseInt(req.body.nbrePiece),
+        "montantMax" : parseInt(req.body.montantMax),
+        "montantMin" : parseInt(req.body.montantMin),
+        "nbreChambre" : parseInt(req.body.nbreChambre) 
+    }
+
+    axios.post(`${API}/immobilier/search`, datas)
+     .then(responseRecherche => {
+         res.status(200);
+         res.send(responseRecherche.data)
+     })
+     .catch(err => {
+         res.status(500);
+         res.send(err);
+     })
+})
+
+//Recupere les infos d'un proprietaire
+router.get('/infoOwner/:id_owner', (req, res) => {
+    axios.get(`${API}/users/infoOwner/${req.params.id_owner}`)
+        .then(response => {
+            res.status(200);
+            res.send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+})
+
 module.exports = router;

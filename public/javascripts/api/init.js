@@ -61,3 +61,21 @@ function getUserId(callback) {
             $("#" + id).append(contentTypeOption);
        })
 }
+
+/**
+ * Fonction permettant de verifier si le user est proprietaire
+ * @param string l'id du user
+ */
+ function infoOwner(user_id, callback) {
+    $.ajax({
+        type: 'GET',
+        url: "/api/infoOwner/" + user_id,
+        dataType: "json",
+        success: function (data) {
+            callback(data)
+        },
+        error : function (err) {
+            console.log(err)
+        }
+    });
+ }
