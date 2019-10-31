@@ -2,7 +2,7 @@
   @html.block('content', function(model) {
     <!-- **** Sale area Start **** -->
     <hr>
-    <section class="rehome-house-sale-area pt-50">
+    <section class="rehome-house-sale-area mb-100 pt-50">
         <div class="container">
             <div class="row">
               <div class="col-12">
@@ -14,7 +14,7 @@
               </div>
             </div>
             <div id="immoVente" class="row">
-              
+                <div style="display: none;" class="loader09"></div>
             </div>
         </div>
     </section>

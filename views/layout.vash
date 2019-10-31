@@ -21,6 +21,7 @@
     <!-- MATERIAL DESIGN ICONIC FONT -->
 		<link rel="stylesheet" href="/vendors/wizard-form/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/loaders.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet"> 
 
     <script type='text/javascript'
@@ -208,7 +209,10 @@
                   <nav class="classy-navbar justify-content-between" id="rehomesNav">
 
                       <!-- Logo -->
-                      <a class="nav-brand" href="/"><img src="/images/core-img/logo.png" alt=""></a>
+                      <a class="nav-brand" href="/">
+                        NDAKUBIZZ
+                        <!-- <img src="/images/core-img/logo.png" alt=""> -->
+                      </a>
 
                       <!-- Navbar Toggler -->
                       <div class="classy-navbar-toggler">
@@ -262,7 +266,10 @@
                   <div class="col-12 col-sm-6 col-lg-3">
                       <div class="single-footer-widget mb-80">
                           <!-- Footer Logo -->
-                          <a href="#" class="footer-logo"><img src="/images/core-img/logo-2.png" alt=""></a>
+                          <a href="#" class="footer-logo">
+                            NDAKUBIZZ
+                            <!-- <img src="/images/core-img/logo-2.png" alt=""> -->
+                          </a>
 
                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
                           <!-- Social Info -->

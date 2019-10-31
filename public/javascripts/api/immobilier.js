@@ -1,7 +1,26 @@
-var typeProp, newImmo, details, images = [], dataAvatarImmo;
+var typeProp, newImmo, details, images = [], dataAvatarImmo,errorServer, noFound;
 
 $(document).ready(function () {
     initImmo();
+    errorServer = `
+    <div class="MainGraphic">
+        <svg class="Cog" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M29.18 19.07c-1.678-2.908-.668-6.634 2.256-8.328L28.29 5.295c-.897.527-1.942.83-3.057.83-3.36 0-6.085-2.743-6.085-6.126h-6.29c.01 1.043-.25 2.102-.81 3.07-1.68 2.907-5.41 3.896-8.34 2.21L.566 10.727c.905.515 1.69 1.268 2.246 2.234 1.677 2.904.673 6.624-2.24 8.32l3.145 5.447c.895-.522 1.935-.82 3.044-.82 3.35 0 6.066 2.725 6.083 6.092h6.29c-.004-1.035.258-2.08.81-3.04 1.676-2.902 5.4-3.893 8.325-2.218l3.145-5.447c-.9-.515-1.678-1.266-2.232-2.226zM16 22.48c-3.578 0-6.48-2.902-6.48-6.48S12.423 9.52 16 9.52c3.578 0 6.48 2.902 6.48 6.48s-2.902 6.48-6.48 6.48z"/></svg>
+    </div>
+
+      </svg>
+     <h1 class="MainTitle">
+          An error has occurred
+        </h1>
+      <p class="Main Description">
+        Server is currently under high load - please hit 'reload' on your browser in a minute to try again
+      </p>`;
+      noFound = `<div id="notfound">
+        <div class="notfound">
+            <h2>AUCUN IMMOBILIER POUR LE MOMENT</h2>
+            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+24389999999</b> pour plus de details</p>
+            <a href="javascript:history.back()">Retour en arriere</a>
+        </div>
+    </div>`;
 })
 
 function initImmo() {
@@ -81,9 +100,10 @@ function searchImmo() {
         data: datas,
         beforeSend : function () {
             //Loader de la recherche
+            $("#searchContent").html('<div class="loader08"></div>');
         },
         success : function (data) {
-
+            $("#searchContent").html('');
             if (data.getEtat) {
                 var sortieImmo = 0,
                     textSearch = function () {
@@ -153,9 +173,18 @@ function searchImmo() {
                     }
                 })
             }else{
-                $("#searchContent").html("<h2> Aucun resultat pour votre recherche</h2>")
+                $("#searchContent").html(`<div id="notfound">
+                        <div class="notfound">
+                            <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
+                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+24389999999</b> pour plus de details</p>
+                            <a href="javascript:history.back()">Retour en arriere</a>
+                        </div>
+                    </div>`);
             }
             
+        },error : function (err) {
+            $("#searchContent").html('');
+            $("#searchContent")[0].append(errorServer);
         }
     });
 
@@ -252,8 +281,12 @@ function getStatType() {
         type: 'GET',
         url: '/api/statType',
         dataType: "json",
+        beforeSend : function () {
+            typeProp[0].getElementsByClassName('loader09')[0].style.display = "block";
+        },
         success: function (data) {
             if (data.getEtat) {
+                typeProp[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (data.getObjet.length > 0) {
                     var contentHead = `<div class="row" id="elementProp">
                                     <div class="col-12">
@@ -287,6 +320,9 @@ function getStatType() {
                 }
             }
 
+        },error: function (err) {
+            typeProp[0].getElementsByClassName('loader09')[0].style.display = "none";
+            typeProp.append(errorServer);
         }
     });
 }
@@ -300,8 +336,12 @@ function getNewImmobilier() {
         type: 'GET',
         url: '/api/new',
         dataType: "json",
+        beforeSend : function () {
+            newImmo[0].getElementsByClassName('loader09')[0].style.display = "block";
+        },
         success: function (data) {
             if (data.getEtat) {
+                newImmo[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (data.getObjet.length > 0) {
                     var contentHeadAndFooter = `<div class="row">
                                     <div class="col-12">
@@ -380,20 +420,24 @@ function getNewImmobilier() {
                     })
                 }
             }
+        },error : function (err) {
+            newImmo[0].getElementsByClassName('loader09')[0].style.display = "none";
         }
     });
 }
 
 //Recupere les immo par mode
 function getImmoByMode(mode_id, bloc_id) {
+    var bloc = $("#" + bloc_id);
     $.ajax({
         type: 'GET',
         url: '/api/immo_by_mode/' + mode_id,
         dataType: "json",
         beforeSend: function () {
-
+            bloc[0].getElementsByClassName('loader09')[0].style.display = "block";
         },
         success: function (data) {
+            bloc[0].getElementsByClassName('loader09')[0].style.display = "none";
             if (data.getEtat) {
                 if (data.getObjet.length > 0) {
 
@@ -453,11 +497,12 @@ function getImmoByMode(mode_id, bloc_id) {
 
                 }
             } else {
-
+                bloc.append(noFound);
             }
         },
         error: function (err) {
-            console.log(err);
+            bloc[0].getElementsByClassName('loader09')[0].style.display = "none";
+            bloc.append(errorServer);
         }
     });
 }
@@ -469,12 +514,13 @@ function getDetailsImmobilier(id) {
             url: `/api/details/${id}`,
             dataType: "json",
             beforeSend: function () {
-
+                details[0].getElementsByClassName('loader09')[0].style.display = "block";
             },
             success: function (datas) {
+                details[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (datas.getEtat) {
                     console.log(datas.getObjet);
-                    var obj = datas.getObjet;
+                    var obj = datas.getObjet,
                     interestOrNot = () => {
 
                         if (isMatch) {
@@ -538,6 +584,9 @@ function getDetailsImmobilier(id) {
 
                     details.append(content);
                 }
+            },error : function (err) {
+                details[0].getElementsByClassName('loader09')[0].style.display = "none";
+                details.append(errorServer);
             }
         })
     })
@@ -554,7 +603,7 @@ function viewContact(id) {
                 "id_owner": id
             },
             success: function (data) {
-
+                console.log(data)
                 var modal = document.getElementById("modalForContactUs"),
                     obj = data.getObjet;
 
@@ -611,9 +660,10 @@ function getImmoByType(type_id) {
         url: '/api/getAllForType/' + type_id,
         dataType: "json",
         beforeSend: function () {
-
+            $("#immoParTypeBloc")[0].getElementsByClassName('loader09')[0].style.display = "block";
         },
         success: function (data) {
+            $("#immoParTypeBloc")[0].getElementsByClassName('loader09')[0].style.display = "none";
             if (data.getEtat) {
                 var immoParTypeContent = `<div class="row">
                         <div class="col-12">
@@ -684,11 +734,12 @@ function getImmoByType(type_id) {
 
                 }
             } else {
-
+                $("#immoParTypeBloc").append(noFound);
             }
         },
         error: function (err) {
-            console.log(err);
+            $("#immoParTypeBloc")[0].getElementsByClassName('loader09')[0].style.display = "none";
+            $("#immoParTypeBloc").append(errorServer);
         }
     });
 }

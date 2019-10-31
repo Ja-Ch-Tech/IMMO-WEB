@@ -2,9 +2,9 @@
   @html.block('content', function(model) {
     <!-- **** Sale area Start **** -->
     <hr>
-    <section class="rehome-house-sale-area pt-50">
+    <section class="rehome-house-sale-area mb-100 pt-50">
       <div id="immoParTypeBloc" class="container">
-          
+           <div style="display: none;" class="loader09"></div>
       </div>
     </section>
     <!-- **** Sale Area End **** -->

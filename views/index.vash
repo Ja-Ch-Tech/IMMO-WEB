@@ -60,16 +60,19 @@
   <!-- **** Categories By Property Area Start **** -->
   <section class="rehomes-categories-property-area section-padding-100-70">
       <div class="container" id="typeProperties">
+          <div style="display: none;" class="loader09"></div>
           <!-- Dynamic Content-->
       </div>
   </section>
   <!-- **** Categories By Property Area End **** -->
   <!-- **** Sale area Start **** -->
   <section class="rehome-house-sale-area section-padding-100-60">
-      <div class="container" id="newImmo">
+      <div class="container pt-50" id="newImmo">
+          <div style="display: none;" class="loader09"></div>
           <!--  Dynamic content -->
       </div>
   </section>
-  <!-- **** Sale Area End **** -->
+   
+  
   })
 })
