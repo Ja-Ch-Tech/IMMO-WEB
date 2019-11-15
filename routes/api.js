@@ -191,35 +191,6 @@ router.get('/SessionType', (req, res) => {
     res.send(obj)
 })
 
-//Permet d'assigner notre admission à une maison
-router.post('/interessant', (req, res) => {
-    var data = {
-        "id_user": req.body.id_user,
-        "id_owner": req.body.id_owner,
-        "id_immo": req.boody.id_immo
-    };
-
-    axios.post(`${API}/extra/interest`, data)
-        .then(response => {
-
-            axios.get(`${API}/users/infoOwner/${data.id_owner}`)
-                .then(owner => {
-
-                    res.status(200);
-                    res.send(owner.data)
-                })
-                .catch(err => {
-                    res.status(500);
-                    res.send(err)
-                })
-
-        })
-        .catch(err => {
-            res.status(500);
-            res.send(err)
-        })
-})
-
 //Permettant la récupération des tous les types
 router.get('/getTypeImmo', (req, res) => {
     axios.get(`${API}/type/getAll`)
@@ -398,6 +369,39 @@ router.get('/infoOwner/:id_owner', (req, res) => {
             res.status(500);
             res.send(err)
         })
+})
+
+//Recupère les immobiliers d'un propriétaire
+router.get('/immobilier/owner/getAll', (req, res) => {
+    axios.get(`${API}/immobilier/getAllByModeForOwner/${req.session.id}`)
+         .then(response => {
+             res.status(200);
+             res.send(response.data)
+         })
+         .catch(err => {
+             res.status(500);
+             res.send(err)
+         })
+})
+
+router.post('/int', (req, res) => {
+    var obj = {
+        "id_user": req.session.id,
+        "id_owner": req.body.id_owner,
+        "id_immo": req.body.id_immo
+    };
+
+    axios.post(`${API}/extra/interest`, obj)
+         .then(response => {
+             console.log(response.data);
+             
+             res.status(200);
+             res.send(response.data)
+         })
+         .catch(err => {
+             res.status(500);
+             res.send(err)
+         })
 })
 
 module.exports = router;

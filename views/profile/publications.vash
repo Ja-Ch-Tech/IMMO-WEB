@@ -1,133 +1,169 @@
 @html.extend('profile/profile_layout', function(model){
     @html.append('blocuser', function(model){
       <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
-       <div class="header text-center">
-            <h3 style="border:none;">MES publications</h3>
-            <p style="margin-bottom: 0px;">differents biens que vous avez publié</p>
-        </div>
-        <div class="body row">
+      <div id="allImmoForOWner">
+        
+        <div class="body row" id="lineImmoForOwner">
             <div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Titre</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <a href="/immo/15/details">
-                      <img class="img-thumbnail" style="height: 90px;width: 100px;" src="/images/bg-img/1.jpg" alt="">
-                    </a>
-                  </td>
-                  <td>
-                        <a href="/immo/15/details"><h4>7660 Nikolaus Burg Nikolaus Burg Nikolaus Burg</h4></a>
-                        <p style="margin-bottom: 0px;"><i class="fa fa-map-marker" aria-hidden="true"></i> GA 125, Newyork</p>
-                        <span style="font-size: 14px;font-family: calibri;"><i class="fa fa-clock-o"></i>&nbsp;publié le 20 juillet 2020</span><br>
-                        <span style="padding: 5px;background-color: rgba(154,205,50,0.9);color: #fff;font-family: calibri;">• A vendre</span>
-                        <span style="background-color: rgb(242,101,34,0.9);padding: 5px;color: #fff;font-family: calibri;">• Suspendu</span>
-                        <span style="padding: 5px;color: #333;font-family: calibri;">• $15000000</span><br>
-                        <span class="pull-right" style="font-family: calibri;color: #f26522;"><i class="now-ui-icons travel_info"></i>&nbsp;&nbsp;En attente de l'approbation de l'administration</span>
-                  </td>                  
-                </tr>
-                <tr>
-                  <td>
-                    <a href="/immo/15/details">
-                      <img class="img-thumbnail" style="height: 90px;width: 100px;" src="/images/bg-img/1.jpg" alt="">
-                    </a>
-                  </td>
-                  <td>
-                        <a href="/immo/15/details"><h4>7660 Nikolaus Burg Nikolaus Burg Nikolaus Burg</h4></a>
-                        <p style="margin-bottom: 0px;"><i class="fa fa-map-marker" aria-hidden="true"></i> GA 125, Newyork</p>
-                        <span style="font-size: 14px;font-family: calibri;"><i class="fa fa-clock-o"></i>&nbsp;publié le 20 juillet 2020</span><br>
-                        <span style="padding: 5px;background-color: rgba(154,205,50,0.9);color: #fff;font-family: calibri;">• A Louer</span>
-                        <span style="background-color: rgb(242,101,34,0.6);padding: 5px;color: #fff;font-family: calibri;">• Déjà pris</span>
-                        <span style="padding: 5px;color: #333;font-family: calibri;">• $1500/mois</span>
-                        
-                        <a style="margin-left: 5px;" class="pull-right" href="#">
-                            <span style="padding: 5px 10px;background-color: #008080;color: #fff;font-family: calibri;border-radius: 15px;font-size: 18px;">Remettre en location ?</span>
-                        </a>
-                        <a class="pull-right" href="#">
-                            <span style="padding: 5px 10px;background-color: #fff;color: rgba(154,205,50,0.9);font-family: calibri;border-radius: 15px;font-size: 18px;border: 1px solid rgba(154,205,50,0.9)"><i class="fa fa-user-plus"></i> 5 contact</span>
-                        </a>
-                  </td>                  
-                </tr>
-                <tr>
-                  <td>
-                    <a href="/immo/15/details">
-                      <img class="img-thumbnail" style="height: 90px;width: 100px;" src="/images/bg-img/1.jpg" alt="">
-                    </a>
-                  </td>
-                  <td>
-                    <a href="/immo/15/details">
-                        <h4>7660 Nikolaus Burg Nikolaus Burg Nikolaus Burg</h4></a>
-                        <p style="margin-bottom: 0px;"><i class="fa fa-map-marker" aria-hidden="true"></i> GA 125, Newyork</p>
-                        <span style="font-size: 14px;font-family: calibri;"><i class="fa fa-clock-o"></i>&nbsp;publié le 20 juillet 2020</span><br>
-                        <span style="padding: 5px;background-color: rgba(154,205,50,0.9);color: #fff;font-family: calibri;">• A vendre</span>
-                        <span style="padding: 5px;color: #333;font-family: calibri;">• $15000000</span>
-                        <a style="margin-left: 5px;" class="pull-right" href="#">
-                            <span style="padding: 5px 10px;background-color: #008080;color: #fff;font-family: calibri;border-radius: 15px;font-size: 18px;">Déjà pris ?</span>
-                        </a>
-                        <a class="pull-right" href="#">
-                            <span style="padding: 5px 10px;background-color: #fff;color: rgba(154,205,50,0.9);font-family: calibri;border-radius: 15px;font-size: 18px;border: 1px solid rgba(154,205,50,0.9)"><i class="fa fa-user-plus"></i> 5 contact</span>
-                        </a>
-                  </td>                  
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Titre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <a href="/immo/15/details">
+                                    <img class="img-thumbnail" style="height: 90px;width: 100px;" src="/images/bg-img/1.jpg"
+                                        alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/immo/15/details">
+                                    <h4>7660 Nikolaus Burg Nikolaus Burg Nikolaus Burg</h4>
+                                </a>
+                                <p style="margin-bottom: 0px;"><i class="fa fa-map-marker" aria-hidden="true"></i> GA 125,
+                                    Newyork</p>
+                                <span style="font-size: 14px;font-family: calibri;"><i class="fa fa-clock-o"></i>&nbsp;publié le
+                                    20 juillet 2020</span><br>
+                                <span
+                                    style="padding: 5px;background-color: rgba(154,205,50,0.9);color: #fff;font-family: calibri;">•
+                                    A vendre</span>
+                                <span
+                                    style="background-color: rgb(242,101,34,0.9);padding: 5px;color: #fff;font-family: calibri;">•
+                                    Suspendu</span>
+                                <span style="padding: 5px;color: #333;font-family: calibri;">• $15000000</span><br>
+                                <span class="pull-right" style="font-family: calibri;color: #f26522;"><i
+                                        class="now-ui-icons travel_info"></i>&nbsp;&nbsp;En attente de l'approbation de
+                                    l'administration</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/immo/15/details">
+                                    <img class="img-thumbnail" style="height: 90px;width: 100px;" src="/images/bg-img/1.jpg"
+                                        alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/immo/15/details">
+                                    <h4>7660 Nikolaus Burg Nikolaus Burg Nikolaus Burg</h4>
+                                </a>
+                                <p style="margin-bottom: 0px;"><i class="fa fa-map-marker" aria-hidden="true"></i> GA 125,
+                                    Newyork</p>
+                                <span style="font-size: 14px;font-family: calibri;"><i class="fa fa-clock-o"></i>&nbsp;publié le
+                                    20 juillet 2020</span><br>
+                                <span
+                                    style="padding: 5px;background-color: rgba(154,205,50,0.9);color: #fff;font-family: calibri;">•
+                                    A Louer</span>
+                                <span
+                                    style="background-color: rgb(242,101,34,0.6);padding: 5px;color: #fff;font-family: calibri;">•
+                                    Déjà pris</span>
+                                <span style="padding: 5px;color: #333;font-family: calibri;">• $1500/mois</span>
+        
+                                <a style="margin-left: 5px;" class="pull-right" href="#">
+                                    <span
+                                        style="padding: 5px 10px;background-color: #008080;color: #fff;font-family: calibri;border-radius: 15px;font-size: 18px;">Remettre
+                                        en location ?</span>
+                                </a>
+                                <a class="pull-right" href="#">
+                                    <span
+                                        style="padding: 5px 10px;background-color: #fff;color: rgba(154,205,50,0.9);font-family: calibri;border-radius: 15px;font-size: 18px;border: 1px solid rgba(154,205,50,0.9)"><i
+                                            class="fa fa-user-plus"></i> 5 contact</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="/immo/15/details">
+                                    <img class="img-thumbnail" style="height: 90px;width: 100px;" src="/images/bg-img/1.jpg"
+                                        alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/immo/15/details">
+                                    <h4>7660 Nikolaus Burg Nikolaus Burg Nikolaus Burg</h4>
+                                </a>
+                                <p style="margin-bottom: 0px;"><i class="fa fa-map-marker" aria-hidden="true"></i> GA 125,
+                                    Newyork</p>
+                                <span style="font-size: 14px;font-family: calibri;"><i class="fa fa-clock-o"></i>&nbsp;publié le
+                                    20 juillet 2020</span><br>
+                                <span
+                                    style="padding: 5px;background-color: rgba(154,205,50,0.9);color: #fff;font-family: calibri;">•
+                                    A vendre</span>
+                                <span style="padding: 5px;color: #333;font-family: calibri;">• $15000000</span>
+                                <a style="margin-left: 5px;" class="pull-right" href="#">
+                                    <span
+                                        style="padding: 5px 10px;background-color: #008080;color: #fff;font-family: calibri;border-radius: 15px;font-size: 18px;">Déjà
+                                        pris ?</span>
+                                </a>
+                                <a class="pull-right" href="#">
+                                    <span
+                                        style="padding: 5px 10px;background-color: #fff;color: rgba(154,205,50,0.9);font-family: calibri;border-radius: 15px;font-size: 18px;border: 1px solid rgba(154,205,50,0.9)"><i
+                                            class="fa fa-user-plus"></i> 5 contact</span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <div class="modal fade" id="editPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header" style="position: relative;padding: 10px 20px;">
-                            <h4 style="font-family: Segoe UI Light;font-family: 17px;">Contact (10)</h4>
-
-                            <button type="button" class="close" style="position: absolute;right: 10px;top: 10px;cursor: pointer;" data-dismiss="modal" aria-hidden="true">
-                                <i class="now-ui-icons ui-1_simple-remove"></i>
-                            </button>                    
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <!-- Single Agent Area -->
-                                <div class="col-12 col-md-12 col-lg-12 mb-10">
-                                    <h2>Liste de contact interessé pour votre maison</h2>
-                                </div>
-                                <div class="col-12 col-md-6 col-lg-6">
-                                    <div class="single-agent-area">
-                                        <!-- Agent Thumb -->
-                                        <div class="single-agent-thumb">
-                                            <img src="/images/bg-img/53.jpg" alt="">
-                                        </div>
-                                        <!-- Agent Info -->
-                                        <div class="agent-info">
-                                            <a href="#">Wiliam James</a>
-                                            <p><i class="fa fa-phone" aria-hidden="true"></i> (12) 345-6789</p>
-                                            <p><i class="fa fa-envelope" aria-hidden="true"></i> Johnsmith@colorlib.com</p>
-                                        </div>
+        
+    </div>
+        <div class="modal fade" id="editPasswordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" style="position: relative;padding: 10px 20px;">
+                        <h4 style="font-family: Segoe UI Light;font-family: 17px;">Contact (10)</h4>
+        
+                        <button type="button" class="close" style="position: absolute;right: 10px;top: 10px;cursor: pointer;"
+                            data-dismiss="modal" aria-hidden="true">
+                            <i class="now-ui-icons ui-1_simple-remove"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <!-- Single Agent Area -->
+                            <div class="col-12 col-md-12 col-lg-12 mb-10">
+                                <h2>Liste de contact interessé pour votre maison</h2>
+                            </div>
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <div class="single-agent-area">
+                                    <!-- Agent Thumb -->
+                                    <div class="single-agent-thumb">
+                                        <img src="/images/bg-img/53.jpg" alt="">
+                                    </div>
+                                    <!-- Agent Info -->
+                                    <div class="agent-info">
+                                        <a href="#">Wiliam James</a>
+                                        <p><i class="fa fa-phone" aria-hidden="true"></i> (12) 345-6789</p>
+                                        <p><i class="fa fa-envelope" aria-hidden="true"></i> Johnsmith@colorlib.com</p>
                                     </div>
                                 </div>
-
-                                <div class="col-12 col-md-6 col-lg-6">
-                                    <div class="single-agent-area">
-                                        <!-- Agent Thumb -->
-                                        <div class="single-agent-thumb">
-                                            <img src="/images/bg-img/54.jpg" alt="">
-                                        </div>
-                                        <!-- Agent Info -->
-                                        <div class="agent-info">
-                                            <a href="#">Wiliam James</a>
-                                            <p><i class="fa fa-phone" aria-hidden="true"></i> (12) 345-6789</p>
-                                            <p><i class="fa fa-envelope" aria-hidden="true"></i> Johnsmith@colorlib.com</p>
-                                        </div>
+                            </div>
+        
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <div class="single-agent-area">
+                                    <!-- Agent Thumb -->
+                                    <div class="single-agent-thumb">
+                                        <img src="/images/bg-img/54.jpg" alt="">
                                     </div>
-                                </div>                                
+                                    <!-- Agent Info -->
+                                    <div class="agent-info">
+                                        <a href="#">Wiliam James</a>
+                                        <p><i class="fa fa-phone" aria-hidden="true"></i> (12) 345-6789</p>
+                                        <p><i class="fa fa-envelope" aria-hidden="true"></i> Johnsmith@colorlib.com</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         
     });
 })

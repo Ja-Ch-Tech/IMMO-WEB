@@ -17,6 +17,11 @@ function initUsers() {
                     upload();
                     updateAvatar(user_id);
                 }
+
+                if (/publications/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
+                    getAllImmovableForOwner();
+                }
+
                 if (/ajouter/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
                     //Rempli le select type
                     getTypeImmo(function (data) {
@@ -59,6 +64,22 @@ function initUsers() {
 
     })
 }
+
+function infoOwner(id, callback) {
+    $.ajax({
+        type: 'GET',
+        url: `/api/infoOwner/${id}`,
+        dataType: "json",
+        success: function (data) {
+            
+            callback(data)
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    });
+}
+
 /**
  * Dyanmise la sidebar du user connecté
  * @param {user_id} user_id, l'identifiant 
@@ -73,7 +94,10 @@ function dynamicSideBar(user_id) {
             }
         },
         infoOwnerNav = function(user_id) {
+            
             infoOwner(user_id, function (infos) {
+                console.log(infos);
+                
                 if (infos.getEtat) {
                     var li = `<li class="${active("/profile/" + user_id + "/publications")}"><a href="/profile/${user_id}/publications">Publications</a></li><li class="${active("/profile/" + user_id + "/publications/ajouter")}"><a href="/profile/${user_id}/publications/ajouter">Publier un bien</a></li>`;
                     $("#sideBar").append(li);

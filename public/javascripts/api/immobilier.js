@@ -592,13 +592,12 @@ function getDetailsImmobilier(id) {
 }
 
 function viewContact(id, immo) {
-    getUserId((isMatch, result) => {
+       console.log(id, immo);
+       
         $.ajax({
             type: 'POST',
-            url: "/api/interessant",
-            dataType: "json",
+            url: "/api/int",
             data: {
-                "id_user": result,
                 "id_owner": id,
                 "id_immo": immo
             },
@@ -639,9 +638,13 @@ function viewContact(id, immo) {
                 modal.innerHTML = content;
                 modal.classList.remove("d-none");
 
+            },
+            error: function (err) {
+                console.log(err);
+                
             }
         });
-    })
+    
 }
 
 function closeModal() {
@@ -973,4 +976,108 @@ function showUploadedImgImmo(source, title) {
     img.className = "animated fadeInRight";
 
     div.append(img);
+}
+
+function getAllImmovableForOwner() {
+    $.ajax({
+        type: 'GET',
+        url: "/api/immobilier/owner/getAll",
+        dataType: "json",
+        success: function (data) {
+
+            if (data.getEtat) {
+
+                if (data.getObjet.length > 0) {
+                    var contentHead = `<div class="header text-center">
+                                            <h3 style="border:none;">MES publications</h3>
+                                            <p style="margin-bottom: 0px;">differents biens que vous avez publié</p>
+                                        </div>
+                                        <div class="body row">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>#</th>
+                                                        <th>Détails</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="lineImmoForOwner">
+                                                </tbody>
+                                            </table>
+                                        </div>`;
+
+                    $("#allImmoForOWner").html(contentHead)
+                    data.getObjet.map(objet => {
+                            console.log(objet);
+                            
+                            var stateThisViaAdmin = () => {
+                                if (!objet.validate) {
+                                    return `<span class="pull-right" style="font-family: calibri;color: #f26522; font-size: .8em"><i
+                                        class="now-ui-icons travel_info"></i>&nbsp;&nbsp;En attente de l'approbation de
+                                    l'administration</span>`;
+                                } else {
+                                    var manageRemise = () => {
+                                        if (objet.alredy_sold) {
+                                            return `Remettre
+                                        en location ?`;
+                                        } else {
+                                            return `Déjà pris ?`
+                                        }
+                                    };
+                                    
+                                    return `<a style="margin-left: 5px;" class="pull-right" href="#">
+                                                        <span
+                                                            style="padding: 5px 10px;background-color: #008080;color: #fff;font-family: calibri;border-radius: 15px;font-size: 18px;">${manageRemise()}</span>
+                                                    </a>
+                                                    <a class="pull-right" href="#">
+                                                        <span
+                                                            style="padding: 5px 10px;background-color: #fff;color: rgba(154,205,50,0.9);font-family: calibri;border-radius: 15px;font-size: 18px;border: 1px solid rgba(154,205,50,0.9)"><i
+                                                                class="fa fa-user-plus"></i> ${objet.nbreInterrest} contacts</span>
+                                                    </a>`;
+                                }
+                            },
+                            manageSuspension = () => {
+                                if (!objet.flag) {
+                                    return `<span
+                                    style="background-color: rgb(242,101,34,0.9);padding: 5px;color: #fff;font-family: calibri;">•
+                                    Suspendu</span>`;
+                                }else{
+                                    return "";
+                                }
+                            },
+                                contentBody = `<tr>
+                            <td>
+                                <a href="/immo/${objet._id}/details">
+                                    <img class="img-thumbnail" title="${objet.detailsImages[0].intitule}" style="height: 90px;width: 100px;" src="${objet.detailsImages[0].srcFormat}"
+                                        alt="">
+                                </a>
+                            </td>
+                            <td>
+                                <a href="/immo/${objet._id}/details">
+                                    <h4>${objet.type} à ${/location/i.test(objet.mode) ? 'louer' : 'vendre'} se trouvant à ${objet.adresse.commune}</h4>
+                                </a>
+                                <p style="margin-bottom: 0px; text-transform: capitalize;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;${objet.adresse.avenue} ${objet.adresse.numero},
+                                    ${objet.adresse.commune}</p>
+                                <p style="font-size: .75em; font-family: calibri;"><i class="fa fa-clock-o"></i>&nbsp;publié le ${customDate(objet.created_at)}</p>
+                                <span
+                                    style="padding: 5px;background-color: rgba(154,205,50,0.9);color: #fff;font-family: calibri;">•
+                                    A ${/location/i.test(objet.mode) ? 'louer' : 'vendre'}</span>
+                                ${manageSuspension()}
+                                <span style="padding: 5px;color: #aaa;font-family: Poppins; font-weight: 700; font-size: .9em;">• ${objet.prix}$${/location/i.test(objet.mode) ? '/mois' : ''}</span><br>
+                                ${stateThisViaAdmin()}
+                            </td>
+                        </tr>`;
+
+                            $("#lineImmoForOwner").append(contentBody);
+                        
+                    })
+                } else {
+                    alert("rien n'y est")
+                }
+            }
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    });
 }
