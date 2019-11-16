@@ -603,20 +603,23 @@ function viewContact(id, immo) {
             },
             success: function (data) {
                 console.log(data)
-                var modal = document.getElementById("modalForContactUs"),
-                    obj = data.getObjet;
 
-                var allContacts = () => {
-                    if (obj.contacts.length > 0) {
-                        obj.contacts.map(item => {
-                            return `${item.telephone ? `<font>N°Téléphone : <span>${item.telephone}</span></font>` : ""}
-                                            ${item.email ? `<font>Adresse e-mail : <span>${item.email}</span></font>` : ""}`;
-                        })
-                    } else {
-                        return "";
-                    }
-                },
-                    content = ` <div class="cardThis">
+                if (data.getEtat) {
+                        var modal = document.getElementById("modalForContactUs");
+
+                    if (data.getObjet.isInLocation) {
+                        var obj = data.getObjet;
+
+                        var allContacts = () => {
+                            if (obj.contacts.length > 0) {
+                                return `${obj.contacts[0].telephone ? `<font>Téléphone : <span>${obj.contacts[0].telephone}</span></font>` : ""}
+                                            ${obj.contacts[0].email ? `<font>E-mail : <span>${obj.contacts[0].email}</span></font>` : ""}`;
+                                
+                            } else {
+                                return "";
+                            }
+                        },
+                            content = ` <div class="cardThis">
                                     <font class="closeModal" onclick="closeModal()"><i class="fa fa-times-circle"></i></font>
                                     <div class="avatar-owner">
                                         <img src="/images/bg-img/house-3664320_1920.jpg" alt="Image owner">
@@ -625,7 +628,7 @@ function viewContact(id, immo) {
                                     <h4 class="noms">${obj.prenom + " " + obj.nom}</h4>
                                     <p class="adresse"><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
 
-                                    <div class="autresContacts">
+                                    <div class="autresContacts" style="margin-bottom: 30px;">
                                         ${allContacts()}
                                     </div>
 
@@ -635,8 +638,38 @@ function viewContact(id, immo) {
                                     </div>
                                 </div>`;
 
-                modal.innerHTML = content;
-                modal.classList.remove("d-none");
+                        modal.innerHTML = content;
+                        modal.classList.remove("d-none");
+                    } else {
+
+                        var allContacts = () => {
+                                    return `<font>Téléphone : <span>+243 824 145 109</span></font>
+                                            <font>E-mail : <span>contact@ndakubizz.com</span></font>`;
+                        },
+                            content = ` <div class="cardThis">
+                                    <font class="closeModal" onclick="closeModal()"><i class="fa fa-times-circle"></i></font>
+                                    <div class="avatar-owner">
+                                        <img src="/images/bg-img/house-3664320_1920.jpg" alt="Image owner">
+                                    </div>
+                                    <div class="info-owner">
+                                    <h4 class="noms">Info administration</h4>
+                                    <font class="adresse" style="font-size: .7em">Contactez l'administration</font>
+
+                                    <div class="autresContacts" style="margin-bottom: 33px;">
+                                        ${allContacts()}
+                                    </div>
+
+                                    <div class="footerContact">
+                                        <p>Powered by&nbsp;<span>Ja'Ch Technologies</span></p>
+                                    </div>
+                                    </div>
+                                </div>`;
+
+                        modal.innerHTML = content;
+                        modal.classList.remove("d-none");
+                    }   
+                }
+                
 
             },
             error: function (err) {

@@ -384,6 +384,7 @@ router.get('/immobilier/owner/getAll', (req, res) => {
          })
 })
 
+//Route Permettant d'assigner un immobilier en tant qu'intéréssé
 router.post('/int', (req, res) => {
     var obj = {
         "id_user": req.session.id,
@@ -393,10 +394,23 @@ router.post('/int', (req, res) => {
 
     axios.post(`${API}/extra/interest`, obj)
          .then(response => {
-             console.log(response.data);
              
-             res.status(200);
-             res.send(response.data)
+             if (response.data.getObjet.isInLocation) {
+                res.status(200);
+                res.send(response.data)    
+             } else {
+                var objetRetour = {
+                    getEtat: response.data.getEtat,
+                    getMessage: response.data.getMessage,
+                    getObjet: {
+                        isInLocation: response.data.getObjet.isInLocation
+                    }
+                };
+
+                res.status(200);
+                res.send(objetRetour);
+             }
+             
          })
          .catch(err => {
              res.status(500);
