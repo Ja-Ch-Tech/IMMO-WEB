@@ -715,6 +715,8 @@ function getImmoByType(type_id) {
                 if (data.getObjet.immobiliers.length > 0) {
 
                     data.getObjet.immobiliers.map(element => {
+                        console.log(element);
+                        
                         var rentOrSale = () => {
                             if (/location/i.test(element.mode)) {
                                 return `<p class="badge-rent">A louer</p>`
@@ -727,7 +729,7 @@ function getImmoByType(type_id) {
                                                 <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
                                                     <!-- Property Thumb -->
                                                     <div class="property-thumb">
-                                                        <img src="/images/bg-img/1.jpg" alt="">
+                                                        <img src="${element.detailsImages[0].srcFormat}" alt="">
                                                     </div>
 
                                                     <!-- Property Description -->
