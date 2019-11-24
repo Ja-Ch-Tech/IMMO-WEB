@@ -80,19 +80,125 @@ function initImmo() {
         })
     }
 
+    if (/immo/i.test(window.location.pathname.split("/")[1]) && /voir-tous-les-immo/i.test(window.location.pathname.split("/")[2])) {
+        //Initialise les inputs
+        //Gere le select mode
+        manageModeSearch();
+        //Gere le select type
+        manageTypeSearch();
+
+        //Lorsqu'on filtre 
+        //Lorsqu'on soumet le formulaire se trouvant sur la page de recherche
+        storageKeys("postOnSearchPage", function (data) {
+            searchImmo();
+        })
+        //Recupere tous les immobiliers (Lorsqu'on recharge la page)
+        $.ajax({
+            type: 'GET',
+            url: "/api/all",
+            dataType: "json",
+            beforeSend : function () {
+                //Loader de la recherche
+                $("#searchContent").html('<div class="loader08"></div>');
+            },
+            success : function (data) {
+                $("#searchContent").html('');
+                if (data.getEtat) {
+                    
+                    var sortieImmo = 0,
+                        textSearch = function () {
+                            if (data.getObjet.length == 0) {
+                                return `<span style="color: #2a303b">Aucun</span> immobilier trouvé`;
+                            }else if (data.getObjet.length == 1) {
+                                 return `<span style="color: #2a303b">un</span> immobilier trouvé`;
+                            }else if (data.getObjet.length > 1) {
+                                return `<span style="color: #8bbe00">${data.getObjet.length}</span> immobiliers sur ndakubizz`;
+                            }else{
+                                `Une erreur est survenue, veuillez reessayer avec des bonnes données`;
+                            }
+                        }
+                        content = `<div class="col-12 col-md-12 col-lg-12">
+                                        <h4 style="font-family: 'Poppins', sans-serif !important;margin-bottom:20px;">${textSearch()}</h4>
+                                    </div>
+                                    <div id="searchImmoContent" class="col-12 col-md-12 col-lg-12">
+                                        
+                                    </div>`;
+                    $("#searchContent").html(content);
+
+                    //Ajout des immobilier
+                    data.getObjet.map(immobilier => {
+                           sortieImmo++;
+                            var rentOrSale = () => {
+                                if (/location/i.test(immobilier.mode)) {
+                                    return `A louer ${immobilier.prix} USD/mois`
+                                } else {
+                                    return `A vendre ${immobilier.prix} USD`
+                                }
+                            },
+                            description = () => {
+                                var description = immobilier.description;
+                                if (description.length >= 200) {
+                                    description = description.substr(0, 200) + "...";
+                                }
+                                return description;
+                            }
+                            immobilierContent = `<a href="/immo/${immobilier._id}/details">
+                            <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
+                                <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
+                                    <img style="height: 200px" src="${immobilier.detailsImages[0].srcFormat}" alt="">
+                                </div>
+                                <div style="padding: 10px;" class="col-md-8">
+                                    <div class="pull-right property-seller">
+                                        <p>Proprietaire:</p>
+                                        <h6>${immobilier.prenomOwner}&nbsp;${immobilier.nomOwner}</h6>
+                                    </div>
+                                    <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
+                                    <h4>${rentOrSale()}</h4>
+                                    <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                    <p style="font-size: 13px;margin-bottom: 16px;">
+                                        ${description()}
+                                    </p>
+                                    <hr style="margin-bottom: 0px;">
+                                    <div class="property-info-area d-flex flex-wrap">
+                                          ${immobilier.surface ? `<p>Superficie: <span>${immobilier.surface}m<sup>2</sup></span></p>` : ""}
+                                          ${immobilier.nbrePiece ? `<p>Pièce: <span>${immobilier.nbrePiece}</span></p>` : ""}
+                                          ${immobilier.nbreChambre ? `<p>Chambre: <span>${immobilier.nbreChambre}</span></p>` : ""}
+                                          ${immobilier.nbreDouche ? `<p>Douche: <span>${immobilier.nbreDouche}</span></p>` : ""}
+                                    </div>
+                                </div>
+
+                            </div></a>`;
+                            $("#searchImmoContent").append(immobilierContent);
+                        
+                    })
+                }else{
+                    $("#searchContent").html(`<div id="notfound">
+                        <div class="notfound">
+                            <h2>AUCUN IMMOBILIER DISPONIBLE POUR LE MOMENT</h2>
+                            <a href="javascript:history.back()">Retour en arriere</a>
+                        </div>
+                    </div>`);
+                }
+                
+            },error : function (err) {
+                $("#searchContent").html('');
+                $("#searchContent")[0].append(errorServer);
+            }
+        });
+    }
+
 }
 // Lance la recherche des immobiliers
 function searchImmo() {
     var datas = {
-        "mode" : sessionStorage.getItem('mode'),
-        "type" : sessionStorage.getItem('type'),
-        "commune" : sessionStorage.getItem('commune'),
-        "nbrePiece" : sessionStorage.getItem('nbrePiece'),
-        "montantMin" : sessionStorage.getItem('montantMin'),
-        "montantMax" : sessionStorage.getItem('montantMax'),
-        "nbreChambre" : sessionStorage.getItem('nbreChambre')
+        "mode" : sessionStorage.getItem('mode') ? sessionStorage.getItem('mode') : null,
+        "type" : sessionStorage.getItem('type') ? sessionStorage.getItem('type') : null,
+        "commune" : sessionStorage.getItem('commune') ? sessionStorage.getItem('commune') : null,
+        "nbrePiece" : sessionStorage.getItem('nbrePiece') ? sessionStorage.getItem('nbrePiece') : null,
+        "montantMin" : sessionStorage.getItem('montantMin') ? sessionStorage.getItem('montantMin') : null,
+        "montantMax" : sessionStorage.getItem('montantMax') ? sessionStorage.getItem('montantMax') : null,
+        "nbreChambre" : sessionStorage.getItem('nbreChambre') ? sessionStorage.getItem('nbreChambre') : null
     }
-
     $.ajax({
         type: 'POST',
         url: "/api/searchImmo",
@@ -145,7 +251,7 @@ function searchImmo() {
                         immobilierContent = `<a href="/immo/${immobilier._id}/details">
                         <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
                             <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
-                                <img style="height: 100%" src="/images/bg-img/2.jpg" alt="">
+                                <img style="height: 200px" src="${immobilier.detailsImages[0].srcFormat}" alt="">
                             </div>
                             <div style="padding: 10px;" class="col-md-8">
                                 <div class="pull-right property-seller">
@@ -168,9 +274,10 @@ function searchImmo() {
                             </div>
 
                         </div></a>`;
-                    if (sortieImmo == data.getObjet.immobiliers.length) {
                         $("#searchImmoContent").append(immobilierContent);
-                    }
+                    // if (sortieImmo == data.getObjet.immobiliers.length) {
+                    //     $("#searchImmoContent").append(immobilierContent);
+                    // }
                 })
             }else{
                 $("#searchContent").html(`<div id="notfound">
@@ -354,8 +461,8 @@ function getNewImmobilier() {
                                         
                                     </div>
                                     <div class="row">
-                                        <div class=" col-12 col-md-6 col-lg-12">
-                                            <button class="btn rehomes-btn pull-right">Chargez plus de biens <i class="now-ui-icons arrows-1_minimal-right"></i></button>
+                                        <div class="col-12 col-md-6 col-lg-12">
+                                            <a href="/immo/voir-tous-les-immo" class="btn rehomes-btn pull-right">Voir tous les biens <i class="now-ui-icons arrows-1_minimal-right"></i></a>
                                         </div>
                                     </div>`;
                     newImmo.html(contentHeadAndFooter);
@@ -517,9 +624,9 @@ function getDetailsImmobilier(id) {
                 details[0].getElementsByClassName('loader09')[0].style.display = "block";
             },
             success: function (datas) {
+                console.log(datas)
                 details[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (datas.getEtat) {
-                    console.log(datas.getObjet);
                     var obj = datas.getObjet,
                     interestOrNot = () => {
 
@@ -561,12 +668,12 @@ function getDetailsImmobilier(id) {
                             <!-- Properties Content Area -->
                             <div class="properties-content-area wow fadeInUp" data-wow-delay="200ms">
                                 <div class="properties-content-info">
-                                    <h2>${obj.type} à ${obj.adresse.commune}</h2>
+                                    <h2>${obj.type} à ${obj.adresse.commune} En <span style="color:#8bbe00">${obj.mode}</span></h2>
                                     <div class="properties-location">
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.type}</p>
                                     </div>
-                                    <h4 class="properties-rate">$${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ month` : ``}</span></h4>
+                                    <h4 class="properties-rate">$${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ Mois` : ``}</span></h4>
                                     <p>${obj.description}</p>
                                     <!-- Properties Info -->
                                     <div class="properties-info">

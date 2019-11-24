@@ -31,7 +31,20 @@ router.get('/statType', (req, res) => {
 
 //Récupère les nouvelles publications
 router.get('/new', (req, res) => {
-    axios.get(`${API}/immobilier/getNew/6`)
+    axios.get(`${API}/immobilier/getNew/9`)
+        .then(response => {
+            res.status(200);
+            res.send(response.data);
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+})
+
+//Recupere tous les immobiliers
+router.get('/all', (req, res) => {
+    axios.get(`${API}/immobilier/getNew/null`)
         .then(response => {
             res.status(200);
             res.send(response.data);
