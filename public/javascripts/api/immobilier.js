@@ -450,19 +450,24 @@ function getNewImmobilier() {
             if (data.getEtat) {
                 newImmo[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (data.getObjet.length > 0) {
-                    var contentHeadAndFooter = `<div class="row">
-                                    <div class="col-12">
-                                        <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
-                                            <h2>Dernieres <span>annonces</span></h2>
+                    var contentHeadAndFooter = 
+                                    `<div class="row">
+                                         <div class="col-12">
+                                            <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
+                                                <h2>Dernieres <span>annonces</span></h2>
+                                            </div>
+                                        </div>
+
+                                        <div id="elementNewImmo" class="col-12 row">
+                                            
                                         </div>
                                     </div>
-
-                                    <div id="elementNewImmo" class="col-12 row">
-                                        
-                                    </div>
                                     <div class="row">
-                                        <div class="col-12 col-md-6 col-lg-12">
-                                            <a href="/immo/voir-tous-les-immo" class="btn rehomes-btn pull-right">Voir tous les biens <i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                                        <div class="col-12 col-md-12 col-lg-12">
+                                            <center> <a href="/immo/voir-tous-les-immo" class="btn rehomes-btn">Voir
+                                                    tous les
+                                                    biens <i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                                            </center>
                                         </div>
                                     </div>`;
                     newImmo.html(contentHeadAndFooter);
@@ -673,7 +678,7 @@ function getDetailsImmobilier(id) {
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.type}</p>
                                     </div>
-                                    <h4 class="properties-rate">$${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ Mois` : ``}</span></h4>
+                                    <h4 class="properties-rate">Prix : $${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ Mois` : ``}</span></h4>
                                     <p>${obj.description}</p>
                                     <!-- Properties Info -->
                                     <div class="properties-info">
@@ -1126,7 +1131,7 @@ function getAllImmovableForOwner() {
         url: "/api/immobilier/owner/getAll",
         dataType: "json",
         success: function (data) {
-
+            console.log(data);
             if (data.getEtat) {
 
                 if (data.getObjet.length > 0) {
@@ -1150,8 +1155,6 @@ function getAllImmovableForOwner() {
 
                     $("#allImmoForOWner").html(contentHead)
                     data.getObjet.map(objet => {
-                            console.log(objet);
-                            
                             var stateThisViaAdmin = () => {
                                 if (!objet.validate) {
                                     return `<span class="pull-right" style="font-family: calibri;color: #f26522; font-size: .8em"><i
@@ -1171,7 +1174,7 @@ function getAllImmovableForOwner() {
                                                         <span
                                                             style="padding: 5px 10px;background-color: #008080;color: #fff;font-family: calibri;border-radius: 15px;font-size: 18px;">${manageRemise()}</span>
                                                     </a>
-                                                    <a class="pull-right" href="#">
+                                                    <a style="cursor:pointer;" onclick="getContact('${objet.id_user}', '${objet._id}', '${objet.mode}')" title="Contact" class="pull-right">
                                                         <span
                                                             style="padding: 5px 10px;background-color: #fff;color: rgba(154,205,50,0.9);font-family: calibri;border-radius: 15px;font-size: 18px;border: 1px solid rgba(154,205,50,0.9)"><i
                                                                 class="fa fa-user-plus"></i> ${objet.nbreInterrest} contacts</span>
@@ -1222,4 +1225,25 @@ function getAllImmovableForOwner() {
             console.log(err)
         }
     });
+}
+
+//Renvoi les contacts d'un immobilier
+function getContact(user_id, immo_id, mode){
+    
+    if (/location/i.test(mode)) {
+        alert("Location");
+    }else if (/vente/i.test(mode)) {
+        swal(
+            {
+                title: "CONTACTS VENTE IMMO", 
+                text: "Pour voir les contacts des gens interessés, veuillez nous contacter au +243896341113 ou passez dans nos locaux sur l'avenue regideso, ngaliema, Kinshasa! MERCI", 
+                type: "warning",
+                showCancelButton: false, 
+                cancelButtonText: "", 
+                confirmButtonText: "OK",
+                confirmButtonColor: "#DD6B55"
+                
+            }
+        );
+    }
 }
