@@ -364,7 +364,6 @@
   </footer>
   <!-- **** Footer Area End **** -->
   <script src="/javascripts/jquery.min.js"></script>
-  <script src="/javascripts/popper.min.js"></script>
   <script src="/javascripts/bootstrap.min.js"></script>
   <script src="/javascripts/rehomes.bundle.js"></script>
   <script src="/javascripts/default-assets/active.js"></script>

@@ -110,11 +110,11 @@ function searchImmo() {
                         if (data.getObjet.immobiliers.length == 0) {
                             return `<span style="color: #2a303b">Aucun</span> immobilier trouvé pour votre recherche`;
                         }else if (data.getObjet.immobiliers.length == 1) {
-                             return `<span style="color: #2a303b">un</span> immobilier trouvé pour votre recherche`;
+                             return `<span style="color: #2a303b">Un</span> immobilier trouvé pour votre recherche`;
                         }else if (data.getObjet.immobiliers.length > 1) {
-                            return `<span style="color: #2a303b">${data.getObjet.immobiliers.length}</span> immobilier trouvé pour votre recherche`;
+                            return `<span style="color: #2a303b">${data.getObjet.immobiliers.length}</span> immobiliers trouvés pour votre recherche`;
                         }else{
-                            `Une erreur est survenue, veuillez reessayer avec des bonnes données`;
+                            `Une erreur est survenue, veuillez réessayer avec des bonnes données`;
                         }
                     }
                     content = `<div class="col-12 col-md-12 col-lg-12">
@@ -127,12 +127,13 @@ function searchImmo() {
 
                 //Ajout des immobilier
                 data.getObjet.immobiliers.map(immobilier => {
+                    console.log(immobilier);
                        sortieImmo++;
                         var rentOrSale = () => {
                             if (/location/i.test(immobilier.mode)) {
-                                return `A louer ${immobilier.prix} USD/mois`
+                                return `A louer ${immobilier.prix} $/mois`
                             } else {
-                                return `A vendre ${immobilier.prix} USD`
+                                return `A vendre ${immobilier.prix} $`
                             }
                         },
                         description = () => {
@@ -144,8 +145,8 @@ function searchImmo() {
                         }
                         immobilierContent = `<a href="/immo/${immobilier._id}/details">
                         <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
-                            <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
-                                <img style="height: 100%" src="/images/bg-img/2.jpg" alt="">
+                            <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5" title="${immobilier.detailsImages[immobilier.detailsImages.length - 1].intitule}">
+                                <img style="height: 100%" src="${immobilier.detailsImages[immobilier.detailsImages.length - 1].srcFormat}" alt="${immobilier.detailsImages[immobilier.detailsImages.length - 1].intitule}">
                             </div>
                             <div style="padding: 10px;" class="col-md-8">
                                 <div class="pull-right property-seller">
@@ -525,11 +526,11 @@ function getDetailsImmobilier(id) {
 
                         if (isMatch) {
                             return `<div class="mt-3">
-                                        <a class="btn rehomes-btn mt-10" href="#" onclick="viewContact('${obj.id_owner}', '${id}')">Je veux le contacter</a>
+                                        <button class="btn rehomes-btn mt-10" onclick="viewContact('${obj.id_owner}', '${id}')">Je veux le contacter</button>
                                     </div>`
                         } else {
                             return `<div class="mt-3">
-                                        <a class="btn rehomes-btn mt-10" href="#">Je veux le contacter</a>
+                                        <button class="btn rehomes-btn mt-10">Je veux le contacter</button>
                                     </div>`
                         }
                     },
@@ -566,7 +567,7 @@ function getDetailsImmobilier(id) {
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.type}</p>
                                     </div>
-                                    <h4 class="properties-rate">$${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ month` : ``}</span></h4>
+                                    <h4 class="properties-rate">$${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ mois` : ``}</span></h4>
                                     <p>${obj.description}</p>
                                     <!-- Properties Info -->
                                     <div class="properties-info">
@@ -592,8 +593,7 @@ function getDetailsImmobilier(id) {
 }
 
 function viewContact(id, immo) {
-       console.log(id, immo);
-       
+      
         $.ajax({
             type: 'POST',
             url: "/api/int",
@@ -602,11 +602,10 @@ function viewContact(id, immo) {
                 "id_immo": immo
             },
             success: function (data) {
-                console.log(data)
-
+                
                 if (data.getEtat) {
                         var modal = document.getElementById("modalForContactUs");
-
+                        
                     if (data.getObjet.isInLocation) {
                         var obj = data.getObjet;
 
@@ -622,7 +621,7 @@ function viewContact(id, immo) {
                             content = ` <div class="cardThis">
                                     <font class="closeModal" onclick="closeModal()"><i class="fa fa-times-circle"></i></font>
                                     <div class="avatar-owner">
-                                        <img src="/images/bg-img/house-3664320_1920.jpg" alt="Image owner">
+                                        <img src="${obj.image.srcFormat}" alt="${obj.image.name}">
                                     </div>
                                     <div class="info-owner">
                                     <h4 class="noms">${obj.prenom + " " + obj.nom}</h4>

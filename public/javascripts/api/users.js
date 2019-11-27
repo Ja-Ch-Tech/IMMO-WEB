@@ -112,6 +112,7 @@ function dynamicSideBar(user_id) {
         $("#sideBar").html(ul);
         infoOwnerNav(user_id)
 }
+
 function login() {
     document.getElementById("loginForm").addEventListener("submit", (e) => {
         e.preventDefault();
@@ -149,11 +150,8 @@ function userNavInfo(user_id) {
         url: "/api/infoForAnyUser/" + user_id,
         before: {},
         success: function (data) {
-            var image = () => {
-                    return data.getObjet.image ? getHostAPI() + data.getObjet.image.lien : "/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg"; 
-                    },
-                contentProfileInfos = `<a style="color:#93c900;font-size:17px;" href="/profile/${data.getObjet._id}/informations" class="pull-right">
-                                        <img class="img-thumbnail" style="width:40px;height:40px;border-radius:40px;" src="${image()}"/>&nbsp;<span>${data.getObjet.prenom}&nbsp;${data.getObjet.nom}</span>
+            var contentProfileInfos = `<a style="color:#93c900;font-size:17px;" href="/profile/${data.getObjet._id}/informations" class="pull-right">
+                                        <img class="img-thumbnail" style="width:40px;height:40px;border-radius:40px;" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.srcFormat}"/>&nbsp;<span>${data.getObjet.prenom}&nbsp;${data.getObjet.nom}</span>
                                     </a>`,
                 contentOtherNav = `<a class="active" href="#"><i class="iconsProfile now-ui-icons ui-1_bell-53" aria-hidden="true"></i></a>`;
             // $("#navAdditionalForUser").append(contentOtherNav);
@@ -330,7 +328,7 @@ function getAvatar(user_id) {
                     };
                     
                 if (/profile/i.test(window.location.pathname.split("/")[1])) {
-                    var content = `<img class="img-thumbnail" src="${image()}" alt="">
+                    var content = `<img class="img-thumbnail" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.name}">
                                     <p style="font-weight: bold;font-size: 18px;color: #333;margin:9px 0px; font-family: 'Poppins', sans-serif; text-transform: uppercase">${data.getObjet.login.username}</p>
                                     <a href="/logout"><i class="zmdi zmdi-power"></i>&nbsp;Deconnexion</a><hr>
                                     `;
