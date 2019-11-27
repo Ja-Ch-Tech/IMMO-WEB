@@ -80,19 +80,125 @@ function initImmo() {
         })
     }
 
+    if (/immo/i.test(window.location.pathname.split("/")[1]) && /voir-tous-les-immo/i.test(window.location.pathname.split("/")[2])) {
+        //Initialise les inputs
+        //Gere le select mode
+        manageModeSearch();
+        //Gere le select type
+        manageTypeSearch();
+
+        //Lorsqu'on filtre 
+        //Lorsqu'on soumet le formulaire se trouvant sur la page de recherche
+        storageKeys("postOnSearchPage", function (data) {
+            searchImmo();
+        })
+        //Recupere tous les immobiliers (Lorsqu'on recharge la page)
+        $.ajax({
+            type: 'GET',
+            url: "/api/all",
+            dataType: "json",
+            beforeSend : function () {
+                //Loader de la recherche
+                $("#searchContent").html('<div class="loader08"></div>');
+            },
+            success : function (data) {
+                $("#searchContent").html('');
+                if (data.getEtat) {
+                    
+                    var sortieImmo = 0,
+                        textSearch = function () {
+                            if (data.getObjet.length == 0) {
+                                return `<span style="color: #2a303b">Aucun</span> immobilier trouvé`;
+                            }else if (data.getObjet.length == 1) {
+                                 return `<span style="color: #2a303b">un</span> immobilier trouvé`;
+                            }else if (data.getObjet.length > 1) {
+                                return `<span style="color: #8bbe00">${data.getObjet.length}</span> immobiliers sur ndakubizz`;
+                            }else{
+                                `Une erreur est survenue, veuillez reessayer avec des bonnes données`;
+                            }
+                        }
+                        content = `<div class="col-12 col-md-12 col-lg-12">
+                                        <h4 style="font-family: 'Poppins', sans-serif !important;margin-bottom:20px;">${textSearch()}</h4>
+                                    </div>
+                                    <div id="searchImmoContent" class="col-12 col-md-12 col-lg-12">
+                                        
+                                    </div>`;
+                    $("#searchContent").html(content);
+
+                    //Ajout des immobilier
+                    data.getObjet.map(immobilier => {
+                           sortieImmo++;
+                            var rentOrSale = () => {
+                                if (/location/i.test(immobilier.mode)) {
+                                    return `A louer ${immobilier.prix} USD/mois`
+                                } else {
+                                    return `A vendre ${immobilier.prix} USD`
+                                }
+                            },
+                            description = () => {
+                                var description = immobilier.description;
+                                if (description.length >= 200) {
+                                    description = description.substr(0, 200) + "...";
+                                }
+                                return description;
+                            }
+                            immobilierContent = `<a href="/immo/${immobilier._id}/details">
+                            <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
+                                <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
+                                    <img style="height: 200px" src="${immobilier.detailsImages[0].srcFormat}" alt="">
+                                </div>
+                                <div style="padding: 10px;" class="col-md-8">
+                                    <div class="pull-right property-seller">
+                                        <p>Proprietaire:</p>
+                                        <h6>${immobilier.prenomOwner}&nbsp;${immobilier.nomOwner}</h6>
+                                    </div>
+                                    <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
+                                    <h4>${rentOrSale()}</h4>
+                                    <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                    <p style="font-size: 13px;margin-bottom: 16px;">
+                                        ${description()}
+                                    </p>
+                                    <hr style="margin-bottom: 0px;">
+                                    <div class="property-info-area d-flex flex-wrap">
+                                          ${immobilier.surface ? `<p>Superficie: <span>${immobilier.surface}m<sup>2</sup></span></p>` : ""}
+                                          ${immobilier.nbrePiece ? `<p>Pièce: <span>${immobilier.nbrePiece}</span></p>` : ""}
+                                          ${immobilier.nbreChambre ? `<p>Chambre: <span>${immobilier.nbreChambre}</span></p>` : ""}
+                                          ${immobilier.nbreDouche ? `<p>Douche: <span>${immobilier.nbreDouche}</span></p>` : ""}
+                                    </div>
+                                </div>
+
+                            </div></a>`;
+                            $("#searchImmoContent").append(immobilierContent);
+                        
+                    })
+                }else{
+                    $("#searchContent").html(`<div id="notfound">
+                        <div class="notfound">
+                            <h2>AUCUN IMMOBILIER DISPONIBLE POUR LE MOMENT</h2>
+                            <a href="javascript:history.back()">Retour en arriere</a>
+                        </div>
+                    </div>`);
+                }
+                
+            },error : function (err) {
+                $("#searchContent").html('');
+                $("#searchContent")[0].append(errorServer);
+            }
+        });
+    }
+
 }
 // Lance la recherche des immobiliers
 function searchImmo() {
     var datas = {
-        "mode" : sessionStorage.getItem('mode'),
-        "type" : sessionStorage.getItem('type'),
-        "commune" : sessionStorage.getItem('commune'),
-        "nbrePiece" : sessionStorage.getItem('nbrePiece'),
-        "montantMin" : sessionStorage.getItem('montantMin'),
-        "montantMax" : sessionStorage.getItem('montantMax'),
-        "nbreChambre" : sessionStorage.getItem('nbreChambre')
+        "mode" : sessionStorage.getItem('mode') ? sessionStorage.getItem('mode') : null,
+        "type" : sessionStorage.getItem('type') ? sessionStorage.getItem('type') : null,
+        "commune" : sessionStorage.getItem('commune') ? sessionStorage.getItem('commune') : null,
+        "nbrePiece" : sessionStorage.getItem('nbrePiece') ? sessionStorage.getItem('nbrePiece') : null,
+        "montantMin" : sessionStorage.getItem('montantMin') ? sessionStorage.getItem('montantMin') : null,
+        "montantMax" : sessionStorage.getItem('montantMax') ? sessionStorage.getItem('montantMax') : null,
+        "nbreChambre" : sessionStorage.getItem('nbreChambre') ? sessionStorage.getItem('nbreChambre') : null
     }
-
     $.ajax({
         type: 'POST',
         url: "/api/searchImmo",
@@ -169,9 +275,10 @@ function searchImmo() {
                             </div>
 
                         </div></a>`;
-                    if (sortieImmo == data.getObjet.immobiliers.length) {
                         $("#searchImmoContent").append(immobilierContent);
-                    }
+                    // if (sortieImmo == data.getObjet.immobiliers.length) {
+                    //     $("#searchImmoContent").append(immobilierContent);
+                    // }
                 })
             }else{
                 $("#searchContent").html(`<div id="notfound">
@@ -344,19 +451,24 @@ function getNewImmobilier() {
             if (data.getEtat) {
                 newImmo[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (data.getObjet.length > 0) {
-                    var contentHeadAndFooter = `<div class="row">
-                                    <div class="col-12">
-                                        <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
-                                            <h2>Dernieres <span>annonces</span></h2>
+                    var contentHeadAndFooter = 
+                                    `<div class="row">
+                                         <div class="col-12">
+                                            <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
+                                                <h2>Dernieres <span>annonces</span></h2>
+                                            </div>
+                                        </div>
+
+                                        <div id="elementNewImmo" class="col-12 row">
+                                            
                                         </div>
                                     </div>
-
-                                    <div id="elementNewImmo" class="col-12 row">
-                                        
-                                    </div>
                                     <div class="row">
-                                        <div class=" col-12 col-md-6 col-lg-12">
-                                            <button class="btn rehomes-btn pull-right">Chargez plus de biens <i class="now-ui-icons arrows-1_minimal-right"></i></button>
+                                        <div class="col-12 col-md-12 col-lg-12">
+                                            <center> <a href="/immo/voir-tous-les-immo" class="btn rehomes-btn">Voir
+                                                    tous les
+                                                    biens <i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                                            </center>
                                         </div>
                                     </div>`;
                     newImmo.html(contentHeadAndFooter);
@@ -518,9 +630,9 @@ function getDetailsImmobilier(id) {
                 details[0].getElementsByClassName('loader09')[0].style.display = "block";
             },
             success: function (datas) {
+                console.log(datas)
                 details[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (datas.getEtat) {
-                    console.log(datas.getObjet);
                     var obj = datas.getObjet,
                     interestOrNot = () => {
 
@@ -562,7 +674,7 @@ function getDetailsImmobilier(id) {
                             <!-- Properties Content Area -->
                             <div class="properties-content-area wow fadeInUp" data-wow-delay="200ms">
                                 <div class="properties-content-info">
-                                    <h2>${obj.type} à ${obj.adresse.commune}</h2>
+                                    <h2>${obj.type} à ${obj.adresse.commune} En <span style="color:#8bbe00">${obj.mode}</span></h2>
                                     <div class="properties-location">
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.type}</p>
@@ -1018,7 +1130,7 @@ function getAllImmovableForOwner() {
         url: "/api/immobilier/owner/getAll",
         dataType: "json",
         success: function (data) {
-
+            console.log(data);
             if (data.getEtat) {
 
                 if (data.getObjet.length > 0) {
@@ -1042,8 +1154,6 @@ function getAllImmovableForOwner() {
 
                     $("#allImmoForOWner").html(contentHead)
                     data.getObjet.map(objet => {
-                            console.log(objet);
-                            
                             var stateThisViaAdmin = () => {
                                 if (!objet.validate) {
                                     return `<span class="pull-right" style="font-family: calibri;color: #f26522; font-size: .8em"><i
@@ -1063,7 +1173,7 @@ function getAllImmovableForOwner() {
                                                         <span
                                                             style="padding: 5px 10px;background-color: #008080;color: #fff;font-family: calibri;border-radius: 15px;font-size: 18px;">${manageRemise()}</span>
                                                     </a>
-                                                    <a class="pull-right" href="#">
+                                                    <a style="cursor:pointer;" onclick="getContact('${objet.id_user}', '${objet._id}', '${objet.mode}')" title="Contact" class="pull-right">
                                                         <span
                                                             style="padding: 5px 10px;background-color: #fff;color: rgba(154,205,50,0.9);font-family: calibri;border-radius: 15px;font-size: 18px;border: 1px solid rgba(154,205,50,0.9)"><i
                                                                 class="fa fa-user-plus"></i> ${objet.nbreInterrest} contacts</span>
@@ -1114,4 +1224,25 @@ function getAllImmovableForOwner() {
             console.log(err)
         }
     });
+}
+
+//Renvoi les contacts d'un immobilier
+function getContact(user_id, immo_id, mode){
+    
+    if (/location/i.test(mode)) {
+        alert("Location");
+    }else if (/vente/i.test(mode)) {
+        swal(
+            {
+                title: "CONTACTS VENTE IMMO", 
+                text: "Pour voir les contacts des gens interessés, veuillez nous contacter au +243896341113 ou passez dans nos locaux sur l'avenue regideso, ngaliema, Kinshasa! MERCI", 
+                type: "warning",
+                showCancelButton: false, 
+                cancelButtonText: "", 
+                confirmButtonText: "OK",
+                confirmButtonColor: "#DD6B55"
+                
+            }
+        );
+    }
 }

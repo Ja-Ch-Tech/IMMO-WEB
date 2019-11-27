@@ -66,6 +66,7 @@ body {
 	font-size: 16px;
 	position: relative;
 	z-index: auto;
+	
 }
 
 h1,
@@ -4989,9 +4990,10 @@ Created using IcoMoon - icomoon.io
 .resultatSearch{
 	box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.12);
 	margin-bottom: 20px;
+	height: auto;
 }
 .resultatSearch img{
-	width: 100%;	
+	width: 100%;
 }
 
 .resultatSearch p{

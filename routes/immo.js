@@ -10,6 +10,15 @@ router.get('/:immo_id/details', function(req, res, next) {
   });
 });
 
+/* RECUPERE TOUS LES IMMOBILIER */
+router.get('/voir-tous-les-immo', function (req, res, next) {
+	var StateClient = req.session.id ? true : false;
+  	res.render('Allimmob', { 
+	  	title: 'Tous les immobiliers',
+	  	StateClient : StateClient 
+  	});
+})
+
 /* BIEN EN LOCATION*/
 router.get('/location/:mode_id/liste', function (req, res, next) {
   	var StateClient = req.session.id ? true : false;

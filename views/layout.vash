@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" href="/stylesheets/loaders.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="/stylesheets/sweetalert.css">
+
 
     <script type='text/javascript'
         src='https://platform-api.sharethis.com/js/sharethis.js#property=5d9fb51ed50e4800128b7e37&product=sticky-share-buttons'
@@ -370,6 +372,7 @@
   <script src="/vendors/wizard-form/js/jquery.steps.js"></script>
   <script src="/vendors/wizard-form/js/main.js"></script>
   <script src="/javascripts/mainFunctions.js"></script>
+  <script src="/javascripts/sweetalert.js"></script>
 
   <!-- Connecting API-->
   <script src="/javascripts/api/init.js"></script>
