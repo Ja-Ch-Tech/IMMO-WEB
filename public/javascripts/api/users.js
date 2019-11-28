@@ -41,6 +41,10 @@ function initUsers() {
 
                     setImage();
                 }
+
+                if (/contacts/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
+                    getInterestImmo(user_id);
+                }
                 
             }
 
@@ -104,11 +108,11 @@ function dynamicSideBar(user_id) {
                 }
             })
         },
-        ul = ` <li class="${active("/profile/" + user_id + "/informations")}"><a href="/profile/${user_id}/informations">Profil</a></li>
-              <li class="${active("/profile/" + user_id + "/photo")}" ><a href="/profile/${user_id}/photo">Photo</a></li>
-              <li class="${active("/profile/" + user_id + "/securite")}"><a href="/profile/${user_id}/securite">Securité</a></li>
-              <li id="mark" class="${active("/profile/" + user_id + "/biens/notifications")}"><a href="/profile/${user_id}/biens/notifications">Notifications</a></li>
-              <li class="${active("/profile/" + user_id + "/biens/contact")}"><a href="/profile/${user_id}/biens/contact">Contacts</a></li>`;
+        ul = ` <li title="Votre profile" class="${active("/profile/" + user_id + "/informations")}"><a href="/profile/${user_id}/informations">Profile</a></li>
+              <li title="Photo de profile" class="${active("/profile/" + user_id + "/photo")}" ><a href="/profile/${user_id}/photo">Photo</a></li>
+              <li title="Securisation du compte" class="${active("/profile/" + user_id + "/securite")}"><a href="/profile/${user_id}/securite">Securité</a></li>
+              <li title="Immobiliers en favoris" id="mark" class="${active("/profile/" + user_id + "/biens/favoris")}"><a href="/profile/${user_id}/biens/favoris">Favoris</a></li>
+              <li title="Contacts immobiliers" class="${active("/profile/" + user_id + "/biens/contacts")}"><a href="/profile/${user_id}/biens/contacts">Contacts</a></li>`;
         $("#sideBar").html(ul);
         infoOwnerNav(user_id)
 }
@@ -151,7 +155,7 @@ function userNavInfo(user_id) {
         before: {},
         success: function (data) {
             var contentProfileInfos = `<a style="color:#93c900;font-size:17px;" href="/profile/${data.getObjet._id}/informations" class="pull-right">
-                                        <img class="img-thumbnail" style="width:40px;height:40px;border-radius:40px;" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.srcFormat}"/>&nbsp;<span>${data.getObjet.prenom}&nbsp;${data.getObjet.nom}</span>
+                                        <img class="img-thumbnail" style="width:40px;height:40px;border-radius:40px;" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.srcFormat}"/>&nbsp;<span style="text-transform:uppercase">${data.getObjet.prenom}&nbsp;${data.getObjet.nom}</span>
                                     </a>`,
                 contentOtherNav = `<a class="active" href="#"><i class="iconsProfile now-ui-icons ui-1_bell-53" aria-hidden="true"></i></a>`;
             // $("#navAdditionalForUser").append(contentOtherNav);
@@ -487,5 +491,18 @@ function updateInformation(userId) {
             }
         }
         
+    })
+}
+
+function getInterestImmo(userId) {
+    $.ajax({
+        type: 'GET',
+        url: `/api/getInserest/${userId}`,
+        dataType: "json",
+        success: function (data) {
+                
+            console.log(data)
+            
+        }
     })
 }

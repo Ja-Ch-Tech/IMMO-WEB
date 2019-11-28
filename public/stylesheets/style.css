@@ -869,7 +869,7 @@ input:invalid {
 
 .main-header-area {
 	position: relative;
-	z-index: 1;
+	z-index: 0;
 	background-color: #ffffff;
 }
 
@@ -5114,6 +5114,27 @@ Created using IcoMoon - icomoon.io
 .resultatSearch .property-info-area p span {
 	color: #2a303b;
     font-family: "Poppins", sans-serif;
+}
+
+.icon-menu {
+	font-size: 25px;
+}
+
+.badge.green{
+	background-color: #92c800;
+	color:#fff;
+	border-radius: 100%;
+}
+
+.dropdown.content{
+	background-color:#fff;
+	position:absolute;
+	width: 400px;
+	z-index: 1;
+	height: 300px;
+	margin-left: -150px;
+	box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
+	margin-top: 15px;
 }
 
 /*# sourceMappingURL=style.css.map */

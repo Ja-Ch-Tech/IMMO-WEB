@@ -384,6 +384,19 @@ router.get('/infoOwner/:id_owner', (req, res) => {
         })
 })
 
+router.get('/getInserest/:id_owner', (req, res) => {
+    axios.get(`${API}/extra/listImmoAddToExtraForUser/${req.params.id_owner}`)
+        .then(response => {
+            res.status(200);
+            res.send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+})
+
+
 //Recupère les immobiliers d'un propriétaire
 router.get('/immobilier/owner/getAll', (req, res) => {
     axios.get(`${API}/immobilier/getAllByModeForOwner/${req.session.id}`)
@@ -429,6 +442,12 @@ router.post('/int', (req, res) => {
              res.status(500);
              res.send(err)
          })
+})
+
+//Recupere les immo en contact pour un user
+router.get('/interestImmo/:id_user', (req, res) => {
+    send("Mbuyu");
+   
 })
 
 module.exports = router;

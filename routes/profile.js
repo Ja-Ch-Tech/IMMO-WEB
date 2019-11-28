@@ -41,5 +41,21 @@ router.get('/:user_id/publications/ajouter', function (req, res, next) {
 	})
 })
 
+/* RECUPERATION DES IMMOS MIS EN FAVORIS */
+router.get('/:user_id/biens/favoris', function (req, res, next) {
+	res.render('profile/favoris', {
+		title : 'Favoris immobiliers',
+	    StateClient: req.session.id ? true : false
+	})
+})
+
+/* RECUPERATION DES IMMOS MIS EN Contact */
+router.get('/:user_id/biens/contacts', function (req, res, next) {
+	res.render('profile/contacts', {
+		title : 'contacts immobiliers',
+	    StateClient: req.session.id ? true : false
+	})
+})
+
 
 module.exports = router;

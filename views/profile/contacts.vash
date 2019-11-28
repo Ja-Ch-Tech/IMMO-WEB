@@ -1,0 +1,17 @@
+@html.extend('profile/profile_layout', function(model){
+    @html.append('blocuser', function(model){
+      <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
+       <div class="header text-center">
+            <h3 style="border:none;">CONTACTS</h3>
+            <p style="margin-bottom: 0px;">Contact des immobiliers dont vous vous etes interessés
+        </p>
+        </div>
+        <div class="body">
+            <!-- Leave A Reply -->
+            
+        </div>
+       
+        
+        
+    });
+})
