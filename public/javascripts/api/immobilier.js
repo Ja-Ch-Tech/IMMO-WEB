@@ -412,13 +412,13 @@ function getStatType() {
                         var contentBody = `<div class="col-12 col-md-3">
                                             <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp" data-wow-delay="200ms">
                                                 <div class="property-thumb">
-                                                    <a href="#"><img src="/images/bg-img/9.jpg" alt=""></a>
+                                                    <a href="/immo/type/${prop._id}/liste"><img src="/images/bg-img/9.jpg" alt=""></a>
                                                 </div>
                                                 <!-- Title -->
-                                                <a class="categories-title" href="#">${customProp(prop.nbreProp ? prop.nbreProp : 0)} </a>
+                                                <a class="categories-title" href="/immo/type/${prop._id}/liste">${customProp(prop.nbreProp ? prop.nbreProp : 0)} </a>
                                                 <!-- Property Name and Price -->
                                                 <div class="property-name-price-text">
-                                                    <a href="/type/${prop._id}">${prop.intitule}</a>
+                                                    <a href="/immo/type/${prop._id}/liste">${prop.intitule}</a>
                                                 </div>
                                             </div>
                                         </div>`;
@@ -1124,7 +1124,7 @@ function showUploadedImgImmo(source, title) {
     div.append(img);
 }
 
-function getAllImmovableForOwner() {
+function getAllImmovableForOwner(user_id) {
     $.ajax({
         type: 'GET',
         url: "/api/immobilier/owner/getAll",
@@ -1218,6 +1218,13 @@ function getAllImmovableForOwner() {
                 } else {
                     alert("rien n'y est")
                 }
+            }else{
+                var content = `<div class="col-md-12" style="padding-top:10%;"><center>
+                <span style="font-size:200px" class="zmdi zmdi-city-alt icon-menu"></span><p>Votre liste des publication est vide, commencez votre aventure maintenant en publiant vos immobiliers et profitez des avantages qu'offre ndakubizz</p>
+                <a href="/profile/${user_id}/publications/ajouter">Publier un bien</a>
+                </center></div>`;
+
+                $("#lineImmoForOwner").append(content);
             }
         },
         error: function (err) {

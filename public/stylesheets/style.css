@@ -5126,15 +5126,50 @@ Created using IcoMoon - icomoon.io
 	border-radius: 100%;
 }
 
-.dropdown.content{
-	background-color:#fff;
-	position:absolute;
-	width: 400px;
+.dropbtn {
+	background-color:transparent;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	padding:5px;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown2 {
+	position: relative;
+	display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	z-index: 1;
-	height: 300px;
-	margin-left: -150px;
-	box-shadow: 0 2px 40px 8px rgba(15, 15, 15, 0.15);
-	margin-top: 15px;
-}
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown2:hover .dropdown-content {
+	display: block;
+	margin-top:110%;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown2:hover .dropbtn {
+	background-color: transparent;
+  }
 
 /*# sourceMappingURL=style.css.map */

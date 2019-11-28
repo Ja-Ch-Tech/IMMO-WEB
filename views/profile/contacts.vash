@@ -6,7 +6,7 @@
             <p style="margin-bottom: 0px;">Contact des immobiliers dont vous vous etes interessés
         </p>
         </div>
-        <div class="body">
+        <div id="listContactImmo" class="body">
             <!-- Leave A Reply -->
             
         </div>

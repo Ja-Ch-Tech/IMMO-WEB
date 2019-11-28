@@ -185,7 +185,7 @@
                           <a href="#"><i class="fa fa-phone"></i> <span>+24389999999</span></a>
                       </div>
                   </div>
-                  <div class="col-3">
+                  <div class="col-6">
                       <div class="top-header-content">
                           <!-- Top Social Area -->
                               <div id="navAdditionalForUser" class="top-social-area ml-auto">
@@ -194,23 +194,23 @@
                       </div>
                   </div>
                   <div class="col-2">
-                      <div id="navUser" class="top-header-content">
+                      <div id="navUser" class="dropdown2 top-header-content">
                             
                       </div>
                   </div>
-                  <div class="col-1">
+                   <!-- <div class="col-1">
                       <a title="Immobiliers favoris" style="color:#ccc" href="#">
                           <span class="zmdi zmdi-favorite-outline icon-menu"></span>
                           <span class="badge green">4</span>
                       </a>
                   </div>
-                      <!--  
+                       
                       <div class="dropdown content"> 
                         mbuyu
                       </div>-->
-                  <div class="col-1">
+                  <!-- <div class="col-1">
                       <a title="Contacts" style="color:#ccc;:15px;" href="#"><span class="zmdi zmdi-account-box-phone icon-menu"></span><span class="badge green">4</span></a>
-                  </div>
+                  </div> -->
               </div>
           </div>
       </div>
@@ -225,8 +225,8 @@
 
                       <!-- Logo -->
                       <a class="nav-brand" href="/">
-                        NDAKUBIZZ
-                        <!-- <img src="/images/core-img/logo.png" alt=""> -->
+                        
+                        <img style="width:70px;height:60px;" src="/images/Logo/fin4.png" alt="">
                       </a>
 
                       <!-- Navbar Toggler -->
@@ -282,8 +282,7 @@
                       <div class="single-footer-widget mb-80">
                           <!-- Footer Logo -->
                           <a href="#" class="footer-logo">
-                            NDAKUBIZZ
-                            <!-- <img src="/images/core-img/logo-2.png" alt=""> -->
+                            <img style="width:150px;height:150px;" src="/images/Logo/fin3.png" alt="">
                           </a>
 
                           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
