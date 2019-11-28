@@ -351,6 +351,7 @@ router.post('/addImmob', (req, res) => {
 //Recherche d'un immo
 router.post('/searchImmo', (req, res) => {
     var datas = {
+        "id_user": req.session.id ? req.session.id : null,
         "mode" : req.body.mode,
         "type" : req.body.type,
         "commune" : req.body.commune,
