@@ -1234,12 +1234,11 @@ function getContact(user_id, immo_id, mode){
     }else if (/vente/i.test(mode)) {
         swal(
             {
-                title: "CONTACTS VENTE IMMO", 
-                text: "Pour voir les contacts des gens interessés, veuillez nous contacter au +243896341113 ou passez dans nos locaux sur l'avenue regideso, ngaliema, Kinshasa! MERCI", 
+                title: "CONTACTS VENTE IMMO...", 
+                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter au +243896341113 ou passez dans nos locaux sur l'avenue regideso, ngaliema, Kinshasa! MERCI</font>", 
                 type: "warning",
-                showCancelButton: false, 
-                cancelButtonText: "", 
-                confirmButtonText: "OK",
+                showCancelButton: false,
+                confirmButtonText: "Compris !",
                 confirmButtonColor: "#DD6B55"
                 
             }
