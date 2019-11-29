@@ -233,7 +233,7 @@ function searchImmo() {
 
                 //Ajout des immobilier
                 data.getObjet.immobiliers.map(immobilier => {
-                    console.log(immobilier);
+                    
                        sortieImmo++;
                         var rentOrSale = () => {
                             if (/location/i.test(immobilier.mode)) {
@@ -482,8 +482,7 @@ function getNewImmobilier() {
                         return 1;
                     });
                     data.getObjet.map(element => {
-                        console.log(element);
-
+                        
                         var rentOrSale = () => {
                             if (/location/i.test(element.mode)) {
                                 return `<p class="badge-rent">A louer</p>`
@@ -630,7 +629,7 @@ function getDetailsImmobilier(id) {
                 details[0].getElementsByClassName('loader09')[0].style.display = "block";
             },
             success: function (datas) {
-                console.log(datas)
+                
                 details[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (datas.getEtat) {
                     var obj = datas.getObjet,
@@ -826,7 +825,6 @@ function getImmoByType(type_id) {
                 if (data.getObjet.immobiliers.length > 0) {
 
                     data.getObjet.immobiliers.map(element => {
-                        console.log(element);
                         
                         var rentOrSale = () => {
                             if (/location/i.test(element.mode)) {
@@ -1071,8 +1069,6 @@ function setImage() {
                                     var percentComplete = evt.loaded / evt.total;
                                     percentComplete = parseInt(percentComplete * 100);
 
-                                    console.log(percentComplete);
-
                                     progressBar.setAttribute("style", `width: ${percentComplete}%`)
 
                                 }
@@ -1130,7 +1126,7 @@ function getAllImmovableForOwner() {
         url: "/api/immobilier/owner/getAll",
         dataType: "json",
         success: function (data) {
-            console.log(data);
+            
             if (data.getEtat) {
 
                 if (data.getObjet.length > 0) {

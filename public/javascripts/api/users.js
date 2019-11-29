@@ -96,7 +96,6 @@ function dynamicSideBar(user_id) {
         infoOwnerNav = function(user_id) {
             
             infoOwner(user_id, function (infos) {
-                console.log(infos);
                 
                 if (infos.getEtat) {
                     var li = `<li class="${active("/profile/" + user_id + "/publications")}"><a href="/profile/${user_id}/publications">Publications</a></li><li class="${active("/profile/" + user_id + "/publications/ajouter")}"><a href="/profile/${user_id}/publications/ajouter">Publier un bien</a></li>`;
@@ -170,8 +169,6 @@ function upload() {
     //Afin d'écouter un eventuel changement de valeur qui interviendrai
     //si l'utilisateur valider la selection du fichier
     input.addEventListener('change', function () {
-
-        console.log(input);
 
         //LES VARIABLES
         var formData = new FormData(), //L'objet formDATA qui sera soumit comme data dans AJAX
@@ -322,7 +319,7 @@ function getAvatar(user_id) {
         url: `/api/infoForAnyUser/${user_id}`,
         dataType: "json",
         success: function (data) {
-                console.log(data);
+            
                 var image = () => {
                     return data.getObjet.image ? getHostAPI() + data.getObjet.image.lien : "/images/bg-img/1b3721afd0d0dbceebdb8bce26df9470-s120.jpg"; 
                     };
@@ -461,7 +458,7 @@ function getAvatar(user_id) {
 function updateInformation(userId) {
     document.getElementById("updateInformation").addEventListener("submit", (e) => {
         e.preventDefault();
-        console.log(e.target.elements);
+        
         var objData = {};
 
         var sortieInput = 0;
@@ -479,8 +476,6 @@ function updateInformation(userId) {
                     dataType: "json",
                     data: objData,
                     success: function (data) {
-
-                        console.log(data);
                         
                     }
                 })

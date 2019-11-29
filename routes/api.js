@@ -72,9 +72,6 @@ router.post('/login', (req, res) => {
                     req.session.type = datas.data.getObjet.type;
 
                     if (req.session.id) {
-                        console.log("Mise en session de " + req.session.id);
-
-                        console.log(req.session.id + " : " + req.session.type);
 
                         res.status(200);
                         res.send(datas.data);
