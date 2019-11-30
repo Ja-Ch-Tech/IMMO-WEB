@@ -19,7 +19,7 @@ function initUsers() {
                 }
 
                 if (/publications/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
-                    getAllImmovableForOwner();
+                    getAllImmovableForOwner(user_id);
                 }
 
                 if (/ajouter/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
@@ -40,6 +40,14 @@ function initUsers() {
                     })
 
                     setImage();
+                }
+
+                if (/contacts/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
+                    getInterestImmo(user_id, 0)
+                }
+
+                if (/favoris/i.test(window.location.pathname.split("/")[window.location.pathname.split("/").length - 1])) {
+                    getFavorisImmo(user_id, 1)
                 }
                 
             }
@@ -103,11 +111,11 @@ function dynamicSideBar(user_id) {
                 }
             })
         },
-        ul = ` <li class="${active("/profile/" + user_id + "/informations")}"><a href="/profile/${user_id}/informations">Profil</a></li>
-              <li class="${active("/profile/" + user_id + "/photo")}" ><a href="/profile/${user_id}/photo">Photo</a></li>
-              <li class="${active("/profile/" + user_id + "/securite")}"><a href="/profile/${user_id}/securite">Securité</a></li>
-              <li id="mark" class="${active("/profile/" + user_id + "/biens/notifications")}"><a href="/profile/${user_id}/biens/notifications">Notifications</a></li>
-              <li class="${active("/profile/" + user_id + "/biens/contact")}"><a href="/profile/${user_id}/biens/contact">Contacts</a></li>`;
+        ul = ` <li title="Votre profile" class="${active("/profile/" + user_id + "/informations")}"><a href="/profile/${user_id}/informations">Profile</a></li>
+              <li title="Photo de profile" class="${active("/profile/" + user_id + "/photo")}" ><a href="/profile/${user_id}/photo">Photo</a></li>
+              <li title="Securisation du compte" class="${active("/profile/" + user_id + "/securite")}"><a href="/profile/${user_id}/securite">Securité</a></li>
+              <li title="Immobiliers en favoris" class="${active("/profile/" + user_id + "/biens/favoris")}"><a href="/profile/${user_id}/biens/favoris">Favoris</a></li>
+              <li title="Contacts immobiliers" class="${active("/profile/" + user_id + "/biens/contacts")}"><a href="/profile/${user_id}/biens/contacts">Contacts</a></li>`;
         $("#sideBar").html(ul);
         infoOwnerNav(user_id)
 }
@@ -149,12 +157,30 @@ function userNavInfo(user_id) {
         url: "/api/infoForAnyUser/" + user_id,
         before: {},
         success: function (data) {
-            var contentProfileInfos = `<a style="color:#93c900;font-size:17px;" href="/profile/${data.getObjet._id}/informations" class="pull-right">
-                                        <img class="img-thumbnail" style="width:40px;height:40px;border-radius:40px;" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.srcFormat}"/>&nbsp;<span>${data.getObjet.prenom}&nbsp;${data.getObjet.nom}</span>
-                                    </a>`,
-                contentOtherNav = `<a class="active" href="#"><i class="iconsProfile now-ui-icons ui-1_bell-53" aria-hidden="true"></i></a>`;
+            var infoOwnerNav2 = function(user_id) {
+            
+                infoOwner(user_id, function (infos) {
+                    
+                    if (infos.getEtat) {
+                        var li = `<a href="/profile/${user_id}/publications"><span class="zmdi zmdi-collection-item"></span>&nbsp;Mes publications</a>
+                        <a href="/profile/${user_id}/publications/ajouter"><span class="zmdi zmdi-collection-plus"></span>&nbsp;Publier un bien</a>`;
+                        $("#dropdownProfile").append(li);
+                    }
+
+                    $("#dropdownProfile").append(`<a href="${getHostWebSite()}/logout"><span class="zmdi zmdi-power"></span>&nbsp;Deconnexion</a>`);
+                })
+            }
+            var contentProfileInfos = `<button class="dropbtn"><img style="width:40px;height:40px;border-radius:40px" class="img-thumbnail" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.srcFormat}"/>&nbsp;<span style="text-transform:uppercase">${data.getObjet.prenom}&nbsp;${data.getObjet.nom}&nbsp;<span class="zmdi zmdi-caret-down"></span></span></button>
+            <div id="dropdownProfile" class="dropdown-content">
+                <a href="/profile/${user_id}/informations"><span class="zmdi zmdi-account-o"></span>&nbsp;Profile</a>
+                <a href="/profile/${user_id}/photo"><span class="zmdi zmdi-camera-add"></span>&nbsp;Photo</a>
+                <a href="/profile/${user_id}/securite"><span class="zmdi zmdi-shield-security"></span>&nbsp;Securité</a>
+                <a href="/profile/${user_id}/biens/favoris"><span class="zmdi zmdi-favorite-outline"></span>&nbsp;Favoris</a>
+                <a href="/profile/${user_id}/biens/contacts"><span class="zmdi zmdi-accounts-list"></span>&nbsp;Contacts</a>
+            </div>`;
             // $("#navAdditionalForUser").append(contentOtherNav);
             $("#navUser").append(contentProfileInfos);
+            infoOwnerNav2(user_id);
         }
     });
 }
@@ -482,5 +508,140 @@ function updateInformation(userId) {
             }
         }
         
+    })
+}
+
+//Recupere les immo interessés
+function getInterestImmo(userId, type) {
+    $.ajax({
+        type: 'GET',
+        url: `/api/interestFavorisImmo/${userId}/${type}`,
+        dataType: "json",
+        success: function (data) {
+                
+            if (data.getEtat) {
+                if (data.getObjet.length > 0) {
+                    data.getObjet.map(immobilier => {
+                         var rentOrSale = () => {
+                             if (/location/i.test(immobilier.mode)) {
+                                 return `A louer ${immobilier.prix} USD/mois`
+                             } else {
+                                 return `A vendre ${immobilier.prix} USD`
+                             }
+                         },
+                         description = () => {
+                             var description = immobilier.description;
+                             if (description.length >= 200) {
+                                 description = description.substr(0, 200) + "...";
+                             }
+                             return description;
+                         }
+                         immobilierContent = `<a href="/immo/${immobilier._id}/details">
+                         <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
+                             <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
+                                 <img style="height: 200px" src="${immobilier.detailsImages[0].srcFormat}" alt="">
+                             </div>
+                             <div style="padding: 10px;" class="col-md-8">
+                                 <div class="pull-right property-seller">
+                                    <span style="color:#92c800;" class="pull-right"><i class="zmdi zmdi-time"></i>&nbsp;${customDate(immobilier.created_at)}</span>
+                                     <p>Proprietaire:</p>
+                                     <h6>${immobilier.prenomOwner}&nbsp;${immobilier.nomOwner}</h6>
+                                 </div>
+                                 <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
+                                 <h4>${rentOrSale()}</h4>
+                                 <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                 <p style="font-size: 13px;margin-bottom: 16px;">
+                                     ${description()}
+                                 </p>
+                                 <hr style="margin-bottom: 0px;">
+                                 <div class="property-info-area d-flex flex-wrap">
+                                       ${immobilier.surface ? `<p>Superficie: <span>${immobilier.surface}m<sup>2</sup></span></p>` : ""}
+                                       ${immobilier.nbrePiece ? `<p>Pièce: <span>${immobilier.nbrePiece}</span></p>` : ""}
+                                       ${immobilier.nbreChambre ? `<p>Chambre: <span>${immobilier.nbreChambre}</span></p>` : ""}
+                                       ${immobilier.nbreDouche ? `<p>Douche: <span>${immobilier.nbreDouche}</span></p>` : ""}
+                                 </div>
+                             </div>
+
+                         </div></a>`;
+                         $("#listContactImmo").append(immobilierContent);
+                     
+                    })
+                }
+            } else {
+                var content = `<center>
+                <span style="font-size:200px" class="zmdi zmdi-account-calendar icon-menu"></span><p>Votre liste d'immobiliers interessés est vide pour le moment</p>
+                </center>`;
+
+                $("#listContactImmo").append(content);
+            }
+            
+        }
+    })
+}
+
+//Recupere les immo en favoris
+function getFavorisImmo(userId, type) {
+    $.ajax({
+        type: 'GET',
+        url: `/api/interestFavorisImmo/${userId}/${type}`,
+        dataType: "json",
+        success: function (data) {
+            if (data.getEtat) {
+                if (data.getObjet.length > 0) {
+                    data.getObjet.map(immobilier => {
+                         var rentOrSale = () => {
+                             if (/location/i.test(immobilier.mode)) {
+                                 return `A louer ${immobilier.prix} USD/mois`
+                             } else {
+                                 return `A vendre ${immobilier.prix} USD`
+                             }
+                         },
+                         description = () => {
+                             var description = immobilier.description;
+                             if (description.length >= 200) {
+                                 description = description.substr(0, 200) + "...";
+                             }
+                             return description;
+                         }
+                         immobilierContent = `<a href="/immo/${immobilier._id}/details">
+                         <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
+                             <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
+                                 <img style="height: 200px" src="${immobilier.detailsImages[0].srcFormat}" alt="">
+                             </div>
+                             <div style="padding: 10px;" class="col-md-8">
+                                 <div class="pull-right property-seller">
+                                    <span style="color:#92c800;" class="pull-right"><i class="zmdi zmdi-time"></i>&nbsp;${customDate(immobilier.created_at)}</span>
+                                     <p>Proprietaire:</p>
+                                     <h6>${immobilier.prenomOwner}&nbsp;${immobilier.nomOwner}</h6>
+                                 </div>
+                                 <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
+                                 <h4>${rentOrSale()}</h4>
+                                 <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                 <p style="font-size: 13px;margin-bottom: 16px;">
+                                     ${description()}
+                                 </p>
+                                 <hr style="margin-bottom: 0px;">
+                                 <div class="property-info-area d-flex flex-wrap">
+                                       ${immobilier.surface ? `<p>Superficie: <span>${immobilier.surface}m<sup>2</sup></span></p>` : ""}
+                                       ${immobilier.nbrePiece ? `<p>Pièce: <span>${immobilier.nbrePiece}</span></p>` : ""}
+                                       ${immobilier.nbreChambre ? `<p>Chambre: <span>${immobilier.nbreChambre}</span></p>` : ""}
+                                       ${immobilier.nbreDouche ? `<p>Douche: <span>${immobilier.nbreDouche}</span></p>` : ""}
+                                 </div>
+                             </div>
+
+                         </div></a>`;
+                         $("#listFavorisForUser").append(immobilierContent);
+                     
+                    })
+                }
+            } else {
+                var content = `<center>
+                <span style="font-size:200px" class="zmdi zmdi-favorite-outline icon-menu"></span><p>Votre liste des favoris est vide, visitez plus d'immobiliers pour ajouter aux favoris</p>
+                </center>`;
+
+                $("#listFavorisForUser").append(content);
+            }
+            
+        }
     })
 }

@@ -1,0 +1,12 @@
+@html.extend('profile/profile_layout', function(model){
+    @html.append('blocuser', function(model){
+      <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
+       <div class="header text-center">
+            <h3 style="border:none;">FAVORIS</h3>
+            <p style="margin-bottom: 0px;">Immobiliers ajouter aux favoris recemment</p>
+        </div>
+        <div id="listFavorisForUser" class="body">
+        </div>
+        
+    });
+})

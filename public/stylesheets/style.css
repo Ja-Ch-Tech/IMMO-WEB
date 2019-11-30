@@ -869,7 +869,7 @@ input:invalid {
 
 .main-header-area {
 	position: relative;
-	z-index: 1;
+	z-index: 0;
 	background-color: #ffffff;
 }
 
@@ -5115,5 +5115,61 @@ Created using IcoMoon - icomoon.io
 	color: #2a303b;
     font-family: "Poppins", sans-serif;
 }
+
+.icon-menu {
+	font-size: 25px;
+}
+
+.badge.green{
+	background-color: #92c800;
+	color:#fff;
+	border-radius: 100%;
+}
+
+.dropbtn {
+	background-color:transparent;
+	color: #fff;
+	border: none;
+	cursor: pointer;
+	padding:5px;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown2 {
+	position: relative;
+	display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f9f9f9;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown2:hover .dropdown-content {
+	display: block;
+	margin-top:110%;
+  }
+  
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown2:hover .dropbtn {
+	background-color: transparent;
+  }
 
 /*# sourceMappingURL=style.css.map */
