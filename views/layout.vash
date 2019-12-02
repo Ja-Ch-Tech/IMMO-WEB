@@ -61,6 +61,9 @@
                   <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">
                       <div style="padding:10%;" class="rehomes-contact-form wow fadeInUp" data-wow-delay="200ms">
                       <!-- Form -->
+                        <div id="errorMessage">
+                        </div>
+                        
                         <form class="support-form" method="post" id="loginForm">
                           <div class="row col-8 mx-auto">
                               <div class="col-12">
@@ -70,7 +73,7 @@
                                   <input type="password" name="password" class="form-control mb-20" placeholder="Mot de passe">
                               </div>
                               <div class="col-12">
-                                  <button type="submit" class="btn rehomes-btn">Se connecter</button>
+                                  <button id="btn-connect" type="submit" class="btn rehomes-btn">Se connecter</button>
                               </div>
                           </div>
                         </form>

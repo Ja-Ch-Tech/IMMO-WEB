@@ -136,12 +136,30 @@ function login() {
             url: "/api/login",
             dataType: "json",
             data: objData,
-            before: {},
+            beforeSend: function () {
+                $("#btn-connect").text("VERIFICATION...");
+            },
             success: function (data) {
+                $("#btn-connect").text("SE CONNECTER");
+
                 if (data.getEtat) {
                     window.location.href = "/";
                 } else {
-                    alert(data.getMessage);
+                    //Va bouger le modal
+                    if (!($("#modalSession")[0].classList.contains("shake"))) {
+                        $("#modalSession")[0].classList.add("animated")
+                        $("#modalSession")[0].classList.add("shake")
+                    }
+
+                    //Retire les classes apres
+                    setTimeout(function(){
+                        $("#modalSession")[0].classList.remove("animated")
+                        $("#modalSession")[0].classList.remove("shake")
+                    },1000);
+                    $("#errorMessage").html(`<div class="alert alert-danger">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong>Erreur!</strong> ${data.getMessage}, reessayez a nouveau
+                  </div>`)
                 }
             }
         });

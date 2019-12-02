@@ -110,11 +110,14 @@
                                             <p style="margin-bottom: 0;">Ajoutez une image</p>
                                         </div>
                                         <div class="col-md-7">
+                                            <div id="progressImage" style="display:none;margin-bottom:15px;" class="progress">
+                                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                                            </div>
                                             <input type="text" name="nameImage" class="form-control mb-20" placeholder="Qu'est-ce que vous ajouter ?" id="nameImage">
                                         </div>
                                         <div class="col-md-5">
                                             <label id="selection">
-                                                <a class="btn rehomes-btn btn-2">Selectionnez l'image</a>
+                                                <a id="btn_upload_image" class="btn rehomes-btn btn-2">Selectionnez l'image</a>
                                             </label>
                                             <input type="file" id="imageImmo" style="display: none;">
                                         </div>
@@ -129,7 +132,7 @@
             <div class="footer">
                 <div class="col-12">
                   <center>
-                    <button type="submit" class="btn rehomes-btn">Terminer</button>
+                    <button id="btn_add_immo" type="submit" class="btn rehomes-btn">Terminer</button>
                   </center>
                 </div>
             </div>

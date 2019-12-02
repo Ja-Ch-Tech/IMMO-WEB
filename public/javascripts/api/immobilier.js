@@ -648,10 +648,10 @@ function getDetailsImmobilier(id) {
                     },
                     setImagesForSlides = () => {
                         obj.detailsImages.map((value, item) => {
-                            var contentForFisrtDiv = `<li data-target="#property-thumb-silde" data-slide-to="${item}" style="background-image: url(${value.srcFormat});"></li>`;
+                            var contentForFisrtDiv = `<li onclick="displayImage('${value.srcFormat}')" data-target="#property-thumb-silde" data-slide-to="${item}" style="background-image: url(${value.srcFormat});"></li>`;
 
                             var contentForSecondDiv = `<div class="carousel-item active">
-                                            <img src="${value.srcFormat}" class="d-block w-100" alt="...">
+                                            <img id="mainImg" src="${value.srcFormat}" class="d-block w-100" alt="...">
                                         </div>`;
 
                             $("#allImagesList").append(contentForFisrtDiv);
@@ -694,7 +694,7 @@ function getDetailsImmobilier(id) {
                             </div>`;
 
                     details.append(content);
-                    setImagesForSlides();
+                    setImagesForSlides
                 }
             },error : function (err) {
                 details[0].getElementsByClassName('loader09')[0].style.display = "none";
@@ -704,6 +704,10 @@ function getDetailsImmobilier(id) {
     })
 }
 
+function displayImage(image) {
+    var mainImg = document.getElementById("mainImg");
+    mainImg.src = image;
+}
 function viewContact(id, immo) {
       
         $.ajax({
@@ -919,8 +923,11 @@ function addImmo(e, user_id) {
                 url: "/api/addImmob",
                 dataType: "json",
                 data: objData,
+                beforeSend : function () {
+                    $("#btn_add_immo").text("Publication en cours...");
+                },
                 success: function (data) {
-
+                    $("#btn_add_immo").text("Terminer");
                     if (data.getEtat) {
                         $.ajax({
                             type: 'POST',
@@ -991,6 +998,7 @@ function setImage() {
                         processData: false, // tell jQuery not to process the data
                         contentType: false, // tell jQuery not to set contentType
                         beforeSend: function () {
+                            $("#progressImage").fadeIn();
                         },
                         complete: function () {
                         },
@@ -1059,7 +1067,7 @@ function setImage() {
                         xhr: function () {
 
                             //$(".progress").show();
-                            var progressBar = document.getElementById("juiceForProgress");
+                            var progressBar = document.getElementById("progressImage");
                             // create an XMLHttpRequest
                             var xhr = new XMLHttpRequest();
 
@@ -1073,7 +1081,8 @@ function setImage() {
 
                                     console.log(percentComplete);
 
-                                    progressBar.setAttribute("style", `width: ${percentComplete}%`)
+                                    progressBar.getElementsByClassName('progress-bar')[0].style.width = percentComplete + '%';
+                                    progressBar.getElementsByClassName('progress-bar')[0].innerHTML = percentComplete + '%';
 
                                 }
 
@@ -1082,6 +1091,7 @@ function setImage() {
                             xhr.upload.addEventListener("loadend", (evt) => {
                                 setTimeout(() => {
                                     progressBar.setAttribute("style", `width: 0%`)
+                                    progressBar.style.display = 'none';
                                 }, 500);
                             })
 
