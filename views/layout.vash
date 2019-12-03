@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="/stylesheets/loaders.css">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="/stylesheets/sweetalert.css">
+    <link rel="stylesheet" href="/stylesheets/lightslider.css">
+    <link rel="stylesheet" href="/stylesheets/lightgallery.css">
 
 
     <script type='text/javascript'
@@ -388,6 +390,8 @@
   <script src="/vendors/wizard-form/js/main.js"></script>
   <script src="/javascripts/mainFunctions.js"></script>
   <script src="/javascripts/sweetalert.js"></script>
+  <script src="/javascripts/lightslider.min.js"></script>
+  <script src="/javascripts/lightgallery.js"></script>
 
   <!-- Connecting API-->
   <script src="/javascripts/api/init.js"></script>
@@ -398,6 +402,5 @@
   <script src="/javascripts/api/type_immobilier.js"></script>
   <script src="/javascripts/api/mode_immobilier.js"></script>
   
-
 </body>
 </html>
