@@ -8,9 +8,9 @@
         </div>
         
     </div>
-        <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        <div class="modal modal_contact fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div id="contentModalContact" class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header" style="position: relative;padding: 10px 20px;">
                         <h4 style="font-family: Segoe UI Light;font-family: 17px;">Contact (10)</h4>
