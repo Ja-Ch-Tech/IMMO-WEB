@@ -40,6 +40,10 @@
   <div class="modalFoContactUs d-none" id="modalForContactUs">
      
   </div>
+
+    <!-- Set Flash -->
+    <div id="setFlash"></div>
+
   <!-- GESTION MESSAGE ERREUR -->
   <div class="animated slideOutUp message" id="message">
   </div>

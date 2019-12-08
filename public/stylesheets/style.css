@@ -5007,13 +5007,13 @@ Created using IcoMoon - icomoon.io
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
-	..resultatSearch h4 {
+	.resultatSearch h4 {
 		font-size: 16px;
 	}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
-	..resultatSearch h4 {
+	.resultatSearch h4 {
 		font-size: 16px;
 	}
 }
@@ -5173,3 +5173,71 @@ Created using IcoMoon - icomoon.io
   }
 
 /*# sourceMappingURL=style.css.map */
+
+div#setFlash{
+  position: fixed;
+  z-index: 99999;
+  width: auto;
+  height: auto;
+  line-height: 15px;
+  font-size: 15px;
+  font-weight: 0 !important;
+  padding: 20px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  background-color: #333;
+  display: none;
+  right: 20px;
+  border-radius: 2px;
+  top: 15%;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease-in ;
+  -moz-transition: opacity 0.3s ease-in ;
+  transition: opacity 0.3s ease-in ;
+}
+
+div#setFlash a {
+  color: #00ff30;
+}
+
+div#setFlash:hover a {
+  text-decoration: underline;
+}
+
+.flash{
+    -webkit-background-clip: padding-box;
+        -ms-background-clip: padding-box;
+       -moz-background-clip: padding-box;
+         -o-background-clip: padding-box;
+            background-clip: padding-box;
+
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+        -ms-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+       -moz-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+         -o-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+
+    animation: flash 0.3s;
+}
+
+@keyframes flash{
+    0%{
+        opacity: 0;  
+    }
+
+    25%{
+        opacity: 0.25;
+    }
+
+    50%{
+        opacity: 0.5;
+    }
+
+    75%{
+        opacity: 1;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}

@@ -704,32 +704,33 @@ function getDetailsImmobilier(id) {
 }
 
 function viewContact(id, immo) {
-      
-        $.ajax({
-            type: 'POST',
-            url: "/api/int",
-            data: {
-                "id_owner": id,
-                "id_immo": immo
-            },
-            success: function (data) {
-                
-                if (data.getEtat) {
-                        var modal = document.getElementById("modalForContactUs");
-                        
-                    if (data.getObjet.isInLocation) {
-                        var obj = data.getObjet;
+    getUserId((isMatch, result) => {
+        if (result) {
+            $.ajax({
+                type: 'POST',
+                url: "/api/int",
+                data: {
+                    "id_owner": id,
+                    "id_immo": immo
+                },
+                success: function (data) {
 
-                        var allContacts = () => {
-                            if (obj.contacts.length > 0) {
-                                return `${obj.contacts[0].telephone ? `<font>Téléphone : <span>${obj.contacts[0].telephone}</span></font>` : ""}
+                    if (data.getEtat) {
+                        var modal = document.getElementById("modalForContactUs");
+
+                        if (data.getObjet.isInLocation) {
+                            var obj = data.getObjet;
+
+                            var allContacts = () => {
+                                if (obj.contacts.length > 0) {
+                                    return `${obj.contacts[0].telephone ? `<font>Téléphone : <span>${obj.contacts[0].telephone}</span></font>` : ""}
                                             ${obj.contacts[0].email ? `<font>E-mail : <span>${obj.contacts[0].email}</span></font>` : ""}`;
-                                
-                            } else {
-                                return "";
-                            }
-                        },
-                            content = ` <div class="cardThis">
+
+                                } else {
+                                    return "";
+                                }
+                            },
+                                content = ` <div class="cardThis">
                                     <font class="closeModal" onclick="closeModal()"><i class="fa fa-times-circle"></i></font>
                                     <div class="avatar-owner">
                                         <img src="${obj.image.srcFormat}" alt="${obj.image.name}">
@@ -748,15 +749,15 @@ function viewContact(id, immo) {
                                     </div>
                                 </div>`;
 
-                        modal.innerHTML = content;
-                        modal.classList.remove("d-none");
-                    } else {
+                            modal.innerHTML = content;
+                            modal.classList.remove("d-none");
+                        } else {
 
-                        var allContacts = () => {
-                                    return `<font>Téléphone : <span>+243 824 145 109</span></font>
+                            var allContacts = () => {
+                                return `<font>Téléphone : <span>+243 824 145 109</span></font>
                                             <font>E-mail : <span>contact@ndakubizz.com</span></font>`;
-                        },
-                            content = ` <div class="cardThis">
+                            },
+                                content = ` <div class="cardThis">
                                     <font class="closeModal" onclick="closeModal()"><i class="fa fa-times-circle"></i></font>
                                     <div class="avatar-owner">
                                         <img src="/images/bg-img/house-3664320_1920.jpg" alt="Image owner">
@@ -775,18 +776,42 @@ function viewContact(id, immo) {
                                     </div>
                                 </div>`;
 
-                        modal.innerHTML = content;
-                        modal.classList.remove("d-none");
-                    }   
-                }
-                
+                            modal.innerHTML = content;
+                            modal.classList.remove("d-none");
+                        }
+                    }
 
-            },
-            error: function (err) {
-                console.log(err);
-                
-            }
-        });
+
+                },
+                error: function (err) {
+                    console.log(err);
+
+                }
+            }); 
+        } else {
+           
+            var setFlash = document.getElementById("setFlash");
+            
+            setFlash.style.display = 'block';
+            setFlash.style.backgroundColor = '#f00';
+            setFlash.className = 'flash';
+            setFlash.style.opacity = '1';
+
+            setTimeout(function () {
+
+                setFlash.style.opacity--;
+                setFlash.removeAttribute('class');
+
+                if (setFlash.style.opacity < 0) {
+                    setFlash.style.opacity = '0';
+                }
+
+            }, 2300);
+
+            setFlash.innerHTML = '<i class="now-ui-icons travel_info"></i>&nbsp;&nbsp;Vous n\'êtes pas connecté...';
+        }
+    })
+        
     
 }
 
