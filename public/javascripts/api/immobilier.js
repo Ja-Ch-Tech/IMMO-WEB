@@ -651,7 +651,7 @@ function getDetailsImmobilier(id) {
                         obj.detailsImages.map((value, item) => {
                             sortieImages++;
                             var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
-                                    <img src="${value.srcFormat}" alt="">
+                                    <img style='height:500px;' src="${value.srcFormat}" alt="">
                                 </div>`;
 
                             $("#carousel-img").append(contentForFisrtDiv);
