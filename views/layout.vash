@@ -11,7 +11,8 @@
     <title>@model.title</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/favicon.png">
+    <link rel="apple-touch-icon" href="/images/Logo/fin4.png">
+    <link rel="shortcut icon" href="/images/Logo/fin4.png">
     
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/modal.css' />
@@ -202,8 +203,8 @@
               <div class="row h-100 align-items-center">
                   <div class="col-4">
                       <div class="top-header-content">
-                          <a href="#"><i class="now-ui-icons ui-1_email-85"></i> <span>ja'Ch@technology.com</span></a>
-                          <a href="#"><i class="fa fa-phone"></i> <span>+24389999999</span></a>
+                          <a href="#"><i class="now-ui-icons ui-1_email-85"></i> <span>contact@ndakubizz.com</span></a>
+                          <a href="#"><i class="fa fa-phone"></i> <span>+243974841783</span></a>
                       </div>
                   </div>
                   <div class="col-6 navAdditionalForUser">
@@ -325,9 +326,13 @@
 
                           <!-- Contact Area -->
                           <div class="footer-contact">
-                              <p>Téléphone: <span>+243899641137</span></p>
-                              <p>Email: <span>immo.info@gmail.com</span></p>
-                              <p>Addresse: <span>Iris Watson, Box 283 8562 Fusce Rd, NY</span></p>
+                              <p>Téléphone: <span>+243974841783</span></p>
+                              <p>Email: <span>contact@ndakubizz.com</span></p>
+                              <p>Addresse: <span>
+                                Local 22 1er Niveau Immeuble Saint Pierre,
+                                374 Av colonel Mondjiba Q/Basoko
+                                Kinshasa-Ngaliema, RDC
+                              </span></p>
                           </div>
                       </div>
                   </div>

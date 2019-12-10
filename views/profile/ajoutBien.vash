@@ -124,7 +124,11 @@
                                     </div>
                                 </div>
                             </div>
-                            
+                            <div class="col-md-12">
+                                <p style="font-family: calibri;font-size: 15px;" class="text-muted text-right">
+                                    En appuyant sur Terminer, vous acceptez nos <a href="/contrat/termes_et_conditions" target="_blank" style="color: #92c800">Termes et conditions générales </a>
+                                </p>
+                            </div>
                         </div>
                     
                 </div>
