@@ -1,7 +1,7 @@
 var typeProp, newImmo, details, images = [],
     dataAvatarImmo, errorServer, noFound;
 
-$(document).ready(function() {
+$(document).ready(function () {
     initImmo();
     errorServer = `
     <div class="MainGraphic">
@@ -32,17 +32,17 @@ function initImmo() {
         getNewImmobilier();
 
         // Recherche, remplissage des inputs
-        getTypeImmo(function(data) {
+        getTypeImmo(function (data) {
             dynamiqueInput(data, "typesSearch");
         })
 
         //Rempli le select mode
-        getAllMode(function(data) {
+        getAllMode(function (data) {
             dynamiqueInput(data, "modeSearch");
         })
 
         //A la soumission du formulaire d'accueil
-        storageKeys("postSearch", function(data) {
+        storageKeys("postSearch", function (data) {
             window.location.href = "/immo/recherche";
         });
     }
@@ -76,7 +76,7 @@ function initImmo() {
         inputSearch();
 
         //Lorsqu'on soumet le formulaire se trouvant sur la page de recherche
-        storageKeys("postOnSearchPage", function(data) {
+        storageKeys("postOnSearchPage", function (data) {
             searchImmo();
         })
     }
@@ -90,60 +90,60 @@ function initImmo() {
 
         //Lorsqu'on filtre 
         //Lorsqu'on soumet le formulaire se trouvant sur la page de recherche
-        storageKeys("postOnSearchPage", function(data) {
-                searchImmo();
-            })
-            //Recupere tous les immobiliers (Lorsqu'on recharge la page)
+        storageKeys("postOnSearchPage", function (data) {
+            searchImmo();
+        })
+        //Recupere tous les immobiliers (Lorsqu'on recharge la page)
         $.ajax({
-                    type: 'GET',
-                    url: "/api/all",
-                    dataType: "json",
-                    beforeSend: function() {
-                        //Loader de la recherche
-                        $("#searchContent").html('<div class="loader08"></div>');
-                    },
-                    success: function(data) {
-                            $("#searchContent").html('');
-                            if (data.getEtat) {
+            type: 'GET',
+            url: "/api/all",
+            dataType: "json",
+            beforeSend: function () {
+                //Loader de la recherche
+                $("#searchContent").html('<div class="loader08"></div>');
+            },
+            success: function (data) {
+                $("#searchContent").html('');
+                if (data.getEtat) {
 
-                                var sortieImmo = 0,
-                                    textSearch = function() {
-                                        if (data.getObjet.length == 0) {
-                                            return `<span style="color: #2a303b">Aucun</span> immobilier trouvé`;
-                                        } else if (data.getObjet.length == 1) {
-                                            return `<span style="color: #2a303b">un</span> immobilier trouvé`;
-                                        } else if (data.getObjet.length > 1) {
-                                            return `<span style="color: #8bbe00">${data.getObjet.length}</span> immobiliers sur ndakubizz`;
-                                        } else {
-                                            `Une erreur est survenue, veuillez reessayer avec des bonnes données`;
-                                        }
-                                    }
-                                content = `<div class="col-12 col-md-12 col-lg-12">
+                    var sortieImmo = 0,
+                        textSearch = function () {
+                            if (data.getObjet.length == 0) {
+                                return `<span style="color: #2a303b">Aucun</span> immobilier trouvé`;
+                            } else if (data.getObjet.length == 1) {
+                                return `<span style="color: #2a303b">un</span> immobilier trouvé`;
+                            } else if (data.getObjet.length > 1) {
+                                return `<span style="color: #8bbe00">${data.getObjet.length}</span> immobiliers sur ndakubizz`;
+                            } else {
+                                `Une erreur est survenue, veuillez reessayer avec des bonnes données`;
+                            }
+                        }
+                    content = `<div class="col-12 col-md-12 col-lg-12">
                                         <h4 style="font-family: 'Poppins', sans-serif !important;margin-bottom:20px;">${textSearch()}</h4>
                                     </div>
                                     <div id="searchImmoContent" class="col-12 col-md-12 col-lg-12">
                                         
                                     </div>`;
-                                $("#searchContent").html(content);
+                    $("#searchContent").html(content);
 
-                                //Ajout des immobilier
-                                data.getObjet.map(immobilier => {
-                                            sortieImmo++;
-                                            var rentOrSale = () => {
-                                                    if (/location/i.test(immobilier.mode)) {
-                                                        return `A louer ${immobilier.prix} USD/mois`
-                                                    } else {
-                                                        return `A vendre ${immobilier.prix} USD`
-                                                    }
-                                                },
-                                                description = () => {
-                                                    var description = immobilier.description;
-                                                    if (description.length >= 200) {
-                                                        description = description.substr(0, 200) + "...";
-                                                    }
-                                                    return description;
-                                                }
-                                            immobilierContent = `<a href="/immo/${immobilier._id}/details">
+                    //Ajout des immobilier
+                    data.getObjet.map(immobilier => {
+                        sortieImmo++;
+                        var rentOrSale = () => {
+                            if (/location/i.test(immobilier.mode)) {
+                                return `A louer ${immobilier.prix} USD/mois`
+                            } else {
+                                return `A vendre ${immobilier.prix} USD`
+                            }
+                        },
+                            description = () => {
+                                var description = immobilier.description;
+                                if (description.length >= 200) {
+                                    description = description.substr(0, 200) + "...";
+                                }
+                                return description;
+                            }
+                        immobilierContent = `<a href="/immo/${immobilier._id}/details">
                             <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
                                 <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
                                     <img style="height: 200px" src="${immobilier.detailsImages[0].srcFormat}" alt="">
@@ -169,10 +169,10 @@ function initImmo() {
                                 </div>
 
                             </div></a>`;
-                            $("#searchImmoContent").append(immobilierContent);
-                        
+                        $("#searchImmoContent").append(immobilierContent);
+
                     })
-                }else{
+                } else {
                     $("#searchContent").html(`<div id="notfound">
                         <div class="notfound">
                             <h2>AUCUN IMMOBILIER DISPONIBLE POUR LE MOMENT</h2>
@@ -180,8 +180,8 @@ function initImmo() {
                         </div>
                     </div>`);
                 }
-                
-            },error : function (err) {
+
+            }, error: function (err) {
                 $("#searchContent").html('');
                 $("#searchContent")[0].append(errorServer);
             }
@@ -192,39 +192,39 @@ function initImmo() {
 // Lance la recherche des immobiliers
 function searchImmo() {
     var datas = {
-        "mode" : sessionStorage.getItem('mode') ? sessionStorage.getItem('mode') : null,
-        "type" : sessionStorage.getItem('type') ? sessionStorage.getItem('type') : null,
-        "commune" : sessionStorage.getItem('commune') ? sessionStorage.getItem('commune') : null,
-        "nbrePiece" : sessionStorage.getItem('nbrePiece') ? sessionStorage.getItem('nbrePiece') : null,
-        "montantMin" : sessionStorage.getItem('montantMin') ? sessionStorage.getItem('montantMin') : null,
-        "montantMax" : sessionStorage.getItem('montantMax') ? sessionStorage.getItem('montantMax') : null,
-        "nbreChambre" : sessionStorage.getItem('nbreChambre') ? sessionStorage.getItem('nbreChambre') : null
+        "mode": sessionStorage.getItem('mode') ? sessionStorage.getItem('mode') : null,
+        "type": sessionStorage.getItem('type') ? sessionStorage.getItem('type') : null,
+        "commune": sessionStorage.getItem('commune') ? sessionStorage.getItem('commune') : null,
+        "nbrePiece": sessionStorage.getItem('nbrePiece') ? sessionStorage.getItem('nbrePiece') : null,
+        "montantMin": sessionStorage.getItem('montantMin') ? sessionStorage.getItem('montantMin') : null,
+        "montantMax": sessionStorage.getItem('montantMax') ? sessionStorage.getItem('montantMax') : null,
+        "nbreChambre": sessionStorage.getItem('nbreChambre') ? sessionStorage.getItem('nbreChambre') : null
     }
     $.ajax({
         type: 'POST',
         url: "/api/searchImmo",
         dataType: "json",
         data: datas,
-        beforeSend : function () {
+        beforeSend: function () {
             //Loader de la recherche
             $("#searchContent").html('<div class="loader08"></div>');
         },
-        success : function (data) {
+        success: function (data) {
             $("#searchContent").html('');
             if (data.getEtat) {
                 var sortieImmo = 0,
                     textSearch = function () {
                         if (data.getObjet.immobiliers.length == 0) {
                             return `<span style="color: #2a303b">Aucun</span> immobilier trouvé pour votre recherche`;
-                        }else if (data.getObjet.immobiliers.length == 1) {
-                             return `<span style="color: #2a303b">Un</span> immobilier trouvé pour votre recherche`;
-                        }else if (data.getObjet.immobiliers.length > 1) {
+                        } else if (data.getObjet.immobiliers.length == 1) {
+                            return `<span style="color: #2a303b">Un</span> immobilier trouvé pour votre recherche`;
+                        } else if (data.getObjet.immobiliers.length > 1) {
                             return `<span style="color: #2a303b">${data.getObjet.immobiliers.length}</span> immobiliers trouvés pour votre recherche`;
-                        }else{
+                        } else {
                             `Une erreur est survenue, veuillez réessayer avec des bonnes données`;
                         }
                     }
-                    content = `<div class="col-12 col-md-12 col-lg-12">
+                content = `<div class="col-12 col-md-12 col-lg-12">
                                     <h4 style="font-family: 'Poppins', sans-serif !important;margin-bottom:20px;">${textSearch()}</h4>
                                 </div>
                                 <div id="searchImmoContent" class="col-12 col-md-12 col-lg-12">
@@ -234,15 +234,15 @@ function searchImmo() {
 
                 //Ajout des immobilier
                 data.getObjet.immobiliers.map(immobilier => {
-                    
-                       sortieImmo++;
-                        var rentOrSale = () => {
-                            if (/location/i.test(immobilier.mode)) {
-                                return `A louer ${immobilier.prix} $/mois`
-                            } else {
-                                return `A vendre ${immobilier.prix} $`
-                            }
-                        },
+
+                    sortieImmo++;
+                    var rentOrSale = () => {
+                        if (/location/i.test(immobilier.mode)) {
+                            return `A louer ${immobilier.prix} $/mois`
+                        } else {
+                            return `A vendre ${immobilier.prix} $`
+                        }
+                    },
                         description = () => {
                             var description = immobilier.description;
                             if (description.length >= 200) {
@@ -250,7 +250,7 @@ function searchImmo() {
                             }
                             return description;
                         }
-                        immobilierContent = `<a href="/immo/${immobilier._id}/details">
+                    immobilierContent = `<a href="/immo/${immobilier._id}/details">
                         <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
                             <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5" title="${immobilier.detailsImages[immobilier.detailsImages.length - 1].intitule}">
                                 <img style="height: 100%" src="${immobilier.detailsImages[immobilier.detailsImages.length - 1].srcFormat}" alt="${immobilier.detailsImages[immobilier.detailsImages.length - 1].intitule}">
@@ -276,12 +276,12 @@ function searchImmo() {
                             </div>
 
                         </div></a>`;
-                        $("#searchImmoContent").append(immobilierContent);
+                    $("#searchImmoContent").append(immobilierContent);
                     // if (sortieImmo == data.getObjet.immobiliers.length) {
                     //     $("#searchImmoContent").append(immobilierContent);
                     // }
                 })
-            }else{
+            } else {
                 $("#searchContent").html(`<div id="notfound">
                         <div class="notfound">
                             <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
@@ -290,8 +290,8 @@ function searchImmo() {
                         </div>
                     </div>`);
             }
-            
-        },error : function (err) {
+
+        }, error: function (err) {
             $("#searchContent").html('');
             $("#searchContent")[0].append(errorServer);
         }
@@ -306,7 +306,7 @@ function storageKeys(id, callback) {
         var inputs = e.target.elements,
             objData = {},
             sortieInput = 0;
-        
+
         for (var index = 0; index < inputs.length; index++) {
             sortieInput++;
             if (/input/i.test(e.target.elements[index].localName)) {
@@ -322,10 +322,10 @@ function storageKeys(id, callback) {
             }
 
             if (sortieInput == inputs.length) {
-                
-                
+
+
                 callback(true);
-              
+
             }
         }
     })
@@ -335,20 +335,20 @@ function storageKeys(id, callback) {
 function manageModeSearch() {
     var modeBlock = $("#modeSearch").next();
     getAllMode(function (data) {
-        
+
         data.map(mode => {
             var option = `<option value="${mode._id}">${mode.intitule}</option>`,
                 contentModeLi = `<li class="option" data-value="${mode._id}">${mode.intitule}</li>`;
             if (sessionStorage.getItem('mode') == mode._id) {
                 option = `<option selected value="${mode._id}">${mode.intitule}</option>`;
                 modeBlock[0].getElementsByClassName('current')[0].innerHTML = mode.intitule;
-            }else{
+            } else {
                 modeBlock[0].getElementsByClassName('current')[0].innerHTML = data[0].intitule;
             }
 
             modeBlock[0].getElementsByClassName('list')[0].innerHTML += contentModeLi;
             $("#modeSearch").append(option);
-           
+
         })
     })
 }
@@ -357,23 +357,23 @@ function manageModeSearch() {
 function manageTypeSearch() {
     var typeBlock = $("#typeSearch").next();
     getTypeImmo(function (data) {
-        
+
         data.map(type => {
             var option = `<option value="${type._id}">${type.intitule}</option>`,
                 contenttypeLi = `<li class="option" data-value="${type._id}">${type.intitule}</li>`;
             if (sessionStorage.getItem('type') == type._id) {
                 option = `<option selected value="${type._id}">${type.intitule}</option>`;
                 typeBlock[0].getElementsByClassName('current')[0].innerHTML = type.intitule;
-            }else{
+            } else {
                 typeBlock[0].getElementsByClassName('current')[0].innerHTML = data[0].intitule;
             }
 
             typeBlock[0].getElementsByClassName('list')[0].innerHTML += contenttypeLi;
             $("#typeSearch").append(option);
-           
+
         })
     })
-    
+
 }
 //Gere les inputs de recherche
 function inputSearch() {
@@ -390,7 +390,7 @@ function getStatType() {
         type: 'GET',
         url: '/api/statType',
         dataType: "json",
-        beforeSend : function () {
+        beforeSend: function () {
             typeProp[0].getElementsByClassName('loader09')[0].style.display = "block";
         },
         success: function (data) {
@@ -429,7 +429,7 @@ function getStatType() {
                 }
             }
 
-        },error: function (err) {
+        }, error: function (err) {
             typeProp[0].getElementsByClassName('loader09')[0].style.display = "none";
             typeProp.append(errorServer);
         }
@@ -445,15 +445,15 @@ function getNewImmobilier() {
         type: 'GET',
         url: '/api/new',
         dataType: "json",
-        beforeSend : function () {
+        beforeSend: function () {
             newImmo[0].getElementsByClassName('loader09')[0].style.display = "block";
         },
         success: function (data) {
             if (data.getEtat) {
                 newImmo[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (data.getObjet.length > 0) {
-                    var contentHeadAndFooter = 
-                                    `<div class="row">
+                    var contentHeadAndFooter =
+                        `<div class="row">
                                          <div class="col-12">
                                             <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
                                                 <h2>Dernieres <span>annonces</span></h2>
@@ -483,7 +483,7 @@ function getNewImmobilier() {
                         return 1;
                     });
                     data.getObjet.map(element => {
-                        
+
                         var rentOrSale = () => {
                             if (/location/i.test(element.mode)) {
                                 return `<p class="badge-rent">A louer</p>`
@@ -533,7 +533,7 @@ function getNewImmobilier() {
                     })
                 }
             }
-        },error : function (err) {
+        }, error: function (err) {
             newImmo[0].getElementsByClassName('loader09')[0].style.display = "none";
         }
     });
@@ -630,34 +630,34 @@ function getDetailsImmobilier(id) {
                 details[0].getElementsByClassName('loader09')[0].style.display = "block";
             },
             success: function (datas) {
-                
+
                 details[0].getElementsByClassName('loader09')[0].style.display = "none";
                 if (datas.getEtat) {
                     var obj = datas.getObjet,
-                    sortieImages,
-                    interestOrNot = () => {
+                        sortieImages,
+                        interestOrNot = () => {
 
-                        if (isMatch) {
-                            return `<div class="mt-3">
+                            if (isMatch) {
+                                return `<div class="mt-3">
                                         <button class="btn rehomes-btn mt-10" onclick="viewContact('${obj.id_owner}', '${id}')">Je veux le contacter</button>
                                     </div>`
-                        } else {
-                            return `<div class="mt-3">
+                            } else {
+                                return `<div class="mt-3">
                                         <button class="btn rehomes-btn mt-10">Je veux le contacter</button>
                                     </div>`
-                        }
-                    },
-                    setImagesForSlides = () => {
-                        obj.detailsImages.map((value, item) => {
-                            sortieImages++;
-                            var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
+                            }
+                        },
+                        setImagesForSlides = () => {
+                            obj.detailsImages.map((value, item) => {
+                                sortieImages++;
+                                var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
                                     <img src="${value.srcFormat}" alt="">
                                 </div>`;
 
-                            $("#carousel-img").append(contentForFisrtDiv);
+                                $("#carousel-img").append(contentForFisrtDiv);
 
-                        })
-                    },
+                            })
+                        },
                         content = `<div id="carousel-img" class="blog-slider owl-carousel wow fadeInUp" data-wow-delay="200ms">
                                 <!-- Post Thumbnail -->
                             </div>
@@ -697,7 +697,7 @@ function getDetailsImmobilier(id) {
                         navText: [('<i class="fa fa-chevron-left" aria-hidden="true"></i>'), (' <i class ="fa fa-chevron-right" aria-hidden="true"></i>')]
                     });
                 }
-            },error : function (err) {
+            }, error: function (err) {
                 details[0].getElementsByClassName('loader09')[0].style.display = "none";
                 details.append(errorServer);
             }
@@ -793,11 +793,11 @@ function viewContact(id, immo) {
                     console.log(err);
 
                 }
-            }); 
+            });
         } else {
-           
+
             var setFlash = document.getElementById("setFlash");
-            
+
             setFlash.style.display = 'block';
             setFlash.style.backgroundColor = '#f00';
             setFlash.className = 'flash';
@@ -817,8 +817,8 @@ function viewContact(id, immo) {
             setFlash.innerHTML = '<i class="now-ui-icons travel_info"></i>&nbsp;&nbsp;Vous n\'êtes pas connecté...';
         }
     })
-        
-    
+
+
 }
 
 function closeModal() {
@@ -856,7 +856,7 @@ function getImmoByType(type_id) {
                 if (data.getObjet.immobiliers.length > 0) {
 
                     data.getObjet.immobiliers.map(element => {
-                        
+
                         var rentOrSale = () => {
                             if (/location/i.test(element.mode)) {
                                 return `<p class="badge-rent">A louer</p>`
@@ -948,7 +948,7 @@ function addImmo(e, user_id) {
                 url: "/api/addImmob",
                 dataType: "json",
                 data: objData,
-                beforeSend : function () {
+                beforeSend: function () {
                     $("#btn_add_immo").text("Publication en cours...");
                 },
                 success: function (data) {
@@ -980,7 +980,7 @@ function addImmo(e, user_id) {
 }
 
 function setImage() {
-    
+
     document.getElementById("selection").addEventListener("click", () => {
         var nameImage = document.getElementById("nameImage");
 
@@ -1165,7 +1165,7 @@ function getAllImmovableForOwner(user_id) {
         url: "/api/immobilier/owner/getAll",
         dataType: "json",
         success: function (data) {
-            
+
             if (data.getEtat) {
 
                 if (data.getObjet.length > 0) {
@@ -1189,22 +1189,22 @@ function getAllImmovableForOwner(user_id) {
 
                     $("#allImmoForOWner").html(contentHead)
                     data.getObjet.map(objet => {
-                            var stateThisViaAdmin = () => {
-                                if (!objet.validate) {
-                                    return `<span class="pull-right" style="font-family: calibri;color: #f26522; font-size: .8em"><i
+                        var stateThisViaAdmin = () => {
+                            if (!objet.validate) {
+                                return `<span class="pull-right" style="font-family: calibri;color: #f26522; font-size: .8em"><i
                                         class="now-ui-icons travel_info"></i>&nbsp;&nbsp;En attente de l'approbation de
                                     l'administration</span>`;
-                                } else {
-                                    var manageRemise = () => {
-                                        if (objet.alredy_sold) {
-                                            return `Remettre
+                            } else {
+                                var manageRemise = () => {
+                                    if (objet.alredy_sold) {
+                                        return `Remettre
                                         en location ?`;
-                                        } else {
-                                            return `Déjà pris ?`
-                                        }
-                                    };
-                                    
-                                    return `<a style="margin-left: 5px;" class="pull-right" href="#">
+                                    } else {
+                                        return `Déjà pris ?`
+                                    }
+                                };
+
+                                return `<a style="margin-left: 5px;" class="pull-right" href="#">
                                                         <span
                                                             style="padding: 5px 10px;background-color: #008080;color: #fff;font-family: calibri;border-radius: 15px;font-size: 18px;">${manageRemise()}</span>
                                                     </a>
@@ -1213,18 +1213,18 @@ function getAllImmovableForOwner(user_id) {
                                                             style="padding: 5px 10px;background-color: #fff;color: rgba(154,205,50,0.9);font-family: calibri;border-radius: 15px;font-size: 18px;border: 1px solid rgba(154,205,50,0.9)"><i
                                                                 class="fa fa-user-plus"></i> ${objet.nbreInterrest} contacts</span>
                                                     </a>`;
-                                }
-                            },
+                            }
+                        },
                             manageSuspension = () => {
                                 if (!objet.flag) {
                                     return `<span
                                     style="background-color: rgb(242,101,34,0.9);padding: 5px;color: #fff;font-family: calibri;">•
                                     Suspendu</span>`;
-                                }else{
+                                } else {
                                     return "";
                                 }
                             },
-                                contentBody = `<tr>
+                            contentBody = `<tr>
                             <td>
                                 <a href="/immo/${objet._id}/details">
                                     <img class="img-thumbnail" title="${objet.detailsImages[0].intitule}" style="height: 90px;width: 100px;" src="${objet.detailsImages[0].srcFormat}"
@@ -1247,13 +1247,13 @@ function getAllImmovableForOwner(user_id) {
                             </td>
                         </tr>`;
 
-                            $("#lineImmoForOwner").append(contentBody);
-                        
+                        $("#lineImmoForOwner").append(contentBody);
+
                     })
                 } else {
                     alert("rien n'y est")
                 }
-            }else{
+            } else {
                 var content = `<div class="col-md-12" style="padding-top:10%;"><center>
                 <span style="font-size:200px" class="zmdi zmdi-city-alt icon-menu"></span><p>Votre liste des publication est vide, commencez votre aventure maintenant en publiant vos immobiliers et profitez des avantages qu'offre ndakubizz</p>
                 <a href="/profile/${user_id}/publications/ajouter">Publier un bien</a>
@@ -1269,10 +1269,10 @@ function getAllImmovableForOwner(user_id) {
 }
 
 //Renvoi les contacts d'un immobilier
-function getContact(user_id, immo_id, mode, btn){
-    
+function getContact(user_id, immo_id, mode, btn) {
+
     if (/location/i.test(mode)) {
-        
+
         var innerHTML;
         innerHTML = btn[0].innerHTML;
         $.ajax({
@@ -1283,39 +1283,74 @@ function getContact(user_id, immo_id, mode, btn){
                 btn[0].innerHTML = "Chargement...";
             },
             success: function (data) {
-               btn[0].innerHTML = innerHTML;
-               if (data.getEtat) {
-                   $('.modal_contact').modal('show');
-                   console.log(data)
-               }else{
-                   swal(
+                
+                btn[0].innerHTML = innerHTML;
+                if (data.getEtat) {
+                    $("#nbreContactModal").text(`Contacts (${data.getObjet.length})`);
+                    
+                    data.getObjet.map((user, index, tab) => {
+                        console.log(user);
+                    
+                        var setInfo = (name) => {
+                                if (user.contacts.length > 0) {
+                                    if (user.contacts[user.contacts.length - 1][name]) {
+                                        return user.contacts[user.contacts.length - 1][name].toString();
+                                    } else {
+                                        return "";
+                                    }
+                                } else {
+                                    return "";
+                                }
+                            },
+                            contentBody = `<div class="col-12 col-md-6 col-lg-6">
+                                <div class="single-agent-area">
+                                
+                                    <div class="single-agent-thumb">
+                                        <img src="${user.image.srcFormat}" alt="${user.image.name}">
+                                    </div>
+                                    
+                                    <div class="agent-info">
+                                        <a href="#">${(user.prenom + " " + user.nom).toUpperCase()}</a>
+                                        <p><i class="fa fa-phone" aria-hidden="true"></i>&nbsp;${setInfo("telephone")}</p>
+                                        <p><i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;${setInfo("email")}</p>
+                                    </div>
+                                </div>
+                            </div>`;
+
+                        $("#listContactModal").append(contentBody);
+                    });
+                    
+                    $('.modal_contact').modal('show');
+
+                } else {
+                    swal(
                         {
-                            title: "CONTACT...", 
-                            html: "<font style=\"font-family: .4em\">La liste des gens interessés pour cet immobilier est vide</font>", 
+                            title: "CONTACT...",
+                            html: "<font style=\"font-family: .4em\">La liste des gens interessés pour cet immobilier est vide</font>",
                             type: "warning",
                             showCancelButton: false,
                             confirmButtonText: "OK",
                             confirmButtonColor: "#DD6B55"
-                            
+
                         }
-                    ); 
-               }
+                    );
+                }
             },
             error: function (err) {
-                
+
             }
         });
 
-    }else if (/vente/i.test(mode)) {
+    } else if (/vente/i.test(mode)) {
         swal(
             {
-                title: "CONTACTS VENTE IMMO...", 
-                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter au +243896341113 ou passez dans nos locaux sur l'avenue regideso, ngaliema, Kinshasa! MERCI</font>", 
+                title: "CONTACTS VENTE IMMO...",
+                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter au +243896341113 ou passez dans nos locaux sur l'avenue regideso, ngaliema, Kinshasa! MERCI</font>",
                 type: "warning",
                 showCancelButton: false,
                 confirmButtonText: "Compris !",
                 confirmButtonColor: "#DD6B55"
-                
+
             }
         );
     }

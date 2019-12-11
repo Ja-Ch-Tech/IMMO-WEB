@@ -13,7 +13,7 @@
             <div id="contentModalContact" class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header" style="position: relative;padding: 10px 20px;">
-                        <h4 style="font-family: Segoe UI Light;font-family: 17px;">Contact (10)</h4>
+                        <h4 style="font-family: Poppins;font-family: 17px;" id="nbreContactModal"><!-- Dynamic content--></h4>
         
                         <button type="button" class="close" style="position: absolute;right: 10px;top: 10px;cursor: pointer;"
                             data-dismiss="modal" aria-hidden="true">
@@ -21,54 +21,13 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div style="height: 500px;overflow-y: scroll;" class="row">
-                            <!-- Single Agent Area -->
+                        <div style="height: 500px;overflow-y: scroll;" class="row" id="listContactModal">
+                            <!-- 
                             <div class="col-12 col-md-12 col-lg-12 mb-10">
                                 <h2>Liste de contact interessé pour votre maison</h2>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-6">
-                                <div class="single-agent-area">
-                                    <!-- Agent Thumb -->
-                                    <div class="single-agent-thumb">
-                                        <img src="/images/bg-img/53.jpg" alt="">
-                                    </div>
-                                    <!-- Agent Info -->
-                                    <div class="agent-info">
-                                        <a href="#">Wiliam James</a>
-                                        <p><i class="fa fa-phone" aria-hidden="true"></i> (12) 345-6789</p>
-                                        <p><i class="fa fa-envelope" aria-hidden="true"></i> Johnsmith@colorlib.com</p>
-                                    </div>
-                                </div>
-                            </div>
-        
-                            <div class="col-12 col-md-6 col-lg-6">
-                                <div class="single-agent-area">
-                                    <!-- Agent Thumb -->
-                                    <div class="single-agent-thumb">
-                                        <img src="/images/bg-img/54.jpg" alt="">
-                                    </div>
-                                    <!-- Agent Info -->
-                                    <div class="agent-info">
-                                        <a href="#">Wiliam James</a>
-                                        <p><i class="fa fa-phone" aria-hidden="true"></i> (12) 345-6789</p>
-                                        <p><i class="fa fa-envelope" aria-hidden="true"></i> Johnsmith@colorlib.com</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-6">
-                                <div class="single-agent-area">
-                                    <!-- Agent Thumb -->
-                                    <div class="single-agent-thumb">
-                                        <img src="/images/bg-img/54.jpg" alt="">
-                                    </div>
-                                    <!-- Agent Info -->
-                                    <div class="agent-info">
-                                        <a href="#">Wiliam James</a>
-                                        <p><i class="fa fa-phone" aria-hidden="true"></i> (12) 345-6789</p>
-                                        <p><i class="fa fa-envelope" aria-hidden="true"></i> Johnsmith@colorlib.com</p>
-                                    </div>
-                                </div>
-                            </div>
+                            </div> -->
+                            <!-- Dynamic content-->
+                            
                         </div>
                     </div>
                 </div>
