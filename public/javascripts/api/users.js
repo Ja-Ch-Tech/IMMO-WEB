@@ -230,14 +230,14 @@ function upload() {
 
         //Puis on ajoute le fichier à l'objet formData
         //Ce dernier aura comme key "files" et comme value "le fichier"
-        formData.append('files_document', file, file.name);
+        formData.append('image', file, file.name);
 
         //On vérifie la sortie
         if (true) {
 
             
             $.ajax({
-                url: getHostAPI() + '/upload_image/users/clients',
+                url: getHostAPI() + '/image-upload',
                 type: 'POST',
                 data: formData,
                 processData: false, // tell jQuery not to process the data
@@ -247,62 +247,13 @@ function upload() {
                 complete: function () {
                 },
                 success: function (data) {
-
+                    console.log(data);
+                    
                     //document.getElementById("containerProgress").setAttribute("style", "display: none");
 
                     Avatar(data);
-                    if (!!file.type.match(/image.*/)) { //Ici on vérifie le type du fichier uploaded
+                    showUploadedImg();
 
-                        if (window.FileReader) {
-                            reader = new FileReader();
-                            reader.onloadend = function (e) {
-                                showUploadedImg(e.target.result, file);
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    } else {
-
-                        if (window.FileReader) {
-                            reader = new FileReader();
-                            reader.onloadend = function (e) {
-
-
-                            };
-                            reader.readAsDataURL(file);
-                        }
-                    }
-                },
-                xhr: function () {
-
-                    //$(".progress").show();
-                    // create an XMLHttpRequest
-                    var xhr = new XMLHttpRequest();
-
-                    // listen to the 'progress' event
-                    xhr.upload.addEventListener('progress', function (evt) {
-
-                        if (evt.lengthComputable) {
-                            // calculate the percentage of upload completed
-                            var percentComplete = evt.loaded / evt.total;
-                            percentComplete = parseInt(percentComplete * 100);
-
-                            // update the Bootstrap progress bar with the new percentage
-                            //$('#containerProgress .textProgress').text(percentComplete + ' %');
-                            //document.getElementById("progress").setAttribute("style", "width: " + percentComplete + "%");
-
-                            // once the upload reaches 100%, set the progress bar text to done
-                            /*if (percentComplete === 100) {
-
-                                setTimeout(function () {
-                                    $("#containerProgress #progress").hide();
-                                }, 4000)
-                            }*/
-
-                        }
-
-                    }, false);
-
-                    return xhr;
                 }
             });
         }
@@ -314,11 +265,11 @@ function upload() {
 }
 
 /*Pour l'affichage de l'image dans sa place*/
-function showUploadedImg(source, file) {
+function showUploadedImg() {
 
     var imageSelect = document.getElementById("imgPrev");
 
-    imageSelect.src = source;
+    imageSelect.src = dataAvatar.imageUrl;
     imageSelect.classList.add("img-responsive");
     imageSelect.setAttribute("style", "height : 9rem; width : 9rem;");
 }
@@ -326,7 +277,7 @@ function showUploadedImg(source, file) {
 /*Récupère les données de l'upload de cet image*/
 function Avatar(data) {
 
-    dataAvatar = data.getObjet[0];
+    dataAvatar = data;
 }
 
 /*Cette fonction permet de finaliser l'upload avec les infos editées*/
@@ -343,8 +294,8 @@ function updateAvatar(user_id) {
             dataType: "json",
             data: {
                 id_user: user_id,
-                path: dataAvatar.path,
-                name: dataAvatar.name,
+                path: dataAvatar.imageUrl,
+                name: "Avatar",
                 size: dataAvatar.size
             },
             success: function (data) {
