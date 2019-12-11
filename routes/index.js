@@ -5,7 +5,7 @@ var session = require('cookie-session');
 router.get('/', function(req, res, next) {
   var StateClient = req.session.id ? true : false;
   res.render('index', { 
-  	title: 'Bienvenue sur notre site',
+  	title: 'Bienvenue sur ndakubizz',
   	stateClient: StateClient
   });
 })

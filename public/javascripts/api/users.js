@@ -64,7 +64,7 @@ function initUsers() {
             })
            
         }else{
-            var content = `<a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="now-ui-icons users_single-02"></i>&nbsp;Ouvrir une session</a>`;
+            var content = `<a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="fa fa-user"></i>&nbsp;<span class="hidden-xs">Inscription/Connexion</span></a>`;
             $("#navUser").html(content);
             //Si le user n pas connecté
             $("#addImmoBtn").html(`<a href="#" data-toggle="modal" data-target="#modalSession" title="Publiez un bien immobilier">Publiez votre bien </a>`)
@@ -139,7 +139,7 @@ function login() {
                 $("#btn-connect").text("VERIFICATION...");
             },
             success: function (data) {
-                $("#btn-connect").text("SE CONNECTER");
+                $("#btn-connect").text("CONNEXION");
 
                 if (data.getEtat) {
                     window.location.href = "/";
@@ -188,8 +188,8 @@ function userNavInfo(user_id) {
                     $("#dropdownProfile").append(`<a href="${getHostWebSite()}/logout"><span class="zmdi zmdi-power"></span>&nbsp;Deconnexion</a>`);
                 })
             }
-            var contentProfileInfos = `<button class="dropbtn"><img style="width:40px;height:40px;border-radius:40px" class="img-thumbnail" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.srcFormat}"/>&nbsp;<span style="text-transform:uppercase">${data.getObjet.prenom}&nbsp;${data.getObjet.nom}&nbsp;<span class="zmdi zmdi-caret-down"></span></span></button>
-            <div id="dropdownProfile" class="dropdown-content">
+            var contentProfileInfos = `<button class="dropbtn"><img style="width:40px;height:40px;border-radius:40px" class="img-thumbnail" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.srcFormat}"/>&nbsp;<span style="text-transform:uppercase" class="name_menu">${data.getObjet.prenom}&nbsp;${data.getObjet.nom}</span>&nbsp;<span class="zmdi zmdi-caret-down"></span></button>
+            <div id="dropdownProfile" class="dropdown-content menu">
                 <a href="/profile/${user_id}/informations"><span class="zmdi zmdi-account-o"></span>&nbsp;Profile</a>
                 <a href="/profile/${user_id}/photo"><span class="zmdi zmdi-camera-add"></span>&nbsp;Photo</a>
                 <a href="/profile/${user_id}/securite"><span class="zmdi zmdi-shield-security"></span>&nbsp;Securité</a>

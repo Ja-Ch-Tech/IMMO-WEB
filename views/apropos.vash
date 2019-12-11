@@ -20,8 +20,10 @@
             <div class="row">
                 <div class="col-12">
                     <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
-                        <h2><span>Rehomes.</span></h2>
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                        <h2><span>NDAKUBIZZ</span></h2>
+                        <p>
+                            Nous sommes de ceux qui pensent que le bonheur se partage et se transmet.    Nous sommes convaincus que la proximité et l’accessibilité sont génératrices       d’opportunités. L’idée est toute simple, mais elle participe à changer le monde des services IImmobiliers!
+                        </p>
                     </div>
                 </div>
 
@@ -30,10 +32,10 @@
                     <div class="single-about-content wow fadeInUp" data-wow-delay="200ms">
                         <!-- Thumb -->
                         <div class="single-about-thumb">
-                            <img src="/images/bg-img/31.jpg" alt="">
+                            <img src="/images/Notre Entreprise.jpg" alt="">
                         </div>
                         <h4>Notre entreprise</h4>
-                        <p>Donec enim ipsum porta justo integer at velna vitae auctor integer congue magna at risus auctor purus unt pretium ligula rutrum integer sapien ultrice ligula luctus undo magna risus</p>
+                        <p style="text-align: justify;">Donec enim ipsum porta justo integer at velna vitae auctor integer congue magna at risus auctor purus unt pretium ligula rutrum integer sapien ultrice ligula luctus undo magna risus</p>
                     </div>
                 </div>
 
@@ -42,10 +44,11 @@
                     <div class="single-about-content wow fadeInUp" data-wow-delay="200ms">
                         <!-- Thumb -->
                         <div class="single-about-thumb">
-                            <img src="/images/bg-img/32.jpg" alt="">
+                            <img style="height: 228px;width: 100%" src="/images/Notre Vision.jpg" alt="">
                         </div>
                         <h4>Notre vision</h4>
-                        <p>Donec enim ipsum porta justo integer at velna vitae auctor integer congue magna at risus auctor purus unt pretium ligula rutrum integer sapien ultrice ligula luctus undo magna risus</p>
+                        <p style="text-align: justify;">1. Être la toute première plateforme des services immobiliers innovatrice et      motrice du changement au service des clients.</p>
+                        <p style="text-align: justify;">2. Permettre un accès facile et direct entre clients grace à nos services immobiliers  en ligne.</p>
                     </div>
                 </div>
 
@@ -54,73 +57,21 @@
                     <div class="single-about-content wow fadeInUp" data-wow-delay="200ms">
                         <!-- Thumb -->
                         <div class="single-about-thumb">
-                            <img src="/images/bg-img/33.jpg" alt="">
+                            <img src="/images/Notre objectif.jpg" alt="">
                         </div>
                         <h4>Notre objectif</h4>
-                        <p>Donec enim ipsum porta justo integer at velna vitae auctor integer congue magna at risus auctor purus unt pretium ligula rutrum integer sapien ultrice ligula luctus undo magna risus</p>
+                        <p style="text-align: justify;">
+                            Nous motivons et inspirons chacun à vivre la vie qu'il mérite
+                            Lorsque vous êtes à la recherche d’une propriété, vous ne cherchez pas seulement un meilleur logement, mais aussi avenir meilleur et paisible.
+                            Notre objectif principal est de rendre le contact entre vendeur/propriétaire et     acheteur/locataire facile et direct sans courtiers.
+
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- **** About Us Area End **** -->
-
-    <!-- **** Testimonials Area Start **** -->
-    <section class="rehomes-testimonial-area bg-img bg-overlay-4 jarallax section-padding-80" style="background-image: url(/images/bg-img/34.jpg);">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-10 col-lg-8">
-                    <!-- Testimonial-area Slider -->
-                    <div class="testimonial-area owl-carousel wow fadeInUp" data-wow-delay="200ms">
-                        <!-- Single Testimonial Slider -->
-                        <div class="single-testimonial-content text-center">
-                            <!-- Icon -->
-                            <div class="testimonial-icon">
-                                <img src="/images/core-img/quote.png" alt="">
-                            </div>
-                            <h5>“I am so happy because I found this Real Estata, and it just made my life easier. Thanks so much for sharing.”</h5>
-                            <!-- Testimonial-Meta -->
-                            <div class="testimonial-meta">
-                                <h5>Mister Stock</h5>
-                                <p>CEO google.com</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Testimonial Slider -->
-                        <div class="single-testimonial-content text-center">
-                            <!-- Icon -->
-                            <div class="testimonial-icon">
-                                <img src="/images/core-img/quote.png" alt="">
-                            </div>
-                            <h5>“I am so happy because I found this Real Estata, and it just made my life easier. Thanks so much for sharing.”</h5>
-                            <!-- Testimonial-Meta -->
-                            <div class="testimonial-meta">
-                                <h5>Nazrul Islam</h5>
-                                <p>Developer</p>
-                            </div>
-                        </div>
-
-                        <!-- Single Testimonial Slider -->
-                        <div class="single-testimonial-content text-center">
-                            <!-- Icon -->
-                            <div class="testimonial-icon">
-                                <img src="/images/core-img/quote.png" alt="">
-                            </div>
-                            <h5>“I am so happy because I found this Real Estata, and it just made my life easier. Thanks so much for sharing.”</h5>
-                            <!-- Testimonial-Meta -->
-                            <div class="testimonial-meta">
-                                <h5>Ajoy Das</h5>
-                                <p>Developer</p>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- **** Testimonials Area End **** -->
-
     <!-- **** Choose Us Area Start **** -->
     <section class="rehomes-choose-us-area section-padding-100-60">
         <div class="container">
@@ -128,7 +79,9 @@
                 <div class="col-12">
                     <div class="section-heading text-center wow fadeInUp" data-wow-delay="200ms">
                         <h2><span>Pourquoi</span> nous choisir ?</h2>
-                        <p>We have over 8 years of experience and knowledge on how to sell more.</p>
+                        <p>
+                            La diligence ainsi que les stratégies de négociation sont mises à votre disposition  pour vous garantir un logement à votre convenance.
+                        </p>
                     </div>
                 </div>
 
@@ -139,8 +92,13 @@
                         <div class="choose-us-icon">
                             <i class="icon_search"></i>
                         </div>
-                        <h5>Find Your Home</h5>
-                        <p>Quis ipsum suspendisse ultrices, risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                        <h5>Trouvez votre maison</h5>
+                        <p>
+                            Nous rendons plus pratique votre recherche de logement.
+                        </p>
+                        <p>
+                            Cela vous garantit une très bonne idée de la propriété avant même de la visiter.  Ainsi, vous pouvez présélectionner des appartements tout en étant assis dans le   confort de votre maison sans réellement visiter toutes les bonnes et les mauvaises propriétés. Cela vous fait gagner du temps et vous épargne beaucoup d’efforts
+                        </p>
                     </div>
                 </div>
 
@@ -151,7 +109,7 @@
                         <div class="choose-us-icon">
                             <i class="icon_building"></i>
                         </div>
-                        <h5>Transportation support</h5>
+                        <h5>Aide au transport</h5>
                         <p>Quis ipsum suspendisse ultrices, risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
                     </div>
                 </div>
@@ -163,8 +121,8 @@
                         <div class="choose-us-icon">
                             <i class="icon_creditcard"></i>
                         </div>
-                        <h5>Save Your Money</h5>
-                        <p>Quis ipsum suspendisse ultrices, risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                        <h5>Économisez votre argent</h5>
+                        <p>Trouvez un logement qui convient à votre budget, sans commissionnaires ni frais  de commissions. Ceci vous permet d’épargner et de bénéficier des tarifs attractifs.</p>
                     </div>
                 </div>
 

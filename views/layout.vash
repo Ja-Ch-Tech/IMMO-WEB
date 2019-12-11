@@ -11,7 +11,8 @@
     <title>@model.title</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/favicon.png">
+    <link rel="apple-touch-icon" href="/images/Logo/fin4.png">
+    <link rel="shortcut icon" href="/images/Logo/fin4.png">
     
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/modal.css' />
@@ -53,59 +54,105 @@
   <div class="modal fade" id="modalSession" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
           <div class="modal-content text-center modal-register">
-              
-              <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                  <a class="nav-item nav-link active title-small-light" id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login"
-                    aria-selected="true">Connexion</a>
-                  <a class="nav-item nav-link title-small-light" id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register"
-                    aria-selected="false">Inscription</a>
-
-                </div>
-              </nav>
-              <div class="tab-content pl-3 pt-2" id="nav-tabContent">
-                  <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">
-                      <div style="padding:10%;" class="rehomes-contact-form wow fadeInUp" data-wow-delay="200ms">
-                      <!-- Form -->
-                        <div id="errorMessage">
-                        </div>
-                        
-                        <form class="support-form" method="post" id="loginForm">
-                          <div class="row col-8 mx-auto">
-                              <div class="col-12">
-                                  <input type="text" name="username" class="form-control mb-20" placeholder="Nom utilisateur">
-                              </div>
-                              <div class="col-12">
-                                  <input type="password" name="password" class="form-control mb-20" placeholder="Mot de passe">
-                              </div>
-                              <div class="col-12">
-                                  <button id="btn-connect" type="submit" class="btn rehomes-btn">Se connecter</button>
-                              </div>
-                          </div>
-                        </form>
-                      </div>
+              <div class="modal-header" style="position: relative;padding: 10px 20px;">
+                  <h4 style="font-family: Segoe UI Light;font-family: 17px;padding: 15px 0px;"></h4>
+  
+                  <button type="button" class="close" style="position: absolute;right: 10px;top: 10px;cursor: pointer;"
+                      data-dismiss="modal" aria-hidden="true">
+                      <i class="now-ui-icons ui-1_simple-remove"></i>
+                  </button>
+              </div>
+              <div class="modal-body">
+                
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active title-small-light" id="nav-login-tab" data-toggle="tab" href="#nav-login" role="tab" aria-controls="nav-login"
+                      aria-selected="true">Connexion</a>
+                    <a class="nav-item nav-link title-small-light" id="nav-register-tab" data-toggle="tab" href="#nav-register" role="tab" aria-controls="nav-register"
+                      aria-selected="false">Inscription</a>
 
                   </div>
-                  <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
-                      <div class="wrapper">
-                        <form autocomplete="off" action="" id="wizard">
-                            <!-- SECTION 1 -->
-                            <h2></h2>
-                            <section>
-                                <div class="inner">
+                </nav>
+                <div class="tab-content pl-3 pt-2" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-login" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <div style="padding:10%;" class="rehomes-contact-form wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Form -->
+                          <div id="errorMessage">
+                          </div>
+                          
+                          <form class="support-form" method="post" id="loginForm">
+                            <div class="row col-md-8 mx-auto">
+                                <div class="col-md-12">
+                                    <input type="text" name="username" class="form-control mb-20" placeholder="Nom utilisateur">
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="password" name="password" class="form-control mb-20" placeholder="Mot de passe">
+                                </div>
+                                <div class="col-md-12">
+                                    <button id="btn-connect" type="submit" class="btn rehomes-btn">Connexion</button>
+                                </div>
+                            </div>
+                          </form>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                        <div class="wrapper">
+                          <form autocomplete="off" action="" id="wizard">
+                              <!-- SECTION 1 -->
+                              <h2></h2>
+                              <section>
+                                  <div class="inner">
+                                      <div class="form-content" >
+                                        <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">1.Détails personnel</h2>
+                                        <div class="form-row row">
+                                          <div class="col-md-6">
+                                            <div class="form-holder">
+                                              <input type="text" id="prenom" placeholder="Prénom (*)" class="form-control user-input">
+                                              <span id="prenomError" class="inputError pull-left"></span>
+                                            </div>
+                                          </div>
+                                          <div class="col-md-6">
+                                            <div class="form-holder">
+                                              <input type="text" id="nom" placeholder="Nom (*)" class="form-control user-input">
+                                              <span id="nomError" class="inputError pull-left"></span>
+                                            </div>
+                                          </div>
+                                          
+                                        </div>
+                                        <div class="form-row row">
+                                          <div class="col-md-12">
+                                            <div class="form-holder">
+                                              <input type="text" id="telephone" placeholder="Téléphone (ex. +24399XXXXXXX)" class="form-control user-input">
+                                              <span id="phoneError" class="inputError pull-left"></span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div class="form-row row">
+                                          <div class="col-md-12">
+                                              <button class="btn pull-right" id="next">Suivant</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                  </div>
+                              </section>
+                              <!-- SECTION 2 -->
+                              <h2></h2>
+                              <section>
+                                  <div class="inner">
                                     <div class="form-content" >
-                                      <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">1.Détails personnel</h2>
+                                      <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">2.Profile</h2>
                                       <div class="form-row row">
                                         <div class="col-md-6">
                                           <div class="form-holder">
-                                            <input type="text" id="prenom" placeholder="Prénom (*)" class="form-control user-input">
-                                            <span id="prenomError" class="inputError pull-left"></span>
+                                            <input type="text" id="pseudonyme" placeholder="Pseudonyme" class="form-control user-input">
+                                            <span id="usernameError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                         <div class="col-md-6">
                                           <div class="form-holder">
-                                            <input type="text" id="nom" placeholder="Nom (*)" class="form-control user-input">
-                                            <span id="nomError" class="inputError pull-left"></span>
+                                            <input type="email" id="email" placeholder="Adresse email" class="form-control user-input">
+                                            <span id="emailError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                         
@@ -113,72 +160,38 @@
                                       <div class="form-row row">
                                         <div class="col-md-12">
                                           <div class="form-holder">
-                                            <input type="text" id="telephone" placeholder="Téléphone (ex. +24399XXXXXXX)" class="form-control user-input">
-                                            <span id="phoneError" class="inputError pull-left"></span>
+                                            <input type="password" id="password" placeholder="Mot de passe" class="form-control user-input">
+                                            <span id="passwordError" class="inputError pull-left"></span>
                                           </div>
                                         </div>
                                       </div>
                                       <div class="form-row row">
                                         <div class="col-md-12">
-                                            <button class="btn pull-right" id="next">Suivant</button>
+                                            <div class="form-holder">
+                                              <select name="types" id="types" class="form-control">
+                                              </select>
+                                            </div>
                                         </div>
                                       </div>
-                                    </div>
-                                </div>
-                            </section>
-                            <!-- SECTION 2 -->
-                            <h2></h2>
-                            <section>
-                                <div class="inner">
-                                  <div class="form-content" >
-                                    <h2 class="text-left" style="color: #92c800;margin-bottom: 20px;">2.Profile</h2>
-                                    <div class="form-row row">
-                                      <div class="col-md-6">
-                                        <div class="form-holder">
-                                          <input type="text" id="pseudonyme" placeholder="Pseudonyme" class="form-control user-input">
-                                          <span id="usernameError" class="inputError pull-left"></span>
+                                      <div class="form-row row">
+                                        <div class="col-md-12">
+                                          <button style="margin-left: 10px;" class="btn pull-right" id="finish">Terminer</button>
+                                          <button class="btn pull-right" id="prev">Precedent</button>
                                         </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-holder">
-                                          <input type="email" id="email" placeholder="Adresse email" class="form-control user-input">
-                                          <span id="emailError" class="inputError pull-left"></span>
-                                        </div>
-                                      </div>
-                                      
-                                    </div>
-                                    <div class="form-row row">
-                                      <div class="col-md-12">
-                                        <div class="form-holder">
-                                          <input type="password" id="password" placeholder="Mot de passe" class="form-control user-input">
-                                          <span id="passwordError" class="inputError pull-left"></span>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-row row">
-                                      <div class="col-md-12">
-                                          <div class="form-holder">
-                                            <select name="types" id="types" class="form-control">
-                                            </select>
-                                          </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-row row">
-                                      <div class="col-md-12">
-                                        <button style="margin-left: 10px;" class="btn pull-right" id="finish">Terminer</button>
-                                        <button class="btn pull-right" id="prev">Precedent</button>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
-                            </section>
+                              </section>
 
-                            <!-- SECTION 2 -->
+                              <!-- SECTION 2 -->
 
-                        </form>
+                          </form>
+                      </div>
                     </div>
-                  </div>
+                </div>
+
               </div>
+
              
           </div>
       </div>
@@ -190,11 +203,11 @@
               <div class="row h-100 align-items-center">
                   <div class="col-4">
                       <div class="top-header-content">
-                          <a href="#"><i class="now-ui-icons ui-1_email-85"></i> <span>ja'Ch@technology.com</span></a>
-                          <a href="#"><i class="fa fa-phone"></i> <span>+24389999999</span></a>
+                          <a href="#"><i class="now-ui-icons ui-1_email-85"></i> <span>contact@ndakubizz.com</span></a>
+                          <a href="#"><i class="fa fa-phone"></i> <span>+243974841783</span></a>
                       </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-6 navAdditionalForUser">
                       <div class="top-header-content">
                           <!-- Top Social Area -->
                               <div id="navAdditionalForUser" class="top-social-area ml-auto">
@@ -202,7 +215,7 @@
                               </div>
                       </div>
                   </div>
-                  <div class="col-2">
+                  <div class="col-2 menu">
                       <div id="navUser" class="dropdown2 top-header-content">
                             
                       </div>
@@ -294,7 +307,7 @@
                             <img style="width:150px;height:150px;" src="/images/Logo/fin3.png" alt="">
                           </a>
 
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+                          <p>Nous sommes de ceux qui pensent que le bonheur se partage et se transmet.</p>
                           <!-- Social Info -->
                           <div class="social-info">
                               <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
@@ -313,9 +326,13 @@
 
                           <!-- Contact Area -->
                           <div class="footer-contact">
-                              <p>Téléphone: <span>+243899641137</span></p>
-                              <p>Email: <span>immo.info@gmail.com</span></p>
-                              <p>Addresse: <span>Iris Watson, Box 283 8562 Fusce Rd, NY</span></p>
+                              <p>Téléphone: <span>+243974841783</span></p>
+                              <p>Email: <span>contact@ndakubizz.com</span></p>
+                              <p>Addresse: <span>
+                                Local 22 1er Niveau Immeuble Saint Pierre,
+                                374 Av colonel Mondjiba Q/Basoko
+                                Kinshasa-Ngaliema, RDC
+                              </span></p>
                           </div>
                       </div>
                   </div>

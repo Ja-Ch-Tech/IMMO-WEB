@@ -1,0 +1,476 @@
+@html.extend('layout', function(model) {
+  @html.block('content', function(model) {
+    <!-- **** Breadcrumb Area Start **** -->
+    <div class="breadcrumb-area bg-img bg-overlay-3 wow fadeInUp" data-wow-delay="200ms" style="background-image: url(/images/mari-helin-ilSnKT1IMxE-unsplash.jpg);">
+        <div class="container h-100">
+            <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <div class="breadcrumb-content">
+                        <h2 class="page-title" style="text-transform: uppercase;">Nos termes et conditions générales</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- **** Breadcrumb Area End **** -->
+
+    <!-- **** About Us Area Start **** -->
+    <section class="about-us-area section-padding-80-40">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Ce service est fourni par Ndakubizz.com pour aider les propriétaires et les locataires à se retrouver sans payer de courtage. Pour utiliser et recevoir le Service (y compris l'accès à ce site Web et / ou à toute application mobile, collectivement «Site»), vous devez d'abord accepter et respecter les conditions générales suivantes (les «Conditions d'utilisation») et les conditions de notre Politique de confidentialité. Le Site est détenu, exploité et géré par Ndakubizz et partout où le terme Ndakubizz / Nous / Notre et une expression similaire sont utilisés, il fait référence à Ndakubizz, ses dirigeants, administrateurs, employés et représentants, selon le cas.  
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h2 style="text-transform: uppercase;color: #92c800"><span>I. Le service que nous offrons : </span></h2>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Le service est conçu pour fournir aux résidents un «réseau» propre à l'immeuble pour interagir avec leurs voisins et partager leurs connaissances du quartier. Sous réserve des dispositions ci-dessous et des conditions de tout accord que nous pouvons avoir avec les propriétaires de votre immeuble ou la direction ou l'association, les éléments suivants du Service sont disponibles pour les résidents: 
+                        </p>
+
+
+                    </div>
+
+                    <h3>A. Accès au site</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Veuillez noter qu'un seul nom d'utilisateur et mot de passe doit être créé par utilisateur. Le nom d'utilisateur est le numéro contact/ email_id fourni par l'utilisateur. Nous nous réservons le droit de vérifier ces informations avant d'activer un compte. Le compte peut être rejeté ou désactivé s'il s'avère qu'il s'agit d'un compte de courtier ou pour toute autre raison que Ndakubizz juge appropriée et qu'il n'est pas tenu d'indiquer ou de justifier.
+                        </p>
+
+                        <p style="text-align: justify;">
+                            Vous êtes responsable du maintien de la confidentialité de votre mot de passe et de votre compte, et êtes entièrement responsable de toutes les activités qui se produisent sous votre mot de passe ou votre compte, avec ou à votre insu. Si vous donnez sciemment vos informations de connexion et de mot de passe à une autre personne, nous pouvons suspendre ou résilier votre compte, en plus de tout autre recours à notre disposition. Vous devez nous informer immédiatement si vous prenez connaissance d'une utilisation non autorisée de votre mot de passe ou de votre compte ou de toute autre violation de la sécurité. Nous ne pouvons être tenus responsables de toute perte ou dommage résultant de votre non-respect de ce paragraphe. 
+                        </p>
+                    </div>
+
+                    <h3>B. Informations d'enregistrement</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Lorsque vous soumettez vos données pour vous inscrire, nous vous demanderons de fournir les détails de votre maison, nom, adresse e-mail, numéro de contact et mot de passe de votre choix. Comme mentionné ci-dessus, votre adresse e-mail / numéro de contact sera utilisé comme nom d'utilisateur à des fins de connexion.
+                        </p>
+
+                        <p style="text-align: justify;">
+                            Toutes les informations d'enregistrement que vous fournissez doivent être vraies, exactes, à jour et complètes. Nous afficherions ces informations sur le site Web pour que les autres utilisateurs puissent y accéder. 
+                        </p>
+
+                        <p style="text-align: justify;">
+                            Veuillez également noter que nous pouvons, sans y être obligés, utiliser les informations que vous fournissez pour vérifier que vous êtes bien un propriétaire ou un locataire et non un courtier.
+                        </p>
+                    </div>
+
+                    <h3>C. Informations sur le profil</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Votre profil Ndakubizz.com ne peut inclure aucun des contenus suivants: numéros de téléphone (sauf si demandé), toute photographie contenant de la nudité, des propos grossiers ou obscènes, obscènes, excessivement violents, harcelants, sexuellement explicites ou autrement répréhensibles. Malgré cette interdiction, il est possible que les informations fournies par d'autres utilisateurs de Ndakubizz.com (par exemple, dans leur profil) puissent contenir du matériel, des produits ou des services inexacts, inappropriés, offensants ou sexuellement explicites en violation de ces conditions d'utilisation. Ndakubizz.com n'assume aucune responsabilité pour ce matériel. Nous vous encourageons cependant à nous aider à garder le site propre en nous contactant si vous constatez une mauvaise utilisation du Service.
+                        </p>
+
+                        <p style="text-align: justify;">
+                            Vous êtes responsable du maintien de la confidentialité de votre mot de passe et de votre compte, et êtes entièrement responsable de toutes les activités qui se produisent sous votre mot de passe ou votre compte, avec ou à votre insu. Si vous donnez sciemment vos informations de connexion et de mot de passe à une autre personne, nous pouvons suspendre ou résilier votre compte, en plus de tout autre recours à notre disposition. Vous devez nous informer immédiatement si vous prenez connaissance d'une utilisation non autorisée de votre mot de passe ou de votre compte ou de toute autre violation de la sécurité. Nous ne pouvons être tenus responsables de toute perte ou dommage résultant de votre non-respect de ce paragraphe. 
+                        </p>
+                    </div>
+
+                    <h3>D. Info quartier</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Le site contient des informations locales utilisant des tiers comme Google Maps, etc. Ndakubizz.com ne peut pas et ne garantit pas l'exactitude, l'intégrité ou la qualité de tout contenu fourni par des tiers. En outre, vos interactions avec les entreprises trouvées sur ou via le Service, y compris le paiement et la livraison de biens ou de services (y compris toute commande de nourriture), et toutes autres modalités, conditions, garanties ou représentations associées à de telles transactions, sont uniquement entre vous et ceux entreprises. En aucun cas, Ndakubizz.com ne sera responsable des dommages résultant de toute interaction entre vous et ces parties. Les informations fournies sur le Site vous sont fournies sur un "TEL QUEL, Où est "base. 
+                        </p>
+                    </div>
+
+                    <h3>E. Aide à l'enregistrement</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Dans le cadre de nos efforts pour rendre votre courtier de recherche de logement gratuit et facile, nous serions heureux de vous mettre en contact avec des agents tiers qui facilitent l'enregistrement des congés et des licences. Ndakubizz.com peut facturer ce service. Ndakubizz.com ne peut pas et ne garantit pas l'intégrité et la qualité du service fourni par des tiers. En outre, votre interaction avec les fournisseurs de services tiers, y compris le paiement et toute transaction de ce type, est uniquement entre vous et ces entreprises. En aucun cas, Ndakubizz.com ne sera responsable des dommages résultant de toute interaction entre vous et ces parties.   
+                        </p>
+                    </div>
+
+                    <h3>F. Mises à jour par courrier électronique</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Dans le cadre du Service, il se peut que nous devions communiquer avec vous par e-mail (consultez notre Politique de confidentialité pour en savoir plus sur les communications). Vous acceptez de 
+                            recevoir des e-mails spécifiques à votre compte et nécessaires au fonctionnement normal du Service, y compris un ou plusieurs e-mails de bienvenue qui aident à informer les nouveaux utilisateurs des différentes fonctionnalités du Service. 
+                        </p>
+
+                        <p style="text-align: justify;">
+                            Nous pouvons également envoyer aux utilisateurs des bulletins électroniques occasionnels, sauf si ces utilisateurs ont choisi de ne pas recevoir ces e-mails. Ces e-mails peuvent également contenir des informations sur le quartier, des conseils et suggestions ou toute autre offre fournie par un tiers. Ndakubizz.com n'assume aucune responsabilité quant à la validité de l'une de ces offres. Vous pouvez à tout moment vous désinscrire de ces e-mails en envoyant un mail à contact@ndakubizz.com
+                        </p>
+                    </div>
+
+                    <h3>G. Informations pour les locataires potentiels</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Étant donné que certaines zones du site sont conçues pour aider les locataires potentiels à découvrir de nouvelles locations, vous pouvez parcourir certaines sections du site, même si vous n'êtes pas encore inscrit. Cependant, vous ne pourrez contacter le propriétaire que si vous vous êtes connecté en tant que locataire et que vous avez payé les frais requis. 
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <h2 style="text-transform: uppercase;color: #92c800;margin-bottom: 50px;"><span>II. Vos informations et Politique de confidentialité: </span></h2>
+                   
+
+                    <h3>A. Politique de confidentialité</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Notre utilisation de vos informations est soumise aux termes de notre politique de confidentialité. Vous devez accepter la politique de confidentialité avant de pouvoir accéder au site.
+                        </p>
+
+                    </div>
+
+                    <h3>B. Vos informations d'inscription</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Pour vous donner accès au site, nous vous demanderons de fournir le nom et les coordonnées décrits ci-dessus, et nous pouvons également vous demander de mettre à jour ou de vérifier ces informations de temps à autre. En utilisant le Site, vous acceptez de fournir des informations précises et de coopérer avec tout personnel de Ndakubizz.com. 
+                        </p>
+                    </div>
+
+                    <h3>C. Autres informations que vous fournissez</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <h5 style="margin: 15px 0px;font-family: calibri;">- Ce que vous pouvez fournir: </h5>
+                        <p style="text-align: justify;">
+                            Comme décrit ci-dessus, le Site contient des informations concernant votre propriété si vous êtes propriétaire et des informations sur vos besoins, si vous êtes locataire. Vous devrez également fournir vos coordonnées exactes. Étant donné que ce site ne permet pas aux courtiers ou agents de publier ou de rechercher sur le site, nous pouvons avoir besoin d'informations pertinentes pour le vérifier. 
+                        </p>
+
+                        <h5 style="margin: 15px 0px;font-family: calibri;">-  Octroi de droits à Ndakubizz.com:  </h5>
+                        <p style="text-align: justify;">
+                            Nous prenons la confidentialité de nos utilisateurs très au sérieux. Cependant, Ndakubizz.com aura le droit d'utiliser les informations pour fournir des publicités et des offres personnalisées et pour inclure ces informations dans les compilations développées par Ndakubizz.com. 
+                        </p>
+
+                        <h5 style="margin: 15px 0px;font-family: calibri;">- Lire l'état du téléphone : </h5>
+                        <p style="text-align: justify;">
+                            Option 1 - Cela nous permet de vous informer par appels des maisons disponibles à la location. Si vous avez mis votre maison en location, vous recevrez des alertes sur les locataires intéressés.   
+                        </p>
+                        <p style="text-align: justify;">
+                            Options 2- Recevez des alertes et des appels lorsque les propriétaires / locataires intéressés vous contactent. Ne manquez jamais une mise à jour.    
+                        </p>
+
+                        <h5 style="margin: 15px 0px;font-family: calibri;">- Lire SMS : </h5>
+                        <p style="text-align: justify;">
+                            Ces informations seront utilisées pour vérifier votre numéro de téléphone et faciliter la communication avec les propriétaires / locataires.    
+                        </p>
+
+                        <h5 style="margin: 15px 0px;font-family: calibri;">- Détecter l'emplacement : </h5>
+                        <p style="text-align: justify;">
+                            Vous permet de rechercher des maisons en fonction de votre emplacement actuel.    
+                        </p>
+
+                        <h5 style="margin: 15px 0px;font-family: calibri;">- Octroi de droits à nos partenaires financiers: </h5>
+                        <p style="text-align: justify;">
+                            (a) Nonobstant tout ce qui est contenu dans les présentes et dans la politique de confidentialité de Ndakubizz, vous autorisez par la présente Ndakubizz à partager avec nos partenaires financiers, toutes les informations que vous pouvez fournir en relation avec cette application pour bénéficier des produits et / ou services de nos partenaires financiers.    
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (b) En cliquant sur l'onglet "Appliquer maintenant / Soumettre":
+                        </p>  
+                        <p style="padding-left: 50px;text-align: justify;">(i) Vous acceptez et autorisez nos partenaires financiers à vous contacter et à communiquer avec vous par e-mails, appels téléphoniques ou SMS sur le numéro de téléphone mobile mentionné dans l'application, ou par tout autre mode de communication («Modes de communication») pour vérifier les détails fournis par vous dans cette demande ou pour traiter cette demande.<br> (ii) Vous confirmez que vous souhaitez connaître de temps à autre les modes de communication, offres et programmes de promotion susmentionnés relatifs aux divers produits / services proposés par nos partenaires financiers / les sociétés de son groupe.<br>  
+                        (iii)  Vous acceptez et confirmez en outre que les lois relatives à la communication non sollicitée mentionnée dans le "Registre national de non-appel" (le "Registre NDNC") tel que défini par l'Autorité de régulation des télécommunications du Congo ne seront pas applicables pour de telles communication / appels / SMS reçus de nos partenaires financiers, des sociétés du groupe, des employés, des représentants et / ou des agents. <br>
+                        (iv) Vous autorisez nos partenaires financiers à échanger et partager toutes les informations et détails, tels que fournis par vous dans cette demande, avec des tiers, y compris, mais sans s'y limiter, les sociétés du groupe de nos partenaires financiers, les prestataires de services, les institutions financières, les bureaux de crédit, sociétés de télécommunications, organismes statutaires, etc., pour la vérification de la clientèle, la personnalisation de produits ou de services, la notation de crédit, l'enrichissement de données, la commercialisation ou la promotion de services ou de produits connexes de nos partenaires financiers ou de ses associés et affiliés ou pour l'exécution de vos obligations et acceptez de ne pas tenir nos partenaires financiers (ou l'une des sociétés de son groupe ou ses / leurs employés / agents / représentants) responsables de l'utilisation / du partage des informations comme indiqué ci-dessus.<br>  
+                        (v) Vous comprenez et acceptez qu'en vertu de ce formulaire de demande, vous devrez soumettre des documents à la satisfaction de nos partenaires financiers et accepter les conditions générales de prêt telles que prescrites par nos partenaires financiers en ce qui concerne les produits et / ou services appliqués. par vous.  
+                        En tant qu'abonné / utilisateur des services offerts sur le portail Web Ndakubizz.com, j'autorise expressément Ndakubizz.com et tous leurs associés à appeler / SMS mes / nos numéros de téléphone enregistrés (tels que fournis par moi / nous à Ndakubizz.com). Par la présente, je déclare expressément qu'une telle autorisation prévaudra sur le registre national Ne pas déranger («MDN»), même si les numéros de téléphone en question sont enregistrés dans la liste du MDN du registre national des préférences des consommateurs (NCPR / NDNC).  
+                        Je m'engage / nous nous engageons également à ne faire aucune réclamation à NDNC pour les appels reçus des services / produits de Ndakubizz.com et indemniser Ndakubizz.com et l'un de ses partenaires commerciaux pour s'être engagé dans une telle pratique.  
+                        Je reconnais, reconnais et autorise expressément Ndakubizz.com à effectuer la communication initiale (via Appel / SMS / E-mail / WhatsApp) aux fins de confirmation de mes informations d'identification fournies par moi. J'autorise Ndakubizz.com et ses associés à continuer à me contacter via l'un des modes de communication énumérés cidessus, jusqu'à ce que je me désinscrive / me désinscrive expressément du service proposé par Ndakubizz.com. Jusqu'à ce moment, Ndakubizz.com et ses associés commerciaux auront tous les droits de continuer à communiquer avec moi et je les indemniserai complètement de toute responsabilité qui pourrait découler d'une telle autorisation de communiquer. Cette indemnisation s'étendra aux affaires et poursuites judiciaires et à tous les frais d'avocat / avocat, même si le litige n'est jamais soumis à un contrôle judiciaire.<br>
+                        (vi) Respect des droits des tiers: Vous ne pouvez pas utiliser le Site pour transmettre ou reproduire la propriété intellectuelle de quelqu'un d'autre. Par exemple, vous ne pouvez pas utiliser les publications de la propriété pour publier des avis sur le blog ou le guide de voyage de quelqu'un d'autre, car cela pourrait violer les droits d'auteur de l'auteur ou de l'éditeur.  </p>    
+                        
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <h2 style="text-transform: uppercase;color: #92c800;margin-bottom: 50px;"><span>III. Conduite interdite : </span></h2>
+
+                    <h3>A. Conduite interdite</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Vous déclarez et garantissez que vous ne ferez rien de ce qui suit via le Site ou autrement en relation avec le Service.
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (i)
+                            tenter ou aider quelqu'un d'autre à tenter d'obtenir un accès non autorisé au service Ndakubizz.com ou à ses systèmes ou réseaux associés (y compris, sans s'y limiter, l'emprunt d'identité d'un autre utilisateur ou toute autre utilisation d'une fausse identité ou adresse pour accéder au site) ; 
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (ii)
+                            utiliser le site pour violer les droits de propriété intellectuelle de toute personne (y compris, sans s'y limiter, publier de la musique piratée ou des programmes informatiques ou des liens vers ce matériel sur le site ou dans votre profil);  
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (iii)
+                            envoyer du spam ou des messages dupliqués ou non sollicités en violation des lois applicables;  
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (iv)
+                            envoyer ou stocker du matériel contrefait, obscène, menaçant, diffamatoire ou autrement illégal ou délictueux, y compris du matériel préjudiciable aux enfants ou violant les droits des tiers en matière de confidentialité; 
+                        </p>
+                        <p style="text-align: justify;">
+                            (v)
+                            envoyer ou stocker du matériel contenant des virus, vers, chevaux de Troie ou autres codes informatiques, fichiers, scripts, agents ou programmes nuisibles;  
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (vi)
+                            interférer avec ou perturber l'intégrité ou la performance du Service ou des données qu'il contient;  
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (vii)
+                            octroyer une licence, accorder une sous-licence, vendre, revendre, transférer, céder, distribuer ou autrement exploiter commercialement ou mettre à la disposition de tout tiers le Service ou tout contenu contenu dans ou mis à disposition via le Service (le "Contenu") de quelque manière que ce soit;  
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (viii)
+                            modifier ou faire des travaux dérivés basés sur le Service ou le Contenu;
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (ix)
+                            créer des «liens» Internet vers le site ou «encadrer» ou «refléter» tout contenu sur tout autre serveur ou appareil sans fil ou Internet; ou 
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (x)
+                            faire de l'ingénierie inverse ou accéder au Service afin de (a) créer un produit concurrentiel avec le Service, (b) construire un produit en utilisant des idées, des fonctionnalités, des fonctions ou des graphiques similaires à ceux du Service, ou (c) copier des idées, des fonctionnalités , fonctions ou graphiques contenus dans le Service. 
+                        </p>
+                    </div>
+
+                    <h3>B. Droits de Ndakubizz.com</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Ndakubizz.com aura le droit de suspendre ou de résilier immédiatement votre accès au Service pour toute violation réelle ou suspectée des présentes Conditions d'utilisation. Ndakubizz.com aura également le droit d'utiliser ou de divulguer à des tiers (y compris les forces de l'ordre et la gestion de votre immeuble) des informations personnellement identifiables concernant toute personne ou entité soupçonnée d'avoir utilisé ce Site ou tout autre composant du Service pour tout à des fins frauduleuses, pour harcèlement, ou pour avoir autrement violé une loi, une règle ou un règlement ou les droits de tiers ou avoir adopté une conduite que Ndakubizz.com juge inappropriée. En utilisant le Service, vous acceptez notre utilisation ou la divulgation de toute information que vous fournissez de la manière que nous jugeons appropriée ou nécessaire si vous êtes soupçonné d'avoir adopté une conduite que nous jugeons inappropriée. Ndakubizz.com aura également le droit de résilier, désactiver ou refuser la création de votre compte s'il constate que vous êtes un courtier ou agissant pour le compte d'un courtier ou pour toute autre raison qu'il juge appropriée et n'est pas tenue de justifier ou de clarifier la raison.
+                        </p>
+
+                        <p style="text-align: justify;">
+                            Toutes les informations d'enregistrement que vous fournissez doivent être vraies, exactes, à jour et complètes. Nous afficherions ces informations sur le site Web pour que les autres utilisateurs puissent y accéder. 
+                        </p>
+
+                        <p style="text-align: justify;">
+                            Veuillez également noter que nous pouvons, sans y être obligés, utiliser les informations que vous fournissez pour vérifier que vous êtes bien un propriétaire ou un locataire et non un courtier.
+                        </p>
+                    </div>
+
+                    <h3>C. Comment vous pouvez aider</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Veuillez informer immédiatement Ndakubizz.com de toute utilisation non autorisée de votre mot de passe ou de votre compte, ou si vous pensez qu'il y a eu une autre faute décrite ci-dessus, en nous envoyant un e-mail à contact@ndakubizz.com.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <h2 style="text-transform: uppercase;color: #92c800"><span>IV. Résiliation de l'accès: </span></h2>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Votre accès au Service prendra fin si vous violez l'une des conditions d'utilisation ou si vous êtes un courtier ou agissez au nom d'un courtier ou pour toute autre raison que Ndakubizz.com peut juger appropriée et qu'elle n'est pas tenue de justifier ou de clarifier la raison. Si tel est le cas, vous ne pourrez plus utiliser le site comme décrit dans cette section 1.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <h2 style="text-transform: uppercase;color: #92c800;margin-bottom: 50px;"><span>V. Général: </span></h2>
+                    <h3>A. Propriété Ndakubizz.com</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Entre les parties, Ndakubizz.com détiendra et conservera tous les droits, titres et intérêts dans et sur le Service, le Site et toute technologie ou contenu contenu ou mis à disposition via le Service (autre que votre propre nom et vos coordonnées) , et sera également propriétaire de toutes suggestions, idées, demandes d'amélioration, commentaires, recommandations ou autres informations que vous pourriez fournir concernant le service Ndakubizz.com. Le nom et le logo Ndakubizz.com sont des marques commerciales de Ndakubizz.com, et aucun droit ni licence n'est accordé pour les utiliser. Les autres marques et noms commerciaux qui peuvent apparaître sur le Site sont la propriété de leurs propriétaires respectifs. 
+                        </p>
+                    </div>
+
+                    <h3>B. Contenu sur le site Web</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Bien que tous les efforts soient déployés pour garantir la publication d'informations fiables sur le site, les informations contenues sur le site peuvent ne pas être exactes et indépendantes de notre volonté. Nous ne garantissons pas l'exactitude ou la pertinence de ces informations. Des modifications peuvent être périodiquement ajoutées au contenu des présentes. En utilisant nos services, vous reconnaissez que les informations sur le Site vous sont fournies "TEL QUEL, Où EST". De même, alors que nous nous efforçons de veiller à ce que toutes les informations soient publiées par les propriétaires des propriétés, nous ne pouvons pas garantir la même chose. Nous ne sommes pas un agent immobilier; courtier ou courtier immobilier et le contenu du site ne doit pas être interprété comme une recommandation pour un produit ou service, une utilisation ou un plan d'action spécifique. 
+                        </p>
+                    </div>
+
+                    <h3>C. Vos données</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Vous, et non Ndakubizz.com, serez seul responsable de l'exactitude, de la qualité, de l'intégrité, de la légalité, de la fiabilité, de la pertinence et de la propriété intellectuelle ou du droit d'utiliser toute information que vous soumettez via le Site, et Ndakubizz.com ne sera pas responsable ou 
+                            responsable de la suppression, de la correction, de la destruction, des dommages, de la perte ou du non-stockage de ces informations. Ndakubizz.com se réserve le droit de refuser l'accès, de supprimer et / ou de supprimer vos informations du site ou de résilier votre compte sans préavis pour toute violation des présentes conditions d'utilisation ou si vous êtes un courtier ou agissez au nom d'un courtier ou de tout autre raison que Ndakubizz.com peut juger appropriée. En cas de fermeture de votre compte, votre capacité à accéder aux données ou à les utiliser via le Service cessera immédiatement, et Ndakubizz.com n'aura aucune obligation de conserver ou de transmettre les données que vous avez soumises.  
+                        </p>
+                    </div>
+
+                    <h3>D. Offres de tiers</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Dans le cadre du Service, Ndakubizz.com peut vous fournir des informations concernant les biens ou services offerts par divers tiers (y compris, sans s'y limiter, les institutions financières, les annonceurs rémunérés ou les sponsors du Service Ndakubizz.com, d'autres utilisateurs et les agents d'enregistrement des congés et des licences) . En aucun cas, Ndakubizz.com ne sera responsable des dommages résultant de toute interaction entre vous et ces parties.  
+                        </p>
+                    </div>
+
+                    <h3>E. Garanties; Avertissements</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            LE SERVICE (Y COMPRIS, SANS S'Y LIMITER, LE SITE, ET TOUS LES OUTILS OU DONNÉES Y COMPRIS) EST FOURNI «TEL QUEL» ET NDAKUBIZZ.COM NE FOURNIT AUCUNE GARANTIE QUANT À L'EXÉCUTION DU SERVICE NDAKUBIZZ.COM, Y COMPRIS SA SÉCURITÉ, QUALITÉ , EFFICACITÉ, VIABILITÉ COMMERCIALE OU QUALITÉ MARCHANDE. VOUS ASSUMEZ TOUTE RESPONSABILITÉ ET RESPONSABILITÉ À CET ÉGARD. En aucun cas, Ndakubizz.com ne pourra être tenu responsable de quelque dommage que ce soit résultant de l'utilisation ou de l'impossibilité d'utiliser le Service Ndakubizz.com, même si Ndakubizz.com a été informé de la possibilité de tels dommages. Ndakubizz.com ne prend aucune responsabilité pour tout dommage se produisant en raison de toute interaction entre ses utilisateurs se produisant directement ou indirectement via Ndakubizz.com. 
+                        </p>
+                    </div>
+
+                    <h3>F. Limitation de responsabilité</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            En aucun cas, Ndakubizz.com ne pourra être tenu responsable envers quiconque des dommages accessoires, consécutifs, spéciaux, indirects ou punitifs (y compris, sans limitation, la perte de bénéfices) liés au Service ou liés aux présentes Conditions d'utilisation (que ce soit pour rupture de contrat, délit ou négligence) ou sa résiliation et indépendamment du fait que Ndakubizz.com ait été informé de la possibilité de telles pertes ou dommages. Les limitations contenues dans cette section survivront à tout échec d'un recours exclusif ou limité. Le recours maximal dont dispose un utilisateur ne doit en aucun cas dépasser le montant du plan d'abonnement payé par cet utilisateur (au prorata de l'utilisation terminée). 
+                        </p>
+                    </div>
+
+                    <h3>G. Indemnisation</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Vous acceptez par la présente d'indemniser, de défendre et de tenir Ndakubizz.com, ainsi que nos dirigeants, administrateurs, employés et agents (collectivement, l '"Indemnité") indemnes de et contre toutes les pertes, coûts et dépenses (y compris les honoraires d'avocats externes 
+                            raisonnables) , réclamations, poursuites et responsabilités de tiers (collectivement, les «réclamations») que l'indemnisé peut subir ou encourir, qui découlent, résultent ou sont liées de quelque manière que ce soit à (i) votre violation de toute propriété intellectuelle ou d'autres droits d'un tierce personne; (ii) votre violation de toute loi ou réglementation de toute autorité gouvernementale, réglementaire ou judiciaire résultant de votre utilisation du Service; (iii) votre violation des présentes conditions d'utilisation, ou (iv) votre négligence grave ou faute intentionnelle réelle ou présumée dans le cadre de votre utilisation du service. 
+                        </p>
+                    </div>
+
+                    <h3>H. Loi applicable; Juridiction</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Ces conditions d'utilisation sont régies par la loi de la République démocratique du Congo, sans égard au choix ou aux dispositions en matière de conflits de lois de toute juridiction. Tout litige, action, réclamation ou cause d'action découlant du Service ou en relation avec celui-ci sera soumis, et vous y consentez, à la compétence exclusive des tribunaux d'État situés à Kinshasa. 
+                        </p>
+                    </div>
+
+                    <h3>I. Renonciation et divisibilité</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Aucun manquement ou retard de la part de l'une ou l'autre partie dans l'exercice de tout droit ou recours en vertu des présentes ne constituera une renonciation à celui-ci ou à toute autre disposition. Dans le cas où une disposition de ces conditions d'utilisation est jugée inapplicable ou invalide par un tribunal compétent, une telle inapplicabilité ou invalidité ne rendra pas ces conditions d'utilisation inapplicables ou invalides dans leur ensemble, et la disposition inapplicable sera interprétée , autant que possible, pour refléter les intentions de la disposition invalide ou inapplicable.  
+                        </p>
+                    </div>
+
+                    <h3>J. Modifications apportées au service</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Ndakubizz.com se réserve le droit de reconcevoir ou de modifier l'organisation, la structure, les fonctionnalités, les prix ou "l'apparence" du Service et de toute partie de celui-ci à tout moment sans préavis ni responsabilité en vertu des présentes.  
+                        </p>
+                    </div>
+
+                    <h3>K. Modification des conditions</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Ndakubizz.com se réserve le droit de modifier les dispositions des présentes conditions d'utilisation à tout moment en publiant une version mise à jour de ce document sur le Site, à condition toutefois qu'aucune telle modification n'ait un effet rétroactif. Sauf disposition contraire du présent paragraphe ou disposition contraire dans les conditions d'utilisation, aucune modification ou amendement aux conditions d'utilisation, et aucune renonciation à tout droit en vertu de celles-ci, ne sera effective sauf si par écrit signé par la partie à facturer.  
+                        </p>
+                    </div>
+
+                    <h3>M. Comment nous contacter</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Si vous avez des questions sur cet accord, les pratiques de Ndakubizz.com ou votre expérience avec le service, vous pouvez nous envoyer un e-mail à contact@ndakubizz.com. 
+                        </p>
+                    </div>
+
+                    <h3>N. Politique de remboursement</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Aucun plan d'abonnement Ndakubizz n'est remboursable ou annulable tant que cela n'est pas spécifié spécifiquement sur le plan lui-même.  
+                        </p>
+                    </div>
+
+                    <h3>O. Politique de copyright </h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Ndakubizz.com respecte la propriété intellectuelle d'autrui, et nous demandons à nos utilisateurs de faire de même. Si vous pensez que votre propre œuvre protégée par le droit d'auteur est accessible sur le Site en violation de votre droit d'auteur, vous pouvez nous fournir une communication écrite en vertu du Digital Millennium Copyright Act, 17 U.S.C. 512 (c) (3), qui contient essentiellement les informations suivantes:   
+                        </p>
+                        <p>
+                            (i) Identifiez l'oeuvre protégée par le droit d'auteur ou la propriété intellectuelle qui, selon vous, a été violée de manière suffisamment détaillée pour que nous puissions localiser le matériel. Par exemple, «L'œuvre protégée par des droits d'auteur est mon contenu qui apparaît sur <a href="http://www.mycopyrightedcontent.com/this»">http://www.mycopyrightedcontent.com/this»</a>. 
+                        </p>
+                        <p>
+                            (ii) Identifiez l'URL sur le Site qui contient le matériel qui, selon vous, enfreint vos droits d'auteur. Encore une fois, vous devez nous fournir des informations raisonnablement suffisantes pour nous permettre de localiser l'infraction présumée matériel. Par exemple, «Le contenu de l'URL suivante porte atteinte à mes droits d'auteur: http://www.Ndakubizz.com / violation». 
+                        </p>
+
+                        <p>
+                            (iii) Indiquez votre nom, votre adresse postale, votre numéro de téléphone et votre adresse électronique. 
+                        </p>
+
+                        <p>
+                            (iv) Fournir la signature électronique ou physique du titulaire du droit d'auteur ou d'une personne autorisée à agir en son nom. 
+                        </p>
+
+                        <p>
+                            (v) Incluez une déclaration de votre part selon laquelle vous pensez de bonne foi que l'utilisation contestée n'est pas autorisée par le titulaire du droit d'auteur, son agent ou la loi. 
+                        </p>
+                        <p>
+                            (vi) Incluez une déclaration de votre part, faite sous peine de parjure, que les informations contenues dans votre avis sont exactes et que vous êtes le propriétaire du droit d'auteur ou que vous êtes autorisé à agir au nom du propriétaire du droit d'auteur. 
+                        </p>
+                        <p>
+                            (vii) Les informations sur le site Ndakubizz doivent être utilisées par les clients pour un usage personnel. Ndakubizz se réserve le droit de bloquer le client et de renoncer à tout paiement reçu, s'il soupçonne le client ou l'utilisation d'être de nature commerciale.
+                        </p>
+                        <p>
+                            (viii) S'il s'avère que le client payé affiche un comportement de courtier, Ndakubizz se réserve le droit d'interdire le client sans remboursement. Cela inclut l'utilisation directe ou indirecte des coordonnées du propriétaire du site Ndakubizz pour demander le courtage à nos clients ou / et l'utilisation du site pour un ensemble diversifié de propriétés présentant un comportement de courtier. 
+                        </p>
+                        <p>
+                            (ix) Vous pouvez nous envoyer votre notification de violation présumée du droit d'auteur par e-mail à contact@ndakubizz.com. 
+                        </p>
+                    </div>
+
+                    <h3>P. Avertissements</h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            (i) Ndakubizz.com n'est pas responsable de tout contenu / liste incorrect ou inexact affiché sur le site ou en relation avec le service Ndakubizz.com, qu'il soit causé par des utilisateurs, des clients ou par tout équipement ou programmation associé ou utilisé dans du Service, ni pour la conduite de tout Utilisateur et / ou Membre du service Ndakubizz.com en ligne ou hors ligne.  
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (ii) Ndakubizz.com dessert tous les forfaits ou abonnements au mieux. Nous ne garantissons aucun retour partiel ou complet sauf mention expresse sur le site. La responsabilité de Ndakubizz (le cas échéant) serait limitée au montant payé par le client.  
+                        </p>
+
+
+                        <p style="text-align: justify;">
+                            (iii) Ndakubizz.com n'assume aucune responsabilité pour toute erreur, omission, interruption, suppression, défaut, retard dans le fonctionnement ou la transmission, défaillance de la ligne de communication, vol ou destruction ou accès non autorisé ou modification des communications de l'utilisateur et / ou des membres ou toute communication de Ndakubizz.com à ses membres.  
+                        </p>
+
+                        <p>
+                            (iv) Ndakubizz.com n'est pas responsable des problèmes ou dysfonctionnements techniques des réseaux ou lignes téléphoniques, des systèmes informatiques en ligne, des serveurs ou des fournisseurs, du matériel informatique, des logiciels, des pannes de courrier électronique ou des joueurs en raison de problèmes techniques ou du trafic la congestion sur Internet ou sur tout site Web ou combinaison de ceux-ci, y compris les blessures ou dommages aux utilisateurs et / ou membres ou à l'ordinateur de toute autre personne liés ou résultant et / ou en relation avec le service Ndakubizz.com. 
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (v) En aucun cas, Ndakubizz.com ne sera responsable de toute perte ou dommage résultant de l'utilisation par quiconque du site ou du service et / ou de tout contenu publié sur le site Ndakubizz.com ou transmis aux clients Ndakubizz.com. 
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (vi) L'échange de propriété et toute autre information par ou par "Ndakubizz.com" n'est pas une sorte d'offre et / ou de recommandation de / par Ndakubizz.com. Ndakubizz.com ne sera pas responsable de toute perte ou dommage à toute personne résultant de, ou postérieurement, à des relations (y compris mais non limitées à la propriété) établies conformément à l'utilisation de Ndakubizz.com. 
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (vii) Le Site et le Service sont fournis "EN L'ÉTAT" et Ndakubizz.com décline expressément toute garantie d'adéquation à un usage particulier ou de non-contrefaçon. Ndakubizz.com ne peut garantir et ne promet aucun résultat spécifique de l'utilisation du Site et / ou du Service Ndakubizz.com. Ndakubizz.com décline expressément toute responsabilité, quelle qu'elle soit et quelle qu'en soit la conséquence, découlant de tout Contenu / liste publiée sur le Site / mis à la disposition de Ndakubizz.com par tout client ou utilisateur du Site ou tout tiers. Ndakubizz.com n'assume aucune responsabilité ou obligation pour tout Contenu illégal publié sur le Site par des clients, utilisateurs ou tout tiers. 
+                        </p>
+                        <p style="text-align: justify;">
+                            (viii) Toute responsabilité, civile ou pénale, découlant de tout contenu publié sur le site incombera au client / utilisateur / tiers qui a publié ce contenu et Ndakubizz.com se réserve le droit de réclamer des dommages-intérêts à ce client / utilisateur / tiers qu'il pourrait subir en raison de ce contenu publié sur le site. Ndakubizz.com ne revendique pas la propriété du Contenu que vous soumettez ou rendez disponible pour inclusion sur le Service.  
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (ix) Les termes «véritable propriétaire vérifié» et «véritables locataires / acheteurs vérifiés» sur notre plateforme font référence à notre processus technologique basé sur un algorithme par lequel nous éliminons les courtiers sur notre plateforme. C'est sur la base du meilleur effort et a ses propres limites. Nous ne rencontrons / vérifions pas physiquement les clients et nous n'effectuons aucun processus de vérification des antécédents / police des clients.   
+                        </p>
+
+                        <p style="text-align: justify;">
+                            (x) Les frais payés au gouvernement pour l'enregistrement du contrat de location ne sont en aucun cas remboursables.    
+                        </p>
+                    </div>
+
+                    <h3>Q. Conditions générales de Ndakubizz Pay </h>
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p>
+                            (i) Limites de transaction: Nous pouvons retarder, suspendre ou rejeter une transaction pour tout (s) paiement (s) pour quelque raison que ce soit, y compris sans limitation si nous soupçonnons que la transaction nous expose à des risques financiers ou de sécurité ou est non autorisée, frauduleuse, suspecte, illégale, en violation des termes du présent Accord, sujet à litige ou autrement inhabituel. 
+ 
+                        </p>
+                        <p>
+                            (ii) Rétrofacturations: le montant d'une transaction peut vous être facturé ou annulé (une "rétrofacturation") si la transaction (a) est contestée par l'expéditeur, (b) est inversée pour une raison quelconque, (c) n'a pas été autorisé ou nous avons des raisons de croire que la transaction n'a 
+                            pas été autorisée, ou (d) est prétendument illégale, suspecte ou en violation des termes du présent Accord. Vous nous devez et vous nous paierez immédiatement le montant de tout rejet de débit et des frais, amendes ou pénalités associés évalués par notre processeur, les institutions financières de traitement ou MasterCard, Visa, American Express, Discover et d'autres réseaux de cartes de paiement, associations ou ("Réseaux"). Vous acceptez de nous aider sur demande, à vos frais, pour enquêter sur l'une de vos transactions traitées par le biais du Service. Pour les rétrofacturations associées aux cartes, nous travaillerons avec vous pour contester la rétrofacturation auprès du réseau ou des banques émettrices si vous choisissez de contester la rétrofacturation. Nous vous demanderons les informations nécessaires pour contester la rétrofacturation. Votre incapacité à nous aider en temps opportun à enquêter sur une transaction, y compris, sans limitation, à fournir la documentation nécessaire dans les 5 jours ouvrables suivant notre demande, peut entraîner un rejet de débit irréversible.  
+                        </p>
+
+                        <p>
+                            (iii) Responsabilité: Vous acceptez de ne pas tenir Ndakubizz responsable et / ou responsable de tout problème ou réclamation découlant de tout différend entre vous et le processeur et / ou vous et votre banque ou institution financière.  
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <h2 style="text-transform: uppercase;color: #92c800;margin-bottom: 50px;"><span>VI.Transfert interdit: </span></h2>
+                   
+                    <div class="about-us-title mb-40 wow fadeInUp" data-wow-delay="200ms">
+                        <p style="text-align: justify;">
+                            Votre compte Ndakubizz.com vous est personnel et vous ne pouvez pas céder ou transférer votre compte Ndakubizz.com ou l'un de vos droits en vertu des présentes conditions d'utilisation à un tiers sans notre consentement écrit préalable, qui peut le refuser pour quelque raison ou pour sans 
+                            raison. Toute tentative de cession ou de transfert en violation de ce qui précède sera considérée comme une violation substantielle des conditions d'utilisation.    
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+  })
+})

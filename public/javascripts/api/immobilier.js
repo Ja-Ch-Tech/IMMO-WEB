@@ -645,13 +645,13 @@ function getDetailsImmobilier(id) {
                                 return `<div class="mt-3">
                                         <button class="btn rehomes-btn mt-10">Je veux le contacter</button>
                                     </div>`
-                            }
-                        },
-                        setImagesForSlides = () => {
-                            obj.detailsImages.map((value, item) => {
-                                sortieImages++;
-                                var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
-                                    <img src="${value.srcFormat}" alt="">
+                        }
+                    },
+                    setImagesForSlides = () => {
+                        obj.detailsImages.map((value, item) => {
+                            sortieImages++;
+                            var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
+                                    <img style='height:500px;' src="${value.srcFormat}" alt="">
                                 </div>`;
 
                                 $("#carousel-img").append(contentForFisrtDiv);
