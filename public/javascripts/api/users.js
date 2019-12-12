@@ -467,8 +467,21 @@ function updateInformation(userId) {
                     url: "/api/upProfile/" + userId,
                     dataType: "json",
                     data: objData,
+                    beforeSend : function () {
+                        $("#btnUpdateProfile")[0].innerHTML = "Modification en cours...";
+                    },
                     success: function (data) {
-                        
+                        swal(
+                        {
+                            title: "MODIFICATION PROFILE",
+                            html: "Votre profile a été mis a jour",
+                            type: "success",
+                            showCancelButton: false,
+                            confirmButtonText: "OK",
+                            confirmButtonColor: "#DD6B55"
+
+                        }
+                    );
                     }
                 })
             }
