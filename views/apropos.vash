@@ -1,7 +1,7 @@
 @html.extend('layout', function(model) {
   @html.block('content', function(model) {
     <!-- **** Breadcrumb Area Start **** -->
-    <div class="breadcrumb-area bg-img bg-overlay-3 wow fadeInUp" data-wow-delay="200ms" style="background-image: url(/images/bg-img/30.jpg);">
+    <div class="breadcrumb-area bg-img bg-overlay-3 wow fadeInUp" data-wow-delay="200ms" style="background-image: url(/images/bg-img/73.jpg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
@@ -35,7 +35,9 @@
                             <img src="/images/Notre Entreprise.jpg" alt="">
                         </div>
                         <h4>Notre entreprise</h4>
-                        <p style="text-align: justify;">Donec enim ipsum porta justo integer at velna vitae auctor integer congue magna at risus auctor purus unt pretium ligula rutrum integer sapien ultrice ligula luctus undo magna risus</p>
+                        <p style="text-align: justify;">
+                            Ndakubizz intervient dans les domaines de l’immobilier et s’engage à faciliter les achats et locations des propriétés en Rdc.Notre philosophie est de vous accompagner sur l’ensemble de vos projets immobiliers et de construire  notre succès en vous mettant  au centre de nos préoccupations.Nous sommes disponibles et dynamiques, afin d'être efficaces et de bâtir ensemble une relation de confiance.Parce que nous croyons que l’accompagnement personnalisé est essentiel.
+                        </p>
                     </div>
                 </div>
 
@@ -72,6 +74,62 @@
         </div>
     </section>
     <!-- **** About Us Area End **** -->
+
+    <!-- **** Testimonials Area Start **** -->
+    <section class="rehomes-testimonial-area bg-img bg-overlay-4 jarallax section-padding-80" style="background-image: url(/images/bg-img/73.jpg);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-10 col-lg-8">
+                    <!-- Testimonial-area Slider -->
+                    <div class="testimonial-area owl-carousel wow fadeInUp" data-wow-delay="200ms">
+                        <!-- Single Testimonial Slider -->
+                        <div class="single-testimonial-content text-center">
+                            <!-- Icon -->
+                            <div class="testimonial-icon">
+                                <img src="/images/bg-img/74.png" alt="">
+                            </div>
+                            <h5>“I am so happy because I found this Real Estata, and it just made my life easier. Thanks so much for sharing.”</h5>
+                            <!-- Testimonial-Meta -->
+                            <div class="testimonial-meta">
+                                <h5>Mister Stock</h5>
+                                <p>CEO google.com</p>
+                            </div>
+                        </div>
+
+                        <!-- Single Testimonial Slider -->
+                        <div class="single-testimonial-content text-center">
+                            <!-- Icon -->
+                            <div class="testimonial-icon">
+                                <img src="/images/core-img/quote.png" alt="">
+                            </div>
+                            <h5>“I am so happy because I found this Real Estata, and it just made my life easier. Thanks so much for sharing.”</h5>
+                            <!-- Testimonial-Meta -->
+                            <div class="testimonial-meta">
+                                <h5>Nazrul Islam</h5>
+                                <p>Developer</p>
+                            </div>
+                        </div>
+
+                        <!-- Single Testimonial Slider -->
+                        <div class="single-testimonial-content text-center">
+                            <!-- Icon -->
+                            <div class="testimonial-icon">
+                                <img src="/images/core-img/quote.png" alt="">
+                            </div>
+                            <h5>“I am so happy because I found this Real Estata, and it just made my life easier. Thanks so much for sharing.”</h5>
+                            <!-- Testimonial-Meta -->
+                            <div class="testimonial-meta">
+                                <h5>Ajoy Das</h5>
+                                <p>Developer</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- **** Testimonials Area End **** -->
     <!-- **** Choose Us Area Start **** -->
     <section class="rehomes-choose-us-area section-padding-100-60">
         <div class="container">
@@ -109,8 +167,8 @@
                         <div class="choose-us-icon">
                             <i class="icon_building"></i>
                         </div>
-                        <h5>Aide au transport</h5>
-                        <p>Quis ipsum suspendisse ultrices, risus commodo viverra maecenas accumsan lacus vel facilisis. </p>
+                        <h5>service de déménagement</h5>
+                        <p><b>Coming soon</b></p>
                     </div>
                 </div>
 

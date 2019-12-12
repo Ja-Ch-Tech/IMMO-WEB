@@ -1,7 +1,7 @@
 @html.extend('layout', function(model) {
   @html.block('content', function(model) {
       <!-- **** Properties Hero Area Start **** -->
-    <div class="properties-hero-area d-flex flex-wrap align-items-center mb-80" id="detailThis">
+    <div class="row" style="margin-right: 0px;" id="detailThis">
         <div style="display: none;" class="loader09"></div>
     </div>
     <!-- **** Properties Hero Area End **** -->

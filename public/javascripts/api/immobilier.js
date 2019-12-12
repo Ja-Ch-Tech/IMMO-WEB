@@ -103,6 +103,7 @@ function initImmo() {
                 $("#searchContent").html('<div class="loader08"></div>');
             },
             success: function (data) {
+                console.log(data);
                 $("#searchContent").html('');
                 if (data.getEtat) {
 
@@ -131,9 +132,9 @@ function initImmo() {
                         sortieImmo++;
                         var rentOrSale = () => {
                             if (/location/i.test(immobilier.mode)) {
-                                return `A louer ${immobilier.prix} USD/mois`
+                                return `a louer ${immobilier.prix} USD/mois`
                             } else {
-                                return `A vendre ${immobilier.prix} USD`
+                                return `a vendre ${immobilier.prix} USD`
                             }
                         },
                             description = () => {
@@ -154,7 +155,7 @@ function initImmo() {
                                         <h6>${immobilier.prenomOwner}&nbsp;${immobilier.nomOwner}</h6>
                                     </div>
                                     <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
-                                    <h4>${rentOrSale()}</h4>
+                                    <h4>${immobilier.type} ${rentOrSale()}</h4>
                                     <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
                                     <p style="font-size: 13px;margin-bottom: 16px;">
                                         ${description()}
@@ -175,7 +176,8 @@ function initImmo() {
                 } else {
                     $("#searchContent").html(`<div id="notfound">
                         <div class="notfound">
-                            <h2>AUCUN IMMOBILIER DISPONIBLE POUR LE MOMENT</h2>
+                            <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
+                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+243974841783</b> ou à notre adresse email <b>contact@ndakubizz.com</b> pour plus de details</p>
                             <a href="javascript:history.back()">Retour en arriere</a>
                         </div>
                     </div>`);
@@ -238,9 +240,9 @@ function searchImmo() {
                     sortieImmo++;
                     var rentOrSale = () => {
                         if (/location/i.test(immobilier.mode)) {
-                            return `A louer ${immobilier.prix} $/mois`
+                            return `a louer ${immobilier.prix} $/mois`
                         } else {
-                            return `A vendre ${immobilier.prix} $`
+                            return `a vendre ${immobilier.prix} $`
                         }
                     },
                         description = () => {
@@ -261,7 +263,7 @@ function searchImmo() {
                                     <h6>${immobilier.prenomOwner}&nbsp;${immobilier.nomOwner}</h6>
                                 </div>
                                 <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
-                                <h4>${rentOrSale()}</h4>
+                                <h4>${immobilier.type} ${rentOrSale()}</h4>
                                 <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
                                 <p style="font-size: 13px;margin-bottom: 16px;">
                                     ${description()}
@@ -285,7 +287,7 @@ function searchImmo() {
                 $("#searchContent").html(`<div id="notfound">
                         <div class="notfound">
                             <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
-                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+24389999999</b> pour plus de details</p>
+                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+243974841783</b> ou à notre adresse email <b>contact@ndakubizz.com</b> pour plus de details</p>
                             <a href="javascript:history.back()">Retour en arriere</a>
                         </div>
                     </div>`);
@@ -653,34 +655,33 @@ function getDetailsImmobilier(id) {
                         obj.detailsImages.map((value, item) => {
                             sortieImages++;
                             var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
-                                    <img style='height:500px;' src="${value.srcFormat}" alt="">
+                                    <img style='height:20%;' title="${value.intitule}" src="${value.srcFormat}" alt="">
                                 </div>`;
 
                                 $("#carousel-img").append(contentForFisrtDiv);
 
                             })
                         },
-                        content = `<div id="carousel-img" class="blog-slider owl-carousel wow fadeInUp" data-wow-delay="200ms">
+                        content = `<div id="carousel-img" class="col-md-6 blog-slider owl-carousel wow fadeInUp" data-wow-delay="200ms">
                                 <!-- Post Thumbnail -->
                             </div>
 
                             <!-- Properties Content Area -->
-                            <div class="properties-content-area wow fadeInUp" data-wow-delay="200ms">
+                            <div style="padding:5% 3%" class="col-md-5 wow fadeInUp" data-wow-delay="200ms">
                                 <div class="properties-content-info">
                                     <h2>${obj.type} à ${obj.adresse.commune} En <span style="color:#8bbe00">${obj.mode}</span></h2>
                                     <div class="properties-location">
                                         <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
-                                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.type}</p>
                                     </div>
                                     <h4 class="properties-rate">$${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ mois` : ``}</span></h4>
                                     <p>${obj.description}</p>
                                     <!-- Properties Info -->
-                                    <div class="properties-info">
-                                        ${obj.surface ? `<p>Superficie: <span>${obj.surface}m<sup>2</sup></span></p>` : ""}
-                                        ${obj.nbrePiece ? `<p>Pièce: <span>${obj.nbrePiece}</span></p>` : ""}
-                                        ${obj.nbreChambre ? `<p>Chambre: <span>${obj.nbreChambre}</span></p>` : ""}
-                                        ${obj.nbreDouche ? `<p>Douche: <span>${obj.nbreDouche}</span></p>` : ""}
-                                    </div>
+                                    <p>
+                                        ${obj.surface ? `<span style="margin-right:10px;">Superficie: <span>${obj.surface}m<sup>2</sup></span></span>` : ""}
+                                        ${obj.nbrePiece ? `<span style="margin-right:10px;">Pièce: <span>${obj.nbrePiece}</span></span>` : ""}
+                                        ${obj.nbreChambre ? `<span style="margin-right:10px;">Chambre: <span>${obj.nbreChambre}</span></span>` : ""}
+                                        ${obj.nbreDouche ? `<span style="margin-right:10px;">Douche: <span>${obj.nbreDouche}</span></span>` : ""}
+                                    </p>
                                     
                                     ${interestOrNot()}
                                 </div>
@@ -847,8 +848,8 @@ function getImmoByType(type_id) {
                 var immoParTypeContent = `<div class="row">
                         <div class="col-12">
                             <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
-                                <h2>Bien de type <span id="typeName">${data.getObjet.categorie}</span></h2>
-                                <p>These are the best deals and deals. All in New York City and nearby area</p>
+                                <h2>Immobiliers de type <span id="typeName">${data.getObjet.categorie}</span></h2>
+                                <p>il y a des meilleurs deals et deals. tout dans la ville de Kinshasa et aux environs</p>
                             </div>
                         </div>
                     </div>
@@ -1269,7 +1270,7 @@ function getContact(user_id, immo_id, mode, btn) {
                 btn[0].innerHTML = "Chargement...";
             },
             success: function (data) {
-                
+                $("#listContactModal").html('');
                 btn[0].innerHTML = innerHTML;
                 if (data.getEtat) {
                     $("#nbreContactModal").text(`Contacts (${data.getObjet.length})`);
@@ -1292,7 +1293,7 @@ function getContact(user_id, immo_id, mode, btn) {
                                 <div class="single-agent-area">
                                 
                                     <div class="single-agent-thumb">
-                                        <img src="${user.image.srcFormat}" alt="${user.image.name}">
+                                        <img style="height:14em" src="${user.image.srcFormat}" alt="${user.image.name}">
                                     </div>
                                     
                                     <div class="agent-info">
@@ -1331,7 +1332,7 @@ function getContact(user_id, immo_id, mode, btn) {
         swal(
             {
                 title: "CONTACTS VENTE IMMO...",
-                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter au +243896341113 ou passez dans nos locaux sur l'avenue regideso, ngaliema, Kinshasa! MERCI</font>",
+                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter soit au +243974841783, soit par notre adresse email contact@ndakubizz.com ou encore passez à notre adresse au Local 22, 1er Niveau Immeuble Saint Pierre, 374 Av colonel Mondjiba Q/Basoko Kinshasa-Ngaliema, RDC MERCI</font>",
                 type: "warning",
                 showCancelButton: false,
                 confirmButtonText: "Compris !",
