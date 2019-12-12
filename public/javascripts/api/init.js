@@ -4,8 +4,8 @@ function getHostAPI() {
 }
 
 function getHostWebSite() {
-    return "http://localhost:3000";
-    //return "https://immo-jach-api.herokuapp.com";
+    //return "http://localhost:3000";
+    return "https://immo-jach.herokuapp.com";
 }
 /**
  * Fonction permettant de récupérer l'identifiant de l'utilisateur en session

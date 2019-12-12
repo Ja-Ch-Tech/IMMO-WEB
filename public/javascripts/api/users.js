@@ -247,10 +247,7 @@ function upload() {
                 complete: function () {
                 },
                 success: function (data) {
-                    console.log(data);
                     
-                    //document.getElementById("containerProgress").setAttribute("style", "display: none");
-
                     Avatar(data);
                     showUploadedImg();
 

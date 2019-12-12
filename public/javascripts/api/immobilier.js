@@ -1011,13 +1011,13 @@ function setImage() {
 
                 //Puis on ajoute le fichier à l'objet formData
                 //Ce dernier aura comme key "files" et comme value "le fichier"
-                formData.append('files_document', file, file.name);
+                formData.append('image', file, file.name);
 
                 //On vérifie la sortie
                 if (true) {
 
                     $.ajax({
-                        url: getHostAPI() + '/upload_image/immobiliers/' + nameImage.value.trim(" "),
+                        url: getHostAPI() + "/image-upload",
                         type: 'POST',
                         data: formData,
                         processData: false, // tell jQuery not to process the data
@@ -1028,66 +1028,50 @@ function setImage() {
                         complete: function () {
                         },
                         success: function (data) {
-
-                            //document.getElementById("containerProgress").setAttribute("style", "display: none");
-
+                            
+                            console.log(data);
+                            
                             AvatarImmo(data);
-                            if (!!file.type.match(/image.*/)) { //Ici on vérifie le type du fichier uploaded
+                            showUploadedImgImmo();
+                               
+                            $.ajax({
+                                type: 'POST',
+                                url: `${getHostAPI()}/media/create`,
+                                data: {
+                                    name: nameImage.value,
+                                    path: data.imageUrl,
+                                    size: data.size,
+                                },
+                                dataType: "json",
+                                success: function (data) {
 
-                                if (window.FileReader) {
-                                    reader = new FileReader();
-                                    reader.onloadend = function (e) {
-                                        showUploadedImgImmo(e.target.result, nameImage.value);
-                                        $.ajax({
-                                            type: 'POST',
-                                            url: `${getHostAPI()}/media/create`,
-                                            data: {
-                                                name: data.getObjet[0].name,
-                                                path: data.getObjet[0].path,
-                                                size: data.getObjet[0].size,
-                                            },
-                                            dataType: "json",
-                                            success: function (data) {
+                                    var images = JSON.parse(localStorage.getItem("images"));
 
-                                                var images = JSON.parse(localStorage.getItem("images"));
+                                    if (images) {
 
-                                                if (images) {
+                                        images.push({
+                                            "lien_images": data.getObjet._id,
+                                            "name": nameImage.value
+                                        })
 
-                                                    images.push({
-                                                        "lien_images": data.getObjet._id,
-                                                        "name": nameImage.value
-                                                    })
+                                        localStorage.setItem("images", JSON.stringify(images));
+                                    } else {
 
-                                                    localStorage.setItem("images", JSON.stringify(images));
-                                                } else {
+                                        var images = [];
+                                        images.push({
+                                            "lien_images": data.getObjet._id,
+                                            "name": nameImage.value
+                                        })
 
-                                                    var images = [];
-                                                    images.push({
-                                                        "lien_images": data.getObjet._id,
-                                                        "name": nameImage.value
-                                                    })
+                                        localStorage.setItem("images", JSON.stringify(images))
+                                    }
 
-                                                    localStorage.setItem("images", JSON.stringify(images))
-                                                }
+                                    nameImage.value = "";
+                                    nameImage.focus();
 
-                                                nameImage.value = "";
-                                                nameImage.focus();
-
-                                            }
-                                        });
-                                    };
-                                    reader.readAsDataURL(file);
                                 }
-                            } else {
-
-                                if (window.FileReader) {
-                                    reader = new FileReader();
-                                    reader.onloadend = function (e) {
-
-                                    };
-                                    reader.readAsDataURL(file);
-                                }
-                            }
+                            });
+                                    
                         },
                         xhr: function () {
 
@@ -1141,19 +1125,19 @@ function setImage() {
 /*Récupère les données de l'upload de cet image*/
 function AvatarImmo(data) {
 
-    dataAvatarImmo = data.getObjet[0];
+    dataAvatarImmo = data;
 }
 
 /*Pour l'affichage de l'image dans sa place*/
-function showUploadedImgImmo(source, title) {
+function showUploadedImgImmo() {
     var div = document.getElementById("minusImage");
 
     div.classList.add("contentHere");
 
     var img = document.createElement("img");
 
-    img.src = source;
-    img.title = title;
+    img.src = dataAvatarImmo.imageUrl;
+    img.title = dataAvatarImmo.name;
     img.className = "animated fadeInRight";
 
     div.append(img);
