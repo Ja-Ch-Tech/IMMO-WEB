@@ -185,7 +185,7 @@ function userNavInfo(user_id) {
                         $("#dropdownProfile").append(li);
                     }
 
-                    $("#dropdownProfile").append(`<a href="${getHostWebSite()}/logout"><span class="zmdi zmdi-power"></span>&nbsp;Deconnexion</a>`);
+                    $("#dropdownProfile").append(`<a href="/logout"><span class="zmdi zmdi-power"></span>&nbsp;Deconnexion</a>`);
                 })
             }
             var contentProfileInfos = `<button class="dropbtn"><img style="width:40px;height:40px;border-radius:40px" class="img-thumbnail" src="${data.getObjet.image.srcFormat}" alt="${data.getObjet.image.srcFormat}"/>&nbsp;<span style="text-transform:uppercase" class="name_menu">${data.getObjet.prenom}&nbsp;${data.getObjet.nom}</span>&nbsp;<span class="zmdi zmdi-caret-down"></span></button>

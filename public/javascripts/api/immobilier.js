@@ -1,5 +1,5 @@
 var typeProp, newImmo, details, images = [],
-    dataAvatarImmo, errorServer, noFound;
+    dataAvatarImmo, errorServer, noFound, imagesType = ["/images/Type/house.svg", "/images/Type/note list.svg", "/images/Type/Urban.svg"];
 
 $(document).ready(function () {
     initImmo();
@@ -415,7 +415,7 @@ function getStatType() {
                         var contentBody = `<div class="col-12 col-md-3">
                                             <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp" data-wow-delay="200ms">
                                                 <div class="property-thumb">
-                                                    <a href="/immo/type/${prop._id}/liste"><img src="/images/bg-img/9.jpg" alt=""></a>
+                                                    <a href="/immo/type/${prop._id}/liste"><img src="${imagesType[Math.ceil(Math.random() * imagesType.length)]}" alt=""></a>
                                                 </div>
                                                 <!-- Title -->
                                                 <a class="categories-title" href="/immo/type/${prop._id}/liste">${customProp(prop.nbreProp ? prop.nbreProp : 0)} </a>
@@ -643,7 +643,7 @@ function getDetailsImmobilier(id) {
 
                             if (isMatch) {
                                 return `<div class="mt-3">
-                                        <button class="btn rehomes-btn mt-10" onclick="viewContact('${obj.id_owner}', '${id}')">Je veux le contacter</button>
+                                        <button class="btn rehomes-btn mt-10" onclick="viewContact('${obj.id_owner}', '${id}')" id="contactThis">Je veux le contacter</button>
                                     </div>`
                             } else {
                                 return `<div class="mt-3">
@@ -722,7 +722,12 @@ function viewContact(id, immo) {
                     "id_owner": id,
                     "id_immo": immo
                 },
+                beforeSend: function () {
+                    $("#contactThis").text("Patientez une minute...");
+                },
                 success: function (data) {
+
+                    $("#contactThis").text("Je veux le contacter");
 
                     if (data.getEtat) {
                         var modal = document.getElementById("modalForContactUs");
