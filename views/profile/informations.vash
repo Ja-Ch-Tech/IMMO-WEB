@@ -19,7 +19,7 @@
     <div class="footer">
         <div class="col-12">
             <center>
-                <button type="submit" class="btn rehomes-btn">Sauvegarder</button>
+                <button id="btnUpdateProfile" type="submit" class="btn rehomes-btn">Sauvegarder</button>
             </center>
         </div>
     </div>

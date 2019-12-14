@@ -18,8 +18,8 @@ function setModeImmoOnNavbar() {
             if (data.getEtat) {
                 if (data.getObjet.length > 0) {
                     data.getObjet.map(mode => {
-                        var contentMode = `<li><a href="/immo/${mode.intitule}/${mode._id}/liste">Biens en ${mode.intitule}</a></li>`;
-                        var contentModeInFooter = `<li><a href="/immo/${mode.intitule}/${mode._id}/liste">Biens en ${mode.intitule}</a></li>`;
+                        var contentMode = `<li><a href="/immo/${mode.intitule}/${mode._id}/liste">Immobiliers en ${mode.intitule}</a></li>`;
+                        var contentModeInFooter = `<li><a href="/immo/${mode.intitule}/${mode._id}/liste">Immobiliers en ${mode.intitule}</a></li>`;
 
                         $("#navMode").append(contentMode);
                         $("#modeInFooter").append(contentModeInFooter);

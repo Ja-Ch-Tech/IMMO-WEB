@@ -36,7 +36,7 @@
 </head>
 
 <body>
-    <div class="sharethis-sticky-share-buttons"></div>
+  <div class="sharethis-sticky-share-buttons"></div>
   <div id="preloader">
       <div class="loader"></div>
   </div>
@@ -270,7 +270,7 @@
                               <ul id="navMode">
                               </ul>
                               <ul id="nav">
-                                  <li><a href="#">Type de biens</a>
+                                  <li><a href="#">Type immobiliers</a>
                                       <ul class="dropdown" id="dropTypeImmo">
                                           
                                       </ul>
@@ -376,7 +376,7 @@
                   <div class="col-12 col-sm-6">
                       <div class="copywrite-text">
                           <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="#" target="_blank">Ja'Ch Tech</a>
+                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="https://www.facebook.com/Jachtech/?referrer=whatsapp" target="_blank">Ja'Ch Tech</a>
                           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                       </div>
                   </div>
