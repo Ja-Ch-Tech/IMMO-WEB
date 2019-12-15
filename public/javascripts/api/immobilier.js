@@ -415,7 +415,7 @@ function getStatType() {
                         var contentBody = `<div class="col-12 col-md-3">
                                             <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp" data-wow-delay="200ms">
                                                 <div class="property-thumb">
-                                                    <a href="/immo/type/${prop._id}/liste"><img src="${imagesType[Math.ceil(Math.random() * imagesType.length)]}" alt=""></a>
+                                                    <a href="/immo/type/${prop._id}/liste"><img src="${imagesType[Math.ceil(Math.random() * imagesType.length) - 1]}" alt=""></a>
                                                 </div>
                                                 <!-- Title -->
                                                 <a class="categories-title" href="/immo/type/${prop._id}/liste">${customProp(prop.nbreProp ? prop.nbreProp : 0)} </a>
