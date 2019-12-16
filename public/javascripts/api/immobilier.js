@@ -143,7 +143,14 @@ function initImmo() {
                                     description = description.substr(0, 200) + "...";
                                 }
                                 return description;
-                            }
+                            },
+                            adresseManager = () => {
+                                if (/location/i.test(immobilier.mode)) {
+                                    return `${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}`;
+                                } else {
+                                    return `${immobilier.adresse.commune}`;
+                                }
+                            },
                         immobilierContent = `<a href="/immo/${immobilier._id}/details">
                             <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
                                 <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
@@ -156,7 +163,7 @@ function initImmo() {
                                     </div>
                                     <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
                                     <h4>${immobilier.type} ${rentOrSale()}</h4>
-                                    <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                    <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${adresseManager()}</p>
                                     <p style="font-size: 13px;margin-bottom: 16px;">
                                         ${description()}
                                     </p>
@@ -239,12 +246,19 @@ function searchImmo() {
 
                     sortieImmo++;
                     var rentOrSale = () => {
-                        if (/location/i.test(immobilier.mode)) {
-                            return `a louer ${immobilier.prix} $/mois`
-                        } else {
-                            return `a vendre ${immobilier.prix} $`
-                        }
-                    },
+                            if (/location/i.test(immobilier.mode)) {
+                                return `a louer ${immobilier.prix} $/mois`
+                            } else {
+                                return `a vendre ${immobilier.prix} $`
+                            }
+                        },
+                        adresseManager = () => {
+                            if (/location/i.test(immobilier.mode)) {
+                                return `${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}`;
+                            } else {
+                                return `${immobilier.adresse.commune}`;
+                            }
+                        },
                         description = () => {
                             var description = immobilier.description;
                             if (description.length >= 200) {
@@ -255,7 +269,7 @@ function searchImmo() {
                     immobilierContent = `<a href="/immo/${immobilier._id}/details">
                         <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
                             <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5" title="${immobilier.detailsImages[immobilier.detailsImages.length - 1].intitule}">
-                                <img style="height: 100%" src="${immobilier.detailsImages[immobilier.detailsImages.length - 1].srcFormat}" alt="${immobilier.detailsImages[immobilier.detailsImages.length - 1].intitule}">
+                                <img style="height: 200px" src="${immobilier.detailsImages[immobilier.detailsImages.length - 1].srcFormat}" alt="${immobilier.detailsImages[immobilier.detailsImages.length - 1].intitule}">
                             </div>
                             <div style="padding: 10px;" class="col-md-8">
                                 <div class="pull-right property-seller">
@@ -264,7 +278,7 @@ function searchImmo() {
                                 </div>
                                 <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
                                 <h4>${immobilier.type} ${rentOrSale()}</h4>
-                                <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${adresseManager()}</p>
                                 <p style="font-size: 13px;margin-bottom: 16px;">
                                     ${description()}
                                 </p>
@@ -487,12 +501,19 @@ function getNewImmobilier() {
                     data.getObjet.map(element => {
 
                         var rentOrSale = () => {
-                            if (/location/i.test(element.mode)) {
-                                return `<p class="badge-rent">A louer</p>`
-                            } else {
-                                return `<p class="badge-sale">A vendre</p>`
-                            }
-                        },
+                                if (/location/i.test(element.mode)) {
+                                    return `<p class="badge-rent">A louer</p>`
+                                } else {
+                                    return `<p class="badge-sale">A vendre</p>`
+                                }
+                            },
+                            adresseManager = () => {
+                                if (/location/i.test(element.mode)) {
+                                    return `${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}`;
+                                } else {
+                                    return `${element.adresse.commune}`;
+                                }
+                            },
                             contentBody = `<div class="col-12 col-md-6 col-lg-4">
                   <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
                       <!-- Property Thumb -->
@@ -507,7 +528,7 @@ function getNewImmobilier() {
                               <!-- Title -->
                               <div class="property-title">
                                   <h4 class="text-uppercase">${element.type}</h4>
-                                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}</p>
+                                  <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${adresseManager()}</p>
                               </div>
                               <!-- Seller -->
                               <div class="property-seller">
@@ -560,12 +581,19 @@ function getImmoByMode(mode_id, bloc_id) {
                         console.log(element);
                         
                         var rentOrSale = () => {
-                            if (/location/i.test(element.mode)) {
-                                return `<p class="badge-rent">A louer</p>`
-                            } else {
-                                return `<p class="badge-sale">A vendre</p>`
-                            }
-                        },
+                                if (/location/i.test(element.mode)) {
+                                    return `<p class="badge-rent">A louer</p>`
+                                } else {
+                                    return `<p class="badge-sale">A vendre</p>`
+                                }
+                            },
+                            adresseManager = () => {
+                                if (/location/i.test(element.mode)) {
+                                    return `${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}`;
+                                } else {
+                                    return `${element.adresse.commune}`;
+                                }
+                            },
                             contentImmo = `<div class="col-12 col-md-6 col-lg-4">
                                               <a href="/immo/${element._id}/details">
                                                 <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
@@ -581,7 +609,7 @@ function getImmoByMode(mode_id, bloc_id) {
                                                             <!-- Title -->
                                                             <div class="property-title">
                                                                 <h4 class="text-uppercase">${element.type}</h4>
-                                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}</p>
+                                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${adresseManager()}</p>
                                                             </div>
                                                             <!-- Seller -->
                                                             <div class="property-seller">
@@ -655,12 +683,19 @@ function getDetailsImmobilier(id) {
                         obj.detailsImages.map((value, item) => {
                             sortieImages++;
                             var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
-                                    <img style='height:20%;' title="${value.intitule}" src="${value.srcFormat}" alt="">
+                                    <img style='height:25em;' title="${value.intitule}" src="${value.srcFormat}" alt="">
                                 </div>`;
 
                                 $("#carousel-img").append(contentForFisrtDiv);
 
                             })
+                        },
+                        adresseManager = () => {
+                            if (/location/i.test(obj.mode)) {
+                                return `${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}`;
+                            } else {
+                                return `C/ ${obj.adresse.commune}`;
+                            }
                         },
                         content = `<div id="carousel-img" class="col-md-6 blog-slider owl-carousel wow fadeInUp" data-wow-delay="200ms">
                                 <!-- Post Thumbnail -->
@@ -671,7 +706,7 @@ function getDetailsImmobilier(id) {
                                 <div class="properties-content-info">
                                     <h2>${obj.type} à ${obj.adresse.commune} En <span style="color:#8bbe00">${obj.mode}</span></h2>
                                     <div class="properties-location">
-                                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${obj.adresse.numero + " " + obj.adresse.avenue + ", C/" + obj.adresse.commune + ", Congo"}</p>
+                                        <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${adresseManager()}</p>
                                     </div>
                                     <h4 class="properties-rate">$${obj.prix} <span>${!/Vente|ventes/i.test(obj.mode) ? `/ mois` : ``}</span></h4>
                                     <p>${obj.description}</p>
@@ -867,12 +902,19 @@ function getImmoByType(type_id) {
                     data.getObjet.immobiliers.map(element => {
 
                         var rentOrSale = () => {
-                            if (/location/i.test(element.mode)) {
-                                return `<p class="badge-rent">A louer</p>`
-                            } else {
-                                return `<p class="badge-sale">A vendre</p>`
-                            }
-                        },
+                                if (/location/i.test(element.mode)) {
+                                    return `<p class="badge-rent">A louer</p>`
+                                } else {
+                                    return `<p class="badge-sale">A vendre</p>`
+                                }
+                            },
+                            adresseManager = () => {
+                                if (/location/i.test(element.mode)) {
+                                    return `${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}`;
+                                } else {
+                                    return `${element.adresse.commune}`;
+                                }
+                            },
                             contentImmo = `<div class="col-12 col-md-6 col-lg-4">
                                               <a href="/immo/${element._id}/details">
                                                 <div class="single-property-area wow fadeInUp" data-wow-delay="200ms">
@@ -888,7 +930,7 @@ function getImmoByType(type_id) {
                                                             <!-- Title -->
                                                             <div class="property-title">
                                                                 <h4 class="text-uppercase">${data.getObjet.categorie}</h4>
-                                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}</p>
+                                                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> ${adresseManager()}</p>
                                                             </div>
                                                             <!-- Seller -->
                                                             <div class="property-seller">

@@ -514,7 +514,14 @@ function getInterestImmo(userId, type) {
                                  description = description.substr(0, 200) + "...";
                              }
                              return description;
-                         }
+                         },
+                         adresseManager = () => {
+                            if (/location/i.test(immobilier.mode)) {
+                                return `${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}`;
+                            } else {
+                                return `${immobilier.adresse.commune}`;
+                            }
+                        },
                          immobilierContent = `<a href="/immo/${immobilier._id}/details">
                          <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
                              <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
@@ -528,7 +535,7 @@ function getInterestImmo(userId, type) {
                                  </div>
                                  <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
                                  <h4>${rentOrSale()}</h4>
-                                 <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                 <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${adresseManager()}</p>
                                  <p style="font-size: 13px;margin-bottom: 16px;">
                                      ${description()}
                                  </p>
@@ -581,7 +588,14 @@ function getFavorisImmo(userId, type) {
                                  description = description.substr(0, 200) + "...";
                              }
                              return description;
-                         }
+                         },
+                         adresseManager = () => {
+                            if (/location/i.test(immobilier.mode)) {
+                                return `${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}`;
+                            } else {
+                                return `${immobilier.adresse.commune}`;
+                            }
+                        },
                          immobilierContent = `<a href="/immo/${immobilier._id}/details">
                          <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
                              <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
@@ -595,7 +609,7 @@ function getFavorisImmo(userId, type) {
                                  </div>
                                  <h4 class="text-uppercase">${immobilier.nomOwner}</h4>
                                  <h4>${rentOrSale()}</h4>
-                                 <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}</p>
+                                 <p style="margin-bottom: 16px;"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;${adresseManager()}</p>
                                  <p style="font-size: 13px;margin-bottom: 16px;">
                                      ${description()}
                                  </p>
