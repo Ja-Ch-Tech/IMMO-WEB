@@ -449,7 +449,7 @@ router.get('/interestFavorisImmo/:id_user/:type', (req, res) => {
 //Recupere les contacts d'un immo
 router.get('/usersInterestImmo/:id_immo', (req, res) => {
    
-    axios.get(`${API}/extra/listUserInterest/${req.params.id_immo}`)
+    axios.get(`${API}/extra/listUserInterest/${req.params.id_immo}/null`)
          .then(response => {
              res.status(200);
              res.send(response.data)
