@@ -248,8 +248,21 @@ function upload() {
                 },
                 success: function (data) {
                     
-                    Avatar(data);
-                    showUploadedImg();
+                    if (data.flag) {
+                        Avatar(data);
+                        showUploadedImg();
+                    } else {
+                        swal(
+                            {
+                                title: "Error : Upload was not finished !",
+                                type: "warning",
+                                showCancelButton: true,
+                                showConfirmButton: false,
+                                cancelButtonText: "Recommencer..."
+                            }
+                        );
+                    }
+                    
 
                 }
             });

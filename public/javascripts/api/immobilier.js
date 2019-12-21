@@ -151,7 +151,7 @@ function initImmo() {
                                     return `${immobilier.adresse.commune}`;
                                 }
                             },
-                        immobilierContent = `<a href="/immo/${immobilier._id}/details">
+                            immobilierContent = `<a href="/immo/${immobilier._id}/details">
                             <div class="row resultatSearch wow fadeInUp" data-wow-delay="200ms">
                                 <div style="padding: 0px;overflow: hidden;" class="col-md-4 col-xs-5">
                                     <img style="height: 200px" src="${immobilier.detailsImages[0].srcFormat}" alt="">
@@ -246,12 +246,12 @@ function searchImmo() {
 
                     sortieImmo++;
                     var rentOrSale = () => {
-                            if (/location/i.test(immobilier.mode)) {
-                                return `a louer ${immobilier.prix} $/mois`
-                            } else {
-                                return `a vendre ${immobilier.prix} $`
-                            }
-                        },
+                        if (/location/i.test(immobilier.mode)) {
+                            return `a louer ${immobilier.prix} $/mois`
+                        } else {
+                            return `a vendre ${immobilier.prix} $`
+                        }
+                    },
                         adresseManager = () => {
                             if (/location/i.test(immobilier.mode)) {
                                 return `${immobilier.adresse.avenue + " " + immobilier.adresse.numero}, ${immobilier.adresse.commune}`;
@@ -501,12 +501,12 @@ function getNewImmobilier() {
                     data.getObjet.map(element => {
 
                         var rentOrSale = () => {
-                                if (/location/i.test(element.mode)) {
-                                    return `<p class="badge-rent">A louer</p>`
-                                } else {
-                                    return `<p class="badge-sale">A vendre</p>`
-                                }
-                            },
+                            if (/location/i.test(element.mode)) {
+                                return `<p class="badge-rent">A louer</p>`
+                            } else {
+                                return `<p class="badge-sale">A vendre</p>`
+                            }
+                        },
                             adresseManager = () => {
                                 if (/location/i.test(element.mode)) {
                                     return `${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}`;
@@ -579,14 +579,14 @@ function getImmoByMode(mode_id, bloc_id) {
 
                     data.getObjet.map(element => {
                         console.log(element);
-                        
+
                         var rentOrSale = () => {
-                                if (/location/i.test(element.mode)) {
-                                    return `<p class="badge-rent">A louer</p>`
-                                } else {
-                                    return `<p class="badge-sale">A vendre</p>`
-                                }
-                            },
+                            if (/location/i.test(element.mode)) {
+                                return `<p class="badge-rent">A louer</p>`
+                            } else {
+                                return `<p class="badge-sale">A vendre</p>`
+                            }
+                        },
                             adresseManager = () => {
                                 if (/location/i.test(element.mode)) {
                                     return `${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}`;
@@ -677,12 +677,12 @@ function getDetailsImmobilier(id) {
                                 return `<div class="mt-3">
                                         <button class="btn rehomes-btn mt-10">Je veux le contacter</button>
                                     </div>`
-                        }
-                    },
-                    setImagesForSlides = () => {
-                        obj.detailsImages.map((value, item) => {
-                            sortieImages++;
-                            var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
+                            }
+                        },
+                        setImagesForSlides = () => {
+                            obj.detailsImages.map((value, item) => {
+                                sortieImages++;
+                                var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
                                     <img style='height:25em;' title="${value.intitule}" src="${value.srcFormat}" alt="">
                                 </div>`;
 
@@ -902,12 +902,12 @@ function getImmoByType(type_id) {
                     data.getObjet.immobiliers.map(element => {
 
                         var rentOrSale = () => {
-                                if (/location/i.test(element.mode)) {
-                                    return `<p class="badge-rent">A louer</p>`
-                                } else {
-                                    return `<p class="badge-sale">A vendre</p>`
-                                }
-                            },
+                            if (/location/i.test(element.mode)) {
+                                return `<p class="badge-rent">A louer</p>`
+                            } else {
+                                return `<p class="badge-sale">A vendre</p>`
+                            }
+                        },
                             adresseManager = () => {
                                 if (/location/i.test(element.mode)) {
                                     return `${element.adresse.avenue + " " + element.adresse.numero}, ${element.adresse.commune}`;
@@ -1079,50 +1079,61 @@ function setImage() {
                         complete: function () {
                         },
                         success: function (data) {
-                            
-                            console.log(data);
-                            
-                            AvatarImmo(data);
-                            showUploadedImgImmo();
-                               
-                            $.ajax({
-                                type: 'POST',
-                                url: `${getHostAPI()}/media/create`,
-                                data: {
-                                    name: nameImage.value,
-                                    path: data.imageUrl,
-                                    size: data.size,
-                                },
-                                dataType: "json",
-                                success: function (data) {
 
-                                    var images = JSON.parse(localStorage.getItem("images"));
+                            if (data.flag) {
+                                AvatarImmo(data);
+                                showUploadedImgImmo();
 
-                                    if (images) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: `${getHostAPI()}/media/create`,
+                                    data: {
+                                        name: nameImage.value,
+                                        path: data.imageUrl,
+                                        size: data.size,
+                                    },
+                                    dataType: "json",
+                                    success: function (data) {
 
-                                        images.push({
-                                            "lien_images": data.getObjet._id,
-                                            "name": nameImage.value
-                                        })
+                                        var images = JSON.parse(localStorage.getItem("images"));
 
-                                        localStorage.setItem("images", JSON.stringify(images));
-                                    } else {
+                                        if (images) {
 
-                                        var images = [];
-                                        images.push({
-                                            "lien_images": data.getObjet._id,
-                                            "name": nameImage.value
-                                        })
+                                            images.push({
+                                                "lien_images": data.getObjet._id,
+                                                "name": nameImage.value
+                                            })
 
-                                        localStorage.setItem("images", JSON.stringify(images))
+                                            localStorage.setItem("images", JSON.stringify(images));
+                                        } else {
+
+                                            var images = [];
+                                            images.push({
+                                                "lien_images": data.getObjet._id,
+                                                "name": nameImage.value
+                                            })
+
+                                            localStorage.setItem("images", JSON.stringify(images))
+                                        }
+
+                                        nameImage.value = "";
+                                        nameImage.focus();
+
                                     }
+                                });
+                            }else{
+                                swal(
+                                    {
+                                        title: "Error : Upload was not finished !",
+                                        type: "warning",
+                                        showCancelButton: true,
+                                        showConfirmButton: false,
+                                        cancelButtonText: "Recommencer..."
+                                    }
+                                );
+                            }
 
-                                    nameImage.value = "";
-                                    nameImage.focus();
 
-                                }
-                            });
-                                    
                         },
                         xhr: function () {
 
@@ -1322,21 +1333,21 @@ function getContact(user_id, immo_id, mode, btn) {
                 btn[0].innerHTML = innerHTML;
                 if (data.getEtat) {
                     $("#nbreContactModal").text(`Contacts (${data.getObjet.length})`);
-                    
+
                     data.getObjet.map((user, index, tab) => {
                         console.log(user);
-                    
+
                         var setInfo = (name) => {
-                                if (user.contacts.length > 0) {
-                                    if (user.contacts[user.contacts.length - 1][name]) {
-                                        return user.contacts[user.contacts.length - 1][name].toString();
-                                    } else {
-                                        return "";
-                                    }
+                            if (user.contacts.length > 0) {
+                                if (user.contacts[user.contacts.length - 1][name]) {
+                                    return user.contacts[user.contacts.length - 1][name].toString();
                                 } else {
                                     return "";
                                 }
-                            },
+                            } else {
+                                return "";
+                            }
+                        },
                             contentBody = `<div class="col-12 col-md-6 col-lg-6">
                                 <div class="single-agent-area">
                                 
@@ -1354,7 +1365,7 @@ function getContact(user_id, immo_id, mode, btn) {
 
                         $("#listContactModal").append(contentBody);
                     });
-                    
+
                     $('.modal_contact').modal('show');
 
                 } else {
