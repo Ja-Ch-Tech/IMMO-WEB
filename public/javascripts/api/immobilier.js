@@ -18,7 +18,7 @@ $(document).ready(function () {
     noFound = `<div id="notfound">
         <div class="notfound">
             <h2>AUCUN IMMOBILIER POUR LE MOMENT</h2>
-            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+24389999999</b> pour plus de details</p>
+            <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
             <a href="javascript:history.back()">Retour en arriere</a>
         </div>
     </div>`;
@@ -184,7 +184,7 @@ function initImmo() {
                     $("#searchContent").html(`<div id="notfound">
                         <div class="notfound">
                             <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
-                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+243974841783</b> ou à notre adresse email <b>contact@ndakubizz.com</b> pour plus de details</p>
+                            <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
                             <a href="javascript:history.back()">Retour en arriere</a>
                         </div>
                     </div>`);
@@ -301,7 +301,7 @@ function searchImmo() {
                 $("#searchContent").html(`<div id="notfound">
                         <div class="notfound">
                             <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
-                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+243974841783</b> ou à notre adresse email <b>contact@ndakubizz.com</b> pour plus de details</p>
+                            <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
                             <a href="javascript:history.back()">Retour en arriere</a>
                         </div>
                     </div>`);
