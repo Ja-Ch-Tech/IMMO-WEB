@@ -271,7 +271,7 @@
                               <ul id="navMode">
                               </ul>
                               <ul id="nav">
-                                  <li><a href="#">Type immobiliers</a>
+                                  <li><a href="#">Type d'immobilier</a>
                                       <ul class="dropdown" id="dropTypeImmo">
                                           
                                       </ul>
@@ -323,11 +323,11 @@
                   <div class="col-12 col-sm-6 col-lg-3">
                       <div class="single-footer-widget mb-80">
                           <!-- Widget Title -->
-                          <h5 class="widget-title">Pour plus d'informations</h5>
+                          <h5 class="widget-title">Nos Contacts</h5>
 
                           <!-- Contact Area -->
                           <div class="footer-contact">
-                              <p>Téléphone: <span>+243974841783</span></p>
+                              <p>Téléphone: <span>+243974841783/+243977191103</span></p>
                               <p>Email: <span>contact@ndakubizz.com</span></p>
                               <p>Addresse: <span>
                                 Local 22 1er Niveau Immeuble Saint Pierre,
@@ -342,7 +342,7 @@
                   <div class="col-12 col-sm-6 col-lg-3">
                       <div class="single-footer-widget mb-80">
                           <!-- Widget Title -->
-                          <h5 class="widget-title">Trouver par <span>type de biens</span></h5>
+                          <h5 class="widget-title">Trouvez par <span>types d'Immobiliers</span></h5>
 
                           <!-- Footer Nav -->
                           <ul class="footer-nav d-flex flex-wrap" id="footerTypeImmo">
@@ -357,7 +357,7 @@
                           <!-- Widget Title -->
                           <h5 class="widget-title">Newsletter</h5>
 
-                          <p>Abonnez-vous à nos newsletters et restez informé des dernières nouvelles.</p>
+                          <p>Abonnez-vous à nos newsletters et restez recevez nos annonces dans votre boite email.</p>
                           <!-- Newsletter Form -->
                           <form action="index.html" class="nl-form">
                               <input type="email" name="nl-email" class="form-control" placeholder="Entrez votre email...">
@@ -377,7 +377,7 @@
                   <div class="col-12 col-sm-6">
                       <div class="copywrite-text">
                           <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="https://www.facebook.com/Jachtech/?referrer=whatsapp" target="_blank">Ja'Ch Tech</a>
+                          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Designed by <a href="https://www.jachtechnologies.com" target="_blank">Ja'Ch Technologies</a>
                           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                       </div>
                   </div>
