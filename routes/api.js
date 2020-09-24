@@ -152,6 +152,45 @@ router.get('/type_user', (req, res) => {
         })
 });
 
+//Recupere les types de loyer
+router.get('/type_rent', (req, res) => {
+    axios.get(`${API}/typeRent/getAll`)
+        .then(response => {
+            res.status(200).send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+})
+
+
+//Recupere les types de tarifs
+router.get('/pricing/getAll', (req, res) => {
+    axios.get(`${API}/pricing/getAll`)
+        .then(response => {
+            res.status(200).send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+})
+
+
+//Recupere Les types des logements
+router.get('/typeHouse/getAll', (req, res) => {
+    axios.get(`${API}/typeHouse/getAll`)
+        .then(response => {
+            res.status(200).send(response.data)
+        })
+        .catch(err => {
+            res.status(500);
+            res.send(err)
+        })
+})
+
+
 //Recupere les immo par mode
 router.get('/immo_by_mode/:id_immo', (req, res) => {
     axios.get(`${API}/immobilier/getAllByMode/${req.params.id_immo}`)

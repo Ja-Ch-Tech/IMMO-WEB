@@ -428,7 +428,7 @@ function getStatType() {
 
                         var contentBody = `<div class="col-12 col-md-3">
                                             <div class="single-categories-property-area bg-gradient-overlay wow fadeInUp" data-wow-delay="200ms">
-                                                <div class="property-thumb">
+                                                <div style="height:255px;" class="property-thumb">
                                                     <a href="/immo/type/${prop._id}/liste"><img src="${imagesType[Math.ceil(Math.random() * imagesType.length) - 1]}" alt=""></a>
                                                 </div>
                                                 <!-- Title -->
@@ -472,7 +472,7 @@ function getNewImmobilier() {
                         `<div class="row">
                                          <div class="col-12">
                                             <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
-                                                <h2>Dernieres <span>annonces</span></h2>
+                                                <h2>Dernières <span>annonces</span></h2>
                                             </div>
                                         </div>
 
@@ -682,8 +682,8 @@ function getDetailsImmobilier(id) {
                         setImagesForSlides = () => {
                             obj.detailsImages.map((value, item) => {
                                 sortieImages++;
-                                var contentForFisrtDiv = `<div class="post-thumbnail mb-50">
-                                    <img style='height:25em;' title="${value.intitule}" src="${value.srcFormat}" alt="">
+                                var contentForFisrtDiv = `<div class="post-thumbnail josue mb-50">
+                                    <img style='height:25em;object-fit: cover;' title="${value.intitule}" src="${value.srcFormat}" alt="">
                                 </div>`;
 
                                 $("#carousel-img").append(contentForFisrtDiv);
@@ -1237,7 +1237,7 @@ function getAllImmovableForOwner(user_id) {
                     data.getObjet.map(objet => {
                         var stateThisViaAdmin = () => {
                             if (!objet.validate) {
-                                return `<span class="pull-right" style="font-family: calibri;color: #f26522; font-size: .8em"><i
+                                return `<span class="pull-right" style="font-family: calibri;color: #Ef6b00; font-size: .8em"><i
                                         class="now-ui-icons travel_info"></i>&nbsp;&nbsp;En attente de l'approbation de
                                     l'administration</span>`;
                             } else {

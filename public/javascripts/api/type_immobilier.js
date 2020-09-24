@@ -47,3 +47,36 @@ function getTypeImmo(callback) {
         }
     });
 }
+
+function getTarifImmo(callback) {
+    $.ajax({
+        type: 'GET',
+        url: "/api/pricing/getAll",
+        dataType: "json",
+        success: function (data) {
+            if (data.state) {
+                if (data.result.length > 0) {
+                    callback(data.result);
+                }
+            }
+        }
+    });
+}
+
+function getTypeHouse(callback) {
+    $.ajax({
+        type: 'GET',
+        url: "/api/typeHouse/getAll",
+        dataType: "json",
+        success: function (data) {
+            if (data.state) {
+                if (data.result.length > 0) {
+                    callback(data.result);
+                }
+            }
+        }
+    });
+}
+
+
+
