@@ -16,6 +16,7 @@
     
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel='stylesheet' href='/stylesheets/modal.css' />
+
     <link rel='stylesheet' href='/stylesheets/jach_style.css' />
 
     <!-- Stylesheet -->
@@ -409,6 +410,7 @@
   <script src="/javascripts/default-assets/active.js"></script>
   <script src="/vendors/wizard-form/js/jquery.steps.js"></script>
   <script src="/vendors/wizard-form/js/main.js"></script>
+  <script src="/javascripts/main.js"></script>
   <script src="/javascripts/mainFunctions.js"></script>
   <script src="/javascripts/sweetalert.js"></script>
   <script src="/javascripts/lightslider.min.js"></script>

@@ -30,7 +30,67 @@ function initUsers() {
 
                     //Rempli le select mode
                     getAllMode(function (data) {
-                        dynamiqueInput(data, "modeImmoAdd");
+                        data.map(item => {
+                            $("#mode_pub").append(`
+                            <div data-id='${item._id}' data-element='${item.intitule}' class="col-md-4 selectMode">
+                                <div class="card custom-card" style="width: 18rem;">
+                                    <div class="card-body">
+                                    <h5 class="card-title">${item.intitule}</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                            </div>`)
+                        })
+
+
+                        $('.selectMode').on('click', (e) => {
+                            e.preventDefault()
+                            var value = e.currentTarget.getAttribute("data-id");
+                            var intitule = e.currentTarget.getAttribute("data-element");
+                            window.localStorage.setItem("mode_immo", value)
+                            window.localStorage.setItem("type_mode_immo", intitule)
+                            $('#wizard-immo').steps('next');
+
+                            manageMode();
+                        })
+
+                    })
+                    
+
+                    getTarifImmo((data) => {
+                        data.map(item => {
+                            $('#type_tarif').append(`
+                                <div data-id='${item._id}' class="col-md-4 my-4">
+                                    <div class="p-4 py-5 text-center bg-light">
+                                    <b class="text-uppercase text-secondary">${item.intitule}</b>
+                                    <h1 class="font-weight-bold my-4" style="color: #458E22;">${item.price ? '$' + item.price : item.percentage}</h1>
+                                    <p class="text-secondary">10 Domain</p>
+                                    <p class="text-secondary">50GB Bandwidth</p>
+                                    <p class="text-secondary">100 Email Addresses</p>
+                                    <p class="text-secondary">24/7 Support</p>
+                                        <a href="#" class="btn px-5 py-3 text-white mt-4 selectTarif" style="border-radius: 30px; background-color: #458E22;">Prendre</a>
+                                    </div>
+                                </div>
+                            `);
+                        })
+                        
+                        $('.selectTarif').on('click', (e) => {
+                            e.preventDefault()
+                            var value = e.currentTarget.getAttribute("data-id");
+                            window.localStorage.setItem("tarif_immo", value)
+                            $('#wizard-immo').steps('next');
+                        })
+                    })
+
+                    //Rempli le select de type rent
+                    getAllRent(function (data) {
+                        console.log(data);
+                        dynamiqueInput(data, "type_rent");
+                    })
+
+                    //Rempli le type de logement
+                    getTypeHouse((data) => {
+                        dynamiqueInput(data, "type_house");
                     })
 
                     //Au submit du formulaire
@@ -64,7 +124,7 @@ function initUsers() {
             })
            
         }else{
-            var content = `<a style="color:#93c900;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#93c900;font-size:17px;" class="fa fa-user"></i>&nbsp;<span class="hidden-xs">Inscription/Connexion</span></a>`;
+            var content = `<a style="color:#458E22;font-size:17px;" data-toggle="modal" data-target="#modalSession" title="Se connecter ou S'inscrire" href="#" class="pull-right"><i style="color:#458E22;font-size:17px;" class="fa fa-user"></i>&nbsp;<span class="hidden-xs">Inscription/Connexion</span></a>`;
             $("#navUser").html(content);
             //Si le user n pas connecté
             $("#addImmoBtn").html(`<a href="#" data-toggle="modal" data-target="#modalSession" title="Publiez un bien immobilier">Publiez votre bien </a>`)

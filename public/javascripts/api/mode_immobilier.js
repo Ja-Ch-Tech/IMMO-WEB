@@ -47,3 +47,21 @@ function getAllMode(callback) {
         }
     });
 }
+
+/** Recupere tous les types de loyer */
+function getAllRent(callback) {
+    $.ajax({
+        type: 'GET',
+        url: "/api/type_rent",
+        dataType: "json",
+        success: function (data) {
+            console.log(data);
+            if (data.state) {
+                if (data.result.length > 0) {
+                    callback(data.result);
+                }
+            }
+            
+        }
+    });
+}

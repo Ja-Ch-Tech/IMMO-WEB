@@ -1,6 +1,6 @@
 module.exports.URL = function () {
     return{
-        "API": "https://immo-jach-api.herokuapp.com"
+        "API": "https://api-ndakubizz.herokuapp.com"
         //"API": "http://localhost:3333"
     }
 }
