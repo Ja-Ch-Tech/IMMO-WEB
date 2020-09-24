@@ -342,7 +342,7 @@
                   <div class="col-12 col-sm-6 col-lg-3">
                       <div class="single-footer-widget mb-80">
                           <!-- Widget Title -->
-                          <h5 class="widget-title">Trouvez par <span>types d'Immobiliers</span></h5>
+                          <h5 class="widget-title"><span>Types d'immobiliers</span></h5>
 
                           <!-- Footer Nav -->
                           <ul class="footer-nav d-flex flex-wrap" id="footerTypeImmo">
@@ -357,7 +357,7 @@
                           <!-- Widget Title -->
                           <h5 class="widget-title">Newsletter</h5>
 
-                          <p>Abonnez-vous à nos newsletters et restez recevez nos annonces dans votre boite email.</p>
+                          <p>Abonnez-vous à nos newsletters et recevez nos annonces dans votre boite email.</p>
                           <!-- Newsletter Form -->
                           <form action="index.html" class="nl-form">
                               <input type="email" name="nl-email" class="form-control" placeholder="Entrez votre email...">

@@ -416,7 +416,7 @@ function getStatType() {
                     var contentHead = `<div class="row" id="elementProp">
                                     <div class="col-12">
                                         <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
-                                            <h2>Trouvez par <span>type d'immobilier</span></h2>
+                                            <h2><span>Types d'immobiliers</span></h2>
                                             <p></p>
                                         </div>
                                     </div>
