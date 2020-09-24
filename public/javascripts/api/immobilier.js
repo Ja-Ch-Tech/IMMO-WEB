@@ -890,7 +890,7 @@ function getImmoByType(type_id) {
                         <div class="col-12">
                             <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
                                 <h2>Immobiliers de type <span id="typeName">${data.getObjet.categorie}</span></h2>
-                                <p>il y a des meilleurs deals et deals. tout dans la ville de Kinshasa et aux environs</p>
+                                <p>Nous vous simplifions la vie, logez-vous en un clic.</p>
                             </div>
                         </div>
                     </div>
