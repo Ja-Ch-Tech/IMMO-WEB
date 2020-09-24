@@ -671,11 +671,11 @@ function getDetailsImmobilier(id) {
 
                             if (isMatch) {
                                 return `<div class="mt-3">
-                                        <button class="btn rehomes-btn mt-10" onclick="viewContact('${obj.id_owner}', '${id}')" id="contactThis">Je veux le contacter</button>
+                                        <button class="btn rehomes-btn mt-10" onclick="viewContact('${obj.id_owner}', '${id}')" id="contactThis">Voir les contacts</button>
                                     </div>`
                             } else {
                                 return `<div class="mt-3">
-                                        <button class="btn rehomes-btn mt-10">Je veux le contacter</button>
+                                        <button class="btn rehomes-btn mt-10">Voir les contacts</button>
                                     </div>`
                             }
                         },
