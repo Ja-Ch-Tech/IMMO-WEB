@@ -19,7 +19,7 @@ $(document).ready(function () {
         <div class="notfound">
             <h2>AUCUN IMMOBILIER POUR LE MOMENT</h2>
             <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
-            <a href="javascript:history.back()">Retour en arriere</a>
+            <a href="javascript:history.back()">Retour</a>
         </div>
     </div>`;
 })
@@ -185,7 +185,7 @@ function initImmo() {
                         <div class="notfound">
                             <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
                             <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
-                            <a href="javascript:history.back()">Retour en arriere</a>
+                            <a href="javascript:history.back()">Retour</a>
                         </div>
                     </div>`);
                 }
@@ -302,7 +302,7 @@ function searchImmo() {
                         <div class="notfound">
                             <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
                             <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
-                            <a href="javascript:history.back()">Retour en arriere</a>
+                            <a href="javascript:history.back()">Retour</a>
                         </div>
                     </div>`);
             }
@@ -762,7 +762,7 @@ function viewContact(id, immo) {
                 },
                 success: function (data) {
 
-                    $("#contactThis").text("Je veux le contacter");
+                    $("#contactThis").text("Voir les contacts");
 
                     if (data.getEtat) {
                         var modal = document.getElementById("modalForContactUs");
@@ -1391,7 +1391,7 @@ function getContact(user_id, immo_id, mode, btn) {
         swal(
             {
                 title: "CONTACTS VENTE IMMO...",
-                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter soit au +243974841783, soit par notre adresse email contact@ndakubizz.com ou encore passez à notre adresse au Local 22, 1er Niveau Immeuble Saint Pierre, 374 Av colonel Mondjiba Q/Basoko Kinshasa-Ngaliema, RDC MERCI</font>",
+                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter soit au +243974841783/+243977191103, soit par notre adresse email contact@ndakubizz.com ou encore passez à notre adresse au Local 22, 1er Niveau Immeuble Saint Pierre, 374 Av colonel Mondjiba Q/Basoko Kinshasa-Ngaliema, RDC MERCI</font>",
                 type: "warning",
                 showCancelButton: false,
                 confirmButtonText: "Compris !",
