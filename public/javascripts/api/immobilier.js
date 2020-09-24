@@ -416,7 +416,7 @@ function getStatType() {
                     var contentHead = `<div class="row" id="elementProp">
                                     <div class="col-12">
                                         <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
-                                            <h2>Trouver par <span>type d'immobilier</span></h2>
+                                            <h2>Trouvez par <span>type d'immobilier</span></h2>
                                             <p></p>
                                         </div>
                                     </div>
@@ -482,9 +482,9 @@ function getNewImmobilier() {
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-md-12 col-lg-12">
-                                            <center> <a href="/immo/voir-tous-les-immo" class="btn rehomes-btn">Voir
-                                                    tous les
-                                                    biens <i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                                            <center> <a href="/immo/voir-tous-les-immo" class="btn rehomes-btn">
+                                                    Tous les
+                                                    immobiliers <i class="now-ui-icons arrows-1_minimal-right"></i></a>
                                             </center>
                                         </div>
                                     </div>`;
