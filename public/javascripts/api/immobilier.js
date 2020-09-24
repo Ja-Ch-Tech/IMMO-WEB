@@ -803,7 +803,7 @@ function viewContact(id, immo) {
                         } else {
 
                             var allContacts = () => {
-                                return `<font>Téléphone : <span>+243 974 841 783</span></font>
+                                return `<font>Téléphone : <span>+243 974 841 783/ +243 977 191 103</span></font>
                                             <font>E-mail : <span>contact@ndakubizz.com</span></font>`;
                             },
                                 content = ` <div class="cardThis">
@@ -812,8 +812,8 @@ function viewContact(id, immo) {
                                         <img src="/images/bg-img/house-3664320_1920.jpg" alt="Image owner">
                                     </div>
                                     <div class="info-owner">
-                                    <h4 class="noms">Info administration</h4>
-                                    <font class="adresse" style="font-size: .7em;">Contactez l'administration</font>
+                                    <h4 class="noms">Nos Contacts</h4>
+                                    <font class="adresse" style="font-size: .7em;">L'administration</font>
                                     <p class="adresse" style="margin-bottom: 10px;"><i class="fa fa-map-marker" aria-hidden="true"></i> Local 22 1er Niveau Immeuble Saint Pierre, 374 Av colonel Mondjiba Q/Basoko Kinshasa-Ngaliema, RDC</p>
 
                                     <div class="autresContacts" style="margin-bottom: 33px;">
