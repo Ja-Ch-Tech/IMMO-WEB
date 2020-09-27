@@ -10,213 +10,203 @@
             <h3 style="border:none;">Ajouter un bien</h3>
             <p style="margin-bottom: 0px;">Publier votre bien immobilier, c'est facile et rapide. </p>
         </div>
-        <form action="">
-            <div style="margin: 2em 0;" id="wizard-immo">
-                <!-- SECTION 1 -->
-                <h4></h4>
-                <section>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <center>
-                                <h5>Type d'immobilier</h5>
-                                <p>Veuillez choisir l'action que vous voulez effectuer</p>
-                            </center>
-                        </div>
-                    </div><br><br>
-                    <div id="mode_pub" class="row">
-                        
-                        <div class="col-md-2"></div>
+        <div style="margin: 2em 0;width:100%" id="wizard-immo">
+            <!-- SECTION 1 -->
+            <h4></h4>
+            <section>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5 class="text-center">Type d'immobilier</h5>
+                        <p class="text-center">Veuillez choisir l'action que vous voulez effectuer</p>
                     </div>
-                </section>
-                
-                <!-- SECTION 2 -->
-                <h4></h4>
-                <section>
-                    <br><br>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <center>
-                                <h5>Type de tarif</h5>
-                                <p>Veuillez choisir le type de tarif</p>
-                            </center>
-                        </div>
-                    </div><br>
-                    <div class="row">
-                        
-                        <div class="container my-2">
-                            <div id="type_tarif" class="d-sm-flex align-items-center"></div>
-                          </div>
+                </div><br><br>
+                <div id="mode_pub" class="row">
+                    
+                    <div class="col-md-2"></div>
+                </div>
+            </section>
+            
+            <!-- SECTION 2 -->
+            <h4></h4>
+            <section>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <center>
+                            <h5>Type de tarif</h5>
+                            <p>Veuillez choisir le type de tarif</p>
+                        </center>
                     </div>
-                </section>
+                </div><br>
+                <div class="row">
+                    
+                    <div class="container my-2">
+                        <div id="type_tarif" class="d-flex justify-content-center"></div>
+                        </div>
+                </div>
+            </section>
 
-                <!-- SECTION 3 -->
-                <h4></h4>
-                <section>
-                    <form id="formAddImmo" autocomplete="off" class="support-form" method="post" action="#">
-                        <div class="body">
-                            <!-- Leave A Reply -->
-                            <div class="rehomes-contact-form mb-10 wow fadeInUp" data-wow-delay="200ms">
-                                <!-- Form -->
-            
-                                    <div class="row">
-                                        <div class="col-md-12 mb-15">
-                                            <h2 style="color: #92c800">Informations de base</h2>
-                                        </div>
-                                        <!-- <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
-                                            <label class="label-custom" for="titre">Titre</label>
-                                            <input type="text" name="titre" class="form-control mb-20" placeholder="Saisissez le titre de la publication" id="titre">
-                                        </div> -->
-                                        <div class="col-12 col-md-6 col-lg-6">
-                                            <label class="label-custom" for="type">Type d'immobilier</label>
-                                            <select name="id_type_immo" id="typeImmoAdd" class="form-control">
-                                                
-                                            </select>
-                                        </div>
-                                        <div id="locationPrice" class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <label class="label-custom" for="mode">Type de loyer</label>
-                                                    <select name="type_rent" id="type_rent" class="form-control">
-                                                    </select>
-                                                </div>
-            
-            
-                                                <div class="col-md-6">
-                                                    <label class="label-custom" for="loyeur_mensuel">Loyer (en $)</label>
-                                                    <input type="number" name="prix" class="form-control mb-20" placeholder="Prix" id="loyeur_mensuel">
-                                                </div>
-                                                
+            <!-- SECTION 3 -->
+            <h4></h4>
+            <section>
+                <form id="formAddImmo" autocomplete="off" class="support-form" method="post">
+                    <div class="body">
+                        <!-- Leave A Reply -->
+                        <div class="rehomes-contact-form mb-10 wow fadeInUp" data-wow-delay="200ms">
+                            <!-- Form -->
+        
+                                <div class="row">
+                                    <div class="col-md-12 mb-15">
+                                        <h2 style="color: #92c800">Informations de base</h2>
+                                    </div>
+                                    <!-- <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                                        <label class="label-custom" for="titre">Titre</label>
+                                        <input type="text" name="titre" class="form-control mb-20" placeholder="Saisissez le titre de la publication" id="titre">
+                                    </div> -->
+                                    <div class="col-12 col-md-6 col-lg-6">
+                                        <label class="label-custom" for="type">Type d'immobilier</label>
+                                        <select name="id_type_immo" id="typeImmoAdd" class="form-control">
+                                            
+                                        </select>
+                                    </div>
+                                    <div id="locationPrice" class="col-sm-12 col-lg-6 col-md-6 mb-10">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label class="label-custom" for="type_rent">Type de loyer</label>
+                                                <select name="id_type_rent" id="type_rent" class="form-control">
+                                                </select>
+                                            </div>
+        
+                                            <div class="col-md-6">
+                                                <label class="label-custom" for="loyeur_mensuel">Loyer (en $)</label>
+                                                <input type="number" name="prix" class="form-control mb-20" placeholder="Prix" id="loyeur_mensuel">
                                             </div>
                                             
-                                        </div>
-                                        <div style="display: none;" id="ventePrice" class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                                            
-                                        </div>
-                                        <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                                            <label class="label-custom" for="surface_longueur">Surface (Longueur)</label>
-                                            <input type="number" name="surface_longueur" class="form-control mb-20" placeholder="surface longueur" id="surface_longueur">
-                                        </div>
-            
-                                        <div id="surface" class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                                            <label class="label-custom" for="surface_largeur">Surface (Largeur)</label>
-                                            <input type="number" name="surface_largeur" class="form-control mb-20" placeholder="surface largeur" id="surface_largeur">
-                                        </div>
-            
-                                        <div id="surface" class="col-sm-12 col-lg-4 col-md-4 mb-10">
-                                            <label class="label-custom" for="surface">Surface (en metre carré)</label>
-                                            <input type="number" name="surface" class="form-control mb-20" placeholder="surface" id="surface">
                                         </div>
                                         
-                                        <div class="col-sm-12 col-lg-3 col-md-3">
-                                            <label class="label-custom" for="nbreEtage">Nombre d'étages</label>
-                                            <input type="number" name="nbreEtage" class="form-control mb-20" placeholder="Nombre d'étages" id="nbreEtage">
-                                        </div>
+                                    </div>
+                                    <div style="display: none;" id="ventePrice" class="col-sm-12 col-lg-6 col-md-6 mb-10">
+                                        
+                                    </div>
+                                    <div class="col-sm-12 col-lg-4 col-md-4 mb-10">
+                                        <label class="label-custom" for="longueur">Surface (Longueur)</label>
+                                        <input type="number" name="longueur" class="form-control mb-20" placeholder="surface longueur" id="surface_longueur">
+                                    </div>
+        
+                                    <div id="surface" class="col-sm-12 col-lg-4 col-md-4 mb-10">
+                                        <label class="label-custom" for="largeur">Surface (Largeur)</label>
+                                        <input type="number" name="largeur" class="form-control mb-20" placeholder="surface largeur" id="surface_largeur">
+                                    </div>
+                                    
+                                    <div class="col-sm-12 col-lg-4 col-md-4">
+                                        <label class="label-custom" for="nbreEtage">Nombre d'étages</label>
+                                        <input type="number" name="nbreEtage" class="form-control mb-20" placeholder="Nombre d'étages" id="nbreEtage">
+                                    </div>
 
-                                        <div class="col-sm-12 col-lg-3 col-md-3">
-                                            <label class="label-custom" for="type_house">Type logement</label>
-                                            <select name="type_house" id="type_house" class="form-control">
-                                            </select>
-                                        </div>
-                                       
-                                        <div class="col-sm-12 col-lg-3 col-md-3">
-                                            <label class="label-custom" for="nbre_ch">Nombre chambres</label>
-                                            <input type="number" name="nbreChambre" class="form-control mb-20" placeholder="Nombre des chambres" id="nbre_ch">
-                                        </div>
-                                         <div class="col-sm-12 col-lg-3 col-md-3">
-                                            <label class="label-custom" for="nbre_douche">Nombre douches</label>
-                                            <input type="number" name="nbreDouche" class="form-control mb-20" placeholder="Nombre des douches" id="nbre_douche">
-                                        </div>
-                                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
-                                            <label class="label-custom" for="description">Ajoutez une description</label>
-                                            <textarea name="description" class="form-control mb-30" placeholder="Description de l'immobilier"></textarea>
-                                        </div>
-                                        <div class="col-md-12 mb-15">
-                                            <h2 style="color: #92c800">Localisation ou adresse de l'immo</h2>
-                                        </div>
-                                       
-                                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                                            <label class="label-custom" for="commune">Commune</label>
-                                            <input type="text" name="commune" class="form-control mb-20" placeholder="Commune" id="commune">
-                                        </div>
-                                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                                            <label class="label-custom" for="quartier">Quartier</label>
-                                            <input type="text" name="quartier" class="form-control mb-20" placeholder="quartier" id="quartier">
-                                        </div>
-                                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                                            <label class="label-custom" for="avenue">Avenue</label>
-                                            <input type="text" name="avenue" class="form-control mb-20" placeholder="Avenue" id="avenue">
-                                        </div>
-                                        <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
-                                            <label class="label-custom" for="numero_parcelle">Numéro parcelle</label>
-                                            <input type="number" name="numero" class="form-control mb-20" placeholder="numero parcelle" id="numero_parcelle">
-                                        </div>
-                                        <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
-                                            <label class="label-custom" for="reference">Ajoutez une reference</label>
-                                            <input type="text" name="reference" class="form-control mb-20" placeholder="reference" id="reference">
-                                        </div>
-            
-                                        <div class="col-md-12 mb-15">
-                                            <h2 style="color: #92c800">Apercus</h2>
-                                            <p>
-                                                Votre immmobilier doit avoir une image principale au minimum, donc tachez de nous envoyer une tres belle image mettant en valeur votre immobilier pour attirer de la clientele. vous avez la possibilité d'ajouter au maximum <span style="color: #92c800;font-weight: bold;">5 images</span>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-12 mb-15">
-                                            <div style="border:1px solid #dcdcdc;min-height: 250px;padding: 20px;">
-                                                <div class="mb-15" style="background-color: #f2f3f5;height: auto;border:1px solid #dcdcdc; position: relative; overflow: hidden;">
-                                                    <center>
-                                                        <img class="mt-80" src="/images/icons/icons8-upload-100.png" alt="">
-                                                        <p>Selectionnez des images pour votre immobilier, pas plus de 9Mo <br><i>la premiere image que vous allez selectionner est considerée comme image principale</i></p>
-            
-                                                        <div id="minusImage">
-                                                            
-                                                        </div>
-                                                    </center>
-                                                    <div class="progressImmo">
-                                                        <div id="juiceForProgress"></div>
+                                    <div class="col-sm-12 col-lg-4 col-md-4">
+                                        <label class="label-custom" for="type_house">Type logement</label>
+                                        <select name="id_type_house" id="type_house" class="form-control">
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="col-sm-12 col-lg-4 col-md-4">
+                                        <label class="label-custom" for="nbre_ch">Nombre chambres</label>
+                                        <input type="number" name="nbreChambre" class="form-control mb-20" placeholder="Nombre des chambres" id="nbre_ch">
+                                    </div>
+                                        <div class="col-sm-12 col-lg-4 col-md-4">
+                                        <label class="label-custom" for="nbre_douche">Nombre douches</label>
+                                        <input type="number" name="nbreDouche" class="form-control mb-20" placeholder="Nombre des douches" id="nbre_douche">
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                                        <label class="label-custom" for="description">Ajoutez une description</label>
+                                        <textarea name="description" class="form-control mb-30" placeholder="Description de l'immobilier"></textarea>
+                                    </div>
+                                    <div class="col-md-12 mb-15">
+                                        <h2 style="color: #92c800">Localisation ou adresse de l'immo</h2>
+                                    </div>
+                                    
+                                    <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
+                                        <label class="label-custom" for="commune">Commune</label>
+                                        <input type="text" name="commune" class="form-control mb-20" placeholder="Commune" id="commune">
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
+                                        <label class="label-custom" for="quartier">Quartier</label>
+                                        <input type="text" name="quartier" class="form-control mb-20" placeholder="quartier" id="quartier">
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
+                                        <label class="label-custom" for="avenue">Avenue</label>
+                                        <input type="text" name="avenue" class="form-control mb-20" placeholder="Avenue" id="avenue">
+                                    </div>
+                                    <div class="col-sm-12 col-lg-6 col-md-6 mb-10">
+                                        <label class="label-custom" for="numero_parcelle">Numéro parcelle</label>
+                                        <input type="number" name="numero" class="form-control mb-20" placeholder="numero parcelle" id="numero_parcelle">
+                                    </div>
+                                    <div class="col-sm-12 col-lg-12 col-md-12 mb-10">
+                                        <label class="label-custom" for="reference">Ajoutez une reference</label>
+                                        <input type="text" name="reference" class="form-control mb-20" placeholder="reference" id="reference">
+                                    </div>
+        
+                                    <div class="col-md-12 mb-15">
+                                        <h2 style="color: #92c800">Apercus</h2>
+                                        <p>
+                                            Votre immmobilier doit avoir une image principale au minimum, donc tachez de nous envoyer une tres belle image mettant en valeur votre immobilier pour attirer de la clientele. vous avez la possibilité d'ajouter au maximum <span style="color: #92c800;font-weight: bold;">5 images</span>
+                                        </p>
+                                    </div>
+                                    <div class="col-md-12 mb-15">
+                                        <div style="border:1px solid #dcdcdc;min-height: 250px;padding: 20px;">
+                                            <div class="mb-15" style="background-color: #f2f3f5;height: auto;border:1px solid #dcdcdc; position: relative; overflow: hidden;">
+                                                <center>
+                                                    <img class="mt-80" src="/images/icons/icons8-upload-100.png" alt="">
+                                                    <p>Selectionnez des images pour votre immobilier, pas plus de 9Mo <br><i>la premiere image que vous allez selectionner est considerée comme image principale</i></p>
+        
+                                                    <div id="minusImage">
+                                                        
                                                     </div>
+                                                </center>
+                                                <div class="progressImmo">
+                                                    <div id="juiceForProgress"></div>
                                                 </div>
-                                                <div class="row" id="formImage">
-                                                    <div class="col-md-12">
-                                                        <p style="margin-bottom: 0;">Ajoutez une image</p>
+                                            </div>
+                                            <div class="row" id="formImage">
+                                                <div class="col-md-12">
+                                                    <p style="margin-bottom: 0;">Ajoutez une image</p>
+                                                </div>
+                                                <div class="col-md-7">
+                                                    <div id="progressImage" style="display:none;margin-bottom:15px;" class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                                                     </div>
-                                                    <div class="col-md-7">
-                                                        <div id="progressImage" style="display:none;margin-bottom:15px;" class="progress">
-                                                            <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                                        </div>
-                                                        <input type="text" name="nameImage" class="form-control mb-20" placeholder="Qu'est-ce que vous ajouter ?" id="nameImage">
-                                                    </div>
-                                                    <div class="col-md-5">
-                                                        <label id="selection">
-                                                            <a id="btn_upload_image" class="btn rehomes-btn btn-2">Selectionnez l'image</a>
-                                                        </label>
-                                                        <input type="file" id="imageImmo" style="display: none;">
-                                                    </div>
+                                                    <input type="text" name="nameImage" class="form-control mb-20" placeholder="Qu'est-ce que vous ajouter ?" id="nameImage">
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <label id="selection">
+                                                        <a id="btn_upload_image" class="btn rehomes-btn btn-2">Selectionnez l'image</a>
+                                                    </label>
+                                                    <input type="file" id="imageImmo" style="display: none;">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
-                                            <p style="font-size: 15px;" class="text-muted text-right">
-                                                En appuyant sur Terminer, vous acceptez nos <a href="/contrat/termes_et_conditions" target="_blank" style="color: #92c800">Termes et conditions générales </a>
-                                            </p>
-                                        </div>
                                     </div>
-                                
-                            </div>
+                                    <div class="col-md-12">
+                                        <p style="font-size: 15px;" class="text-muted text-right">
+                                            En appuyant sur Terminer, vous acceptez nos <a href="/contrat/termes_et_conditions" target="_blank" style="color: #92c800">Termes et conditions générales </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            
                         </div>
-                        <div class="footer">
-                            <div class="col-12">
-                              <center>
-                                <button id="btn_add_immo" type="submit" class="btn rehomes-btn">Terminer</button>
-                              </center>
-                            </div>
+                    </div>
+                    <div class="footer">
+                        <div class="col-12">
+                            <center>
+                            <button id="btn_add_immo" form="formAddImmo" type="submit" class="btn rehomes-btn">Terminer</button>
+                            </center>
                         </div>
-                    </form>
-                </section>
+                    </div>
+                </form>
+            </section>
 
 
-            </div>
-        </form>
+        </div>
     });
 })

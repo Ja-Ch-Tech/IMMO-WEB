@@ -166,8 +166,8 @@ router.get('/type_rent', (req, res) => {
 
 
 //Recupere les types de tarifs
-router.get('/pricing/getAll', (req, res) => {
-    axios.get(`${API}/pricing/getAll`)
+router.get('/pricing/:id_immo/getAll', (req, res) => {
+    axios.get(`${API}/pricing/${req.params.id_immo}/getAll`)
         .then(response => {
             res.status(200).send(response.data)
         })
@@ -355,11 +355,17 @@ router.post('/addImmob', (req, res) => {
         "id_user" : req.session.id,
         "id_mode_immo" : req.body.id_mode_immo,
         "id_type_immo" : req.body.id_type_immo,
-        "nbrePiece" : req.body.nbrePiece,
+        "id_type_rent" : req.body.id_type_rent,
+        "id_type_house" : req.body.id_type_house,
+        "id_plans" : req.body.id_plans,
         "nbreChambre" : req.body.nbreChambre,
         "nbreDouche" : req.body.nbreDouche,
+        "nbreEtage" : req.body.nbreEtage,
         "prix" : req.body.prix,
-        "surface" : req.body.surface,
+        "surface" : {
+            longueur : parseInt(req.body.longueur),
+            largeur: parseInt(req.body.largeur)
+        },
         "description" : req.body.description 
     }
 
