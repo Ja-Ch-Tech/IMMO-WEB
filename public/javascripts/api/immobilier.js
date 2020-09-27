@@ -18,8 +18,8 @@ $(document).ready(function () {
     noFound = `<div id="notfound">
         <div class="notfound">
             <h2>AUCUN IMMOBILIER POUR LE MOMENT</h2>
-            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+24389999999</b> pour plus de details</p>
-            <a href="javascript:history.back()">Retour en arriere</a>
+            <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
+            <a href="javascript:history.back()">Retour</a>
         </div>
     </div>`;
 })
@@ -184,8 +184,8 @@ function initImmo() {
                     $("#searchContent").html(`<div id="notfound">
                         <div class="notfound">
                             <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
-                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+243974841783</b> ou à notre adresse email <b>contact@ndakubizz.com</b> pour plus de details</p>
-                            <a href="javascript:history.back()">Retour en arriere</a>
+                            <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
+                            <a href="javascript:history.back()">Retour</a>
                         </div>
                     </div>`);
                 }
@@ -301,8 +301,8 @@ function searchImmo() {
                 $("#searchContent").html(`<div id="notfound">
                         <div class="notfound">
                             <h2>AUCUN RESULTAT POUR VOTRE REHCERCHE</h2>
-                            <p>En cas de publication vous recevrez une notification ou soit contacter nous au <b>+243974841783</b> ou à notre adresse email <b>contact@ndakubizz.com</b> pour plus de details</p>
-                            <a href="javascript:history.back()">Retour en arriere</a>
+                            <p>Abonnez-vous à notre newsletter pour être notifié en cas d'une nouvelle publication.</p>
+                            <a href="javascript:history.back()">Retour</a>
                         </div>
                     </div>`);
             }
@@ -416,7 +416,7 @@ function getStatType() {
                     var contentHead = `<div class="row" id="elementProp">
                                     <div class="col-12">
                                         <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
-                                            <h2>Trouver par <span>type de biens</span></h2>
+                                            <h2><span>Types d'immobiliers</span></h2>
                                             <p></p>
                                         </div>
                                     </div>
@@ -482,9 +482,9 @@ function getNewImmobilier() {
                                     </div>
                                     <div class="row">
                                         <div class="col-12 col-md-12 col-lg-12">
-                                            <center> <a href="/immo/voir-tous-les-immo" class="btn rehomes-btn">Voir
-                                                    tous les
-                                                    biens <i class="now-ui-icons arrows-1_minimal-right"></i></a>
+                                            <center> <a href="/immo/voir-tous-les-immo" class="btn rehomes-btn">
+                                                    Tous les
+                                                    immobiliers <i class="now-ui-icons arrows-1_minimal-right"></i></a>
                                             </center>
                                         </div>
                                     </div>`;
@@ -671,11 +671,11 @@ function getDetailsImmobilier(id) {
 
                             if (isMatch) {
                                 return `<div class="mt-3">
-                                        <button class="btn rehomes-btn mt-10" onclick="viewContact('${obj.id_owner}', '${id}')" id="contactThis">Je veux le contacter</button>
+                                        <button class="btn rehomes-btn mt-10" onclick="viewContact('${obj.id_owner}', '${id}')" id="contactThis">Voir les contacts</button>
                                     </div>`
                             } else {
                                 return `<div class="mt-3">
-                                        <button class="btn rehomes-btn mt-10">Je veux le contacter</button>
+                                        <button class="btn rehomes-btn mt-10">Voir les contacts</button>
                                     </div>`
                             }
                         },
@@ -762,7 +762,7 @@ function viewContact(id, immo) {
                 },
                 success: function (data) {
 
-                    $("#contactThis").text("Je veux le contacter");
+                    $("#contactThis").text("Voir les contacts");
 
                     if (data.getEtat) {
                         var modal = document.getElementById("modalForContactUs");
@@ -803,7 +803,7 @@ function viewContact(id, immo) {
                         } else {
 
                             var allContacts = () => {
-                                return `<font>Téléphone : <span>+243 974 841 783</span></font>
+                                return `<font>Téléphone : <span>+243 974 841 783/ +243 977 191 103</span></font>
                                             <font>E-mail : <span>contact@ndakubizz.com</span></font>`;
                             },
                                 content = ` <div class="cardThis">
@@ -812,8 +812,8 @@ function viewContact(id, immo) {
                                         <img src="/images/bg-img/house-3664320_1920.jpg" alt="Image owner">
                                     </div>
                                     <div class="info-owner">
-                                    <h4 class="noms">Info administration</h4>
-                                    <font class="adresse" style="font-size: .7em;">Contactez l'administration</font>
+                                    <h4 class="noms">Nos Contacts</h4>
+                                    <font class="adresse" style="font-size: .7em;">L'administration</font>
                                     <p class="adresse" style="margin-bottom: 10px;"><i class="fa fa-map-marker" aria-hidden="true"></i> Local 22 1er Niveau Immeuble Saint Pierre, 374 Av colonel Mondjiba Q/Basoko Kinshasa-Ngaliema, RDC</p>
 
                                     <div class="autresContacts" style="margin-bottom: 33px;">
@@ -890,7 +890,7 @@ function getImmoByType(type_id) {
                         <div class="col-12">
                             <div class="section-heading wow fadeInUp" data-wow-delay="200ms">
                                 <h2>Immobiliers de type <span id="typeName">${data.getObjet.categorie}</span></h2>
-                                <p>il y a des meilleurs deals et deals. tout dans la ville de Kinshasa et aux environs</p>
+                                <p>Nous vous simplifions la vie, logez-vous en un clic.</p>
                             </div>
                         </div>
                     </div>
@@ -1396,7 +1396,7 @@ function getContact(user_id, immo_id, mode, btn) {
         swal(
             {
                 title: "CONTACTS VENTE IMMO...",
-                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter soit au +243974841783, soit par notre adresse email contact@ndakubizz.com ou encore passez à notre adresse au Local 22, 1er Niveau Immeuble Saint Pierre, 374 Av colonel Mondjiba Q/Basoko Kinshasa-Ngaliema, RDC MERCI</font>",
+                html: "<font style=\"font-family: .4em\">Pour voir les contacts des gens interessés, veuillez nous contacter soit au +243974841783/+243977191103, soit par notre adresse email contact@ndakubizz.com ou encore passez à notre adresse au Local 22, 1er Niveau Immeuble Saint Pierre, 374 Av colonel Mondjiba Q/Basoko Kinshasa-Ngaliema, RDC MERCI</font>",
                 type: "warning",
                 showCancelButton: false,
                 confirmButtonText: "Compris !",
