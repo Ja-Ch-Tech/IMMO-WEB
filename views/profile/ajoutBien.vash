@@ -8,7 +8,7 @@
       <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
         <div class="header text-center">
             <h3 style="border:none;">Ajouter un bien</h3>
-            <p style="margin-bottom: 0px;">Publier votre bien immobilier, c'est facile et rapide. </p>
+            <p style="margin-bottom: 0px;">Publiez votre bien immobilier, c'est facile et rapide. </p>
         </div>
         <div style="margin: 2em 0;width:100%" id="wizard-immo">
             <!-- SECTION 1 -->
