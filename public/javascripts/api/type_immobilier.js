@@ -48,10 +48,11 @@ function getTypeImmo(callback) {
     });
 }
 
-function getTarifImmo(callback) {
+function getTarifImmo(value, callback) {
+    console.log(value);
     $.ajax({
         type: 'GET',
-        url: "/api/pricing/getAll",
+        url: `/api/pricing/${value}/getAll`,
         dataType: "json",
         success: function (data) {
             if (data.state) {

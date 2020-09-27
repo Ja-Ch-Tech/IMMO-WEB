@@ -52,39 +52,75 @@ function initUsers() {
                             $('#wizard-immo').steps('next');
 
                             manageMode();
+
+
+                            getTarifImmo(window.localStorage.getItem('mode_immo'), (data) => {
+                                $('#type_tarif').html(``);
+                                data.map((item, index) => {
+                                    if (/Location/i.test(window.localStorage.getItem('type_mode_immo'))) {
+                                        item.plans.map(plan => {
+                                            $('#type_tarif').append(`
+                                                <div class="col-md-4 my-4">
+                                                    <div class="p-4 py-5 text-center bg-light">
+                                                    <b class="text-uppercase text-secondary">${item.pricing.intitule}</b>
+                                                    <h4 class="font-weight-bold my-4" style="color: #458E22;">${plan.price}</h4>
+                                                    <p class="text-secondary">10 Domain</p>
+                                                    <p class="text-secondary">50GB Bandwidth</p>
+                                                    <p class="text-secondary">100 Email Addresses</p>
+                                                    <p class="text-secondary">24/7 Support</p>
+                                                        <a data-id='${plan._id}' href="#" class="btn px-5 py-3 text-white mt-4 selectTarif" style="border-radius: 30px; background-color: #458E22;">Prendre</a>
+                                                    </div>
+                                                </div>
+                                            `);
+                                        })
+                                    } else if (/Vente/i.test(window.localStorage.getItem('type_mode_immo'))) {
+                                        console.log(item);
+                                        $('#type_tarif').append(`
+                                            <div class="col-md-${item.plans.length > 1 ? '8' : '4'}">
+                                                <div class="card">
+                                                    <div style="color:#333" class="card-header">
+                                                        ${item.pricing.intitule}
+                                                    </div>
+                                                    <div id="list_plans_${ item.pricing._id }" class="row card-body">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        `);
+
+                                        item.plans.map((plan) => {
+                                            $(`#list_plans_${ item.pricing._id }`).append(`
+                                                <div class="col-md-${item.plans.length > 1 ? '4' : '12'} my-4">
+                                                    <div style="min-height: 30em;" class="p-4 py-5 text-center bg-light">
+                                                    <h4 class="font-weight-bold my-4" style="color: #458E22;">${plan.price ? plan.price : plan.percentage}</h4>
+                                                    <p class="text-secondary">10 Domain</p>
+                                                    <p class="text-secondary">50GB Bandwidth</p>
+                                                    <p class="text-secondary">100 Email Addresses</p>
+                                                    <p class="text-secondary">24/7 Support</p>
+                                                        <a data-id='${plan._id}' href="#" class="btn px-${item.plans.length > 1 ? '1' : '5'} py-2 btn-block text-white mt-4 selectTarif" style="border-radius: 30px; background-color: #458E22;">Prendre</a>
+                                                    </div>
+                                                </div>
+                                            `);
+                                        })
+                                    }
+                                })
+                                
+                                $('.selectTarif').on('click', (e) => {
+                                    e.preventDefault()
+                                    var value = e.currentTarget.getAttribute("data-id");
+                                    window.localStorage.setItem("tarif_immo", value)
+                                    $('#wizard-immo').steps('next');
+                                })
+                            })
                         })
 
                     })
                     
 
-                    getTarifImmo((data) => {
-                        data.map(item => {
-                            $('#type_tarif').append(`
-                                <div data-id='${item._id}' class="col-md-4 my-4">
-                                    <div class="p-4 py-5 text-center bg-light">
-                                    <b class="text-uppercase text-secondary">${item.intitule}</b>
-                                    <h1 class="font-weight-bold my-4" style="color: #458E22;">${item.price ? '$' + item.price : item.percentage}</h1>
-                                    <p class="text-secondary">10 Domain</p>
-                                    <p class="text-secondary">50GB Bandwidth</p>
-                                    <p class="text-secondary">100 Email Addresses</p>
-                                    <p class="text-secondary">24/7 Support</p>
-                                        <a href="#" class="btn px-5 py-3 text-white mt-4 selectTarif" style="border-radius: 30px; background-color: #458E22;">Prendre</a>
-                                    </div>
-                                </div>
-                            `);
-                        })
-                        
-                        $('.selectTarif').on('click', (e) => {
-                            e.preventDefault()
-                            var value = e.currentTarget.getAttribute("data-id");
-                            window.localStorage.setItem("tarif_immo", value)
-                            $('#wizard-immo').steps('next');
-                        })
-                    })
+                    
 
                     //Rempli le select de type rent
                     getAllRent(function (data) {
-                        console.log(data);
                         dynamiqueInput(data, "type_rent");
                     })
 
@@ -96,6 +132,7 @@ function initUsers() {
                     //Au submit du formulaire
                     $("#formAddImmo").on("submit", function (e) {
                         e.preventDefault();
+
                         addImmo(e, user_id);
                     })
 

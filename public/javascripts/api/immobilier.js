@@ -993,7 +993,12 @@ function addImmo(e, user_id) {
             objData[inputs[index].name] = inputs[index].options[inputs[index].selectedIndex].value;
         }
 
+        objData["id_mode_immo"] = window.localStorage.getItem("mode_immo")
+        objData["id_plans"] = window.localStorage.getItem("tarif_immo")
+
+
         if (sortieInput == inputs.length) {
+            console.log(objData);
             $.ajax({
                 type: 'POST',
                 url: "/api/addImmob",

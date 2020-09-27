@@ -1,7 +1,7 @@
 @html.extend('layout', function(model) {
   @html.block('content', function(model) {
       <hr>
-      <div class="container mt-50 mb-50">
+      <div style="max-width: 1310px;" class="container mt-50 mb-50">
         <div class="row profile">
           <div class="col-sm-12 col-md-2 col-lg-2 sidebar">
             <center id="thisInfo">
