@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h5 class="text-center">Type d'immobilier</h5>
-                        <p class="text-center">Veuillez choisir l'action que vous voulez effectuer</p>
+                        <p class="text-center">Vous souhaitez mettre votre immobilier en location ou en vente?</p>
                     </div>
                 </div><br><br>
                 <div id="mode_pub" class="row">
