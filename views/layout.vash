@@ -34,6 +34,17 @@
         src='https://platform-api.sharethis.com/js/sharethis.js#property=5d9fb51ed50e4800128b7e37&product=sticky-share-buttons'
         async='async'></script>
 
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-180823020-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-180823020-1');
+</script>
+
+
 </head>
 
 <body>
