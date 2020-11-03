@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var StateClient = req.session.id ? true : false;
   res.render('apropos', { 
-    title: 'Qui somme nous ?',
+    title: 'Une agence immobilière de qualité et professionnelle',
     StateClient: StateClient
   });
 })
