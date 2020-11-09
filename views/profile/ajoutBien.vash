@@ -8,7 +8,7 @@
       <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
         <div class="header text-center">
             <h3 style="border:none;">Ajouter un bien</h3>
-            <p style="margin-bottom: 0px;">publier votre bien immobilier et c'est gratuit</p>
+            <p style="margin-bottom: 0px;">Publiez votre bien immobilier, c'est facile et rapide. </p>
         </div>
         <div style="margin: 2em 0;width:100%" id="wizard-immo">
             <!-- SECTION 1 -->
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h5 class="text-center">Type d'immobilier</h5>
-                        <p class="text-center">Veuillez choisir l'action que vous voulez effectuer</p>
+                        <p class="text-center">Vous souhaitez mettre votre immobilier en location ou en vente?</p>
                     </div>
                 </div><br><br>
                 <div id="mode_pub" class="row">

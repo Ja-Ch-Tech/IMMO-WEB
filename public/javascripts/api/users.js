@@ -36,7 +36,7 @@ function initUsers() {
                                 <div class="card custom-card" style="width: 18rem;">
                                     <div class="card-body">
                                     <h5 class="card-title">${item.intitule}</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    <p class="card-text">Nous vous garantissons la visibilité et la clientèle en vous laissant le choix de comment nous serons recompensé (avec ou sans commission).</p>
                                     </div>
                                 </div>
                             </div>`)

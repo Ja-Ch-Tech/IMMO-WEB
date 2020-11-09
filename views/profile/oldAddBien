@@ -3,7 +3,7 @@
       <!-- BLOQUE FAISANT APPEL A CHAQUE PARTIE DU PROFILE CLIENT-->
         <div class="header text-center">
             <h3 style="border:none;">Ajouter un bien</h3>
-            <p style="margin-bottom: 0px;">publier votre bien immobilier et c'est gratuit</p>
+            <p style="margin-bottom: 0px;">Publiez votre bien immobilier, c'est facile et rapide.</p>
         </div>
         
     });

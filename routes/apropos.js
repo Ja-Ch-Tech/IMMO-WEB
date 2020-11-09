@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   var StateClient = req.session.id ? true : false;
   res.render('apropos', { 
-    title: 'Qui somme nous ?',
+    title: 'La meilleure agence immobilière de qualité à Kinshasa RDC',
     StateClient: StateClient
   });
 })
