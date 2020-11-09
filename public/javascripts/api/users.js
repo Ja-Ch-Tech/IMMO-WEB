@@ -59,11 +59,12 @@ function initUsers() {
                                 data.map((item, index) => {
                                     if (/Location/i.test(window.localStorage.getItem('type_mode_immo'))) {
                                         item.plans.map(plan => {
+                                            console.log(item);
                                             $('#type_tarif').append(`
                                                 <div class="col-md-4 my-4">
                                                     <div class="p-4 py-5 text-center bg-light">
                                                     <b class="text-uppercase text-secondary">${item.pricing.intitule}</b>
-                                                    <h4 class="font-weight-bold my-4" style="color: #458E22;">${plan.price}</h4>
+                                                    <h4 class="font-weight-bold my-4" style="color: #458E22;">${item.pricing.intitule == "Sans commission" ? "15$" : plan.price }</h4>
                                                     <p class="text-secondary">10 Domain</p>
                                                     <p class="text-secondary">50GB Bandwidth</p>
                                                     <p class="text-secondary">100 Email Addresses</p>
